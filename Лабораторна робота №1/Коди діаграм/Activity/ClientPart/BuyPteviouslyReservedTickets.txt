@@ -1,0 +1,18 @@
+@startuml
+title Buy pteviously reserved tickets
+(*) -->"send request to get\n reserved tickets list"
+if "server respond?" then
+	note left: "could not connect to server" msg
+	-left->[0]"send request to get\n reserved tickets list"
+else
+	-->[1]"show recieved list"
+  -->"get a shopping list"
+  -->"send a shopping list to server"
+  if "server responded\n that purchase is done?" then
+  	note left: show "the transaction cannot be completed\n please try again" msg
+    -->[0]"show recieved list"
+  else
+    -->[1]"show purchase is seccessful msg"
+    -->(*)
+  endif
+@enduml

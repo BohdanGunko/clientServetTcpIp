@@ -1,0 +1,27 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+actor server
+
+rectangle ToClient{
+(sending connection \ninformation)<-down-server
+(sending reservations \nand purchases information)<-down-server
+(sending purchase \nseccess information) <-down-server
+(sending reservation \nseccess information) <-down-server
+(sending schedule information) <-down-server
+}
+
+rectangle Server{
+server-down->(decoding the command \nreceived from the client)
+}
+
+rectangle DataBases{
+(decoding the command \nreceived from the client)-down->(user verification)
+(decoding the command \nreceived from the client)-down->(adding new users)
+(decoding the command \nreceived from the client)-down->(finding user purchases)
+(decoding the command \nreceived from the client)-down->(finding the right train)
+(decoding the command \nreceived from the client)-down->(finding the vagon)
+  (decoding the command \nreceived from the client)-down->(finding the city)
+  (decoding the command \nreceived from the client)-down->(finding the place)
+}
+@enduml

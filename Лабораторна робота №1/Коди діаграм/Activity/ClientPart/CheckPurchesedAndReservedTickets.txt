@@ -1,0 +1,19 @@
+@startuml
+title Check purchesed and reserved tickets
+(*) -->"send request to get\n bought and reserved tickets list"
+if "server respond?" then
+	note right: "could not connect to server" msg
+	-left->[0]"send request to get\n bought and reserved tickets list"
+else
+	-->[1]"show recieved list"
+	if "user vant to buy previously reserved ticket?" then
+		-->[0](*)
+  
+	else
+    partition extend   {
+      -->[1]"buy pteviously reserved tickets"
+    }
+		-->(*)
+	endif
+endif
+@enduml

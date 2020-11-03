@@ -1,0 +1,7 @@
+@startuml
+title Find the city
+(*) --> open "cities" database
+-->"add every unique city to array"
+-->"create respond"
+-->(*)
+@enduml

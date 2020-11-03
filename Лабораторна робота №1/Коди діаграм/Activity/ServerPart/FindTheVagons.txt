@@ -1,0 +1,12 @@
+@startuml
+title Find the vagons
+(*) --> open "vagons" database
+-->"find train vagons \nand free spaces in them"
+if "vagons were found?" then
+  -->[0]"create negative respond"
+  -->(*)
+else
+  -->[1]"create vagons and places list"
+  -->(*)
+endif
+@enduml

@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+actor user
+actor server
+rectangle {
+user --> (login)
+(register).left.>(login) : extend
+user-->(check purchased and reserved tickets)
+(buy previously reserved ticket) .> (check purchased and reserved tickets) : extend
+user --> (check tickets availability)
+(buy ticket) .right.> (check tickets availability):extend
+(reserve ticket) .left.> (check tickets availability):extend
+user --> (exit)
+(login) --> server
+(check purchased and reserved tickets) --> server
+(check tickets availability) --> server
+(exit) --> server
+}
+@enduml

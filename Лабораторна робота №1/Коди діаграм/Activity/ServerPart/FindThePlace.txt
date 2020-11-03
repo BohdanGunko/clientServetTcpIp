@@ -1,0 +1,12 @@
+@startuml
+title Find the place
+(*) --> open "places" database
+-->"find places in vagon"
+if "placeswere found?" then
+  -->[0]"create negative respond"
+  -->(*)
+else
+  -->[1]"create places list"
+  -->(*)
+endif
+@enduml

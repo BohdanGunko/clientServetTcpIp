@@ -1,0 +1,10 @@
+@startuml
+title Exit
+(*)-->"user click the exit button"
+  -->" ask does user really want to log out?" 
+  if"User really want to log out" then
+    -->[0]"go to previous menu"
+  else
+    -->[1](*)
+  endif
+@enduml

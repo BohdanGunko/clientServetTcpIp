@@ -1,0 +1,78 @@
+@startuml
+title Check tickets availability
+(*) -->"send request to server\n to get cities list"
+if  "do we get cities list\n back from server?" then
+	[0]if "Does user want to\n try connecting again?" then
+		-->[0](*)
+	else
+		-->[1]"send request to server\n to get cities list"
+	endif
+else
+	-->[1]"get departure"
+	if "Does departure exist in the\n cities list?" then
+		-->[0]"get departure"
+	else
+		-->[1]"get destination"
+		if "Does destination exist in the\n cities list?" then
+			-->[0]"get destination"
+		else
+      -->[1]"get depart time"
+			-->"send departure, destination and depart time to server\n to get needed trains list"
+			if "do we get trains list\n back from server?" then
+				[0]if "Does user want to\n try connecting again?" then
+					-->[0](*)
+				else
+					-->[1]"send departure, destination and depart time to server\n to get needed trains list"
+				endif
+			else
+				-->[1]"show recieved trains list"
+				-->"get selected by user train info"
+				-->"send train info to server"
+				if "do we get vagons list\n back from server" then
+					[0]if "Does user want to\n try connecting again?" then
+						-->[0](*)
+					else
+						-->[1]"send train info to server"
+					endif
+				else
+					-->[1]"show vagons list with info\n about aveliable places"
+					-->"get selected by user vagon info"
+					-->"send vagon info to server"
+					if "do we get places in selected\n vagon list back from server?" then
+						[0]if "Does user want to\n try connecting again?" then
+							-->[0](*)
+						else
+							-->[1]"send vagon info to server"
+						endif
+					else
+						-->[1]"get selected by user places info"
+						-->"send places info to server"
+						if "do we get places in selected\n vagon info back from server?" then
+							[0]if "Does user want to\n try connecting again?" then
+								-->[0](*)
+							else
+								-->[1]"send places info to server"
+							endif
+						else
+							-->[1]"show price"
+							if "what does user want?"
+								-->[exit](*)
+							else
+								partition Reserve {
+									-->[reserve ticket]"reserve ticket"
+								}
+								-->(*)
+							else
+								partition Buy {
+									-->[buy ticket]"buy ticket"
+								}
+								-->(*)
+							endif
+						endif
+					endif
+				endif
+			endif
+		endif
+	endif
+endif
+@enduml

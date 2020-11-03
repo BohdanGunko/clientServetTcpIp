@@ -1,0 +1,18 @@
+@startuml
+title Find needed trains
+(*) --> open "cities and trains" database
+-->"find departure city"
+if "Departure city was found?" then 
+  -->[0]"create negative respond"
+else
+  -->[1]"find destination city"
+  if "Destination city was found?" then 
+    -->[0]"create negative respond"
+    -->(*)
+  else
+    -->[1]"create list with all possible\n trains from departure to\n destination that depart in needed day"
+    -->"create positive respond"
+  endif
+endif
+-->(*)
+@enduml

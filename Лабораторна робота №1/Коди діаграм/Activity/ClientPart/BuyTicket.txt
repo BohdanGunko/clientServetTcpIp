@@ -1,0 +1,14 @@
+@startuml
+title Buy ticket
+(*)-->"send tickets list to server"
+if "Do server responded that purchase is done?" then
+	[0]if "Does user want to\n try connecting again?" then
+		-->[0](*)
+	else
+		-->[1]"send tickets list to server"
+	endif
+else
+	-->[1]"show purchase is good msg"
+	-->(*)
+endif
+@enduml

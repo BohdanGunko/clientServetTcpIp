@@ -1,0 +1,42 @@
+@startuml
+title Decoding command recieved from client
+(*) --> "sent confirmation of data receiving to client "
+-->"check code of recieved request"
+if "what value does code have?" then
+	partition UserVerification {
+		-->[0]"verify user"
+	}
+	-->"send msg to client"
+else
+	partition AddingNewUser {
+		-->[1]"add new user"
+	}
+	-->"send msg to client"
+else
+	partition FindingUserPurchases {
+		-->[2]"find user purchases"
+	}
+	-->"send msg to client"
+else
+	partition FindTheCity {
+		-->[3]"find the city"
+	}
+	-->"send msg to client"
+else
+	partition FindingNeededTrains {
+		-->[4]"find needed trains"
+	}
+	-->"send msg to client"
+else
+	partition FindTheVagons {
+		-->[5]"find the vagons"
+	}
+	-->"send msg to client"
+else
+	partition FindThePlace {
+		-->[6]"find the place"
+	}
+	-->"send msg to client"
+endif
+-->(*)
+@enduml

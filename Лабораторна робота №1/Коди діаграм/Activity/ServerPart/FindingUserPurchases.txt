@@ -1,0 +1,12 @@
+@startuml
+title Finding user purchases
+(*) --> open "users purchases" database
+-->"find user in database"
+if "user name was found?" then
+  -->[0] create negative respond 
+  -->(*)
+else
+  -->[1]"create purchases list"
+  -->(*)
+endif
+@enduml
