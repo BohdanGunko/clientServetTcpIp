@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>639</width>
-    <height>471</height>
+    <width>407</width>
+    <height>285</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -51,6 +51,20 @@
 	font-size: 20px;
 	font-family:&quot;Arial Rounded MT Bold&quot;;
 }
+QPushButton:pressed{
+
+	border-radius: 10px;
+	background: rgb(34, 86, 255);
+	font-size: 20px;
+	font-family:&quot;Arial Rounded MT Bold&quot;;
+}
+QPushButton:hover:!pressed{
+
+	border-radius: 10px;
+	background:rgb(0, 0, 0);
+	font-size: 20px;
+	font-family:&quot;Arial Rounded MT Bold&quot;;
+}
 
 QLabel{
 	font-size: 20px;
@@ -63,6 +77,12 @@ QTextEdit{
 	background: #73AD21;
 	font-size: 20px;
 	font-family:&quot;Arial Rounded MT Bold&quot;;
+}
+
+
+QCheckBox{
+	font-size: 15px;
+	font-family:&quot;Arial Rounded MT Bold&quot;;
 }</string>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -72,7 +92,7 @@ QTextEdit{
            <enum>Qt::Vertical</enum>
           </property>
           <property name="sizeType">
-           <enum>QSizePolicy::MinimumExpanding</enum>
+           <enum>QSizePolicy::Expanding</enum>
           </property>
           <property name="sizeHint" stdset="0">
            <size>
@@ -86,6 +106,9 @@ QTextEdit{
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
            <layout class="QVBoxLayout" name="verticalLayout_2">
+            <property name="spacing">
+             <number>9</number>
+            </property>
             <item>
              <widget class="QLabel" name="LogLabel">
               <property name="sizePolicy">
@@ -116,6 +139,9 @@ QTextEdit{
           </item>
           <item>
            <layout class="QVBoxLayout" name="verticalLayout">
+            <property name="spacing">
+             <number>9</number>
+            </property>
             <property name="leftMargin">
              <number>0</number>
             </property>
@@ -168,9 +194,16 @@ QTextEdit{
          </layout>
         </item>
         <item>
+         <widget class="QCheckBox" name="RemMECheckBox">
+          <property name="text">
+           <string>Remember me</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <property name="spacing">
-           <number>8</number>
+           <number>9</number>
           </property>
           <property name="sizeConstraint">
            <enum>QLayout::SetDefaultConstraint</enum>
@@ -179,7 +212,7 @@ QTextEdit{
            <number>125</number>
           </property>
           <property name="topMargin">
-           <number>30</number>
+           <number>25</number>
           </property>
           <property name="rightMargin">
            <number>125</number>
@@ -289,32 +322,285 @@ QTextEdit{
        </layout>
       </widget>
       <widget class="QWidget" name="RegMenu">
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+
+	border-radius: 10px;
+	background: #73AD21;
+	font-size: 20px;
+	font-family:&quot;Arial Rounded MT Bold&quot;;
+}
+QPushButton:pressed{
+
+	border-radius: 10px;
+	background: rgb(34, 86, 255);
+	font-size: 20px;
+	font-family:&quot;Arial Rounded MT Bold&quot;;
+}
+QPushButton:hover:!pressed{
+
+	border-radius: 10px;
+	background:rgb(0, 0, 0);
+	font-size: 20px;
+	font-family:&quot;Arial Rounded MT Bold&quot;;
+}
+
+QLabel{
+	font-size: 20px;
+	font-family:&quot;Arial Rounded MT Bold&quot;;
+}
+
+QTextEdit{
+
+	border-radius: 10px;
+	background: #73AD21;
+	font-size: 20px;
+	font-family:&quot;Arial Rounded MT Bold&quot;;
+}
+
+
+QCheckBox{
+	font-size: 15px;
+	font-family:&quot;Arial Rounded MT Bold&quot;;
+}</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_9">
         <item>
-         <widget class="QPushButton" name="pushButton">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
+         <spacer name="verticalSpacer_2">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
           </property>
-          <property name="text">
-           <string>PushButton</string>
+          <property name="sizeType">
+           <enum>QSizePolicy::Expanding</enum>
           </property>
-         </widget>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>0</width>
+            <height>35</height>
+           </size>
+          </property>
+         </spacer>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton_3">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <property name="bottomMargin">
+           <number>0</number>
           </property>
-          <property name="text">
-           <string>PushButton</string>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_8">
+            <property name="spacing">
+             <number>9</number>
+            </property>
+            <property name="sizeConstraint">
+             <enum>QLayout::SetDefaultConstraint</enum>
+            </property>
+            <item>
+             <widget class="QLabel" name="RegLogLable">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>TextLabel</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="RegPassLable">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>TextLabel</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="RegPassConf">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="text">
+               <string>TextLabel</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="verticalSpacer_6">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>30</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_7">
+            <property name="spacing">
+             <number>9</number>
+            </property>
+            <property name="rightMargin">
+             <number>0</number>
+            </property>
+            <property name="bottomMargin">
+             <number>10</number>
+            </property>
+            <item>
+             <widget class="QTextEdit" name="textEdit">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>250</width>
+                <height>35</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>300</width>
+                <height>40</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTextEdit" name="textEdit_2">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>250</width>
+                <height>35</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>300</width>
+                <height>40</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTextEdit" name="textEdit_3">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>250</width>
+                <height>35</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>300</width>
+                <height>40</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="verticalSpacer_5">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeType">
+               <enum>QSizePolicy::Fixed</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>20</width>
+                <height>30</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <property name="leftMargin">
+           <number>100</number>
           </property>
-         </widget>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>100</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="pushButton">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>50</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>PushButton</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer name="verticalSpacer_4">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType">
+           <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>0</width>
+            <height>35</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </widget>

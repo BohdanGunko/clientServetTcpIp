@@ -11,7 +11,6 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
@@ -41,36 +40,22 @@ public:
     QVBoxLayout *verticalLayout;
     QTextEdit *LogTextEdit;
     QTextEdit *PassTextEdit;
-    QCheckBox *RemMECheckBox;
     QVBoxLayout *verticalLayout_3;
     QPushButton *RegButton;
     QPushButton *LogButton;
     QPushButton *pushButton_5;
     QSpacerItem *verticalSpacer_3;
     QWidget *RegMenu;
-    QVBoxLayout *verticalLayout_9;
-    QSpacerItem *verticalSpacer_2;
     QHBoxLayout *horizontalLayout_2;
-    QVBoxLayout *verticalLayout_8;
-    QLabel *RegLogLable;
-    QLabel *RegPassLable;
-    QLabel *RegPassConf;
-    QSpacerItem *verticalSpacer_6;
-    QVBoxLayout *verticalLayout_7;
-    QTextEdit *textEdit;
-    QTextEdit *textEdit_2;
-    QTextEdit *textEdit_3;
-    QSpacerItem *verticalSpacer_5;
-    QHBoxLayout *horizontalLayout_4;
     QPushButton *pushButton;
-    QSpacerItem *verticalSpacer_4;
+    QPushButton *pushButton_3;
     QSpacerItem *horizontalSpacer_2;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(446, 563);
+        MainWindow->resize(639, 471);
         MainWindow->setStyleSheet(QString::fromUtf8(""));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
@@ -92,20 +77,6 @@ public:
 "	font-size: 20px;\n"
 "	font-family:\"Arial Rounded MT Bold\";\n"
 "}\n"
-"QPushButton:pressed{\n"
-"\n"
-"	border-radius: 10px;\n"
-"	background: rgb(34, 86, 255);\n"
-"	font-size: 20px;\n"
-"	font-family:\"Arial Rounded MT Bold\";\n"
-"}\n"
-"QPushButton:hover:!pressed{\n"
-"\n"
-"	border-radius: 10px;\n"
-"	background:rgb(0, 0, 0);\n"
-"	font-size: 20px;\n"
-"	font-family:\"Arial Rounded MT Bold\";\n"
-"}\n"
 "\n"
 "QLabel{\n"
 "	font-size: 20px;\n"
@@ -118,16 +89,10 @@ public:
 "	background: #73AD21;\n"
 "	font-size: 20px;\n"
 "	font-family:\"Arial Rounded MT Bold\";\n"
-"}\n"
-"\n"
-"\n"
-"QCheckBox{\n"
-"	font-size: 15px;\n"
-"	font-family:\"Arial Rounded MT Bold\";\n"
 "}"));
         verticalLayout_4 = new QVBoxLayout(LoginMenu);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
-        verticalSpacer = new QSpacerItem(0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer = new QSpacerItem(0, 0, QSizePolicy::Minimum, QSizePolicy::MinimumExpanding);
 
         verticalLayout_4->addItem(verticalSpacer);
 
@@ -187,11 +152,6 @@ public:
 
         verticalLayout_4->addLayout(horizontalLayout);
 
-        RemMECheckBox = new QCheckBox(LoginMenu);
-        RemMECheckBox->setObjectName(QString::fromUtf8("RemMECheckBox"));
-
-        verticalLayout_4->addWidget(RemMECheckBox);
-
         verticalLayout_3 = new QVBoxLayout();
         verticalLayout_3->setSpacing(9);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
@@ -239,149 +199,24 @@ public:
         stackedWidget->addWidget(LoginMenu);
         RegMenu = new QWidget();
         RegMenu->setObjectName(QString::fromUtf8("RegMenu"));
-        RegMenu->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"\n"
-"	border-radius: 10px;\n"
-"	background: #73AD21;\n"
-"	font-size: 20px;\n"
-"	font-family:\"Arial Rounded MT Bold\";\n"
-"}\n"
-"QPushButton:pressed{\n"
-"\n"
-"	border-radius: 10px;\n"
-"	background: rgb(34, 86, 255);\n"
-"	font-size: 20px;\n"
-"	font-family:\"Arial Rounded MT Bold\";\n"
-"}\n"
-"QPushButton:hover:!pressed{\n"
-"\n"
-"	border-radius: 10px;\n"
-"	background:rgb(0, 0, 0);\n"
-"	font-size: 20px;\n"
-"	font-family:\"Arial Rounded MT Bold\";\n"
-"}\n"
-"\n"
-"QLabel{\n"
-"	font-size: 20px;\n"
-"	font-family:\"Arial Rounded MT Bold\";\n"
-"}\n"
-"\n"
-"QTextEdit{\n"
-"\n"
-"	border-radius: 10px;\n"
-"	background: #73AD21;\n"
-"	font-size: 20px;\n"
-"	font-family:\"Arial Rounded MT Bold\";\n"
-"}\n"
-"\n"
-"\n"
-"QCheckBox{\n"
-"	font-size: 15px;\n"
-"	font-family:\"Arial Rounded MT Bold\";\n"
-"}"));
-        verticalLayout_9 = new QVBoxLayout(RegMenu);
-        verticalLayout_9->setObjectName(QString::fromUtf8("verticalLayout_9"));
-        verticalSpacer_2 = new QSpacerItem(0, 35, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_9->addItem(verticalSpacer_2);
-
-        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2 = new QHBoxLayout(RegMenu);
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        horizontalLayout_2->setContentsMargins(-1, -1, -1, 0);
-        verticalLayout_8 = new QVBoxLayout();
-        verticalLayout_8->setSpacing(9);
-        verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
-        verticalLayout_8->setSizeConstraint(QLayout::SetDefaultConstraint);
-        RegLogLable = new QLabel(RegMenu);
-        RegLogLable->setObjectName(QString::fromUtf8("RegLogLable"));
-        sizePolicy.setHeightForWidth(RegLogLable->sizePolicy().hasHeightForWidth());
-        RegLogLable->setSizePolicy(sizePolicy);
-
-        verticalLayout_8->addWidget(RegLogLable);
-
-        RegPassLable = new QLabel(RegMenu);
-        RegPassLable->setObjectName(QString::fromUtf8("RegPassLable"));
-        sizePolicy.setHeightForWidth(RegPassLable->sizePolicy().hasHeightForWidth());
-        RegPassLable->setSizePolicy(sizePolicy);
-
-        verticalLayout_8->addWidget(RegPassLable);
-
-        RegPassConf = new QLabel(RegMenu);
-        RegPassConf->setObjectName(QString::fromUtf8("RegPassConf"));
-        sizePolicy.setHeightForWidth(RegPassConf->sizePolicy().hasHeightForWidth());
-        RegPassConf->setSizePolicy(sizePolicy);
-
-        verticalLayout_8->addWidget(RegPassConf);
-
-        verticalSpacer_6 = new QSpacerItem(20, 30, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        verticalLayout_8->addItem(verticalSpacer_6);
-
-
-        horizontalLayout_2->addLayout(verticalLayout_8);
-
-        verticalLayout_7 = new QVBoxLayout();
-        verticalLayout_7->setSpacing(9);
-        verticalLayout_7->setObjectName(QString::fromUtf8("verticalLayout_7"));
-        verticalLayout_7->setContentsMargins(-1, -1, 0, 10);
-        textEdit = new QTextEdit(RegMenu);
-        textEdit->setObjectName(QString::fromUtf8("textEdit"));
-        QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(textEdit->sizePolicy().hasHeightForWidth());
-        textEdit->setSizePolicy(sizePolicy3);
-        textEdit->setMinimumSize(QSize(250, 35));
-        textEdit->setMaximumSize(QSize(300, 40));
-
-        verticalLayout_7->addWidget(textEdit);
-
-        textEdit_2 = new QTextEdit(RegMenu);
-        textEdit_2->setObjectName(QString::fromUtf8("textEdit_2"));
-        sizePolicy3.setHeightForWidth(textEdit_2->sizePolicy().hasHeightForWidth());
-        textEdit_2->setSizePolicy(sizePolicy3);
-        textEdit_2->setMinimumSize(QSize(250, 35));
-        textEdit_2->setMaximumSize(QSize(300, 40));
-
-        verticalLayout_7->addWidget(textEdit_2);
-
-        textEdit_3 = new QTextEdit(RegMenu);
-        textEdit_3->setObjectName(QString::fromUtf8("textEdit_3"));
-        sizePolicy3.setHeightForWidth(textEdit_3->sizePolicy().hasHeightForWidth());
-        textEdit_3->setSizePolicy(sizePolicy3);
-        textEdit_3->setMinimumSize(QSize(250, 35));
-        textEdit_3->setMaximumSize(QSize(300, 40));
-
-        verticalLayout_7->addWidget(textEdit_3);
-
-        verticalSpacer_5 = new QSpacerItem(20, 30, QSizePolicy::Minimum, QSizePolicy::Fixed);
-
-        verticalLayout_7->addItem(verticalSpacer_5);
-
-
-        horizontalLayout_2->addLayout(verticalLayout_7);
-
-
-        verticalLayout_9->addLayout(horizontalLayout_2);
-
-        horizontalLayout_4 = new QHBoxLayout();
-        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        horizontalLayout_4->setContentsMargins(100, 0, 100, -1);
         pushButton = new QPushButton(RegMenu);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
         sizePolicy3.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
         pushButton->setSizePolicy(sizePolicy3);
-        pushButton->setMinimumSize(QSize(50, 25));
-        pushButton->setMaximumSize(QSize(200, 35));
 
-        horizontalLayout_4->addWidget(pushButton);
+        horizontalLayout_2->addWidget(pushButton);
 
+        pushButton_3 = new QPushButton(RegMenu);
+        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+        sizePolicy3.setHeightForWidth(pushButton_3->sizePolicy().hasHeightForWidth());
+        pushButton_3->setSizePolicy(sizePolicy3);
 
-        verticalLayout_9->addLayout(horizontalLayout_4);
-
-        verticalSpacer_4 = new QSpacerItem(0, 35, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_9->addItem(verticalSpacer_4);
+        horizontalLayout_2->addWidget(pushButton_3);
 
         stackedWidget->addWidget(RegMenu);
 
@@ -406,14 +241,11 @@ public:
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         LogLabel->setText(QCoreApplication::translate("MainWindow", "Login", nullptr));
         PassLable->setText(QCoreApplication::translate("MainWindow", "Password", nullptr));
-        RemMECheckBox->setText(QCoreApplication::translate("MainWindow", "Remember me", nullptr));
         RegButton->setText(QCoreApplication::translate("MainWindow", "Register", nullptr));
         LogButton->setText(QCoreApplication::translate("MainWindow", "Login", nullptr));
         pushButton_5->setText(QCoreApplication::translate("MainWindow", "Exit", nullptr));
-        RegLogLable->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
-        RegPassLable->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
-        RegPassConf->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         pushButton->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
+        pushButton_3->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
     } // retranslateUi
 
 };
