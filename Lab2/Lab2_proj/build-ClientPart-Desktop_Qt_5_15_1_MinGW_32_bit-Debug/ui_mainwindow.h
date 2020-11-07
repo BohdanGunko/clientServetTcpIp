@@ -80,13 +80,14 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(490, 289);
+        MainWindow->resize(654, 517);
         MainWindow->setMaximumSize(QSize(16777215, 16777215));
         MainWindow->setStyleSheet(QString::fromUtf8(""));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         horizontalLayout_3 = new QHBoxLayout(centralwidget);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
         stackedWidget = new QStackedWidget(centralwidget);
         stackedWidget->setObjectName(QString::fromUtf8("stackedWidget"));
         LoginMenu = new QWidget();
@@ -97,46 +98,15 @@ public:
         sizePolicy.setHeightForWidth(LoginMenu->sizePolicy().hasHeightForWidth());
         LoginMenu->setSizePolicy(sizePolicy);
         LoginMenu->setMaximumSize(QSize(16777215, 16777215));
-        LoginMenu->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"\n"
-"	border-radius: 10px;\n"
-"	background: #73AD21;\n"
-"	font-size: 20px;\n"
-"	font-family:\"Arial Rounded MT Bold\";\n"
+        QFont font;
+        font.setFamily(QString::fromUtf8("Calibri"));
+        font.setBold(true);
+        font.setWeight(75);
+        LoginMenu->setFont(font);
+        LoginMenu->setStyleSheet(QString::fromUtf8("QWidget#LoginMenu{\n"
+"	background-color:#424242 ;\n"
 "}\n"
-"QPushButton:pressed{\n"
-"\n"
-"	border-radius: 10px;\n"
-"	background: rgb(34, 86, 255);\n"
-"	font-size: 20px;\n"
-"	font-family:\"Arial Rounded MT Bold\";\n"
-"}\n"
-"QPushButton:hover:!pressed{\n"
-"\n"
-"	border-radius: 10px;\n"
-"	background:rgb(0, 0, 0);\n"
-"	font-size: 20px;\n"
-"	font-family:\"Arial Rounded MT Bold\";\n"
-"}\n"
-"\n"
-"QLabel{\n"
-"	font-size: 20px;\n"
-"	font-family:\"Arial Rounded MT Bold\";\n"
-"}\n"
-"\n"
-"QTextEdit{\n"
-"\n"
-"	border-radius: 10px;\n"
-"	background: #73AD21;\n"
-"	font-size: 20px;\n"
-"	font-family:\"Arial Rounded MT Bold\";\n"
-"}\n"
-"\n"
-"\n"
-"QCheckBox{\n"
-"	font-size: 15px;\n"
-"	font-family:\"Arial Rounded MT Bold\";\n"
-"}"));
+""));
         verticalLayout_4 = new QVBoxLayout(LoginMenu);
         verticalLayout_4->setSpacing(0);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
@@ -144,7 +114,7 @@ public:
         gridLayout_6 = new QGridLayout();
         gridLayout_6->setSpacing(9);
         gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
-        gridLayout_6->setContentsMargins(0, 0, 0, 0);
+        gridLayout_6->setContentsMargins(5, 5, 5, 5);
         gridLayout_9 = new QGridLayout();
         gridLayout_9->setObjectName(QString::fromUtf8("gridLayout_9"));
         gridLayout_9->setHorizontalSpacing(2);
@@ -157,6 +127,21 @@ public:
         RegButton->setMinimumSize(QSize(100, 27));
         RegButton->setMaximumSize(QSize(300, 45));
         RegButton->setBaseSize(QSize(0, 0));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("MS Shell Dlg 2"));
+        font1.setBold(false);
+        font1.setItalic(false);
+        font1.setWeight(50);
+        RegButton->setFont(font1);
+        RegButton->setContextMenuPolicy(Qt::DefaultContextMenu);
+        RegButton->setStyleSheet(QString::fromUtf8("	border-radius: 10px;\n"
+"	color:white;\n"
+"	background: #000000;\n"
+"	font-size: 20px;\n"
+"	font: \"Calibr Boldi\";\n"
+"	border-style: outset;\n"
+"   	border-width: 2px;\n"
+"  	border-color:#009624;"));
 
         gridLayout_9->addWidget(RegButton, 0, 1, 1, 1);
 
@@ -476,7 +461,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);

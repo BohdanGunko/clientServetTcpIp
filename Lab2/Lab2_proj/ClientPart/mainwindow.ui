@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>490</width>
-    <height>289</height>
+    <width>654</width>
+    <height>517</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -24,10 +24,22 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QHBoxLayout" name="horizontalLayout_3">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="LoginMenu">
        <property name="sizePolicy">
@@ -42,47 +54,18 @@
          <height>16777215</height>
         </size>
        </property>
+       <property name="font">
+        <font>
+         <family>Calibri</family>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton{
-
-	border-radius: 10px;
-	background: #73AD21;
-	font-size: 20px;
-	font-family:&quot;Arial Rounded MT Bold&quot;;
+        <string notr="true">QWidget#LoginMenu{
+	background-color:#424242 ;
 }
-QPushButton:pressed{
-
-	border-radius: 10px;
-	background: rgb(34, 86, 255);
-	font-size: 20px;
-	font-family:&quot;Arial Rounded MT Bold&quot;;
-}
-QPushButton:hover:!pressed{
-
-	border-radius: 10px;
-	background:rgb(0, 0, 0);
-	font-size: 20px;
-	font-family:&quot;Arial Rounded MT Bold&quot;;
-}
-
-QLabel{
-	font-size: 20px;
-	font-family:&quot;Arial Rounded MT Bold&quot;;
-}
-
-QTextEdit{
-
-	border-radius: 10px;
-	background: #73AD21;
-	font-size: 20px;
-	font-family:&quot;Arial Rounded MT Bold&quot;;
-}
-
-
-QCheckBox{
-	font-size: 15px;
-	font-family:&quot;Arial Rounded MT Bold&quot;;
-}</string>
+</string>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_4" stretch="0">
         <property name="spacing">
@@ -103,16 +86,16 @@ QCheckBox{
         <item>
          <layout class="QGridLayout" name="gridLayout_6" rowstretch="5,4,4,5">
           <property name="leftMargin">
-           <number>0</number>
+           <number>5</number>
           </property>
           <property name="topMargin">
-           <number>0</number>
+           <number>5</number>
           </property>
           <property name="rightMargin">
-           <number>0</number>
+           <number>5</number>
           </property>
           <property name="bottomMargin">
-           <number>0</number>
+           <number>5</number>
           </property>
           <property name="spacing">
            <number>9</number>
@@ -162,6 +145,28 @@ QCheckBox{
                 <width>0</width>
                 <height>0</height>
                </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>MS Shell Dlg 2</family>
+                <pointsize>-1</pointsize>
+                <weight>50</weight>
+                <italic>false</italic>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="contextMenuPolicy">
+               <enum>Qt::DefaultContextMenu</enum>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">	border-radius: 10px;
+	color:white;
+	background: #000000;
+	font-size: 20px;
+	font: &quot;Calibr Boldi&quot;;
+	border-style: outset;
+   	border-width: 2px;
+  	border-color:#009624;</string>
               </property>
               <property name="text">
                <string>Register</string>

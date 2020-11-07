@@ -21,7 +21,10 @@ private slots:
 
     void on_RegGoBaxkButton_clicked();
 
+    void on_LogButton_clicked();
+
 private:
     Ui::MainWindow *ui;
+    PurchasesMenu OvScreen;
 };
 #endif // MAINWINDOW_H

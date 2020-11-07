@@ -6,6 +6,7 @@ PurchasesMenu::PurchasesMenu(QWidget *parent) :
     ui(new Ui::PurchasesMenu)
 {
     ui->setupUi(this);
+
 }
 
 PurchasesMenu::~PurchasesMenu()
