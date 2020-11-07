@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1541</width>
-    <height>989</height>
+    <width>1920</width>
+    <height>1080</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -27,7 +27,7 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="LoginMenu">
        <property name="sizePolicy">
@@ -166,7 +166,7 @@ QCheckBox{
              </widget>
             </item>
             <item row="2" column="1">
-             <widget class="QPushButton" name="pushButton_5">
+             <widget class="QPushButton" name="ExitButton">
               <property name="enabled">
                <bool>true</bool>
               </property>
@@ -478,7 +478,7 @@ QCheckBox{
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_9">
         <item>
-         <layout class="QGridLayout" name="gridLayout_4" rowstretch="0,0,7,5,4,7" rowminimumheight="0,0,0,0,0,0">
+         <layout class="QGridLayout" name="gridLayout_4" rowstretch="0,0,7,5,4,7" columnstretch="4,5,4" rowminimumheight="0,0,0,0,0,0">
           <property name="leftMargin">
            <number>0</number>
           </property>
@@ -534,7 +534,7 @@ QCheckBox{
            </spacer>
           </item>
           <item row="3" column="1">
-           <layout class="QGridLayout" name="gridLayout_3" rowstretch="0,0,0,0">
+           <layout class="QGridLayout" name="gridLayout_3" rowstretch="0,0,0,0" columnstretch="0,0">
             <property name="sizeConstraint">
              <enum>QLayout::SetDefaultConstraint</enum>
             </property>
@@ -542,7 +542,7 @@ QCheckBox{
              <number>9</number>
             </property>
             <item row="2" column="1">
-             <widget class="QTextEdit" name="textEdit_3">
+             <widget class="QTextEdit" name="RegPassTextEdit">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
                 <horstretch>0</horstretch>
@@ -564,7 +564,7 @@ QCheckBox{
              </widget>
             </item>
             <item row="1" column="1">
-             <widget class="QTextEdit" name="textEdit">
+             <widget class="QTextEdit" name="RegLoginTextEdit">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
                 <horstretch>0</horstretch>
@@ -600,7 +600,7 @@ QCheckBox{
                </sizepolicy>
               </property>
               <property name="text">
-               <string>TextLabel</string>
+               <string>Password</string>
               </property>
              </widget>
             </item>
@@ -613,7 +613,7 @@ QCheckBox{
                </sizepolicy>
               </property>
               <property name="text">
-               <string>TextLabel</string>
+               <string>Confirm pass</string>
               </property>
              </widget>
             </item>
@@ -626,12 +626,12 @@ QCheckBox{
                </sizepolicy>
               </property>
               <property name="text">
-               <string>TextLabel</string>
+               <string>Login</string>
               </property>
              </widget>
             </item>
             <item row="3" column="1">
-             <widget class="QTextEdit" name="textEdit_2">
+             <widget class="QTextEdit" name="RegConfTextEdit">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Maximum" vsizetype="Minimum">
                 <horstretch>0</horstretch>
@@ -689,7 +689,7 @@ QCheckBox{
              <number>0</number>
             </property>
             <item>
-             <widget class="QPushButton" name="pushButton_2">
+             <widget class="QPushButton" name="RegGoBaxkButton">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                 <horstretch>0</horstretch>
@@ -737,7 +737,7 @@ QCheckBox{
              <number>2</number>
             </property>
             <item row="0" column="1">
-             <widget class="QPushButton" name="pushButton">
+             <widget class="QPushButton" name="RerRegButton">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                 <horstretch>0</horstretch>
@@ -757,7 +757,7 @@ QCheckBox{
                </size>
               </property>
               <property name="text">
-               <string>PushButton</string>
+               <string>Register</string>
               </property>
              </widget>
             </item>
