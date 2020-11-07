@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCheckBox>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
@@ -29,16 +30,16 @@ class Ui_MainWindow
 public:
     QWidget *centralwidget;
     QHBoxLayout *horizontalLayout_3;
-    QSpacerItem *horizontalSpacer;
     QStackedWidget *stackedWidget;
     QWidget *LoginMenu;
     QVBoxLayout *verticalLayout_4;
-    QSpacerItem *verticalSpacer;
-    QHBoxLayout *horizontalLayout;
-    QVBoxLayout *verticalLayout_2;
-    QLabel *LogLabel;
+    QSpacerItem *verticalSpacer_8;
+    QHBoxLayout *horizontalLayout_7;
+    QSpacerItem *horizontalSpacer;
+    QVBoxLayout *verticalLayout_12;
+    QGridLayout *gridLayout_2;
     QLabel *PassLable;
-    QVBoxLayout *verticalLayout;
+    QLabel *LogLabel;
     QTextEdit *LogTextEdit;
     QTextEdit *PassTextEdit;
     QCheckBox *RemMECheckBox;
@@ -46,9 +47,11 @@ public:
     QPushButton *RegButton;
     QPushButton *LogButton;
     QPushButton *pushButton_5;
+    QSpacerItem *horizontalSpacer_2;
     QSpacerItem *verticalSpacer_3;
     QWidget *RegMenu;
     QVBoxLayout *verticalLayout_9;
+    QPushButton *pushButton_2;
     QSpacerItem *verticalSpacer_2;
     QHBoxLayout *horizontalLayout_2;
     QVBoxLayout *verticalLayout_8;
@@ -64,26 +67,27 @@ public:
     QHBoxLayout *horizontalLayout_4;
     QPushButton *pushButton;
     QSpacerItem *verticalSpacer_4;
-    QSpacerItem *horizontalSpacer_2;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(446, 563);
+        MainWindow->resize(1366, 768);
+        MainWindow->setMaximumSize(QSize(16777215, 16777215));
         MainWindow->setStyleSheet(QString::fromUtf8(""));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         horizontalLayout_3 = new QHBoxLayout(centralwidget);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        horizontalSpacer = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_3->addItem(horizontalSpacer);
-
         stackedWidget = new QStackedWidget(centralwidget);
         stackedWidget->setObjectName(QString::fromUtf8("stackedWidget"));
         LoginMenu = new QWidget();
         LoginMenu->setObjectName(QString::fromUtf8("LoginMenu"));
+        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(LoginMenu->sizePolicy().hasHeightForWidth());
+        LoginMenu->setSizePolicy(sizePolicy);
         LoginMenu->setMaximumSize(QSize(16777215, 16777215));
         LoginMenu->setStyleSheet(QString::fromUtf8("QPushButton{\n"
 "\n"
@@ -126,116 +130,133 @@ public:
 "	font-family:\"Arial Rounded MT Bold\";\n"
 "}"));
         verticalLayout_4 = new QVBoxLayout(LoginMenu);
+        verticalLayout_4->setSpacing(0);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
-        verticalSpacer = new QSpacerItem(0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalLayout_4->setContentsMargins(0, 0, 0, 0);
+        verticalSpacer_8 = new QSpacerItem(0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        verticalLayout_4->addItem(verticalSpacer);
+        verticalLayout_4->addItem(verticalSpacer_8);
 
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        verticalLayout_2 = new QVBoxLayout();
-        verticalLayout_2->setSpacing(9);
-        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        LogLabel = new QLabel(LoginMenu);
-        LogLabel->setObjectName(QString::fromUtf8("LogLabel"));
-        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(LogLabel->sizePolicy().hasHeightForWidth());
-        LogLabel->setSizePolicy(sizePolicy);
+        horizontalLayout_7 = new QHBoxLayout();
+        horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
+        horizontalLayout_7->setSizeConstraint(QLayout::SetDefaultConstraint);
+        horizontalSpacer = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        verticalLayout_2->addWidget(LogLabel);
+        horizontalLayout_7->addItem(horizontalSpacer);
 
+        verticalLayout_12 = new QVBoxLayout();
+        verticalLayout_12->setSpacing(0);
+        verticalLayout_12->setObjectName(QString::fromUtf8("verticalLayout_12"));
+        verticalLayout_12->setSizeConstraint(QLayout::SetDefaultConstraint);
+        verticalLayout_12->setContentsMargins(-1, 0, -1, 0);
+        gridLayout_2 = new QGridLayout();
+        gridLayout_2->setSpacing(9);
+        gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
+        gridLayout_2->setSizeConstraint(QLayout::SetDefaultConstraint);
+        gridLayout_2->setContentsMargins(-1, 0, -1, -1);
         PassLable = new QLabel(LoginMenu);
         PassLable->setObjectName(QString::fromUtf8("PassLable"));
-        sizePolicy.setHeightForWidth(PassLable->sizePolicy().hasHeightForWidth());
-        PassLable->setSizePolicy(sizePolicy);
+        QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(PassLable->sizePolicy().hasHeightForWidth());
+        PassLable->setSizePolicy(sizePolicy1);
 
-        verticalLayout_2->addWidget(PassLable);
+        gridLayout_2->addWidget(PassLable, 1, 0, 1, 1);
 
+        LogLabel = new QLabel(LoginMenu);
+        LogLabel->setObjectName(QString::fromUtf8("LogLabel"));
+        sizePolicy1.setHeightForWidth(LogLabel->sizePolicy().hasHeightForWidth());
+        LogLabel->setSizePolicy(sizePolicy1);
 
-        horizontalLayout->addLayout(verticalLayout_2);
+        gridLayout_2->addWidget(LogLabel, 0, 0, 1, 1);
 
-        verticalLayout = new QVBoxLayout();
-        verticalLayout->setSpacing(9);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        verticalLayout->setContentsMargins(0, -1, -1, -1);
         LogTextEdit = new QTextEdit(LoginMenu);
         LogTextEdit->setObjectName(QString::fromUtf8("LogTextEdit"));
         sizePolicy.setHeightForWidth(LogTextEdit->sizePolicy().hasHeightForWidth());
         LogTextEdit->setSizePolicy(sizePolicy);
-        LogTextEdit->setMinimumSize(QSize(250, 35));
-        LogTextEdit->setMaximumSize(QSize(300, 40));
+        LogTextEdit->setMinimumSize(QSize(350, 35));
+        LogTextEdit->setMaximumSize(QSize(500, 50));
 
-        verticalLayout->addWidget(LogTextEdit);
+        gridLayout_2->addWidget(LogTextEdit, 0, 1, 1, 1);
 
         PassTextEdit = new QTextEdit(LoginMenu);
         PassTextEdit->setObjectName(QString::fromUtf8("PassTextEdit"));
-        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Fixed);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(PassTextEdit->sizePolicy().hasHeightForWidth());
-        PassTextEdit->setSizePolicy(sizePolicy1);
-        PassTextEdit->setMinimumSize(QSize(250, 35));
-        PassTextEdit->setMaximumSize(QSize(300, 40));
+        sizePolicy.setHeightForWidth(PassTextEdit->sizePolicy().hasHeightForWidth());
+        PassTextEdit->setSizePolicy(sizePolicy);
+        PassTextEdit->setMinimumSize(QSize(350, 35));
+        PassTextEdit->setMaximumSize(QSize(500, 50));
 
-        verticalLayout->addWidget(PassTextEdit);
+        gridLayout_2->addWidget(PassTextEdit, 1, 1, 1, 1);
 
 
-        horizontalLayout->addLayout(verticalLayout);
-
-
-        verticalLayout_4->addLayout(horizontalLayout);
+        verticalLayout_12->addLayout(gridLayout_2);
 
         RemMECheckBox = new QCheckBox(LoginMenu);
         RemMECheckBox->setObjectName(QString::fromUtf8("RemMECheckBox"));
 
-        verticalLayout_4->addWidget(RemMECheckBox);
+        verticalLayout_12->addWidget(RemMECheckBox);
 
         verticalLayout_3 = new QVBoxLayout();
         verticalLayout_3->setSpacing(9);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout_3->setSizeConstraint(QLayout::SetDefaultConstraint);
-        verticalLayout_3->setContentsMargins(125, 25, 125, -1);
+        verticalLayout_3->setContentsMargins(180, 25, 180, 0);
         RegButton = new QPushButton(LoginMenu);
         RegButton->setObjectName(QString::fromUtf8("RegButton"));
-        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::MinimumExpanding);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(RegButton->sizePolicy().hasHeightForWidth());
-        RegButton->setSizePolicy(sizePolicy2);
-        RegButton->setMinimumSize(QSize(50, 25));
-        RegButton->setMaximumSize(QSize(200, 35));
+        sizePolicy.setHeightForWidth(RegButton->sizePolicy().hasHeightForWidth());
+        RegButton->setSizePolicy(sizePolicy);
+        RegButton->setMinimumSize(QSize(100, 27));
+        RegButton->setMaximumSize(QSize(300, 50));
         RegButton->setBaseSize(QSize(0, 0));
 
         verticalLayout_3->addWidget(RegButton);
 
         LogButton = new QPushButton(LoginMenu);
         LogButton->setObjectName(QString::fromUtf8("LogButton"));
-        sizePolicy2.setHeightForWidth(LogButton->sizePolicy().hasHeightForWidth());
-        LogButton->setSizePolicy(sizePolicy2);
-        LogButton->setMinimumSize(QSize(50, 25));
-        LogButton->setMaximumSize(QSize(200, 35));
+        sizePolicy.setHeightForWidth(LogButton->sizePolicy().hasHeightForWidth());
+        LogButton->setSizePolicy(sizePolicy);
+        LogButton->setMinimumSize(QSize(100, 27));
+        LogButton->setMaximumSize(QSize(300, 50));
 
         verticalLayout_3->addWidget(LogButton);
 
         pushButton_5 = new QPushButton(LoginMenu);
         pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
         pushButton_5->setEnabled(true);
-        sizePolicy2.setHeightForWidth(pushButton_5->sizePolicy().hasHeightForWidth());
-        pushButton_5->setSizePolicy(sizePolicy2);
-        pushButton_5->setMinimumSize(QSize(50, 25));
-        pushButton_5->setMaximumSize(QSize(200, 35));
+        sizePolicy.setHeightForWidth(pushButton_5->sizePolicy().hasHeightForWidth());
+        pushButton_5->setSizePolicy(sizePolicy);
+        pushButton_5->setMinimumSize(QSize(100, 27));
+        pushButton_5->setMaximumSize(QSize(300, 50));
 
         verticalLayout_3->addWidget(pushButton_5);
 
 
-        verticalLayout_4->addLayout(verticalLayout_3);
+        verticalLayout_12->addLayout(verticalLayout_3);
+
+        verticalLayout_12->setStretch(0, 1);
+        verticalLayout_12->setStretch(1, 1);
+        verticalLayout_12->setStretch(2, 2);
+
+        horizontalLayout_7->addLayout(verticalLayout_12);
+
+        horizontalSpacer_2 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_7->addItem(horizontalSpacer_2);
+
+        horizontalLayout_7->setStretch(0, 2);
+        horizontalLayout_7->setStretch(1, 3);
+        horizontalLayout_7->setStretch(2, 2);
+
+        verticalLayout_4->addLayout(horizontalLayout_7);
 
         verticalSpacer_3 = new QSpacerItem(0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout_4->addItem(verticalSpacer_3);
 
+        verticalLayout_4->setStretch(0, 1);
+        verticalLayout_4->setStretch(1, 1);
+        verticalLayout_4->setStretch(2, 1);
         stackedWidget->addWidget(LoginMenu);
         RegMenu = new QWidget();
         RegMenu->setObjectName(QString::fromUtf8("RegMenu"));
@@ -281,7 +302,13 @@ public:
 "}"));
         verticalLayout_9 = new QVBoxLayout(RegMenu);
         verticalLayout_9->setObjectName(QString::fromUtf8("verticalLayout_9"));
-        verticalSpacer_2 = new QSpacerItem(0, 35, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        pushButton_2 = new QPushButton(RegMenu);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        pushButton_2->setMaximumSize(QSize(25, 25));
+
+        verticalLayout_9->addWidget(pushButton_2);
+
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout_9->addItem(verticalSpacer_2);
 
@@ -294,22 +321,22 @@ public:
         verticalLayout_8->setSizeConstraint(QLayout::SetDefaultConstraint);
         RegLogLable = new QLabel(RegMenu);
         RegLogLable->setObjectName(QString::fromUtf8("RegLogLable"));
-        sizePolicy.setHeightForWidth(RegLogLable->sizePolicy().hasHeightForWidth());
-        RegLogLable->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(RegLogLable->sizePolicy().hasHeightForWidth());
+        RegLogLable->setSizePolicy(sizePolicy1);
 
         verticalLayout_8->addWidget(RegLogLable);
 
         RegPassLable = new QLabel(RegMenu);
         RegPassLable->setObjectName(QString::fromUtf8("RegPassLable"));
-        sizePolicy.setHeightForWidth(RegPassLable->sizePolicy().hasHeightForWidth());
-        RegPassLable->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(RegPassLable->sizePolicy().hasHeightForWidth());
+        RegPassLable->setSizePolicy(sizePolicy1);
 
         verticalLayout_8->addWidget(RegPassLable);
 
         RegPassConf = new QLabel(RegMenu);
         RegPassConf->setObjectName(QString::fromUtf8("RegPassConf"));
-        sizePolicy.setHeightForWidth(RegPassConf->sizePolicy().hasHeightForWidth());
-        RegPassConf->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(RegPassConf->sizePolicy().hasHeightForWidth());
+        RegPassConf->setSizePolicy(sizePolicy1);
 
         verticalLayout_8->addWidget(RegPassConf);
 
@@ -326,11 +353,8 @@ public:
         verticalLayout_7->setContentsMargins(-1, -1, 0, 10);
         textEdit = new QTextEdit(RegMenu);
         textEdit->setObjectName(QString::fromUtf8("textEdit"));
-        QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(textEdit->sizePolicy().hasHeightForWidth());
-        textEdit->setSizePolicy(sizePolicy3);
+        sizePolicy.setHeightForWidth(textEdit->sizePolicy().hasHeightForWidth());
+        textEdit->setSizePolicy(sizePolicy);
         textEdit->setMinimumSize(QSize(250, 35));
         textEdit->setMaximumSize(QSize(300, 40));
 
@@ -338,8 +362,8 @@ public:
 
         textEdit_2 = new QTextEdit(RegMenu);
         textEdit_2->setObjectName(QString::fromUtf8("textEdit_2"));
-        sizePolicy3.setHeightForWidth(textEdit_2->sizePolicy().hasHeightForWidth());
-        textEdit_2->setSizePolicy(sizePolicy3);
+        sizePolicy.setHeightForWidth(textEdit_2->sizePolicy().hasHeightForWidth());
+        textEdit_2->setSizePolicy(sizePolicy);
         textEdit_2->setMinimumSize(QSize(250, 35));
         textEdit_2->setMaximumSize(QSize(300, 40));
 
@@ -347,8 +371,8 @@ public:
 
         textEdit_3 = new QTextEdit(RegMenu);
         textEdit_3->setObjectName(QString::fromUtf8("textEdit_3"));
-        sizePolicy3.setHeightForWidth(textEdit_3->sizePolicy().hasHeightForWidth());
-        textEdit_3->setSizePolicy(sizePolicy3);
+        sizePolicy.setHeightForWidth(textEdit_3->sizePolicy().hasHeightForWidth());
+        textEdit_3->setSizePolicy(sizePolicy);
         textEdit_3->setMinimumSize(QSize(250, 35));
         textEdit_3->setMaximumSize(QSize(300, 40));
 
@@ -369,8 +393,8 @@ public:
         horizontalLayout_4->setContentsMargins(100, 0, 100, -1);
         pushButton = new QPushButton(RegMenu);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        sizePolicy3.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
-        pushButton->setSizePolicy(sizePolicy3);
+        sizePolicy.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
+        pushButton->setSizePolicy(sizePolicy);
         pushButton->setMinimumSize(QSize(50, 25));
         pushButton->setMaximumSize(QSize(200, 35));
 
@@ -387,10 +411,6 @@ public:
 
         horizontalLayout_3->addWidget(stackedWidget);
 
-        horizontalSpacer_2 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_3->addItem(horizontalSpacer_2);
-
         MainWindow->setCentralWidget(centralwidget);
 
         retranslateUi(MainWindow);
@@ -404,12 +424,13 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        LogLabel->setText(QCoreApplication::translate("MainWindow", "Login", nullptr));
         PassLable->setText(QCoreApplication::translate("MainWindow", "Password", nullptr));
+        LogLabel->setText(QCoreApplication::translate("MainWindow", "Login", nullptr));
         RemMECheckBox->setText(QCoreApplication::translate("MainWindow", "Remember me", nullptr));
         RegButton->setText(QCoreApplication::translate("MainWindow", "Register", nullptr));
         LogButton->setText(QCoreApplication::translate("MainWindow", "Login", nullptr));
         pushButton_5->setText(QCoreApplication::translate("MainWindow", "Exit", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("MainWindow", "\342\206\220", nullptr));
         RegLogLable->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         RegPassLable->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
         RegPassConf->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
