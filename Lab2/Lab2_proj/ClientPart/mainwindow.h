@@ -19,7 +19,7 @@ public:
 private slots:
     void on_RegButton_clicked();
 
-    void on_RegGoBaxkButton_clicked();
+    void on_RegGoBackButton_clicked();
 
     void on_LogButton_clicked();
 

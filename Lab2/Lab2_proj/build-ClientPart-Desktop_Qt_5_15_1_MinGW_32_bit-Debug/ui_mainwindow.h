@@ -58,7 +58,7 @@ public:
     QSpacerItem *verticalSpacer_2;
     QSpacerItem *horizontalSpacer_7;
     QHBoxLayout *horizontalLayout_2;
-    QPushButton *RegGoBaxkButton;
+    QPushButton *RegGoBackButton;
     QSpacerItem *horizontalSpacer_5;
     QGridLayout *gridLayout_5;
     QPushButton *RerRegButton;
@@ -75,7 +75,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(1366, 768);
+        MainWindow->resize(1411, 817);
         MainWindow->setMaximumSize(QSize(16777215, 16777215));
         MainWindow->setStyleSheet(QString::fromUtf8(""));
         centralwidget = new QWidget(MainWindow);
@@ -153,8 +153,6 @@ public:
 "\n"
 "/*--------------------------------Line edit--------------------------------*/\n"
 "\n"
-"\n"
-"\n"
 "QLineEdit{\n"
 "	background-color:#303030 ;\n"
 "\n"
@@ -182,7 +180,8 @@ public:
 "	background-color: #1D1D1D;\n"
 "\n"
 "	border-color: #00B3A6;\n"
-"}"));
+"}\n"
+""));
         verticalLayout_4 = new QVBoxLayout(LoginMenu);
         verticalLayout_4->setSpacing(0);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
@@ -254,7 +253,7 @@ public:
         sizePolicy.setHeightForWidth(LogButton->sizePolicy().hasHeightForWidth());
         LogButton->setSizePolicy(sizePolicy);
         LogButton->setMinimumSize(QSize(100, 27));
-        LogButton->setMaximumSize(QSize(250, 55));
+        LogButton->setMaximumSize(QSize(300, 55));
         LogButton->setStyleSheet(QString::fromUtf8(""));
 
         gridLayout_9->addWidget(LogButton, 0, 1, 1, 1);
@@ -277,6 +276,7 @@ public:
         lineEdit_2->setSizePolicy(sizePolicy);
         lineEdit_2->setMinimumSize(QSize(200, 27));
         lineEdit_2->setMaximumSize(QSize(500, 55));
+        lineEdit_2->setEchoMode(QLineEdit::Password);
 
         gridLayout_7->addWidget(lineEdit_2, 2, 0, 1, 1);
 
@@ -344,7 +344,6 @@ public:
 "/*--------------------------------Button--------------------------------*/\n"
 "\n"
 "QPushButton{\n"
-"	\n"
 "	background-color: #383838;\n"
 "	\n"
 "	border: 2px solid #1D1D1D;\n"
@@ -353,14 +352,29 @@ public:
 "	color:#CCCCCC;\n"
 "	font-family: \"Open Sans Light\";\n"
 "	font-size: 15px;\n"
-"\n"
 "}\n"
 "\n"
 "QPushButton:hover:!pressed{\n"
 "	background-color: #005457;\n"
 "}\n"
 "\n"
-"/*--------------------------------Check box--------------------------------*/\n"
+"/*For go back button*/\n"
+"QPushButton#RegGoBackButton{\n"
+"	background-color: #383838;\n"
+"	\n"
+"	border: 2px solid #1D1D1D;\n"
+"	border-radius:20px;\n"
+"\n"
+"	color:#CCCCCC;\n"
+"	font-family: \"Open Sans Light\";\n"
+"	font-size: 15px;\n"
+"}\n"
+"\n"
+"QPushButton#RegGoBackButton:hover:!pressed{\n"
+"	background-color: #005457;\n"
+"}\n"
+"/*--------------------------------Check"
+                        " box--------------------------------*/\n"
 "QCheckBox {\n"
 "	color:#999999;\n"
 "	font: italic 9pt \"Open Sans Light\";\n"
@@ -374,8 +388,7 @@ public:
 "\n"
 "QCheckBox::indicator:unchecked {\n"
 "    background:#990329;\n"
-"	borde"
-                        "r-radius:6px;\n"
+"	border-radius:6px;\n"
 "}\n"
 "\n"
 "QCheckBox::indicator:checked:hover {\n"
@@ -409,7 +422,8 @@ public:
 "	padding-left:10px;\n"
 "	padding-right:10px;\n"
 "}\n"
-"\n"
+""
+                        "\n"
 "\n"
 "QLineEdit:hover{\n"
 "	background-color: #262626;\n"
@@ -447,17 +461,17 @@ public:
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(-1, -1, -1, 0);
-        RegGoBaxkButton = new QPushButton(RegMenu);
-        RegGoBaxkButton->setObjectName(QString::fromUtf8("RegGoBaxkButton"));
+        RegGoBackButton = new QPushButton(RegMenu);
+        RegGoBackButton->setObjectName(QString::fromUtf8("RegGoBackButton"));
         QSizePolicy sizePolicy2(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy2.setHorizontalStretch(0);
         sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(RegGoBaxkButton->sizePolicy().hasHeightForWidth());
-        RegGoBaxkButton->setSizePolicy(sizePolicy2);
-        RegGoBaxkButton->setMinimumSize(QSize(40, 40));
-        RegGoBaxkButton->setMaximumSize(QSize(30, 30));
+        sizePolicy2.setHeightForWidth(RegGoBackButton->sizePolicy().hasHeightForWidth());
+        RegGoBackButton->setSizePolicy(sizePolicy2);
+        RegGoBackButton->setMinimumSize(QSize(40, 40));
+        RegGoBackButton->setMaximumSize(QSize(30, 30));
 
-        horizontalLayout_2->addWidget(RegGoBaxkButton);
+        horizontalLayout_2->addWidget(RegGoBackButton);
 
         horizontalSpacer_5 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -504,6 +518,7 @@ public:
         lineEdit_4->setSizePolicy(sizePolicy);
         lineEdit_4->setMinimumSize(QSize(200, 27));
         lineEdit_4->setMaximumSize(QSize(500, 55));
+        lineEdit_4->setEchoMode(QLineEdit::Password);
 
         gridLayout->addWidget(lineEdit_4, 2, 0, 1, 1);
 
@@ -513,6 +528,7 @@ public:
         lineEdit_3->setSizePolicy(sizePolicy);
         lineEdit_3->setMinimumSize(QSize(200, 27));
         lineEdit_3->setMaximumSize(QSize(500, 55));
+        lineEdit_3->setEchoMode(QLineEdit::Normal);
 
         gridLayout->addWidget(lineEdit_3, 1, 0, 1, 1);
 
@@ -522,6 +538,7 @@ public:
         lineEdit_5->setSizePolicy(sizePolicy);
         lineEdit_5->setMinimumSize(QSize(200, 27));
         lineEdit_5->setMaximumSize(QSize(500, 55));
+        lineEdit_5->setEchoMode(QLineEdit::Password);
 
         gridLayout->addWidget(lineEdit_5, 3, 0, 1, 1);
 
@@ -554,8 +571,8 @@ public:
         QWidget::setTabOrder(lineEdit_3, lineEdit_4);
         QWidget::setTabOrder(lineEdit_4, lineEdit_5);
         QWidget::setTabOrder(lineEdit_5, RerRegButton);
-        QWidget::setTabOrder(RerRegButton, RegGoBaxkButton);
-        QWidget::setTabOrder(RegGoBaxkButton, lineEdit);
+        QWidget::setTabOrder(RerRegButton, RegGoBackButton);
+        QWidget::setTabOrder(RegGoBackButton, lineEdit);
         QWidget::setTabOrder(lineEdit, lineEdit_2);
         QWidget::setTabOrder(lineEdit_2, RemMeCheckBox);
         QWidget::setTabOrder(RemMeCheckBox, LogButton);
@@ -564,7 +581,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -596,7 +613,7 @@ public:
         lineEdit->setInputMask(QString());
         lineEdit->setText(QString());
         lineEdit->setPlaceholderText(QCoreApplication::translate("MainWindow", "Login", nullptr));
-        RegGoBaxkButton->setText(QCoreApplication::translate("MainWindow", "\342\206\220", nullptr));
+        RegGoBackButton->setText(QCoreApplication::translate("MainWindow", "\342\206\220", nullptr));
         RerRegButton->setText(QCoreApplication::translate("MainWindow", "Register", nullptr));
         lineEdit_4->setPlaceholderText(QCoreApplication::translate("MainWindow", "Password", nullptr));
         lineEdit_3->setPlaceholderText(QCoreApplication::translate("MainWindow", "Login", nullptr));

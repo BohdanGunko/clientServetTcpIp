@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1366</width>
-    <height>768</height>
+    <width>1411</width>
+    <height>817</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -39,7 +39,7 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="LoginMenu">
        <property name="sizePolicy">
@@ -116,8 +116,6 @@ QCheckBox::indicator:unchecked:hover {
 
 /*--------------------------------Line edit--------------------------------*/
 
-
-
 QLineEdit{
 	background-color:#303030 ;
 
@@ -145,7 +143,8 @@ QLineEdit:focus{
 	background-color: #1D1D1D;
 
 	border-color: #00B3A6;
-}</string>
+}
+</string>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_4" stretch="0">
         <property name="spacing">
@@ -372,7 +371,7 @@ QLineEdit:focus{
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>250</width>
+                  <width>300</width>
                   <height>55</height>
                  </size>
                 </property>
@@ -419,6 +418,9 @@ QLineEdit:focus{
                   <width>500</width>
                   <height>55</height>
                  </size>
+                </property>
+                <property name="echoMode">
+                 <enum>QLineEdit::Password</enum>
                 </property>
                 <property name="placeholderText">
                  <string>Password</string>
@@ -558,7 +560,6 @@ QLineEdit:focus{
 /*--------------------------------Button--------------------------------*/
 
 QPushButton{
-	
 	background-color: #383838;
 	
 	border: 2px solid #1D1D1D;
@@ -567,13 +568,27 @@ QPushButton{
 	color:#CCCCCC;
 	font-family: &quot;Open Sans Light&quot;;
 	font-size: 15px;
-
 }
 
 QPushButton:hover:!pressed{
 	background-color: #005457;
 }
 
+/*For go back button*/
+QPushButton#RegGoBackButton{
+	background-color: #383838;
+	
+	border: 2px solid #1D1D1D;
+	border-radius:20px;
+
+	color:#CCCCCC;
+	font-family: &quot;Open Sans Light&quot;;
+	font-size: 15px;
+}
+
+QPushButton#RegGoBackButton:hover:!pressed{
+	background-color: #005457;
+}
 /*--------------------------------Check box--------------------------------*/
 QCheckBox {
 	color:#999999;
@@ -712,7 +727,7 @@ QLineEdit:focus{
              <number>0</number>
             </property>
             <item>
-             <widget class="QPushButton" name="RegGoBaxkButton">
+             <widget class="QPushButton" name="RegGoBackButton">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -847,6 +862,9 @@ QLineEdit:focus{
                 <height>55</height>
                </size>
               </property>
+              <property name="echoMode">
+               <enum>QLineEdit::Password</enum>
+              </property>
               <property name="placeholderText">
                <string>Password</string>
               </property>
@@ -872,6 +890,9 @@ QLineEdit:focus{
                 <height>55</height>
                </size>
               </property>
+              <property name="echoMode">
+               <enum>QLineEdit::Normal</enum>
+              </property>
               <property name="placeholderText">
                <string>Login</string>
               </property>
@@ -896,6 +917,9 @@ QLineEdit:focus{
                 <width>500</width>
                 <height>55</height>
                </size>
+              </property>
+              <property name="echoMode">
+               <enum>QLineEdit::Password</enum>
               </property>
               <property name="placeholderText">
                <string>Confirm password</string>
@@ -931,7 +955,7 @@ QLineEdit:focus{
   <tabstop>lineEdit_4</tabstop>
   <tabstop>lineEdit_5</tabstop>
   <tabstop>RerRegButton</tabstop>
-  <tabstop>RegGoBaxkButton</tabstop>
+  <tabstop>RegGoBackButton</tabstop>
   <tabstop>lineEdit</tabstop>
   <tabstop>lineEdit_2</tabstop>
   <tabstop>RemMeCheckBox</tabstop>
