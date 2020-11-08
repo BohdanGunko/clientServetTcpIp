@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
@@ -46,8 +47,9 @@ public:
     QPushButton *ExitButton;
     QGridLayout *gridLayout_7;
     QLineEdit *lineEdit_2;
-    QLineEdit *lineEdit;
     QSpacerItem *verticalSpacer_7;
+    QCheckBox *RemMeCheckBox;
+    QLineEdit *lineEdit;
     QSpacerItem *horizontalSpacer_2;
     QSpacerItem *verticalSpacer_8;
     QWidget *RegMenu;
@@ -78,7 +80,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(467, 270);
+        MainWindow->resize(1980, 1080);
         MainWindow->setMaximumSize(QSize(16777215, 16777215));
         MainWindow->setStyleSheet(QString::fromUtf8(""));
         centralwidget = new QWidget(MainWindow);
@@ -102,52 +104,83 @@ public:
         font.setWeight(75);
         LoginMenu->setFont(font);
         LoginMenu->setStyleSheet(QString::fromUtf8("#LoginMenu{\n"
-"	background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0.0842697 rgba(13, 13, 13, 255), stop:0.353933 rgba(18, 18, 18, 255), stop:0.617978 rgba(18, 18, 18, 255), stop:1 rgba(13, 13, 13, 255));\n"
+"  background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(18, 18, 18, 255), stop:0.47191 rgba(0, 25, 26, 255), stop:1 rgba(18, 18, 18, 255));\n"
 "}\n"
 "\n"
 "\n"
+"QCheckBox::indicator:checked {\n"
+"  border-radius:6px;\n"
+"    background: #1C9950;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"  border-radius:6px;\n"
+"    background:#990329;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked:hover {\n"
+"  border: 2px solid #1C9950;\n"
+"  border-radius:6px;\n"
+"    background: #178043;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked:hover {\n"
+"  border: 2px solid #990329;\n"
+"  border-radius:6px;\n"
+"    background:#800322;\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"QCheckBox {\n"
+"    color:#999999;\n"
+"  font: italic 9pt \"Open Sans Light\";\n"
+"\n"
+"}\n"
+"\n"
 "QLineEdit{\n"
-"	background-color:#343434 ;\n"
+"  background-color:#3D3D3D ;\n"
 "\n"
-" 	border-style: solid;\n"
+"   border-style: solid;\n"
 "    border-width: 2px;\n"
-"    border-color: #343434;\n"
-" 	border-radius: 10px;\n"
+"    border-color: #3D3D3D;\n"
+"   border-radius: 10px;\n"
 "\n"
-"	color:#CCCCCC;\n"
-"	font-family: \"Open Sans Light\";\n"
-"	font-size: 15px;\n"
+"  color:#CCCCCC;\n"
+"  font-family: \"Open Sans Light\";\n"
+""
+                        "  font-size: 15px;\n"
 "\n"
-"	padding-left:10px;\n"
-"	padding-right:10px;\n"
+"  padding-left:10px;\n"
+"  padding-right:10px;\n"
 "}\n"
 "\n"
 "\n"
 "QLineEdit:hover{\n"
-"	\n"
-"	background-color: #262626;\n"
+"  \n"
+"  background-color: #262626;\n"
 "\n"
-"	\n"
-"	\n"
-" 	border-style: solid;\n"
+"  \n"
+"  \n"
+"   border-style: solid;\n"
 "    border-width: 2px;\n"
 "    border-color: #017374;\n"
-" 	border-radius: 10px;\n"
+"   border-radius: 10px;\n"
 "\n"
 "\n"
 "\n"
 "}\n"
 "\n"
 "QLineEdit:focus{\n"
-"	\n"
-"	background-color: #1D1D1D;\n"
+"  \n"
+"  background-color: #1D1D1D;\n"
 "\n"
-"	\n"
-"	\n"
-" 	border-style: solid;\n"
+"  \n"
+"  \n"
+"   border-style: solid;\n"
 "    border-width: 2px;\n"
 "    border-color: #019592;\n"
-" 	border-radius: 10px;\n"
+"   border-radius: 10px;\n"
 "\n"
 "\n"
 "\n"
@@ -204,7 +237,7 @@ public:
         sizePolicy.setHeightForWidth(LogButton->sizePolicy().hasHeightForWidth());
         LogButton->setSizePolicy(sizePolicy);
         LogButton->setMinimumSize(QSize(100, 27));
-        LogButton->setMaximumSize(QSize(300, 45));
+        LogButton->setMaximumSize(QSize(300, 55));
         LogButton->setStyleSheet(QString::fromUtf8(""));
 
         gridLayout_9->addWidget(LogButton, 1, 1, 1, 1);
@@ -249,6 +282,21 @@ public:
 
         gridLayout_7->addWidget(lineEdit_2, 2, 0, 1, 1);
 
+        verticalSpacer_7 = new QSpacerItem(0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout_7->addItem(verticalSpacer_7, 0, 0, 1, 1);
+
+        RemMeCheckBox = new QCheckBox(LoginMenu);
+        RemMeCheckBox->setObjectName(QString::fromUtf8("RemMeCheckBox"));
+        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(RemMeCheckBox->sizePolicy().hasHeightForWidth());
+        RemMeCheckBox->setSizePolicy(sizePolicy1);
+        RemMeCheckBox->setChecked(false);
+
+        gridLayout_7->addWidget(RemMeCheckBox, 3, 0, 1, 1);
+
         lineEdit = new QLineEdit(LoginMenu);
         lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
         sizePolicy.setHeightForWidth(lineEdit->sizePolicy().hasHeightForWidth());
@@ -261,17 +309,13 @@ public:
 
         gridLayout_7->addWidget(lineEdit, 1, 0, 1, 1);
 
-        verticalSpacer_7 = new QSpacerItem(0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        gridLayout_7->addItem(verticalSpacer_7, 0, 0, 1, 1);
-
         gridLayout_7->setRowStretch(0, 1);
-        gridLayout_7->setRowStretch(1, 5);
-        gridLayout_7->setRowStretch(2, 5);
+        gridLayout_7->setRowStretch(1, 11);
+        gridLayout_7->setRowStretch(2, 11);
 
         gridLayout_2->addLayout(gridLayout_7, 1, 0, 1, 1);
 
-        gridLayout_2->setRowStretch(1, 5);
+        gridLayout_2->setRowStretch(1, 6);
         gridLayout_2->setRowStretch(2, 8);
 
         gridLayout_6->addLayout(gridLayout_2, 1, 1, 1, 1);
@@ -359,11 +403,11 @@ public:
         gridLayout_3->setSizeConstraint(QLayout::SetDefaultConstraint);
         RegPassTextEdit = new QTextEdit(RegMenu);
         RegPassTextEdit->setObjectName(QString::fromUtf8("RegPassTextEdit"));
-        QSizePolicy sizePolicy1(QSizePolicy::Maximum, QSizePolicy::Maximum);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(RegPassTextEdit->sizePolicy().hasHeightForWidth());
-        RegPassTextEdit->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy2(QSizePolicy::Maximum, QSizePolicy::Maximum);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(RegPassTextEdit->sizePolicy().hasHeightForWidth());
+        RegPassTextEdit->setSizePolicy(sizePolicy2);
         RegPassTextEdit->setMinimumSize(QSize(250, 35));
         RegPassTextEdit->setMaximumSize(QSize(500, 50));
 
@@ -371,8 +415,8 @@ public:
 
         RegLoginTextEdit = new QTextEdit(RegMenu);
         RegLoginTextEdit->setObjectName(QString::fromUtf8("RegLoginTextEdit"));
-        sizePolicy1.setHeightForWidth(RegLoginTextEdit->sizePolicy().hasHeightForWidth());
-        RegLoginTextEdit->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(RegLoginTextEdit->sizePolicy().hasHeightForWidth());
+        RegLoginTextEdit->setSizePolicy(sizePolicy2);
         RegLoginTextEdit->setMinimumSize(QSize(250, 35));
         RegLoginTextEdit->setMaximumSize(QSize(500, 50));
         RegLoginTextEdit->setSizeIncrement(QSize(0, 0));
@@ -381,35 +425,35 @@ public:
 
         RegPassLable = new QLabel(RegMenu);
         RegPassLable->setObjectName(QString::fromUtf8("RegPassLable"));
-        QSizePolicy sizePolicy2(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(RegPassLable->sizePolicy().hasHeightForWidth());
-        RegPassLable->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy3(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(RegPassLable->sizePolicy().hasHeightForWidth());
+        RegPassLable->setSizePolicy(sizePolicy3);
 
         gridLayout_3->addWidget(RegPassLable, 2, 0, 1, 1);
 
         RegPassConf = new QLabel(RegMenu);
         RegPassConf->setObjectName(QString::fromUtf8("RegPassConf"));
-        sizePolicy2.setHeightForWidth(RegPassConf->sizePolicy().hasHeightForWidth());
-        RegPassConf->setSizePolicy(sizePolicy2);
+        sizePolicy3.setHeightForWidth(RegPassConf->sizePolicy().hasHeightForWidth());
+        RegPassConf->setSizePolicy(sizePolicy3);
 
         gridLayout_3->addWidget(RegPassConf, 3, 0, 1, 1);
 
         RegLogLable = new QLabel(RegMenu);
         RegLogLable->setObjectName(QString::fromUtf8("RegLogLable"));
-        sizePolicy2.setHeightForWidth(RegLogLable->sizePolicy().hasHeightForWidth());
-        RegLogLable->setSizePolicy(sizePolicy2);
+        sizePolicy3.setHeightForWidth(RegLogLable->sizePolicy().hasHeightForWidth());
+        RegLogLable->setSizePolicy(sizePolicy3);
 
         gridLayout_3->addWidget(RegLogLable, 1, 0, 1, 1);
 
         RegConfTextEdit = new QTextEdit(RegMenu);
         RegConfTextEdit->setObjectName(QString::fromUtf8("RegConfTextEdit"));
-        QSizePolicy sizePolicy3(QSizePolicy::Maximum, QSizePolicy::Minimum);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(RegConfTextEdit->sizePolicy().hasHeightForWidth());
-        RegConfTextEdit->setSizePolicy(sizePolicy3);
+        QSizePolicy sizePolicy4(QSizePolicy::Maximum, QSizePolicy::Minimum);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(RegConfTextEdit->sizePolicy().hasHeightForWidth());
+        RegConfTextEdit->setSizePolicy(sizePolicy4);
         RegConfTextEdit->setMinimumSize(QSize(250, 35));
         RegConfTextEdit->setMaximumSize(QSize(500, 50));
 
@@ -506,6 +550,7 @@ public:
         LogButton->setText(QCoreApplication::translate("MainWindow", "Login", nullptr));
         ExitButton->setText(QCoreApplication::translate("MainWindow", "Exit", nullptr));
         lineEdit_2->setPlaceholderText(QCoreApplication::translate("MainWindow", "Password", nullptr));
+        RemMeCheckBox->setText(QCoreApplication::translate("MainWindow", "Remember me", nullptr));
 #if QT_CONFIG(tooltip)
         lineEdit->setToolTip(QString());
 #endif // QT_CONFIG(tooltip)
