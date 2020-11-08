@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>952</width>
-    <height>540</height>
+    <width>1366</width>
+    <height>768</height>
    </rect>
   </property>
   <property name="maximumSize">
@@ -75,7 +75,6 @@ QPushButton{
 	border: 2px solid #1D1D1D;
 	border-radius:10px;
 
-
 	color:#CCCCCC;
 	font-family: &quot;Open Sans Light&quot;;
 	font-size: 15px;
@@ -83,10 +82,7 @@ QPushButton{
 }
 
 QPushButton:hover:!pressed{
-	
 	background-color: #005457;
-	
-	
 }
 
 /*--------------------------------Check box--------------------------------*/
@@ -376,7 +372,7 @@ QLineEdit:focus{
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>300</width>
+                  <width>250</width>
                   <height>55</height>
                  </size>
                 </property>
@@ -555,45 +551,89 @@ QLineEdit:focus{
         </sizepolicy>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton{
-
-	border-radius: 10px;
-	background: #73AD21;
-	font-size: 20px;
-	font-family:&quot;Arial Rounded MT Bold&quot;;
+        <string notr="true">/*--------------------------------Backdround color--------------------------------*/
+#RegMenu{
+  background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(18, 18, 18, 255), stop:0.47191 rgba(0, 25, 26, 255), stop:1 rgba(18, 18, 18, 255));
 }
-QPushButton:pressed{
+/*--------------------------------Button--------------------------------*/
 
-	border-radius: 10px;
-	background: rgb(34, 86, 255);
-	font-size: 20px;
-	font-family:&quot;Arial Rounded MT Bold&quot;;
-}
-QPushButton:hover:!pressed{
+QPushButton{
+	
+	background-color: #383838;
+	
+	border: 2px solid #1D1D1D;
+	border-radius:10px;
 
-	border-radius: 10px;
-	background:rgb(0, 0, 0);
-	font-size: 20px;
-	font-family:&quot;Arial Rounded MT Bold&quot;;
-}
-
-QLabel{
-	font-size: 20px;
-	font-family:&quot;Arial Rounded MT Bold&quot;;
-}
-
-QTextEdit{
-
-	border-radius: 10px;
-	background: #73AD21;
-	font-size: 20px;
-	font-family:&quot;Arial Rounded MT Bold&quot;;
-}
-
-
-QCheckBox{
+	color:#CCCCCC;
+	font-family: &quot;Open Sans Light&quot;;
 	font-size: 15px;
-	font-family:&quot;Arial Rounded MT Bold&quot;;
+
+}
+
+QPushButton:hover:!pressed{
+	background-color: #005457;
+}
+
+/*--------------------------------Check box--------------------------------*/
+QCheckBox {
+	color:#999999;
+	font: italic 9pt &quot;Open Sans Light&quot;;
+	border-radius:6px;
+}
+
+QCheckBox::indicator:checked {
+    background: #198C49;
+	border-radius:6px;
+}
+
+QCheckBox::indicator:unchecked {
+    background:#990329;
+	border-radius:6px;
+}
+
+QCheckBox::indicator:checked:hover {
+  	border: 2px solid #198C49;
+    background: #15733C;
+	border-radius:6px;
+}
+
+QCheckBox::indicator:unchecked:hover {
+	border: 2px solid #990329;
+	background:#800322;
+	border-radius:6px;
+}
+
+/*--------------------------------Line edit--------------------------------*/
+
+
+
+QLineEdit{
+	background-color:#303030 ;
+
+	border-style: solid;
+	border-width: 2px;
+	border-color: #525252;
+	border-radius: 10px;
+
+	color:#CCCCCC;
+	font-family: &quot;Open Sans Light&quot;;
+	font-size: 15px;
+
+	padding-left:10px;
+	padding-right:10px;
+}
+
+
+QLineEdit:hover{
+	background-color: #262626;
+ 
+    border-color: #017374;
+}
+
+QLineEdit:focus{
+	background-color: #1D1D1D;
+
+	border-color: #00B3A6;
 }</string>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -653,143 +693,6 @@ QCheckBox{
             </property>
            </spacer>
           </item>
-          <item row="3" column="1">
-           <layout class="QGridLayout" name="gridLayout_3" rowstretch="0,0,0,0" columnstretch="0,0">
-            <property name="sizeConstraint">
-             <enum>QLayout::SetDefaultConstraint</enum>
-            </property>
-            <property name="spacing">
-             <number>9</number>
-            </property>
-            <item row="2" column="1">
-             <widget class="QTextEdit" name="RegPassTextEdit">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>250</width>
-                <height>35</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>500</width>
-                <height>50</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QTextEdit" name="RegLoginTextEdit">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>250</width>
-                <height>35</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>500</width>
-                <height>50</height>
-               </size>
-              </property>
-              <property name="sizeIncrement">
-               <size>
-                <width>0</width>
-                <height>0</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QLabel" name="RegPassLable">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Password</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="0">
-             <widget class="QLabel" name="RegPassConf">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Confirm pass</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="RegLogLable">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Login</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="1">
-             <widget class="QTextEdit" name="RegConfTextEdit">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Maximum" vsizetype="Minimum">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>250</width>
-                <height>35</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>500</width>
-                <height>50</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <spacer name="verticalSpacer_4">
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="sizeType">
-               <enum>QSizePolicy::Expanding</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>0</width>
-                <height>0</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
-          </item>
           <item row="3" column="2">
            <spacer name="horizontalSpacer_7">
             <property name="orientation">
@@ -811,15 +714,15 @@ QCheckBox{
             <item>
              <widget class="QPushButton" name="RegGoBaxkButton">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
               <property name="minimumSize">
                <size>
-                <width>30</width>
-                <height>30</height>
+                <width>40</width>
+                <height>40</height>
                </size>
               </property>
               <property name="maximumSize">
@@ -849,7 +752,7 @@ QCheckBox{
            </layout>
           </item>
           <item row="4" column="1">
-           <layout class="QGridLayout" name="gridLayout_5" rowstretch="1,2">
+           <layout class="QGridLayout" name="gridLayout_5" rowstretch="5,6">
             <property name="topMargin">
              <number>20</number>
             </property>
@@ -873,7 +776,7 @@ QCheckBox{
               <property name="maximumSize">
                <size>
                 <width>300</width>
-                <height>50</height>
+                <height>55</height>
                </size>
               </property>
               <property name="text">
@@ -922,6 +825,98 @@ QCheckBox{
             </item>
            </layout>
           </item>
+          <item row="3" column="1">
+           <layout class="QGridLayout" name="gridLayout" rowstretch="1,10,10,10">
+            <item row="2" column="0">
+             <widget class="QLineEdit" name="lineEdit_4">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>200</width>
+                <height>27</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>500</width>
+                <height>55</height>
+               </size>
+              </property>
+              <property name="placeholderText">
+               <string>Password</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QLineEdit" name="lineEdit_3">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>200</width>
+                <height>27</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>500</width>
+                <height>55</height>
+               </size>
+              </property>
+              <property name="placeholderText">
+               <string>Login</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0">
+             <widget class="QLineEdit" name="lineEdit_5">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>200</width>
+                <height>27</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>500</width>
+                <height>55</height>
+               </size>
+              </property>
+              <property name="placeholderText">
+               <string>Confirm password</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <spacer name="verticalSpacer_4">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
          </layout>
         </item>
        </layout>
@@ -931,6 +926,19 @@ QCheckBox{
    </layout>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>lineEdit_3</tabstop>
+  <tabstop>lineEdit_4</tabstop>
+  <tabstop>lineEdit_5</tabstop>
+  <tabstop>RerRegButton</tabstop>
+  <tabstop>RegGoBaxkButton</tabstop>
+  <tabstop>lineEdit</tabstop>
+  <tabstop>lineEdit_2</tabstop>
+  <tabstop>RemMeCheckBox</tabstop>
+  <tabstop>LogButton</tabstop>
+  <tabstop>RegButton</tabstop>
+  <tabstop>ExitButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
