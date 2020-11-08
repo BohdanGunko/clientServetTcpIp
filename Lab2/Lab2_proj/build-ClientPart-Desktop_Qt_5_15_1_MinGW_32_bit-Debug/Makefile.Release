@@ -589,7 +589,41 @@ release/mainwindow.o: ../ClientPart/mainwindow.cpp ../ClientPart/mainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qmainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtabwidget.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qicon.h \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QVariant \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QApplication \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qapplication.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcoreapplication.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qeventloop.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qdesktopwidget.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qguiapplication.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qinputmethod.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QGridLayout \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qgridlayout.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qlayout.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qlayoutitem.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qboxlayout.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QHBoxLayout \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QLabel \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qlabel.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qframe.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QLineEdit \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qlineedit.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtextcursor.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtextformat.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qpen.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtextoption.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QPushButton \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qpushbutton.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QSpacerItem \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QStackedWidget \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qstackedwidget.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QTextEdit \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtextedit.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qabstractscrollarea.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtextdocument.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\ClientPart\mainwindow.cpp
 
 release/purchasesmenu.o: ../ClientPart/purchasesmenu.cpp ../ClientPart/purchasesmenu.h \
@@ -696,7 +730,29 @@ release/purchasesmenu.o: ../ClientPart/purchasesmenu.cpp ../ClientPart/purchases
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qfiledevice.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qvector2d.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtouchdevice.h \
-		ui_purchasesmenu.h
+		ui_purchasesmenu.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QVariant \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QApplication \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qapplication.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcoreapplication.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qeventloop.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qdesktopwidget.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qguiapplication.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qinputmethod.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QGridLayout \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qgridlayout.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qlayout.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qlayoutitem.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qboxlayout.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QHBoxLayout \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QPushButton \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qpushbutton.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qicon.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QStackedWidget \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qstackedwidget.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qframe.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\purchasesmenu.o ..\ClientPart\purchasesmenu.cpp
 
 release/moc_mainwindow.o: release/moc_mainwindow.cpp 

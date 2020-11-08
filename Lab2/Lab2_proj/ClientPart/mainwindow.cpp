@@ -9,6 +9,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->stackedWidget->addWidget(&OvScreen);
     ui->stackedWidget->setCurrentIndex(0);
 
+
+
 }
 
 MainWindow::~MainWindow()
