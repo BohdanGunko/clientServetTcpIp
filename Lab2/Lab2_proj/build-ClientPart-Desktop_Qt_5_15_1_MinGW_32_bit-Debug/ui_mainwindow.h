@@ -40,11 +40,11 @@ public:
     QGridLayout *gridLayout_2;
     QGridLayout *gridLayout_9;
     QSpacerItem *verticalSpacer_3;
+    QPushButton *ExitButton;
+    QSpacerItem *horizontalSpacer_8;
+    QSpacerItem *horizontalSpacer_9;
     QPushButton *RegButton;
     QPushButton *LogButton;
-    QSpacerItem *horizontalSpacer_9;
-    QSpacerItem *horizontalSpacer_8;
-    QPushButton *ExitButton;
     QGridLayout *gridLayout_7;
     QLineEdit *lineEdit_2;
     QSpacerItem *verticalSpacer_7;
@@ -80,7 +80,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(1980, 1080);
+        MainWindow->resize(952, 540);
         MainWindow->setMaximumSize(QSize(16777215, 16777215));
         MainWindow->setStyleSheet(QString::fromUtf8(""));
         centralwidget = new QWidget(MainWindow);
@@ -103,87 +103,94 @@ public:
         font.setBold(true);
         font.setWeight(75);
         LoginMenu->setFont(font);
-        LoginMenu->setStyleSheet(QString::fromUtf8("#LoginMenu{\n"
+        LoginMenu->setStyleSheet(QString::fromUtf8("/*--------------------------------Backdround color--------------------------------*/\n"
+"#LoginMenu{\n"
 "  background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(18, 18, 18, 255), stop:0.47191 rgba(0, 25, 26, 255), stop:1 rgba(18, 18, 18, 255));\n"
 "}\n"
+"/*--------------------------------Button--------------------------------*/\n"
 "\n"
+"QPushButton{\n"
+"	\n"
+"	background-color: #383838;\n"
+"	\n"
+"	border: 2px solid #1D1D1D;\n"
+"	border-radius:10px;\n"
+"\n"
+"\n"
+"	color:#CCCCCC;\n"
+"	font-family: \"Open Sans Light\";\n"
+"	font-size: 15px;\n"
+"\n"
+"}\n"
+"\n"
+"QPushButton:hover:!pressed{\n"
+"	\n"
+"	background-color: #005457;\n"
+"	\n"
+"	\n"
+"}\n"
+"\n"
+"/*--------------------------------Check box--------------------------------*/\n"
+"QCheckBox {\n"
+"	color:#999999;\n"
+"	font: italic 9pt \"Open Sans Light\";\n"
+"	border-radius:6px;\n"
+"}\n"
 "\n"
 "QCheckBox::indicator:checked {\n"
-"  border-radius:6px;\n"
-"    background: #1C9950;\n"
+"    background: #198C49;\n"
+"	border-radius:6px;\n"
 "}\n"
 "\n"
 "QCheckBox::indicator:unchecked {\n"
-"  border-radius:6px;\n"
-"    background:#990329;\n"
+"    backg"
+                        "round:#990329;\n"
+"	border-radius:6px;\n"
 "}\n"
 "\n"
 "QCheckBox::indicator:checked:hover {\n"
-"  border: 2px solid #1C9950;\n"
-"  border-radius:6px;\n"
-"    background: #178043;\n"
+"  	border: 2px solid #198C49;\n"
+"    background: #15733C;\n"
+"	border-radius:6px;\n"
 "}\n"
 "\n"
 "QCheckBox::indicator:unchecked:hover {\n"
-"  border: 2px solid #990329;\n"
-"  border-radius:6px;\n"
-"    background:#800322;\n"
+"	border: 2px solid #990329;\n"
+"	background:#800322;\n"
+"	border-radius:6px;\n"
 "}\n"
 "\n"
+"/*--------------------------------Line edit--------------------------------*/\n"
 "\n"
 "\n"
-"QCheckBox {\n"
-"    color:#999999;\n"
-"  font: italic 9pt \"Open Sans Light\";\n"
-"\n"
-"}\n"
 "\n"
 "QLineEdit{\n"
-"  background-color:#3D3D3D ;\n"
+"	background-color:#303030 ;\n"
 "\n"
-"   border-style: solid;\n"
-"    border-width: 2px;\n"
-"    border-color: #3D3D3D;\n"
-"   border-radius: 10px;\n"
+"	border-style: solid;\n"
+"	border-width: 2px;\n"
+"	border-color: #525252;\n"
+"	border-radius: 10px;\n"
 "\n"
-"  color:#CCCCCC;\n"
-"  font-family: \"Open Sans Light\";\n"
-""
-                        "  font-size: 15px;\n"
+"	color:#CCCCCC;\n"
+"	font-family: \"Open Sans Light\";\n"
+"	font-size: 15px;\n"
 "\n"
-"  padding-left:10px;\n"
-"  padding-right:10px;\n"
+"	padding-left:10px;\n"
+"	padding-right:10px;\n"
 "}\n"
 "\n"
 "\n"
 "QLineEdit:hover{\n"
-"  \n"
-"  background-color: #262626;\n"
-"\n"
-"  \n"
-"  \n"
-"   border-style: solid;\n"
-"    border-width: 2px;\n"
+"	background-color: #262626;\n"
+" \n"
 "    border-color: #017374;\n"
-"   border-radius: 10px;\n"
-"\n"
-"\n"
-"\n"
 "}\n"
 "\n"
 "QLineEdit:focus{\n"
-"  \n"
-"  background-color: #1D1D1D;\n"
+"	background-color: #1D1D1D;\n"
 "\n"
-"  \n"
-"  \n"
-"   border-style: solid;\n"
-"    border-width: 2px;\n"
-"    border-color: #019592;\n"
-"   border-radius: 10px;\n"
-"\n"
-"\n"
-"\n"
+"	border-color: #00B3A6;\n"
 "}"));
         verticalLayout_4 = new QVBoxLayout(LoginMenu);
         verticalLayout_4->setSpacing(0);
@@ -214,42 +221,6 @@ public:
 
         gridLayout_9->addItem(verticalSpacer_3, 3, 1, 1, 1);
 
-        RegButton = new QPushButton(LoginMenu);
-        RegButton->setObjectName(QString::fromUtf8("RegButton"));
-        sizePolicy.setHeightForWidth(RegButton->sizePolicy().hasHeightForWidth());
-        RegButton->setSizePolicy(sizePolicy);
-        RegButton->setMinimumSize(QSize(100, 27));
-        RegButton->setMaximumSize(QSize(300, 55));
-        RegButton->setBaseSize(QSize(0, 0));
-        QFont font1;
-        font1.setFamily(QString::fromUtf8("MS Shell Dlg 2"));
-        font1.setBold(false);
-        font1.setItalic(false);
-        font1.setWeight(50);
-        RegButton->setFont(font1);
-        RegButton->setContextMenuPolicy(Qt::DefaultContextMenu);
-        RegButton->setStyleSheet(QString::fromUtf8(""));
-
-        gridLayout_9->addWidget(RegButton, 0, 1, 1, 1);
-
-        LogButton = new QPushButton(LoginMenu);
-        LogButton->setObjectName(QString::fromUtf8("LogButton"));
-        sizePolicy.setHeightForWidth(LogButton->sizePolicy().hasHeightForWidth());
-        LogButton->setSizePolicy(sizePolicy);
-        LogButton->setMinimumSize(QSize(100, 27));
-        LogButton->setMaximumSize(QSize(300, 55));
-        LogButton->setStyleSheet(QString::fromUtf8(""));
-
-        gridLayout_9->addWidget(LogButton, 1, 1, 1, 1);
-
-        horizontalSpacer_9 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_9->addItem(horizontalSpacer_9, 1, 2, 1, 1);
-
-        horizontalSpacer_8 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_9->addItem(horizontalSpacer_8, 1, 0, 1, 1);
-
         ExitButton = new QPushButton(LoginMenu);
         ExitButton->setObjectName(QString::fromUtf8("ExitButton"));
         ExitButton->setEnabled(true);
@@ -261,9 +232,45 @@ public:
 
         gridLayout_9->addWidget(ExitButton, 2, 1, 1, 1);
 
-        gridLayout_9->setRowStretch(0, 10);
-        gridLayout_9->setRowStretch(1, 10);
-        gridLayout_9->setRowStretch(2, 10);
+        horizontalSpacer_8 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_9->addItem(horizontalSpacer_8, 1, 0, 1, 1);
+
+        horizontalSpacer_9 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_9->addItem(horizontalSpacer_9, 1, 2, 1, 1);
+
+        RegButton = new QPushButton(LoginMenu);
+        RegButton->setObjectName(QString::fromUtf8("RegButton"));
+        sizePolicy.setHeightForWidth(RegButton->sizePolicy().hasHeightForWidth());
+        RegButton->setSizePolicy(sizePolicy);
+        RegButton->setMinimumSize(QSize(100, 27));
+        RegButton->setMaximumSize(QSize(300, 55));
+        RegButton->setBaseSize(QSize(0, 0));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("Open Sans Light"));
+        font1.setBold(false);
+        font1.setItalic(false);
+        font1.setWeight(50);
+        RegButton->setFont(font1);
+        RegButton->setContextMenuPolicy(Qt::DefaultContextMenu);
+        RegButton->setStyleSheet(QString::fromUtf8(""));
+
+        gridLayout_9->addWidget(RegButton, 1, 1, 1, 1);
+
+        LogButton = new QPushButton(LoginMenu);
+        LogButton->setObjectName(QString::fromUtf8("LogButton"));
+        sizePolicy.setHeightForWidth(LogButton->sizePolicy().hasHeightForWidth());
+        LogButton->setSizePolicy(sizePolicy);
+        LogButton->setMinimumSize(QSize(100, 27));
+        LogButton->setMaximumSize(QSize(300, 55));
+        LogButton->setStyleSheet(QString::fromUtf8(""));
+
+        gridLayout_9->addWidget(LogButton, 0, 1, 1, 1);
+
+        gridLayout_9->setRowStretch(0, 15);
+        gridLayout_9->setRowStretch(1, 15);
+        gridLayout_9->setRowStretch(2, 15);
         gridLayout_9->setRowStretch(3, 1);
 
         gridLayout_2->addLayout(gridLayout_9, 2, 0, 1, 1);
@@ -328,9 +335,9 @@ public:
 
         gridLayout_6->addItem(verticalSpacer_8, 0, 1, 1, 1);
 
-        gridLayout_6->setRowStretch(0, 1);
-        gridLayout_6->setRowStretch(1, 1);
-        gridLayout_6->setRowStretch(2, 1);
+        gridLayout_6->setRowStretch(0, 2);
+        gridLayout_6->setRowStretch(1, 3);
+        gridLayout_6->setRowStretch(2, 3);
 
         verticalLayout_4->addLayout(gridLayout_6);
 
@@ -546,9 +553,9 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        ExitButton->setText(QCoreApplication::translate("MainWindow", "Exit", nullptr));
         RegButton->setText(QCoreApplication::translate("MainWindow", "Register", nullptr));
         LogButton->setText(QCoreApplication::translate("MainWindow", "Login", nullptr));
-        ExitButton->setText(QCoreApplication::translate("MainWindow", "Exit", nullptr));
         lineEdit_2->setPlaceholderText(QCoreApplication::translate("MainWindow", "Password", nullptr));
         RemMeCheckBox->setText(QCoreApplication::translate("MainWindow", "Remember me", nullptr));
 #if QT_CONFIG(tooltip)
