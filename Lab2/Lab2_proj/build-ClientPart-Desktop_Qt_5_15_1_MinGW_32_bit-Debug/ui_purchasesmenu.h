@@ -12,10 +12,9 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGridLayout>
-#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QStackedWidget>
-#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -23,79 +22,109 @@ QT_BEGIN_NAMESPACE
 class Ui_PurchasesMenu
 {
 public:
-    QHBoxLayout *horizontalLayout;
-    QGridLayout *gridLayout_2;
-    QWidget *widget_2;
-    QVBoxLayout *verticalLayout_6;
-    QPushButton *pushButton_3;
-    QWidget *widget_3;
-    QVBoxLayout *verticalLayout_5;
-    QPushButton *pushButton_2;
-    QWidget *widget;
-    QVBoxLayout *verticalLayout_2;
-    QPushButton *pushButton;
+    QGridLayout *gridLayout_4;
+    QGridLayout *gridLayout;
+    QWidget *SpacerMenuBlack;
+    QGridLayout *gridLayout_3;
+    QPushButton *BuyButton;
+    QLabel *SpacerMenuGrey;
+    QPushButton *ReserveButton;
+    QPushButton *LogOutButton;
     QStackedWidget *stackedWidget;
+    QWidget *page;
+    QWidget *page_2;
 
     void setupUi(QWidget *PurchasesMenu)
     {
         if (PurchasesMenu->objectName().isEmpty())
             PurchasesMenu->setObjectName(QString::fromUtf8("PurchasesMenu"));
-        PurchasesMenu->resize(532, 426);
-        horizontalLayout = new QHBoxLayout(PurchasesMenu);
-        horizontalLayout->setSpacing(0);
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        gridLayout_2 = new QGridLayout();
-        gridLayout_2->setSpacing(0);
-        gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
-        widget_2 = new QWidget(PurchasesMenu);
-        widget_2->setObjectName(QString::fromUtf8("widget_2"));
-        widget_2->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 57, 60);"));
-        verticalLayout_6 = new QVBoxLayout(widget_2);
-        verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
-        pushButton_3 = new QPushButton(widget_2);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+        PurchasesMenu->resize(538, 349);
+        PurchasesMenu->setStyleSheet(QString::fromUtf8(""));
+        gridLayout_4 = new QGridLayout(PurchasesMenu);
+        gridLayout_4->setSpacing(0);
+        gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
+        gridLayout_4->setContentsMargins(0, 0, 0, 0);
+        gridLayout = new QGridLayout();
+        gridLayout->setSpacing(0);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        gridLayout->setContentsMargins(0, -1, -1, -1);
+        SpacerMenuBlack = new QWidget(PurchasesMenu);
+        SpacerMenuBlack->setObjectName(QString::fromUtf8("SpacerMenuBlack"));
+        SpacerMenuBlack->setStyleSheet(QString::fromUtf8("QPushButton{\n"
+"	background-color: #1D1D1D;\n"
+"	border:none;\n"
+"\n"
+"}\n"
+"\n"
+"\n"
+"#SpacerMenuBlack{\n"
+"	background-color:#0A0A0A;\n"
+"}\n"
+"\n"
+"#SpacerMenuGrey{\n"
+"	background-color:#1D1D1D;\n"
+"}\n"
+"\n"
+"#stackedWidget{\n"
+"	background-color:#121212;;\n"
+"\n"
+"}"));
+        gridLayout_3 = new QGridLayout(SpacerMenuBlack);
+        gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
+        gridLayout_3->setHorizontalSpacing(0);
+        gridLayout_3->setVerticalSpacing(4);
+        gridLayout_3->setContentsMargins(0, 0, 4, 0);
+        BuyButton = new QPushButton(SpacerMenuBlack);
+        BuyButton->setObjectName(QString::fromUtf8("BuyButton"));
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(BuyButton->sizePolicy().hasHeightForWidth());
+        BuyButton->setSizePolicy(sizePolicy);
+        BuyButton->setMinimumSize(QSize(65, 55));
+        BuyButton->setMaximumSize(QSize(65, 55));
 
-        verticalLayout_6->addWidget(pushButton_3);
+        gridLayout_3->addWidget(BuyButton, 2, 0, 1, 1);
+
+        SpacerMenuGrey = new QLabel(SpacerMenuBlack);
+        SpacerMenuGrey->setObjectName(QString::fromUtf8("SpacerMenuGrey"));
+
+        gridLayout_3->addWidget(SpacerMenuGrey, 6, 0, 1, 1);
+
+        ReserveButton = new QPushButton(SpacerMenuBlack);
+        ReserveButton->setObjectName(QString::fromUtf8("ReserveButton"));
+        sizePolicy.setHeightForWidth(ReserveButton->sizePolicy().hasHeightForWidth());
+        ReserveButton->setSizePolicy(sizePolicy);
+        ReserveButton->setMinimumSize(QSize(65, 55));
+        ReserveButton->setMaximumSize(QSize(65, 55));
+
+        gridLayout_3->addWidget(ReserveButton, 4, 0, 1, 1);
+
+        LogOutButton = new QPushButton(SpacerMenuBlack);
+        LogOutButton->setObjectName(QString::fromUtf8("LogOutButton"));
+        sizePolicy.setHeightForWidth(LogOutButton->sizePolicy().hasHeightForWidth());
+        LogOutButton->setSizePolicy(sizePolicy);
+        LogOutButton->setMinimumSize(QSize(65, 55));
+        LogOutButton->setMaximumSize(QSize(65, 55));
+
+        gridLayout_3->addWidget(LogOutButton, 5, 0, 1, 1);
 
 
-        gridLayout_2->addWidget(widget_2, 2, 0, 1, 1);
-
-        widget_3 = new QWidget(PurchasesMenu);
-        widget_3->setObjectName(QString::fromUtf8("widget_3"));
-        widget_3->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 57, 60);"));
-        verticalLayout_5 = new QVBoxLayout(widget_3);
-        verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
-        pushButton_2 = new QPushButton(widget_3);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-
-        verticalLayout_5->addWidget(pushButton_2);
+        gridLayout->addWidget(SpacerMenuBlack, 0, 0, 1, 1);
 
 
-        gridLayout_2->addWidget(widget_3, 1, 0, 1, 1);
-
-        widget = new QWidget(PurchasesMenu);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 57, 60);"));
-        verticalLayout_2 = new QVBoxLayout(widget);
-        verticalLayout_2->setSpacing(0);
-        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        pushButton = new QPushButton(widget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-
-        verticalLayout_2->addWidget(pushButton);
-
-
-        gridLayout_2->addWidget(widget, 0, 0, 1, 1);
-
-
-        horizontalLayout->addLayout(gridLayout_2);
+        gridLayout_4->addLayout(gridLayout, 0, 0, 1, 1);
 
         stackedWidget = new QStackedWidget(PurchasesMenu);
         stackedWidget->setObjectName(QString::fromUtf8("stackedWidget"));
+        page = new QWidget();
+        page->setObjectName(QString::fromUtf8("page"));
+        stackedWidget->addWidget(page);
+        page_2 = new QWidget();
+        page_2->setObjectName(QString::fromUtf8("page_2"));
+        stackedWidget->addWidget(page_2);
 
-        horizontalLayout->addWidget(stackedWidget);
+        gridLayout_4->addWidget(stackedWidget, 0, 1, 1, 1);
 
 
         retranslateUi(PurchasesMenu);
@@ -106,12 +135,10 @@ public:
     void retranslateUi(QWidget *PurchasesMenu)
     {
         PurchasesMenu->setWindowTitle(QCoreApplication::translate("PurchasesMenu", "Form", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("PurchasesMenu", "3", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("PurchasesMenu", "2", nullptr));
-#if QT_CONFIG(tooltip)
-        pushButton->setToolTip(QString());
-#endif // QT_CONFIG(tooltip)
-        pushButton->setText(QCoreApplication::translate("PurchasesMenu", "1", nullptr));
+        BuyButton->setText(QString());
+        SpacerMenuGrey->setText(QString());
+        ReserveButton->setText(QString());
+        LogOutButton->setText(QString());
     } // retranslateUi
 
 };

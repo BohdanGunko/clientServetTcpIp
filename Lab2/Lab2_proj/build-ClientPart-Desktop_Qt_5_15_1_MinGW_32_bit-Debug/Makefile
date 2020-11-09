@@ -251,7 +251,8 @@ Makefile: ../ClientPart/ClientPart.pro P:/Programs/Qt/5.15.1/mingw81_32/mkspecs/
 		P:/Programs/Qt/5.15.1/mingw81_32/lib/Qt5Gui.prl \
 		P:/Programs/Qt/5.15.1/mingw81_32/lib/Qt5Core.prl \
 		P:/Programs/Qt/5.15.1/mingw81_32/lib/qtmain.prl \
-		P:/Programs/Qt/5.15.1/mingw81_32/mkspecs/features/build_pass.prf
+		P:/Programs/Qt/5.15.1/mingw81_32/mkspecs/features/build_pass.prf \
+		../ClientPart/recources.qrc
 	$(QMAKE) -o Makefile ..\ClientPart\ClientPart.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 P:/Programs/Qt/5.15.1/mingw81_32/mkspecs/features/spec_pre.prf:
 P:/Programs/Qt/5.15.1/mingw81_32/mkspecs/qdevice.pri:
@@ -435,6 +436,7 @@ P:/Programs/Qt/5.15.1/mingw81_32/lib/Qt5Gui.prl:
 P:/Programs/Qt/5.15.1/mingw81_32/lib/Qt5Core.prl:
 P:/Programs/Qt/5.15.1/mingw81_32/lib/qtmain.prl:
 P:/Programs/Qt/5.15.1/mingw81_32/mkspecs/features/build_pass.prf:
+../ClientPart/recources.qrc:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\ClientPart\ClientPart.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 

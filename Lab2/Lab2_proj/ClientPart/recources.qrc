@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/recources">
+        <file>img/BookedTicketsIcon.png</file>
+        <file>img/ExitIcon.png</file>
+        <file>img/TrainIcon.png</file>
+        <file>img/BookedTicketsIconFocus.png</file>
+        <file>img/BookedTicketsIconHover.png</file>
+        <file>img/ExitIconFocus.png</file>
+        <file>img/ExitIconHover.png</file>
+        <file>img/TrainIconFocus.png</file>
+        <file>img/TrainIconHover.png</file>
+    </qresource>
+</RCC>

@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -8,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     ui->stackedWidget->addWidget(&OvScreen);
     ui->stackedWidget->setCurrentIndex(0);
+
 
 
 
@@ -33,3 +33,4 @@ void MainWindow::on_LogButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(2);
 }
+

@@ -75,12 +75,13 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(1411, 817);
+        MainWindow->resize(1200, 817);
         MainWindow->setMaximumSize(QSize(16777215, 16777215));
         MainWindow->setStyleSheet(QString::fromUtf8(""));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         horizontalLayout_3 = new QHBoxLayout(centralwidget);
+        horizontalLayout_3->setSpacing(0);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
         stackedWidget = new QStackedWidget(centralwidget);
@@ -100,25 +101,29 @@ public:
         LoginMenu->setFont(font);
         LoginMenu->setStyleSheet(QString::fromUtf8("/*--------------------------------Backdround color--------------------------------*/\n"
 "#LoginMenu{\n"
-"  background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(18, 18, 18, 255), stop:0.47191 rgba(0, 25, 26, 255), stop:1 rgba(18, 18, 18, 255));\n"
+"  background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(18, 18, 18, 255), stop:0.47191 rgba(4, 20, 11, 255), stop:1 rgba(18, 18, 18, 255));\n"
 "}\n"
 "/*--------------------------------Button--------------------------------*/\n"
 "\n"
 "QPushButton{\n"
 "	\n"
-"	background-color: #383838;\n"
+"	background-color: #2C2C2C;\n"
 "	\n"
-"	border: 2px solid #1D1D1D;\n"
+"	border: 2px solid #111111;\n"
 "	border-radius:10px;\n"
 "\n"
-"	color:#CCCCCC;\n"
+"	color:#B9B9B9;\n"
 "	font-family: \"Open Sans Light\";\n"
 "	font-size: 15px;\n"
 "\n"
 "}\n"
 "\n"
 "QPushButton:hover:!pressed{\n"
-"	background-color: #005457;\n"
+"	background-color: #136836;\n"
+"}\n"
+"\n"
+"QPushButton:hover:pressed{\n"
+"	background-color: #082E18;\n"
 "}\n"
 "\n"
 "/*--------------------------------Check box--------------------------------*/\n"
@@ -132,11 +137,11 @@ public:
 "    background: #198C49;\n"
 "	border-radius:6px;\n"
 "}\n"
-"\n"
+""
+                        "\n"
 "QCheckBox::indicator:unchecked {\n"
 "    background:#990329;\n"
-"	bor"
-                        "der-radius:6px;\n"
+"	border-radius:6px;\n"
 "}\n"
 "\n"
 "QCheckBox::indicator:checked:hover {\n"
@@ -154,11 +159,11 @@ public:
 "/*--------------------------------Line edit--------------------------------*/\n"
 "\n"
 "QLineEdit{\n"
-"	background-color:#303030 ;\n"
+"	background-color:#262626 ;\n"
 "\n"
 "	border-style: solid;\n"
 "	border-width: 2px;\n"
-"	border-color: #525252;\n"
+"	border-color: #565656;\n"
 "	border-radius: 10px;\n"
 "\n"
 "	color:#CCCCCC;\n"
@@ -171,15 +176,15 @@ public:
 "\n"
 "\n"
 "QLineEdit:hover{\n"
-"	background-color: #262626;\n"
+"	background-color: #212121;\n"
 " \n"
-"    border-color: #017374;\n"
+"    border-color: #115C30;\n"
 "}\n"
 "\n"
 "QLineEdit:focus{\n"
-"	background-color: #1D1D1D;\n"
+"	background-color: #1A1A1A;\n"
 "\n"
-"	border-color: #00B3A6;\n"
+"	border-color: #15733C;\n"
 "}\n"
 ""));
         verticalLayout_4 = new QVBoxLayout(LoginMenu);
@@ -581,7 +586,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
