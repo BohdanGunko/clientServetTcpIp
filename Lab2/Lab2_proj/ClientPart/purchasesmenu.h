@@ -2,6 +2,7 @@
 #define PURCHASESMENU_H
 
 #include <QWidget>
+#include<buytickets.h>
 
 namespace Ui {
 class PurchasesMenu;
@@ -22,6 +23,7 @@ private:
     void setEnterIcon (QObject * watched);
     void setLeaveIcon (QObject * watched);
     void setFocusIcon (QObject * watched);
+    BuyTickets BuyScreen;
 };
 
 #endif // PURCHASESMENU_H

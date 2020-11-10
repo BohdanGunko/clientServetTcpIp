@@ -308,6 +308,7 @@ public:
         lineEdit->setMaximumSize(QSize(500, 55));
         lineEdit->setLayoutDirection(Qt::LeftToRight);
         lineEdit->setInputMethodHints(Qt::ImhNone);
+        lineEdit->setFrame(true);
         lineEdit->setDragEnabled(false);
 
         gridLayout_7->addWidget(lineEdit, 1, 0, 1, 1);

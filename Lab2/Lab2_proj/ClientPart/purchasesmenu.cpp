@@ -9,6 +9,9 @@ PurchasesMenu::PurchasesMenu(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    ui->stackedWidget->addWidget(&BuyScreen);
+    ui->stackedWidget->setCurrentIndex(0);
+
     QPixmap BuyIcon (":/recources/img/TrainIcon.png");
     ui->BuyButton->setIcon(BuyIcon);
     ui->BuyButton->setIconSize(QSize(65,55));

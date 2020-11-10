@@ -31,14 +31,12 @@ public:
     QPushButton *ReserveButton;
     QPushButton *LogOutButton;
     QStackedWidget *stackedWidget;
-    QWidget *page;
-    QWidget *page_2;
 
     void setupUi(QWidget *PurchasesMenu)
     {
         if (PurchasesMenu->objectName().isEmpty())
             PurchasesMenu->setObjectName(QString::fromUtf8("PurchasesMenu"));
-        PurchasesMenu->resize(538, 349);
+        PurchasesMenu->resize(1292, 620);
         PurchasesMenu->setStyleSheet(QString::fromUtf8(""));
         gridLayout_4 = new QGridLayout(PurchasesMenu);
         gridLayout_4->setSpacing(0);
@@ -117,12 +115,6 @@ public:
 
         stackedWidget = new QStackedWidget(PurchasesMenu);
         stackedWidget->setObjectName(QString::fromUtf8("stackedWidget"));
-        page = new QWidget();
-        page->setObjectName(QString::fromUtf8("page"));
-        stackedWidget->addWidget(page);
-        page_2 = new QWidget();
-        page_2->setObjectName(QString::fromUtf8("page_2"));
-        stackedWidget->addWidget(page_2);
 
         gridLayout_4->addWidget(stackedWidget, 0, 1, 1, 1);
 
