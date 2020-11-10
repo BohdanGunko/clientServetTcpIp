@@ -42,7 +42,7 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="LoginMenu">
        <property name="sizePolicy">
@@ -562,79 +562,39 @@ QLineEdit:focus{
        <property name="styleSheet">
         <string notr="true">/*--------------------------------Backdround color--------------------------------*/
 #RegMenu{
-  background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(18, 18, 18, 255), stop:0.47191 rgba(0, 25, 26, 255), stop:1 rgba(18, 18, 18, 255));
+  background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(18, 18, 18, 255), stop:0.47191 rgba(4, 20, 11, 255), stop:1 rgba(18, 18, 18, 255));
 }
 /*--------------------------------Button--------------------------------*/
 
 QPushButton{
-	background-color: #383838;
 	
-	border: 2px solid #1D1D1D;
+	background-color: #2C2C2C;
+	
+	border: 2px solid #111111;
 	border-radius:10px;
 
-	color:#CCCCCC;
+	color:#B9B9B9;
 	font-family: &quot;Open Sans Light&quot;;
 	font-size: 15px;
+
 }
 
 QPushButton:hover:!pressed{
-	background-color: #005457;
+	background-color: #136836;
 }
 
-/*For go back button*/
-QPushButton#RegGoBackButton{
-	background-color: #383838;
-	
-	border: 2px solid #1D1D1D;
-	border-radius:20px;
-
-	color:#CCCCCC;
-	font-family: &quot;Open Sans Light&quot;;
-	font-size: 15px;
-}
-
-QPushButton#RegGoBackButton:hover:!pressed{
-	background-color: #005457;
-}
-/*--------------------------------Check box--------------------------------*/
-QCheckBox {
-	color:#999999;
-	font: italic 9pt &quot;Open Sans Light&quot;;
-	border-radius:6px;
-}
-
-QCheckBox::indicator:checked {
-    background: #198C49;
-	border-radius:6px;
-}
-
-QCheckBox::indicator:unchecked {
-    background:#990329;
-	border-radius:6px;
-}
-
-QCheckBox::indicator:checked:hover {
-  	border: 2px solid #198C49;
-    background: #15733C;
-	border-radius:6px;
-}
-
-QCheckBox::indicator:unchecked:hover {
-	border: 2px solid #990329;
-	background:#800322;
-	border-radius:6px;
+QPushButton:hover:pressed{
+	background-color: #082E18;
 }
 
 /*--------------------------------Line edit--------------------------------*/
 
-
-
 QLineEdit{
-	background-color:#303030 ;
+	background-color:#262626 ;
 
 	border-style: solid;
 	border-width: 2px;
-	border-color: #525252;
+	border-color: #565656;
 	border-radius: 10px;
 
 	color:#CCCCCC;
@@ -647,16 +607,17 @@ QLineEdit{
 
 
 QLineEdit:hover{
-	background-color: #262626;
+	background-color: #212121;
  
-    border-color: #017374;
+    border-color: #115C30;
 }
 
 QLineEdit:focus{
-	background-color: #1D1D1D;
+	background-color: #1A1A1A;
 
-	border-color: #00B3A6;
-}</string>
+	border-color: #15733C;
+}
+</string>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_9">
         <item>

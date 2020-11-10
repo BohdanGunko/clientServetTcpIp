@@ -9,15 +9,18 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    buytickets.cpp \
     main.cpp \
     mainwindow.cpp \
     purchasesmenu.cpp
 
 HEADERS += \
+    buytickets.h \
     mainwindow.h \
     purchasesmenu.h
 
 FORMS += \
+    buytickets.ui \
     mainwindow.ui \
     purchasesmenu.ui
 
