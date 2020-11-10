@@ -27,6 +27,8 @@ class Ui_BuyTickets
 {
 public:
     QGridLayout *gridLayout_5;
+    QWidget *widget;
+    QGridLayout *gridLayout_2;
     QGridLayout *gridLayout;
     QGridLayout *gridLayout_4;
     QSpacerItem *horizontalSpacer;
@@ -46,7 +48,7 @@ public:
     {
         if (BuyTickets->objectName().isEmpty())
             BuyTickets->setObjectName(QString::fromUtf8("BuyTickets"));
-        BuyTickets->resize(1366, 768);
+        BuyTickets->resize(980, 467);
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -54,19 +56,30 @@ public:
         BuyTickets->setSizePolicy(sizePolicy);
         BuyTickets->setStyleSheet(QString::fromUtf8(""));
         gridLayout_5 = new QGridLayout(BuyTickets);
-        gridLayout_5->setSpacing(4);
+        gridLayout_5->setSpacing(0);
         gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
         gridLayout_5->setContentsMargins(0, 0, 0, 0);
+        widget = new QWidget(BuyTickets);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setMinimumSize(QSize(0, 90));
+        widget->setMaximumSize(QSize(16777215, 150));
+        gridLayout_2 = new QGridLayout(widget);
+        gridLayout_2->setSpacing(0);
+        gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
+        gridLayout_2->setContentsMargins(0, 0, 0, 0);
         gridLayout = new QGridLayout();
+        gridLayout->setSpacing(5);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        gridLayout->setContentsMargins(10, 10, 10, -1);
+        gridLayout->setContentsMargins(10, 10, 10, 10);
         gridLayout_4 = new QGridLayout();
+        gridLayout_4->setSpacing(5);
         gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
+        gridLayout_4->setContentsMargins(5, 5, 5, 5);
         horizontalSpacer = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         gridLayout_4->addItem(horizontalSpacer, 0, 0, 1, 1);
 
-        pushButton = new QPushButton(BuyTickets);
+        pushButton = new QPushButton(widget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         sizePolicy.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
         pushButton->setSizePolicy(sizePolicy);
@@ -83,8 +96,9 @@ public:
         gridLayout->addLayout(gridLayout_4, 1, 0, 1, 1);
 
         gridLayout_3 = new QGridLayout();
+        gridLayout_3->setSpacing(6);
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
-        comboBox = new QComboBox(BuyTickets);
+        comboBox = new QComboBox(widget);
         comboBox->setObjectName(QString::fromUtf8("comboBox"));
         sizePolicy.setHeightForWidth(comboBox->sizePolicy().hasHeightForWidth());
         comboBox->setSizePolicy(sizePolicy);
@@ -93,7 +107,7 @@ public:
 
         gridLayout_3->addWidget(comboBox, 0, 5, 1, 1);
 
-        dateEdit = new QDateEdit(BuyTickets);
+        dateEdit = new QDateEdit(widget);
         dateEdit->setObjectName(QString::fromUtf8("dateEdit"));
         sizePolicy.setHeightForWidth(dateEdit->sizePolicy().hasHeightForWidth());
         dateEdit->setSizePolicy(sizePolicy);
@@ -107,7 +121,7 @@ public:
 
         gridLayout_3->addItem(horizontalSpacer_3, 0, 0, 1, 1);
 
-        lineEdit_2 = new QLineEdit(BuyTickets);
+        lineEdit_2 = new QLineEdit(widget);
         lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
         sizePolicy.setHeightForWidth(lineEdit_2->sizePolicy().hasHeightForWidth());
         lineEdit_2->setSizePolicy(sizePolicy);
@@ -116,7 +130,7 @@ public:
 
         gridLayout_3->addWidget(lineEdit_2, 0, 3, 1, 1);
 
-        lineEdit = new QLineEdit(BuyTickets);
+        lineEdit = new QLineEdit(widget);
         lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
         sizePolicy.setHeightForWidth(lineEdit->sizePolicy().hasHeightForWidth());
         lineEdit->setSizePolicy(sizePolicy);
@@ -126,7 +140,7 @@ public:
 
         gridLayout_3->addWidget(lineEdit, 0, 1, 1, 1);
 
-        pushButton_2 = new QPushButton(BuyTickets);
+        pushButton_2 = new QPushButton(widget);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
         sizePolicy.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
         pushButton_2->setSizePolicy(sizePolicy);
@@ -143,10 +157,13 @@ public:
 
         gridLayout->addLayout(gridLayout_3, 0, 0, 1, 1);
 
-        gridLayout->setRowStretch(0, 1);
-        gridLayout->setRowStretch(1, 1);
+        gridLayout->setRowStretch(0, 6);
+        gridLayout->setRowStretch(1, 7);
 
-        gridLayout_5->addLayout(gridLayout, 0, 0, 1, 1);
+        gridLayout_2->addLayout(gridLayout, 0, 0, 1, 1);
+
+
+        gridLayout_5->addWidget(widget, 0, 0, 1, 1);
 
         tableView = new QTableView(BuyTickets);
         tableView->setObjectName(QString::fromUtf8("tableView"));
@@ -157,8 +174,8 @@ public:
 
         gridLayout_5->addWidget(tableView, 1, 0, 1, 1);
 
-        gridLayout_5->setRowStretch(0, 2);
-        gridLayout_5->setRowStretch(1, 15);
+        gridLayout_5->setRowStretch(0, 1);
+        gridLayout_5->setRowStretch(1, 6);
 
         retranslateUi(BuyTickets);
 
