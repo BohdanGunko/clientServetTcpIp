@@ -44,24 +44,22 @@
       <widget class="QWidget" name="SpacerMenuBlack" native="true">
        <property name="styleSheet">
         <string notr="true">QPushButton{
-	background-color: #1D1D1D;
+	background-color: rgba(29,29,29,150);
 	border:none;
 
 }
 
 
 #SpacerMenuBlack{
-	background-color:#0A0A0A;
+	background-color:rgba(0,0,0,150);;
+
 }
 
 #SpacerMenuGrey{
-	background-color:#1D1D1D;
+	background-color:rgba(29,29,29,150);
 }
 
-#stackedWidget{
-	background-color:#121212;;
-
-}</string>
+</string>
        </property>
        <layout class="QGridLayout" name="gridLayout_3">
         <property name="leftMargin">

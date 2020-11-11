@@ -33,8 +33,10 @@ public:
     QWidget *LoginMenu;
     QVBoxLayout *verticalLayout_4;
     QGridLayout *gridLayout_6;
-    QSpacerItem *verticalSpacer_6;
     QSpacerItem *horizontalSpacer;
+    QSpacerItem *horizontalSpacer_2;
+    QSpacerItem *verticalSpacer_8;
+    QSpacerItem *verticalSpacer_6;
     QGridLayout *gridLayout_2;
     QGridLayout *gridLayout_9;
     QSpacerItem *verticalSpacer_3;
@@ -44,12 +46,10 @@ public:
     QPushButton *RegButton;
     QPushButton *LogButton;
     QGridLayout *gridLayout_7;
-    QLineEdit *lineEdit_2;
+    QLineEdit *PassLineEdit;
     QSpacerItem *verticalSpacer_7;
     QCheckBox *RemMeCheckBox;
-    QLineEdit *lineEdit;
-    QSpacerItem *horizontalSpacer_2;
-    QSpacerItem *verticalSpacer_8;
+    QLineEdit *LoginLineEdit;
     QWidget *RegMenu;
     QVBoxLayout *verticalLayout_9;
     QGridLayout *gridLayout_4;
@@ -61,31 +61,34 @@ public:
     QPushButton *RegGoBackButton;
     QSpacerItem *horizontalSpacer_5;
     QGridLayout *gridLayout_5;
-    QPushButton *RerRegButton;
+    QPushButton *RegRegButton;
     QSpacerItem *horizontalSpacer_3;
     QSpacerItem *horizontalSpacer_4;
     QSpacerItem *verticalSpacer_5;
     QGridLayout *gridLayout;
-    QLineEdit *lineEdit_4;
-    QLineEdit *lineEdit_3;
-    QLineEdit *lineEdit_5;
+    QLineEdit *RegPassLineEdit;
+    QLineEdit *RegLogLineEdit;
+    QLineEdit *RegConfLineEdit;
     QSpacerItem *verticalSpacer_4;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(1200, 817);
+        MainWindow->resize(1366, 768);
         MainWindow->setMaximumSize(QSize(16777215, 16777215));
         MainWindow->setStyleSheet(QString::fromUtf8(""));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+        centralwidget->setStyleSheet(QString::fromUtf8(""));
         horizontalLayout_3 = new QHBoxLayout(centralwidget);
         horizontalLayout_3->setSpacing(0);
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
         stackedWidget = new QStackedWidget(centralwidget);
         stackedWidget->setObjectName(QString::fromUtf8("stackedWidget"));
+        stackedWidget->setStyleSheet(QString::fromUtf8("background-color:#121212 ;\n"
+""));
         LoginMenu = new QWidget();
         LoginMenu->setObjectName(QString::fromUtf8("LoginMenu"));
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -101,7 +104,9 @@ public:
         LoginMenu->setFont(font);
         LoginMenu->setStyleSheet(QString::fromUtf8("/*--------------------------------Backdround color--------------------------------*/\n"
 "#LoginMenu{\n"
-"  background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(18, 18, 18, 255), stop:0.47191 rgba(4, 20, 11, 255), stop:1 rgba(18, 18, 18, 255));\n"
+"\n"
+"\n"
+"background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(18, 18, 18, 255), stop:0.483146 rgba(7, 34, 19, 255), stop:1 rgba(18, 18, 18, 255));\n"
 "}\n"
 "/*--------------------------------Button--------------------------------*/\n"
 "\n"
@@ -109,7 +114,7 @@ public:
 "	\n"
 "	background-color: #2C2C2C;\n"
 "	\n"
-"	border: 2px solid #111111;\n"
+"	border: 2px solid #1D1D1D;\n"
 "	border-radius:10px;\n"
 "\n"
 "	color:#B9B9B9;\n"
@@ -136,9 +141,9 @@ public:
 "QCheckBox::indicator:checked {\n"
 "    background: #198C49;\n"
 "	border-radius:6px;\n"
-"}\n"
 ""
-                        "\n"
+                        "}\n"
+"\n"
 "QCheckBox::indicator:unchecked {\n"
 "    background:#990329;\n"
 "	border-radius:6px;\n"
@@ -186,6 +191,17 @@ public:
 "\n"
 "	border-color: #15733C;\n"
 "}\n"
+"\n"
+"/*--------------------------------Line edit"
+                        "--------------------------------*/\n"
+"\n"
+"QCheckBox{\n"
+"	background-color: none;\n"
+"	shadow: 3px 3px white;\n"
+"\n"
+"\n"
+"\n"
+"}\n"
 ""));
         verticalLayout_4 = new QVBoxLayout(LoginMenu);
         verticalLayout_4->setSpacing(0);
@@ -196,13 +212,21 @@ public:
         gridLayout_6->setHorizontalSpacing(5);
         gridLayout_6->setVerticalSpacing(0);
         gridLayout_6->setContentsMargins(5, 5, 5, 5);
-        verticalSpacer_6 = new QSpacerItem(0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        gridLayout_6->addItem(verticalSpacer_6, 2, 1, 1, 1);
-
         horizontalSpacer = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         gridLayout_6->addItem(horizontalSpacer, 1, 0, 1, 1);
+
+        horizontalSpacer_2 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_6->addItem(horizontalSpacer_2, 1, 2, 1, 1);
+
+        verticalSpacer_8 = new QSpacerItem(0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout_6->addItem(verticalSpacer_8, 0, 1, 1, 1);
+
+        verticalSpacer_6 = new QSpacerItem(0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout_6->addItem(verticalSpacer_6, 2, 1, 1, 1);
 
         gridLayout_2 = new QGridLayout();
         gridLayout_2->setSpacing(0);
@@ -273,17 +297,17 @@ public:
         gridLayout_7 = new QGridLayout();
         gridLayout_7->setObjectName(QString::fromUtf8("gridLayout_7"));
         gridLayout_7->setHorizontalSpacing(0);
-        gridLayout_7->setVerticalSpacing(5);
+        gridLayout_7->setVerticalSpacing(10);
         gridLayout_7->setContentsMargins(0, 0, -1, -1);
-        lineEdit_2 = new QLineEdit(LoginMenu);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
-        sizePolicy.setHeightForWidth(lineEdit_2->sizePolicy().hasHeightForWidth());
-        lineEdit_2->setSizePolicy(sizePolicy);
-        lineEdit_2->setMinimumSize(QSize(200, 27));
-        lineEdit_2->setMaximumSize(QSize(500, 55));
-        lineEdit_2->setEchoMode(QLineEdit::Password);
+        PassLineEdit = new QLineEdit(LoginMenu);
+        PassLineEdit->setObjectName(QString::fromUtf8("PassLineEdit"));
+        sizePolicy.setHeightForWidth(PassLineEdit->sizePolicy().hasHeightForWidth());
+        PassLineEdit->setSizePolicy(sizePolicy);
+        PassLineEdit->setMinimumSize(QSize(200, 27));
+        PassLineEdit->setMaximumSize(QSize(500, 55));
+        PassLineEdit->setEchoMode(QLineEdit::Password);
 
-        gridLayout_7->addWidget(lineEdit_2, 2, 0, 1, 1);
+        gridLayout_7->addWidget(PassLineEdit, 2, 0, 1, 1);
 
         verticalSpacer_7 = new QSpacerItem(0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -300,18 +324,18 @@ public:
 
         gridLayout_7->addWidget(RemMeCheckBox, 3, 0, 1, 1);
 
-        lineEdit = new QLineEdit(LoginMenu);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-        sizePolicy.setHeightForWidth(lineEdit->sizePolicy().hasHeightForWidth());
-        lineEdit->setSizePolicy(sizePolicy);
-        lineEdit->setMinimumSize(QSize(200, 27));
-        lineEdit->setMaximumSize(QSize(500, 55));
-        lineEdit->setLayoutDirection(Qt::LeftToRight);
-        lineEdit->setInputMethodHints(Qt::ImhNone);
-        lineEdit->setFrame(true);
-        lineEdit->setDragEnabled(false);
+        LoginLineEdit = new QLineEdit(LoginMenu);
+        LoginLineEdit->setObjectName(QString::fromUtf8("LoginLineEdit"));
+        sizePolicy.setHeightForWidth(LoginLineEdit->sizePolicy().hasHeightForWidth());
+        LoginLineEdit->setSizePolicy(sizePolicy);
+        LoginLineEdit->setMinimumSize(QSize(200, 27));
+        LoginLineEdit->setMaximumSize(QSize(500, 55));
+        LoginLineEdit->setLayoutDirection(Qt::LeftToRight);
+        LoginLineEdit->setInputMethodHints(Qt::ImhNone);
+        LoginLineEdit->setFrame(true);
+        LoginLineEdit->setDragEnabled(false);
 
-        gridLayout_7->addWidget(lineEdit, 1, 0, 1, 1);
+        gridLayout_7->addWidget(LoginLineEdit, 1, 0, 1, 1);
 
         gridLayout_7->setRowStretch(0, 1);
         gridLayout_7->setRowStretch(1, 11);
@@ -319,18 +343,10 @@ public:
 
         gridLayout_2->addLayout(gridLayout_7, 1, 0, 1, 1);
 
-        gridLayout_2->setRowStretch(1, 6);
-        gridLayout_2->setRowStretch(2, 8);
+        gridLayout_2->setRowStretch(1, 9);
+        gridLayout_2->setRowStretch(2, 10);
 
         gridLayout_6->addLayout(gridLayout_2, 1, 1, 1, 1);
-
-        horizontalSpacer_2 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout_6->addItem(horizontalSpacer_2, 1, 2, 1, 1);
-
-        verticalSpacer_8 = new QSpacerItem(0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        gridLayout_6->addItem(verticalSpacer_8, 0, 1, 1, 1);
 
         gridLayout_6->setRowStretch(0, 2);
         gridLayout_6->setRowStretch(1, 3);
@@ -345,7 +361,7 @@ public:
         RegMenu->setSizePolicy(sizePolicy);
         RegMenu->setStyleSheet(QString::fromUtf8("/*--------------------------------Backdround color--------------------------------*/\n"
 "#RegMenu{\n"
-"  background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(18, 18, 18, 255), stop:0.47191 rgba(4, 20, 11, 255), stop:1 rgba(18, 18, 18, 255));\n"
+"  background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(18, 18, 18, 255), stop:0.483146 rgba(7, 34, 19, 255), stop:1 rgba(18, 18, 18, 255));\n"
 "}\n"
 "/*--------------------------------Button--------------------------------*/\n"
 "\n"
@@ -353,7 +369,7 @@ public:
 "	\n"
 "	background-color: #2C2C2C;\n"
 "	\n"
-"	border: 2px solid #111111;\n"
+"	border: 2px solid #1D1D1D;\n"
 "	border-radius:10px;\n"
 "\n"
 "	color:#B9B9B9;\n"
@@ -381,8 +397,8 @@ public:
 "	border-radius: 10px;\n"
 "\n"
 "	color:#CCCCCC;\n"
-"	font-family: \"Open San"
-                        "s Light\";\n"
+"	font-family: \"Open Sa"
+                        "ns Light\";\n"
 "	font-size: 15px;\n"
 "\n"
 "	padding-left:10px;\n"
@@ -450,14 +466,14 @@ public:
         gridLayout_5->setSpacing(2);
         gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
         gridLayout_5->setContentsMargins(-1, 20, -1, -1);
-        RerRegButton = new QPushButton(RegMenu);
-        RerRegButton->setObjectName(QString::fromUtf8("RerRegButton"));
-        sizePolicy.setHeightForWidth(RerRegButton->sizePolicy().hasHeightForWidth());
-        RerRegButton->setSizePolicy(sizePolicy);
-        RerRegButton->setMinimumSize(QSize(50, 25));
-        RerRegButton->setMaximumSize(QSize(300, 55));
+        RegRegButton = new QPushButton(RegMenu);
+        RegRegButton->setObjectName(QString::fromUtf8("RegRegButton"));
+        sizePolicy.setHeightForWidth(RegRegButton->sizePolicy().hasHeightForWidth());
+        RegRegButton->setSizePolicy(sizePolicy);
+        RegRegButton->setMinimumSize(QSize(50, 25));
+        RegRegButton->setMaximumSize(QSize(300, 55));
 
-        gridLayout_5->addWidget(RerRegButton, 0, 1, 1, 1);
+        gridLayout_5->addWidget(RegRegButton, 0, 1, 1, 1);
 
         horizontalSpacer_3 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -478,35 +494,35 @@ public:
 
         gridLayout = new QGridLayout();
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        lineEdit_4 = new QLineEdit(RegMenu);
-        lineEdit_4->setObjectName(QString::fromUtf8("lineEdit_4"));
-        sizePolicy.setHeightForWidth(lineEdit_4->sizePolicy().hasHeightForWidth());
-        lineEdit_4->setSizePolicy(sizePolicy);
-        lineEdit_4->setMinimumSize(QSize(200, 27));
-        lineEdit_4->setMaximumSize(QSize(500, 55));
-        lineEdit_4->setEchoMode(QLineEdit::Password);
+        RegPassLineEdit = new QLineEdit(RegMenu);
+        RegPassLineEdit->setObjectName(QString::fromUtf8("RegPassLineEdit"));
+        sizePolicy.setHeightForWidth(RegPassLineEdit->sizePolicy().hasHeightForWidth());
+        RegPassLineEdit->setSizePolicy(sizePolicy);
+        RegPassLineEdit->setMinimumSize(QSize(200, 27));
+        RegPassLineEdit->setMaximumSize(QSize(500, 55));
+        RegPassLineEdit->setEchoMode(QLineEdit::Password);
 
-        gridLayout->addWidget(lineEdit_4, 2, 0, 1, 1);
+        gridLayout->addWidget(RegPassLineEdit, 2, 0, 1, 1);
 
-        lineEdit_3 = new QLineEdit(RegMenu);
-        lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
-        sizePolicy.setHeightForWidth(lineEdit_3->sizePolicy().hasHeightForWidth());
-        lineEdit_3->setSizePolicy(sizePolicy);
-        lineEdit_3->setMinimumSize(QSize(200, 27));
-        lineEdit_3->setMaximumSize(QSize(500, 55));
-        lineEdit_3->setEchoMode(QLineEdit::Normal);
+        RegLogLineEdit = new QLineEdit(RegMenu);
+        RegLogLineEdit->setObjectName(QString::fromUtf8("RegLogLineEdit"));
+        sizePolicy.setHeightForWidth(RegLogLineEdit->sizePolicy().hasHeightForWidth());
+        RegLogLineEdit->setSizePolicy(sizePolicy);
+        RegLogLineEdit->setMinimumSize(QSize(200, 27));
+        RegLogLineEdit->setMaximumSize(QSize(500, 55));
+        RegLogLineEdit->setEchoMode(QLineEdit::Normal);
 
-        gridLayout->addWidget(lineEdit_3, 1, 0, 1, 1);
+        gridLayout->addWidget(RegLogLineEdit, 1, 0, 1, 1);
 
-        lineEdit_5 = new QLineEdit(RegMenu);
-        lineEdit_5->setObjectName(QString::fromUtf8("lineEdit_5"));
-        sizePolicy.setHeightForWidth(lineEdit_5->sizePolicy().hasHeightForWidth());
-        lineEdit_5->setSizePolicy(sizePolicy);
-        lineEdit_5->setMinimumSize(QSize(200, 27));
-        lineEdit_5->setMaximumSize(QSize(500, 55));
-        lineEdit_5->setEchoMode(QLineEdit::Password);
+        RegConfLineEdit = new QLineEdit(RegMenu);
+        RegConfLineEdit->setObjectName(QString::fromUtf8("RegConfLineEdit"));
+        sizePolicy.setHeightForWidth(RegConfLineEdit->sizePolicy().hasHeightForWidth());
+        RegConfLineEdit->setSizePolicy(sizePolicy);
+        RegConfLineEdit->setMinimumSize(QSize(200, 27));
+        RegConfLineEdit->setMaximumSize(QSize(500, 55));
+        RegConfLineEdit->setEchoMode(QLineEdit::Password);
 
-        gridLayout->addWidget(lineEdit_5, 3, 0, 1, 1);
+        gridLayout->addWidget(RegConfLineEdit, 3, 0, 1, 1);
 
         verticalSpacer_4 = new QSpacerItem(0, 0, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -534,20 +550,20 @@ public:
         horizontalLayout_3->addWidget(stackedWidget);
 
         MainWindow->setCentralWidget(centralwidget);
-        QWidget::setTabOrder(lineEdit_3, lineEdit_4);
-        QWidget::setTabOrder(lineEdit_4, lineEdit_5);
-        QWidget::setTabOrder(lineEdit_5, RerRegButton);
-        QWidget::setTabOrder(RerRegButton, RegGoBackButton);
-        QWidget::setTabOrder(RegGoBackButton, lineEdit);
-        QWidget::setTabOrder(lineEdit, lineEdit_2);
-        QWidget::setTabOrder(lineEdit_2, RemMeCheckBox);
+        QWidget::setTabOrder(RegLogLineEdit, RegPassLineEdit);
+        QWidget::setTabOrder(RegPassLineEdit, RegConfLineEdit);
+        QWidget::setTabOrder(RegConfLineEdit, RegRegButton);
+        QWidget::setTabOrder(RegRegButton, RegGoBackButton);
+        QWidget::setTabOrder(RegGoBackButton, LoginLineEdit);
+        QWidget::setTabOrder(LoginLineEdit, PassLineEdit);
+        QWidget::setTabOrder(PassLineEdit, RemMeCheckBox);
         QWidget::setTabOrder(RemMeCheckBox, LogButton);
         QWidget::setTabOrder(LogButton, RegButton);
         QWidget::setTabOrder(RegButton, ExitButton);
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -559,31 +575,31 @@ public:
         ExitButton->setText(QCoreApplication::translate("MainWindow", "Exit", nullptr));
         RegButton->setText(QCoreApplication::translate("MainWindow", "Register", nullptr));
         LogButton->setText(QCoreApplication::translate("MainWindow", "Login", nullptr));
-        lineEdit_2->setPlaceholderText(QCoreApplication::translate("MainWindow", "Password", nullptr));
+        PassLineEdit->setPlaceholderText(QCoreApplication::translate("MainWindow", "Password", nullptr));
         RemMeCheckBox->setText(QCoreApplication::translate("MainWindow", "Remember me", nullptr));
 #if QT_CONFIG(tooltip)
-        lineEdit->setToolTip(QString());
+        LoginLineEdit->setToolTip(QString());
 #endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(statustip)
-        lineEdit->setStatusTip(QString());
+        LoginLineEdit->setStatusTip(QString());
 #endif // QT_CONFIG(statustip)
 #if QT_CONFIG(whatsthis)
-        lineEdit->setWhatsThis(QString());
+        LoginLineEdit->setWhatsThis(QString());
 #endif // QT_CONFIG(whatsthis)
 #if QT_CONFIG(accessibility)
-        lineEdit->setAccessibleName(QString());
+        LoginLineEdit->setAccessibleName(QString());
 #endif // QT_CONFIG(accessibility)
 #if QT_CONFIG(accessibility)
-        lineEdit->setAccessibleDescription(QString());
+        LoginLineEdit->setAccessibleDescription(QString());
 #endif // QT_CONFIG(accessibility)
-        lineEdit->setInputMask(QString());
-        lineEdit->setText(QString());
-        lineEdit->setPlaceholderText(QCoreApplication::translate("MainWindow", "Login", nullptr));
+        LoginLineEdit->setInputMask(QString());
+        LoginLineEdit->setText(QString());
+        LoginLineEdit->setPlaceholderText(QCoreApplication::translate("MainWindow", "Login", nullptr));
         RegGoBackButton->setText(QCoreApplication::translate("MainWindow", "\342\206\220", nullptr));
-        RerRegButton->setText(QCoreApplication::translate("MainWindow", "Register", nullptr));
-        lineEdit_4->setPlaceholderText(QCoreApplication::translate("MainWindow", "Password", nullptr));
-        lineEdit_3->setPlaceholderText(QCoreApplication::translate("MainWindow", "Login", nullptr));
-        lineEdit_5->setPlaceholderText(QCoreApplication::translate("MainWindow", "Confirm password", nullptr));
+        RegRegButton->setText(QCoreApplication::translate("MainWindow", "Register", nullptr));
+        RegPassLineEdit->setPlaceholderText(QCoreApplication::translate("MainWindow", "Password", nullptr));
+        RegLogLineEdit->setPlaceholderText(QCoreApplication::translate("MainWindow", "Login", nullptr));
+        RegConfLineEdit->setPlaceholderText(QCoreApplication::translate("MainWindow", "Confirm password", nullptr));
     } // retranslateUi
 
 };

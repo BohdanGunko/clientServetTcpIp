@@ -49,24 +49,22 @@ public:
         SpacerMenuBlack = new QWidget(PurchasesMenu);
         SpacerMenuBlack->setObjectName(QString::fromUtf8("SpacerMenuBlack"));
         SpacerMenuBlack->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"	background-color: #1D1D1D;\n"
+"	background-color: rgba(29,29,29,150);\n"
 "	border:none;\n"
 "\n"
 "}\n"
 "\n"
 "\n"
 "#SpacerMenuBlack{\n"
-"	background-color:#0A0A0A;\n"
+"	background-color:rgba(0,0,0,150);;\n"
+"\n"
 "}\n"
 "\n"
 "#SpacerMenuGrey{\n"
-"	background-color:#1D1D1D;\n"
+"	background-color:rgba(29,29,29,150);\n"
 "}\n"
 "\n"
-"#stackedWidget{\n"
-"	background-color:#121212;;\n"
-"\n"
-"}"));
+""));
         gridLayout_3 = new QGridLayout(SpacerMenuBlack);
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
         gridLayout_3->setHorizontalSpacing(0);

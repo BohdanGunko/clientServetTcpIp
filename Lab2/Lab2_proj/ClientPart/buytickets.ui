@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>980</width>
-    <height>467</height>
+    <width>1214</width>
+    <height>524</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -20,36 +20,116 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">#TopBar{
+  background-color:none;
+
+}
+#TrainsTable{
+background-color:rgb(33, 33, 33);
+border:none;
+border-radius: 20px;
+}
+#TopBar{
+background-color:rgba(21, 115, 60, 150);
+border:none;
+border-radius: 20px;
+}
+/*--------------------------------Button--------------------------------*/
+
+QPushButton{
+	
+	background-color: #2C2C2C;
+	
+	border: 2px solid #232323;
+	border-radius:10px;
+
+	color:#B9B9B9;
+	font-family: &quot;Open Sans Light&quot;;
+	font-size: 15px;
+
+}
+
+QPushButton:hover:!pressed{
+	background-color: #136836;
+border-color:#232323;
+}
+
+QPushButton:hover:pressed{
+	background-color: #082E18;
+border-color:#232323;
+}
+
+/*--------------------------------Label--------------------------------*/
+QLabel{
+	background:none;
+color:#B9B9B9;
+	font:   &quot;Calibri&quot;;
+	font-size: 15px;
+}
+
+
+/*--------------------------------Line edit--------------------------------*/
+
+QLineEdit{
+	background-color:#262626 ;
+
+	border-style: solid;
+	border-width: 2px;
+	border-color: #565656;
+	border-radius: 10px;
+
+	color:#CCCCCC;
+	font-family: &quot;Open Sans Light&quot;;
+	font-size: 15px;
+
+	padding-left:10px;
+	padding-right:10px;
+}
+
+
+QLineEdit:hover{
+	background-color: #212121;
+ 
+    border-color: #115C30;
+}
+
+QLineEdit:focus{
+	background-color: #1A1A1A;
+
+	border-color: #15733C;
+}</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout_5" rowstretch="1,6">
+  <layout class="QGridLayout" name="gridLayout_5" rowstretch="1,5">
    <property name="leftMargin">
-    <number>0</number>
+    <number>10</number>
    </property>
    <property name="topMargin">
-    <number>0</number>
+    <number>10</number>
    </property>
    <property name="rightMargin">
-    <number>0</number>
+    <number>10</number>
    </property>
    <property name="bottomMargin">
+    <number>10</number>
+   </property>
+   <property name="horizontalSpacing">
     <number>0</number>
    </property>
-   <property name="spacing">
-    <number>0</number>
+   <property name="verticalSpacing">
+    <number>10</number>
    </property>
    <item row="0" column="0">
-    <widget class="QWidget" name="widget" native="true">
+    <widget class="QWidget" name="TopBar" native="true">
      <property name="minimumSize">
       <size>
        <width>0</width>
-       <height>90</height>
+       <height>120</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
        <width>16777215</width>
-       <height>150</height>
+       <height>170</height>
       </size>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
@@ -69,7 +149,7 @@
        <number>0</number>
       </property>
       <item row="0" column="0">
-       <layout class="QGridLayout" name="gridLayout" rowstretch="6,7">
+       <layout class="QGridLayout" name="gridLayout" rowstretch="0,0">
         <property name="leftMargin">
          <number>10</number>
         </property>
@@ -116,7 +196,7 @@
            </spacer>
           </item>
           <item row="0" column="1">
-           <widget class="QPushButton" name="pushButton">
+           <widget class="QPushButton" name="SearchButton">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -132,7 +212,7 @@
             <property name="maximumSize">
              <size>
               <width>200</width>
-              <height>50</height>
+              <height>45</height>
              </size>
             </property>
             <property name="text">
@@ -156,34 +236,12 @@
          </layout>
         </item>
         <item row="0" column="0">
-         <layout class="QGridLayout" name="gridLayout_3" rowstretch="0" rowminimumheight="0">
+         <layout class="QGridLayout" name="gridLayout_3" rowstretch="0,0">
           <property name="spacing">
            <number>6</number>
           </property>
-          <item row="0" column="5">
-           <widget class="QComboBox" name="comboBox">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>70</width>
-              <height>25</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>110</width>
-              <height>50</height>
-             </size>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="4">
-           <widget class="QDateEdit" name="dateEdit">
+          <item row="1" column="4">
+           <widget class="QDateEdit" name="DateEdit">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -199,7 +257,7 @@
             <property name="maximumSize">
              <size>
               <width>150</width>
-              <height>50</height>
+              <height>45</height>
              </size>
             </property>
             <property name="calendarPopup">
@@ -207,21 +265,8 @@
             </property>
            </widget>
           </item>
-          <item row="0" column="0">
-           <spacer name="horizontalSpacer_3">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>0</width>
-              <height>0</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="0" column="3">
-           <widget class="QLineEdit" name="lineEdit_2">
+          <item row="1" column="3">
+           <widget class="QLineEdit" name="DestinationLineEdit">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -237,38 +282,16 @@
             <property name="maximumSize">
              <size>
               <width>500</width>
-              <height>50</height>
+              <height>45</height>
              </size>
+            </property>
+            <property name="placeholderText">
+             <string>Destination</string>
             </property>
            </widget>
           </item>
-          <item row="0" column="1">
-           <widget class="QLineEdit" name="lineEdit">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>200</width>
-              <height>27</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>500</width>
-              <height>50</height>
-             </size>
-            </property>
-            <property name="frame">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="2">
-           <widget class="QPushButton" name="pushButton_2">
+          <item row="1" column="2">
+           <widget class="QPushButton" name="ReverseDepDest">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -284,7 +307,7 @@
             <property name="maximumSize">
              <size>
               <width>40</width>
-              <height>50</height>
+              <height>45</height>
              </size>
             </property>
             <property name="sizeIncrement">
@@ -298,7 +321,70 @@
             </property>
            </widget>
           </item>
-          <item row="0" column="6">
+          <item row="1" column="0">
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="1" column="5">
+           <widget class="QComboBox" name="HoursComboBox">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>70</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>110</width>
+              <height>45</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="DepartureLineEdit">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>200</width>
+              <height>27</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>500</width>
+              <height>45</height>
+             </size>
+            </property>
+            <property name="frame">
+             <bool>true</bool>
+            </property>
+            <property name="placeholderText">
+             <string>Departure</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="6">
            <spacer name="horizontalSpacer_4">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -311,6 +397,34 @@
             </property>
            </spacer>
           </item>
+          <item row="0" column="1">
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>From:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="3">
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>To</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="4">
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>Departure time:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="5">
+           <widget class="QLabel" name="label_4">
+            <property name="text">
+             <string>Hour:</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </item>
        </layout>
@@ -319,7 +433,7 @@
     </widget>
    </item>
    <item row="1" column="0">
-    <widget class="QTableView" name="tableView">
+    <widget class="QTableView" name="TrainsTable">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
        <horstretch>0</horstretch>
