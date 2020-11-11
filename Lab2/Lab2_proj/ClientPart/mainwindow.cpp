@@ -1,6 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QEvent>
+#include <QDebug>
 #include <QGraphicsDropShadowEffect>
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -11,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->stackedWidget->setCurrentIndex(0);
 
     QGraphicsDropShadowEffect *LogEffect = new QGraphicsDropShadowEffect;
-    LogEffect->setBlurRadius(25);
+    LogEffect->setBlurRadius(15);
     LogEffect->setXOffset(0);
     LogEffect->setYOffset(0);
     LogEffect->setColor(Qt::black);
@@ -19,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     QGraphicsDropShadowEffect *PassEffect = new QGraphicsDropShadowEffect;
-    PassEffect->setBlurRadius(25);
+    PassEffect->setBlurRadius(15);
     PassEffect->setXOffset(0);
     PassEffect->setYOffset(0);
     PassEffect->setColor(Qt::black);
@@ -108,4 +111,11 @@ void MainWindow::on_LogButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(2);
 }
+
+
+void MainWindow::resizeEvent(QResizeEvent* event)
+{
+   qDebug()<<"Resise";
+}
+
 

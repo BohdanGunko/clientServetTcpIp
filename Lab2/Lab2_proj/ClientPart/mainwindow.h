@@ -16,13 +16,12 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+
 private slots:
     void on_RegButton_clicked();
-
     void on_RegGoBackButton_clicked();
-
     void on_LogButton_clicked();
-
+    void resizeEvent(QResizeEvent*);
 private:
     Ui::MainWindow *ui;
     PurchasesMenu OvScreen;

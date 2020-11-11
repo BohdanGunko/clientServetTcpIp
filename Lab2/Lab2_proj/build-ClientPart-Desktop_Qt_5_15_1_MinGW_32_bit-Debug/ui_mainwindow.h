@@ -75,7 +75,13 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(1366, 768);
+        MainWindow->resize(1040, 585);
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(MainWindow->sizePolicy().hasHeightForWidth());
+        MainWindow->setSizePolicy(sizePolicy);
+        MainWindow->setMinimumSize(QSize(1040, 585));
         MainWindow->setMaximumSize(QSize(16777215, 16777215));
         MainWindow->setStyleSheet(QString::fromUtf8(""));
         centralwidget = new QWidget(MainWindow);
@@ -91,11 +97,11 @@ public:
 ""));
         LoginMenu = new QWidget();
         LoginMenu->setObjectName(QString::fromUtf8("LoginMenu"));
-        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(LoginMenu->sizePolicy().hasHeightForWidth());
-        LoginMenu->setSizePolicy(sizePolicy);
+        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(LoginMenu->sizePolicy().hasHeightForWidth());
+        LoginMenu->setSizePolicy(sizePolicy1);
         LoginMenu->setMaximumSize(QSize(16777215, 16777215));
         QFont font;
         font.setFamily(QString::fromUtf8("Calibri"));
@@ -104,31 +110,32 @@ public:
         LoginMenu->setFont(font);
         LoginMenu->setStyleSheet(QString::fromUtf8("/*--------------------------------Backdround color--------------------------------*/\n"
 "#LoginMenu{\n"
-"\n"
-"\n"
-"background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(18, 18, 18, 255), stop:0.483146 rgba(7, 34, 19, 255), stop:1 rgba(18, 18, 18, 255));\n"
+"background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(23, 30, 34, 255), stop:0.5 rgba(30, 40, 45, 255), stop:1 rgba(23, 30, 34, 255));\n"
 "}\n"
 "/*--------------------------------Button--------------------------------*/\n"
 "\n"
 "QPushButton{\n"
 "	\n"
-"	background-color: #2C2C2C;\n"
+"	background-color: rgba(242, 150, 47, 220);\n"
 "	\n"
-"	border: 2px solid #1D1D1D;\n"
+"\n"
 "	border-radius:10px;\n"
 "\n"
-"	color:#B9B9B9;\n"
-"	font-family: \"Open Sans Light\";\n"
-"	font-size: 15px;\n"
+"	color:#1b2327;\n"
+"	font-family:  \"Calibri Bold\";\n"
+"	font-size: 17px;\n"
 "\n"
 "}\n"
 "\n"
 "QPushButton:hover:!pressed{\n"
-"	background-color: #136836;\n"
+"	background-color: #455A64;\n"
+"color:#EEEEEE;\n"
+"\n"
 "}\n"
 "\n"
 "QPushButton:hover:pressed{\n"
-"	background-color: #082E18;\n"
+"	background-color: #37474F;\n"
+"color:#DDDDDD;\n"
 "}\n"
 "\n"
 "/*--------------------------------Check box--------------------------------*/\n"
@@ -140,9 +147,9 @@ public:
 "\n"
 "QCheckBox::indicator:checked {\n"
 "    background: #198C49;\n"
-"	border-radius:6px;\n"
-""
-                        "}\n"
+"	bord"
+                        "er-radius:6px;\n"
+"}\n"
 "\n"
 "QCheckBox::indicator:unchecked {\n"
 "    background:#990329;\n"
@@ -164,16 +171,16 @@ public:
 "/*--------------------------------Line edit--------------------------------*/\n"
 "\n"
 "QLineEdit{\n"
-"	background-color:#262626 ;\n"
+"	background-color:#37474F ;\n"
 "\n"
 "	border-style: solid;\n"
 "	border-width: 2px;\n"
-"	border-color: #565656;\n"
+"	border-color: #455A64;\n"
 "	border-radius: 10px;\n"
 "\n"
-"	color:#CCCCCC;\n"
-"	font-family: \"Open Sans Light\";\n"
-"	font-size: 15px;\n"
+"	color:#ECEFF1;\n"
+"	font-family: \"Calibri\";\n"
+"	font-size: 17px;\n"
 "\n"
 "	padding-left:10px;\n"
 "	padding-right:10px;\n"
@@ -181,25 +188,18 @@ public:
 "\n"
 "\n"
 "QLineEdit:hover{\n"
-"	background-color: #212121;\n"
-" \n"
-"    border-color: #115C30;\n"
+"	background-color: #263238;\n"
 "}\n"
 "\n"
 "QLineEdit:focus{\n"
-"	background-color: #1A1A1A;\n"
-"\n"
-"	border-color: #15733C;\n"
+"	background-color: #1c2428;\n"
 "}\n"
 "\n"
-"/*--------------------------------Line edit"
-                        "--------------------------------*/\n"
+"/*--------------------------------Line edit--------------------------------*/\n"
 "\n"
 "QCheckBox{\n"
-"	background-color: none;\n"
-"	shadow: 3px 3px white;\n"
-"\n"
-"\n"
+""
+                        "	background-color: none;\n"
 "\n"
 "}\n"
 ""));
@@ -243,8 +243,8 @@ public:
         ExitButton = new QPushButton(LoginMenu);
         ExitButton->setObjectName(QString::fromUtf8("ExitButton"));
         ExitButton->setEnabled(true);
-        sizePolicy.setHeightForWidth(ExitButton->sizePolicy().hasHeightForWidth());
-        ExitButton->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(ExitButton->sizePolicy().hasHeightForWidth());
+        ExitButton->setSizePolicy(sizePolicy1);
         ExitButton->setMinimumSize(QSize(100, 27));
         ExitButton->setMaximumSize(QSize(300, 55));
         ExitButton->setStyleSheet(QString::fromUtf8(""));
@@ -261,13 +261,13 @@ public:
 
         RegButton = new QPushButton(LoginMenu);
         RegButton->setObjectName(QString::fromUtf8("RegButton"));
-        sizePolicy.setHeightForWidth(RegButton->sizePolicy().hasHeightForWidth());
-        RegButton->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(RegButton->sizePolicy().hasHeightForWidth());
+        RegButton->setSizePolicy(sizePolicy1);
         RegButton->setMinimumSize(QSize(100, 27));
         RegButton->setMaximumSize(QSize(300, 55));
         RegButton->setBaseSize(QSize(0, 0));
         QFont font1;
-        font1.setFamily(QString::fromUtf8("Open Sans Light"));
+        font1.setFamily(QString::fromUtf8("Calibri Bold"));
         font1.setBold(false);
         font1.setItalic(false);
         font1.setWeight(50);
@@ -279,8 +279,8 @@ public:
 
         LogButton = new QPushButton(LoginMenu);
         LogButton->setObjectName(QString::fromUtf8("LogButton"));
-        sizePolicy.setHeightForWidth(LogButton->sizePolicy().hasHeightForWidth());
-        LogButton->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(LogButton->sizePolicy().hasHeightForWidth());
+        LogButton->setSizePolicy(sizePolicy1);
         LogButton->setMinimumSize(QSize(100, 27));
         LogButton->setMaximumSize(QSize(300, 55));
         LogButton->setStyleSheet(QString::fromUtf8(""));
@@ -301,8 +301,8 @@ public:
         gridLayout_7->setContentsMargins(0, 0, -1, -1);
         PassLineEdit = new QLineEdit(LoginMenu);
         PassLineEdit->setObjectName(QString::fromUtf8("PassLineEdit"));
-        sizePolicy.setHeightForWidth(PassLineEdit->sizePolicy().hasHeightForWidth());
-        PassLineEdit->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(PassLineEdit->sizePolicy().hasHeightForWidth());
+        PassLineEdit->setSizePolicy(sizePolicy1);
         PassLineEdit->setMinimumSize(QSize(200, 27));
         PassLineEdit->setMaximumSize(QSize(500, 55));
         PassLineEdit->setEchoMode(QLineEdit::Password);
@@ -315,19 +315,19 @@ public:
 
         RemMeCheckBox = new QCheckBox(LoginMenu);
         RemMeCheckBox->setObjectName(QString::fromUtf8("RemMeCheckBox"));
-        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Fixed);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(RemMeCheckBox->sizePolicy().hasHeightForWidth());
-        RemMeCheckBox->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy2(QSizePolicy::Minimum, QSizePolicy::Fixed);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(RemMeCheckBox->sizePolicy().hasHeightForWidth());
+        RemMeCheckBox->setSizePolicy(sizePolicy2);
         RemMeCheckBox->setChecked(false);
 
         gridLayout_7->addWidget(RemMeCheckBox, 3, 0, 1, 1);
 
         LoginLineEdit = new QLineEdit(LoginMenu);
         LoginLineEdit->setObjectName(QString::fromUtf8("LoginLineEdit"));
-        sizePolicy.setHeightForWidth(LoginLineEdit->sizePolicy().hasHeightForWidth());
-        LoginLineEdit->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(LoginLineEdit->sizePolicy().hasHeightForWidth());
+        LoginLineEdit->setSizePolicy(sizePolicy1);
         LoginLineEdit->setMinimumSize(QSize(200, 27));
         LoginLineEdit->setMaximumSize(QSize(500, 55));
         LoginLineEdit->setLayoutDirection(Qt::LeftToRight);
@@ -357,49 +357,81 @@ public:
         stackedWidget->addWidget(LoginMenu);
         RegMenu = new QWidget();
         RegMenu->setObjectName(QString::fromUtf8("RegMenu"));
-        sizePolicy.setHeightForWidth(RegMenu->sizePolicy().hasHeightForWidth());
-        RegMenu->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(RegMenu->sizePolicy().hasHeightForWidth());
+        RegMenu->setSizePolicy(sizePolicy1);
         RegMenu->setStyleSheet(QString::fromUtf8("/*--------------------------------Backdround color--------------------------------*/\n"
 "#RegMenu{\n"
-"  background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(18, 18, 18, 255), stop:0.483146 rgba(7, 34, 19, 255), stop:1 rgba(18, 18, 18, 255));\n"
+"background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(23, 30, 34, 255), stop:0.5 rgba(30, 40, 45, 255), stop:1 rgba(23, 30, 34, 255))\n"
 "}\n"
 "/*--------------------------------Button--------------------------------*/\n"
 "\n"
 "QPushButton{\n"
 "	\n"
-"	background-color: #2C2C2C;\n"
+"	background-color: rgba(242, 150, 47, 220);\n"
 "	\n"
-"	border: 2px solid #1D1D1D;\n"
+"\n"
 "	border-radius:10px;\n"
 "\n"
-"	color:#B9B9B9;\n"
-"	font-family: \"Open Sans Light\";\n"
-"	font-size: 15px;\n"
+"	color:#1b2327;\n"
+"	font-family:  \"Calibri Bold\";\n"
+"	font-size: 17px;\n"
 "\n"
 "}\n"
 "\n"
 "QPushButton:hover:!pressed{\n"
-"	background-color: #136836;\n"
+"	background-color: #455A64;\n"
+"color:#EEEEEE;\n"
+"\n"
 "}\n"
 "\n"
 "QPushButton:hover:pressed{\n"
-"	background-color: #082E18;\n"
+"	background-color: #37474F;\n"
+"color:#DDDDDD;\n"
+"}\n"
+"\n"
+"/*--------------------------------Check box--------------------------------*/\n"
+"QCheckBox {\n"
+"	color:#999999;\n"
+"	font: italic 9pt \"Open Sans Light\";\n"
+"	border-radius:6px;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    background: #198C49;\n"
+"	border-"
+                        "radius:6px;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    background:#990329;\n"
+"	border-radius:6px;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked:hover {\n"
+"  	border: 2px solid #198C49;\n"
+"    background: #15733C;\n"
+"	border-radius:6px;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked:hover {\n"
+"	border: 2px solid #990329;\n"
+"	background:#800322;\n"
+"	border-radius:6px;\n"
 "}\n"
 "\n"
 "/*--------------------------------Line edit--------------------------------*/\n"
 "\n"
 "QLineEdit{\n"
-"	background-color:#262626 ;\n"
+"	background-color:#37474F ;\n"
 "\n"
 "	border-style: solid;\n"
 "	border-width: 2px;\n"
-"	border-color: #565656;\n"
+"	border-color: #455A64;\n"
 "	border-radius: 10px;\n"
 "\n"
-"	color:#CCCCCC;\n"
-"	font-family: \"Open Sa"
-                        "ns Light\";\n"
-"	font-size: 15px;\n"
+"	color:#ECEFF1;\n"
+"	font-family: \"Calibri\";\n"
+"	font-size: 17px;\n"
 "\n"
 "	padding-left:10px;\n"
 "	padding-right:10px;\n"
@@ -407,15 +439,22 @@ public:
 "\n"
 "\n"
 "QLineEdit:hover{\n"
-"	background-color: #212121;\n"
-" \n"
-"    border-color: #115C30;\n"
+"	background-color: #263238;\n"
 "}\n"
 "\n"
 "QLineEdit:focus{\n"
-"	background-color: #1A1A1A;\n"
+"	background-color: #1c2428;\n"
+"}\n"
 "\n"
-"	border-color: #15733C;\n"
+"/*--------------------------------Line edit--------------------------------*/\n"
+"\n"
+"QCheckBox{\n"
+"	ba"
+                        "ckground-color: none;\n"
+"	shadow: 3px 3px white;\n"
+"\n"
+"\n"
+"\n"
 "}\n"
 ""));
         verticalLayout_9 = new QVBoxLayout(RegMenu);
@@ -445,11 +484,11 @@ public:
         horizontalLayout_2->setContentsMargins(-1, -1, -1, 0);
         RegGoBackButton = new QPushButton(RegMenu);
         RegGoBackButton->setObjectName(QString::fromUtf8("RegGoBackButton"));
-        QSizePolicy sizePolicy2(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(RegGoBackButton->sizePolicy().hasHeightForWidth());
-        RegGoBackButton->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy3(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(RegGoBackButton->sizePolicy().hasHeightForWidth());
+        RegGoBackButton->setSizePolicy(sizePolicy3);
         RegGoBackButton->setMinimumSize(QSize(40, 40));
         RegGoBackButton->setMaximumSize(QSize(30, 30));
 
@@ -468,8 +507,8 @@ public:
         gridLayout_5->setContentsMargins(-1, 20, -1, -1);
         RegRegButton = new QPushButton(RegMenu);
         RegRegButton->setObjectName(QString::fromUtf8("RegRegButton"));
-        sizePolicy.setHeightForWidth(RegRegButton->sizePolicy().hasHeightForWidth());
-        RegRegButton->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(RegRegButton->sizePolicy().hasHeightForWidth());
+        RegRegButton->setSizePolicy(sizePolicy1);
         RegRegButton->setMinimumSize(QSize(50, 25));
         RegRegButton->setMaximumSize(QSize(300, 55));
 
@@ -496,8 +535,8 @@ public:
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         RegPassLineEdit = new QLineEdit(RegMenu);
         RegPassLineEdit->setObjectName(QString::fromUtf8("RegPassLineEdit"));
-        sizePolicy.setHeightForWidth(RegPassLineEdit->sizePolicy().hasHeightForWidth());
-        RegPassLineEdit->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(RegPassLineEdit->sizePolicy().hasHeightForWidth());
+        RegPassLineEdit->setSizePolicy(sizePolicy1);
         RegPassLineEdit->setMinimumSize(QSize(200, 27));
         RegPassLineEdit->setMaximumSize(QSize(500, 55));
         RegPassLineEdit->setEchoMode(QLineEdit::Password);
@@ -506,8 +545,8 @@ public:
 
         RegLogLineEdit = new QLineEdit(RegMenu);
         RegLogLineEdit->setObjectName(QString::fromUtf8("RegLogLineEdit"));
-        sizePolicy.setHeightForWidth(RegLogLineEdit->sizePolicy().hasHeightForWidth());
-        RegLogLineEdit->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(RegLogLineEdit->sizePolicy().hasHeightForWidth());
+        RegLogLineEdit->setSizePolicy(sizePolicy1);
         RegLogLineEdit->setMinimumSize(QSize(200, 27));
         RegLogLineEdit->setMaximumSize(QSize(500, 55));
         RegLogLineEdit->setEchoMode(QLineEdit::Normal);
@@ -516,8 +555,8 @@ public:
 
         RegConfLineEdit = new QLineEdit(RegMenu);
         RegConfLineEdit->setObjectName(QString::fromUtf8("RegConfLineEdit"));
-        sizePolicy.setHeightForWidth(RegConfLineEdit->sizePolicy().hasHeightForWidth());
-        RegConfLineEdit->setSizePolicy(sizePolicy);
+        sizePolicy1.setHeightForWidth(RegConfLineEdit->sizePolicy().hasHeightForWidth());
+        RegConfLineEdit->setSizePolicy(sizePolicy1);
         RegConfLineEdit->setMinimumSize(QSize(200, 27));
         RegConfLineEdit->setMaximumSize(QSize(500, 55));
         RegConfLineEdit->setEchoMode(QLineEdit::Password);
