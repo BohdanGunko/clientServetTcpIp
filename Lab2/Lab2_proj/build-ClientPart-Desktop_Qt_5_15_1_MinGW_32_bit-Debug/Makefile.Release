@@ -839,7 +839,6 @@ release/mainwindow.o: ../ClientPart/mainwindow.cpp ../ClientPart/mainwindow.h \
 		ui_mainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QEvent \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QDebug \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/Qstring \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QStyle \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qstyle.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QGraphicsDropShadowEffect \

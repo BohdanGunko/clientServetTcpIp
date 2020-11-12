@@ -126,7 +126,7 @@ void MainWindow::resizeEvent(QResizeEvent* event)
 void MainWindow::resizeLogMenu()
 {
     const short hMarg = 6;
-    const short betweenMarg = 30;
+    const short betweenMarg = 50;
 
     const short wW= this->size().width();
     const short wH= this->size().height();
@@ -137,9 +137,11 @@ void MainWindow::resizeLogMenu()
     const short bH = wH/20;
     const short bW = wW/8;
 
+    const short CbH = ui->RemMeCheckBox->size().height();
+    const short CbW = ui->RemMeCheckBox->size().width();
 
 
-    short totalHeight = 3*hMarg+betweenMarg+2*LeH+3*bH;
+    short totalHeight = 4*hMarg+betweenMarg+2*LeH+3*bH+CbH;
 
     ui->LoginLineEdit->resize(LeW,LeH);
     ui->PassLineEdit->resize(LeW,LeH);
@@ -154,7 +156,10 @@ void MainWindow::resizeLogMenu()
                             wH/2-totalHeight/2+LeH+hMarg
                 );
 
-
+    ui->RemMeCheckBox->move(
+                             wW/2-LeW/2,
+                            wH/2-totalHeight/2+LeH+hMarg+LeH+hMarg
+                            );
 
     ui->LogButton->resize(bW,bH);
     ui->RegButton->resize(bW,bH);

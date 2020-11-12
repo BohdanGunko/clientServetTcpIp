@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
@@ -32,6 +33,7 @@ public:
     QPushButton *RegButton;
     QLineEdit *PassLineEdit;
     QLineEdit *LoginLineEdit;
+    QCheckBox *RemMeCheckBox;
     QWidget *RegMenu;
     QLineEdit *RegLogLineEdit;
     QLineEdit *RegPassLineEdit;
@@ -61,8 +63,7 @@ public:
         gridLayout_2->setContentsMargins(0, 0, 0, 0);
         stackedWidget = new QStackedWidget(centralwidget);
         stackedWidget->setObjectName(QString::fromUtf8("stackedWidget"));
-        stackedWidget->setStyleSheet(QString::fromUtf8("background-color:#121212 ;\n"
-""));
+        stackedWidget->setStyleSheet(QString::fromUtf8("background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(23, 30, 34, 255), stop:0.5 rgba(30, 40, 45, 255), stop:1 rgba(23, 30, 34, 255));"));
         LoginMenu = new QWidget();
         LoginMenu->setObjectName(QString::fromUtf8("LoginMenu"));
         QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -167,6 +168,9 @@ public:
 "\n"
 "QC"
                         "heckBox{\n"
+"	color:#78909C;\n"
+"	font-family: \"Calibri\";\n"
+"	font-size: 15px;\n"
 "	background-color: none;\n"
 "\n"
 "}\n"
@@ -174,7 +178,7 @@ public:
         ExitButton = new QPushButton(LoginMenu);
         ExitButton->setObjectName(QString::fromUtf8("ExitButton"));
         ExitButton->setEnabled(true);
-        ExitButton->setGeometry(QRect(510, 400, 100, 27));
+        ExitButton->setGeometry(QRect(410, 340, 100, 27));
         QSizePolicy sizePolicy2(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy2.setHorizontalStretch(0);
         sizePolicy2.setVerticalStretch(0);
@@ -185,7 +189,7 @@ public:
         ExitButton->setStyleSheet(QString::fromUtf8(""));
         LogButton = new QPushButton(LoginMenu);
         LogButton->setObjectName(QString::fromUtf8("LogButton"));
-        LogButton->setGeometry(QRect(500, 330, 100, 27));
+        LogButton->setGeometry(QRect(410, 270, 100, 27));
         sizePolicy2.setHeightForWidth(LogButton->sizePolicy().hasHeightForWidth());
         LogButton->setSizePolicy(sizePolicy2);
         LogButton->setMinimumSize(QSize(0, 0));
@@ -193,7 +197,7 @@ public:
         LogButton->setStyleSheet(QString::fromUtf8(""));
         RegButton = new QPushButton(LoginMenu);
         RegButton->setObjectName(QString::fromUtf8("RegButton"));
-        RegButton->setGeometry(QRect(510, 370, 100, 27));
+        RegButton->setGeometry(QRect(410, 310, 100, 27));
         sizePolicy2.setHeightForWidth(RegButton->sizePolicy().hasHeightForWidth());
         RegButton->setSizePolicy(sizePolicy2);
         RegButton->setMinimumSize(QSize(0, 0));
@@ -209,7 +213,7 @@ public:
         RegButton->setStyleSheet(QString::fromUtf8(""));
         PassLineEdit = new QLineEdit(LoginMenu);
         PassLineEdit->setObjectName(QString::fromUtf8("PassLineEdit"));
-        PassLineEdit->setGeometry(QRect(470, 250, 147, 73));
+        PassLineEdit->setGeometry(QRect(400, 180, 200, 30));
         sizePolicy2.setHeightForWidth(PassLineEdit->sizePolicy().hasHeightForWidth());
         PassLineEdit->setSizePolicy(sizePolicy2);
         PassLineEdit->setMinimumSize(QSize(0, 0));
@@ -217,7 +221,7 @@ public:
         PassLineEdit->setEchoMode(QLineEdit::Password);
         LoginLineEdit = new QLineEdit(LoginMenu);
         LoginLineEdit->setObjectName(QString::fromUtf8("LoginLineEdit"));
-        LoginLineEdit->setGeometry(QRect(470, 100, 147, 153));
+        LoginLineEdit->setGeometry(QRect(400, 140, 200, 30));
         sizePolicy2.setHeightForWidth(LoginLineEdit->sizePolicy().hasHeightForWidth());
         LoginLineEdit->setSizePolicy(sizePolicy2);
         LoginLineEdit->setMinimumSize(QSize(0, 0));
@@ -226,6 +230,11 @@ public:
         LoginLineEdit->setInputMethodHints(Qt::ImhNone);
         LoginLineEdit->setFrame(true);
         LoginLineEdit->setDragEnabled(false);
+        RemMeCheckBox = new QCheckBox(LoginMenu);
+        RemMeCheckBox->setObjectName(QString::fromUtf8("RemMeCheckBox"));
+        RemMeCheckBox->setGeometry(QRect(400, 220, 110, 20));
+        sizePolicy2.setHeightForWidth(RemMeCheckBox->sizePolicy().hasHeightForWidth());
+        RemMeCheckBox->setSizePolicy(sizePolicy2);
         stackedWidget->addWidget(LoginMenu);
         RegMenu = new QWidget();
         RegMenu->setObjectName(QString::fromUtf8("RegMenu"));
@@ -378,7 +387,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(1);
+        stackedWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -409,6 +418,7 @@ public:
         LoginLineEdit->setInputMask(QString());
         LoginLineEdit->setText(QString());
         LoginLineEdit->setPlaceholderText(QCoreApplication::translate("MainWindow", "Login", nullptr));
+        RemMeCheckBox->setText(QCoreApplication::translate("MainWindow", "Remember me", nullptr));
         RegLogLineEdit->setPlaceholderText(QCoreApplication::translate("MainWindow", "Login", nullptr));
         RegPassLineEdit->setPlaceholderText(QCoreApplication::translate("MainWindow", "Password", nullptr));
         RegConfLineEdit->setPlaceholderText(QCoreApplication::translate("MainWindow", "Confirm password", nullptr));

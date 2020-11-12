@@ -57,11 +57,10 @@
     <item row="0" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="styleSheet">
-       <string notr="true">background-color:#121212 ;
-</string>
+       <string notr="true">background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(23, 30, 34, 255), stop:0.5 rgba(30, 40, 45, 255), stop:1 rgba(23, 30, 34, 255));</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="LoginMenu">
        <property name="sizePolicy">
@@ -173,6 +172,9 @@ QLineEdit:focus{
 /*--------------------------------Line edit--------------------------------*/
 
 QCheckBox{
+	color:#78909C;
+	font-family: &quot;Calibri&quot;;
+	font-size: 15px;
 	background-color: none;
 
 }
@@ -184,8 +186,8 @@ QCheckBox{
         </property>
         <property name="geometry">
          <rect>
-          <x>510</x>
-          <y>400</y>
+          <x>410</x>
+          <y>340</y>
           <width>100</width>
           <height>27</height>
          </rect>
@@ -218,8 +220,8 @@ QCheckBox{
        <widget class="QPushButton" name="LogButton">
         <property name="geometry">
          <rect>
-          <x>500</x>
-          <y>330</y>
+          <x>410</x>
+          <y>270</y>
           <width>100</width>
           <height>27</height>
          </rect>
@@ -252,8 +254,8 @@ QCheckBox{
        <widget class="QPushButton" name="RegButton">
         <property name="geometry">
          <rect>
-          <x>510</x>
-          <y>370</y>
+          <x>410</x>
+          <y>310</y>
           <width>100</width>
           <height>27</height>
          </rect>
@@ -304,10 +306,10 @@ QCheckBox{
        <widget class="QLineEdit" name="PassLineEdit">
         <property name="geometry">
          <rect>
-          <x>470</x>
-          <y>250</y>
-          <width>147</width>
-          <height>73</height>
+          <x>400</x>
+          <y>180</y>
+          <width>200</width>
+          <height>30</height>
          </rect>
         </property>
         <property name="sizePolicy">
@@ -338,10 +340,10 @@ QCheckBox{
        <widget class="QLineEdit" name="LoginLineEdit">
         <property name="geometry">
          <rect>
-          <x>470</x>
-          <y>100</y>
-          <width>147</width>
-          <height>153</height>
+          <x>400</x>
+          <y>140</y>
+          <width>200</width>
+          <height>30</height>
          </rect>
         </property>
         <property name="sizePolicy">
@@ -397,6 +399,25 @@ QCheckBox{
         </property>
         <property name="placeholderText">
          <string>Login</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="RemMeCheckBox">
+        <property name="geometry">
+         <rect>
+          <x>400</x>
+          <y>220</y>
+          <width>110</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Remember me</string>
         </property>
        </widget>
       </widget>
