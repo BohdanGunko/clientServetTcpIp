@@ -2,9 +2,8 @@
 #include "ui_mainwindow.h"
 #include <QEvent>
 #include <QDebug>
-#include <Qstring>
+#include <QStyle>
 #include <QGraphicsDropShadowEffect>
-
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -87,9 +86,6 @@ MainWindow::MainWindow(QWidget *parent)
     RegBackfEffect->setColor(Qt::black);
     ui->RegGoBackButton->setGraphicsEffect(RegBackfEffect);
 
-
-
-
 }
 
 MainWindow::~MainWindow()
@@ -101,11 +97,13 @@ MainWindow::~MainWindow()
 void MainWindow::on_RegButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
+    resizeRegMenu();
 }
 
 void MainWindow::on_RegGoBackButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
+    resizeLogMenu();
 }
 
 void MainWindow::on_LogButton_clicked()
@@ -116,7 +114,17 @@ void MainWindow::on_LogButton_clicked()
 
 void MainWindow::resizeEvent(QResizeEvent* event)
 {
+    if(ui->stackedWidget->currentIndex()==0)
+    {
+        resizeLogMenu();
+    }else if (ui->stackedWidget->currentIndex()==1)
+    {
+        resizeRegMenu();
+    }
+}
 
+void MainWindow::resizeLogMenu()
+{
     const short hMarg = 6;
     const short betweenMarg = 30;
 
@@ -164,10 +172,65 @@ void MainWindow::resizeEvent(QResizeEvent* event)
                             wW/2-bW/2,
                             wH/2-totalHeight/2+LeH+hMarg+LeH+betweenMarg+bH+hMarg+bH+hMarg
                             );
-    //QString bordRad ="QPushButton { border-radius: "+(std)(bH/2)+"px; }";
-   // ui->LogButton->setStyleSheet( bordRad );
 
-    qDebug()<<this->size()<<"   "<<totalHeight<<LeH<<bH<<ui->RegButton->pos();
+    QString bordRadButton ="QPushButton { border-radius: "+QString::number(bH/2)+"px; }";
+    QString bordRadLe ="QLineEdit { border-radius: "+QString::number(LeH/4)+"px; }";
+    ui->LogButton->setStyleSheet( bordRadButton );
+    ui->RegButton->setStyleSheet( bordRadButton );
+    ui->ExitButton->setStyleSheet( bordRadButton );
+    ui->LoginLineEdit->setStyleSheet(bordRadLe);
+    ui->PassLineEdit->setStyleSheet(bordRadLe);
+}
+
+void MainWindow::resizeRegMenu()
+{
+    const short hMarg = 6;
+    const short betweenMarg = 30;
+
+    const short wW= this->size().width();
+    const short wH= this->size().height();
+
+    const short LeH = wH/18;
+    const short LeW = wW/4;
+
+    const short bH = wH/20;
+    const short bW = wW/8;
+
+
+
+    short totalHeight = 2*hMarg+betweenMarg+3*LeH+bH;
+
+    ui->RegLogLineEdit->resize(LeW,LeH);
+    ui->RegPassLineEdit->resize(LeW,LeH);
+    ui->RegConfLineEdit->resize(LeW,LeH);
+
+    ui->RegLogLineEdit->move(
+                            wW/2-LeW/2,
+                            wH/2-totalHeight/2
+                            );
+    ui->RegPassLineEdit->move(
+                            wW/2-LeW/2,
+                            wH/2-totalHeight/2+LeH+hMarg
+                );
+    ui->RegConfLineEdit->move(
+                            wW/2-LeW/2,
+                            wH/2-totalHeight/2+LeH+hMarg+LeH+hMarg
+                );
+
+
+    ui->RegRegButton->resize(bW,bH);
+
+    ui->RegRegButton->move(
+                            wW/2-bW/2,
+                            wH/2-totalHeight/2+LeH+hMarg+LeH+hMarg+LeH+betweenMarg
+                            );
+
+    QString bordRadButton ="QPushButton { border-radius: "+QString::number(bH/2)+"px; }";
+    QString bordRadLe ="QLineEdit { border-radius: "+QString::number(LeH/4)+"px; }";
+    ui->RegLogLineEdit->setStyleSheet(bordRadLe);
+    ui->RegPassLineEdit->setStyleSheet(bordRadLe);
+    ui->RegConfLineEdit->setStyleSheet(bordRadLe);
+    ui->RegRegButton->setStyleSheet( bordRadButton );
 
 }
 

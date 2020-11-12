@@ -22,6 +22,8 @@ private slots:
     void on_RegGoBackButton_clicked();
     void on_LogButton_clicked();
     void resizeEvent(QResizeEvent*);
+    void resizeLogMenu();
+    void resizeRegMenu();
 private:
     Ui::MainWindow *ui;
     PurchasesMenu OvScreen;
