@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QEvent>
 #include <QDebug>
+#include <Qstring>
 #include <QGraphicsDropShadowEffect>
 
 
@@ -115,7 +116,58 @@ void MainWindow::on_LogButton_clicked()
 
 void MainWindow::resizeEvent(QResizeEvent* event)
 {
-   qDebug()<<"Resise";
-}
 
+    const short hMarg = 6;
+    const short betweenMarg = 30;
+
+    const short wW= this->size().width();
+    const short wH= this->size().height();
+
+    const short LeH = wH/18;
+    const short LeW = wW/4;
+
+    const short bH = wH/20;
+    const short bW = wW/8;
+
+
+
+    short totalHeight = 3*hMarg+betweenMarg+2*LeH+3*bH;
+
+    ui->LoginLineEdit->resize(LeW,LeH);
+    ui->PassLineEdit->resize(LeW,LeH);
+
+
+    ui->LoginLineEdit->move(
+                            wW/2-LeW/2,
+                            wH/2-totalHeight/2
+                            );
+    ui->PassLineEdit->move(
+                            wW/2-LeW/2,
+                            wH/2-totalHeight/2+LeH+hMarg
+                );
+
+
+
+    ui->LogButton->resize(bW,bH);
+    ui->RegButton->resize(bW,bH);
+    ui->ExitButton->resize(bW,bH);
+
+    ui->LogButton->move(
+                            wW/2-bW/2,
+                            wH/2-totalHeight/2+LeH+hMarg+LeH+betweenMarg
+                            );
+    ui->RegButton->move(
+                            wW/2-bW/2,
+                            wH/2-totalHeight/2+LeH+hMarg+LeH+betweenMarg+bH+hMarg
+                            );
+    ui->ExitButton->move(
+                            wW/2-bW/2,
+                            wH/2-totalHeight/2+LeH+hMarg+LeH+betweenMarg+bH+hMarg+bH+hMarg
+                            );
+    //QString bordRad ="QPushButton { border-radius: "+(std)(bH/2)+"px; }";
+   // ui->LogButton->setStyleSheet( bordRad );
+
+    qDebug()<<this->size()<<"   "<<totalHeight<<LeH<<bH<<ui->RegButton->pos();
+
+}
 

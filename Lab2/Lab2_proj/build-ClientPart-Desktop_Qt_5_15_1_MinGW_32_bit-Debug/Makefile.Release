@@ -837,6 +837,9 @@ release/mainwindow.o: ../ClientPart/mainwindow.cpp ../ClientPart/mainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtabwidget.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qicon.h \
 		ui_mainwindow.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QEvent \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QDebug \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QRect \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QGraphicsDropShadowEffect \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qgraphicseffect.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\ClientPart\mainwindow.cpp
