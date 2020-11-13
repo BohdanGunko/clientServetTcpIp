@@ -1,6 +1,8 @@
 #include "buytickets.h"
 #include "ui_buytickets.h"
-#include<QGraphicsDropShadowEffect>
+#include <QGraphicsDropShadowEffect>
+#include <QDebug>
+
 
 BuyTickets::BuyTickets(QWidget *parent) :
     QWidget(parent),
@@ -57,12 +59,12 @@ BuyTickets::BuyTickets(QWidget *parent) :
     DateEditEffect->setColor(Qt::black);
     ui->DateEdit->setGraphicsEffect(DateEditEffect);
 
-    QGraphicsDropShadowEffect *HoursComboBoxEffect = new QGraphicsDropShadowEffect;
-    HoursComboBoxEffect->setBlurRadius(20);
-    HoursComboBoxEffect->setXOffset(0);
-    HoursComboBoxEffect->setYOffset(0);
-    HoursComboBoxEffect->setColor(Qt::black);
-    ui->HoursComboBox->setGraphicsEffect(HoursComboBoxEffect);
+    QGraphicsDropShadowEffect *TimeEditEffect = new QGraphicsDropShadowEffect;
+    TimeEditEffect->setBlurRadius(20);
+    TimeEditEffect->setXOffset(0);
+    TimeEditEffect->setYOffset(0);
+    TimeEditEffect->setColor(Qt::black);
+    ui->TimeEdit->setGraphicsEffect(TimeEditEffect);
 
     QGraphicsDropShadowEffect *SearchButtonEffect = new QGraphicsDropShadowEffect;
     SearchButtonEffect->setBlurRadius(20);
@@ -70,9 +72,27 @@ BuyTickets::BuyTickets(QWidget *parent) :
     SearchButtonEffect->setYOffset(0);
     SearchButtonEffect->setColor(Qt::black);
     ui->SearchButton->setGraphicsEffect(SearchButtonEffect);
+
+
+
 }
 
 BuyTickets::~BuyTickets()
 {
     delete ui;
+}
+
+void BuyTickets::on_SearchButton_clicked()
+{
+
+}
+
+void BuyTickets::on_DateEdit_customContextMenuRequested(const QPoint &pos)
+{
+    qDebug()<<"fdsf";
+}
+
+void BuyTickets::on_DateEdit_userDateChanged(const QDate &date)
+{
+    qDebug()<<"fdsf";
 }

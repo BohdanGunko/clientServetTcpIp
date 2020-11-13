@@ -194,6 +194,7 @@ public:
         LogButton->setSizePolicy(sizePolicy2);
         LogButton->setMinimumSize(QSize(0, 0));
         LogButton->setMaximumSize(QSize(16777215, 16777215));
+        LogButton->setTabletTracking(false);
         LogButton->setStyleSheet(QString::fromUtf8(""));
         RegButton = new QPushButton(LoginMenu);
         RegButton->setObjectName(QString::fromUtf8("RegButton"));
@@ -376,18 +377,19 @@ public:
 
         MainWindow->setCentralWidget(centralwidget);
         QWidget::setTabOrder(LoginLineEdit, PassLineEdit);
-        QWidget::setTabOrder(PassLineEdit, LogButton);
-        QWidget::setTabOrder(LogButton, RegLogLineEdit);
+        QWidget::setTabOrder(PassLineEdit, RemMeCheckBox);
+        QWidget::setTabOrder(RemMeCheckBox, LogButton);
+        QWidget::setTabOrder(LogButton, RegButton);
+        QWidget::setTabOrder(RegButton, ExitButton);
+        QWidget::setTabOrder(ExitButton, RegLogLineEdit);
         QWidget::setTabOrder(RegLogLineEdit, RegPassLineEdit);
         QWidget::setTabOrder(RegPassLineEdit, RegConfLineEdit);
         QWidget::setTabOrder(RegConfLineEdit, RegRegButton);
         QWidget::setTabOrder(RegRegButton, RegGoBackButton);
-        QWidget::setTabOrder(RegGoBackButton, RegButton);
-        QWidget::setTabOrder(RegButton, ExitButton);
 
         retranslateUi(MainWindow);
 
-        stackedWidget->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(MainWindow);

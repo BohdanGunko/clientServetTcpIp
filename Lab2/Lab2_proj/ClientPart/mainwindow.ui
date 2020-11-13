@@ -60,7 +60,7 @@
        <string notr="true">background-color:#1e282d;</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="LoginMenu">
        <property name="sizePolicy">
@@ -243,6 +243,9 @@ QCheckBox{
           <width>16777215</width>
           <height>16777215</height>
          </size>
+        </property>
+        <property name="tabletTracking">
+         <bool>false</bool>
         </property>
         <property name="styleSheet">
          <string notr="true"/>
@@ -694,14 +697,15 @@ QLineEdit:focus{
  <tabstops>
   <tabstop>LoginLineEdit</tabstop>
   <tabstop>PassLineEdit</tabstop>
+  <tabstop>RemMeCheckBox</tabstop>
   <tabstop>LogButton</tabstop>
+  <tabstop>RegButton</tabstop>
+  <tabstop>ExitButton</tabstop>
   <tabstop>RegLogLineEdit</tabstop>
   <tabstop>RegPassLineEdit</tabstop>
   <tabstop>RegConfLineEdit</tabstop>
   <tabstop>RegRegButton</tabstop>
   <tabstop>RegGoBackButton</tabstop>
-  <tabstop>RegButton</tabstop>
-  <tabstop>ExitButton</tabstop>
  </tabstops>
  <resources/>
  <connections/>

@@ -20,65 +20,53 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">
-
+   <string notr="true">/*--------------------------------PopUp calendar--------------------------------*/
 
 QCalendarWidget QToolButton {
 	color:#1b2327;
     background-color: #607D8B;
-font: bold &quot;Calibri&quot;;
-font-size:14px;
+	font: bold &quot;Calibri&quot;;
+	font-size:14px;
   }
 
  QCalendarWidget QWidget { 
-
-alternate-background-color:#546E7A ; 
-
+	alternate-background-color:#546E7A ; 
 }
 
 QCalendarWidget QAbstractItemView:enabled 
   {
-  
-    color:#d4d6d7;
+	color:#d4d6d7;
 	font-family:  &quot;Calibri Bold&quot;;
 	font-size: 14px;
     background-color: #1e282d;  
     selection-background-color: #546E7A; 
     selection-color:#1b2327; 
-
   }
 
-/* days in other months */
-  /* navigation bar */
+
 QCalendarWidget QWidget#qt_calendar_navigationbar
 { 
-  background-color: #607D8B;
+	background-color: #607D8B;
 }
 
-
-/*not visible */
 QCalendarWidget QMenu {
-background-color: #607D8B;
-color: #1b2327;
-selection-background-color: #1b2327;
+	background-color: #607D8B;
+	color: #1b2327;
+	selection-background-color: #1b2327;
     selection-color: #607D8B;
-font: bold &quot;Calibri&quot;;
-font-size:14px;
-
+	font: bold &quot;Calibri&quot;;
+	font-size:14px;
   }
 
 QCalendarWidget QSpinBox { 
-
-    color: #607D8B; 
-background-color: #607D8B;
-color: #1b2327;
-selection-background-color: #1b2327;
-    selection-color: #607D8B;
-font: bold &quot;Calibri&quot;;
-font-size:14px;
+	color: #607D8B; 
+	background-color: #607D8B;
+	color: #1b2327;
+	selection-background-color: #1b2327;
+	selection-color: #607D8B;
+	font: bold &quot;Calibri&quot;;
+	font-size:14px;
   }
-
-
 
 
 /*--------------------------------Date edit--------------------------------*/
@@ -207,7 +195,7 @@ QLabel{
 
 	color:#EEEEEE;
 	font: italic&quot;Calibri&quot;;
-	font-size: 17px;
+	font-size: 14px;
 }
 </string>
   </property>
@@ -452,28 +440,6 @@ QLabel{
             </property>
            </spacer>
           </item>
-          <item row="1" column="5">
-           <widget class="QComboBox" name="HoursComboBox">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>70</width>
-              <height>25</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>110</width>
-              <height>45</height>
-             </size>
-            </property>
-           </widget>
-          </item>
           <item row="1" column="1">
            <widget class="QLineEdit" name="DepartureLineEdit">
             <property name="sizePolicy">
@@ -544,14 +510,27 @@ QLabel{
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Departure day:</string>
+             <string>Departure date:</string>
             </property>
            </widget>
           </item>
           <item row="0" column="5">
            <widget class="QLabel" name="HourLabel">
+            <property name="minimumSize">
+             <size>
+              <width>120</width>
+              <height>0</height>
+             </size>
+            </property>
             <property name="text">
-             <string>Hour:</string>
+             <string>Departure time from:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="5">
+           <widget class="QTimeEdit" name="TimeEdit">
+            <property name="displayFormat">
+             <string>HH:mm</string>
             </property>
            </widget>
           </item>

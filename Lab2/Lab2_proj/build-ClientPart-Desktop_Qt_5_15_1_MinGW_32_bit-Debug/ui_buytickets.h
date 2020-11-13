@@ -11,7 +11,6 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QComboBox>
 #include <QtWidgets/QDateEdit>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
@@ -20,6 +19,7 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QTableView>
+#include <QtWidgets/QTimeEdit>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -40,13 +40,13 @@ public:
     QLineEdit *DestinationLineEdit;
     QPushButton *ReverseDepDest;
     QSpacerItem *horizontalSpacer_3;
-    QComboBox *HoursComboBox;
     QLineEdit *DepartureLineEdit;
     QSpacerItem *horizontalSpacer_4;
     QLabel *FromLabel;
     QLabel *ToLabel;
     QLabel *DepTimeLab;
     QLabel *HourLabel;
+    QTimeEdit *TimeEdit;
     QTableView *TrainsTable;
 
     void setupUi(QWidget *BuyTickets)
@@ -59,66 +59,54 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(BuyTickets->sizePolicy().hasHeightForWidth());
         BuyTickets->setSizePolicy(sizePolicy);
-        BuyTickets->setStyleSheet(QString::fromUtf8("\n"
-"\n"
+        BuyTickets->setStyleSheet(QString::fromUtf8("/*--------------------------------PopUp calendar--------------------------------*/\n"
 "\n"
 "QCalendarWidget QToolButton {\n"
 "	color:#1b2327;\n"
 "    background-color: #607D8B;\n"
-"font: bold \"Calibri\";\n"
-"font-size:14px;\n"
+"	font: bold \"Calibri\";\n"
+"	font-size:14px;\n"
 "  }\n"
 "\n"
 " QCalendarWidget QWidget { \n"
-"\n"
-"alternate-background-color:#546E7A ; \n"
-"\n"
+"	alternate-background-color:#546E7A ; \n"
 "}\n"
 "\n"
 "QCalendarWidget QAbstractItemView:enabled \n"
 "  {\n"
-"  \n"
-"    color:#d4d6d7;\n"
+"	color:#d4d6d7;\n"
 "	font-family:  \"Calibri Bold\";\n"
 "	font-size: 14px;\n"
 "    background-color: #1e282d;  \n"
 "    selection-background-color: #546E7A; \n"
 "    selection-color:#1b2327; \n"
-"\n"
 "  }\n"
 "\n"
-"/* days in other months */\n"
-"  /* navigation bar */\n"
+"\n"
 "QCalendarWidget QWidget#qt_calendar_navigationbar\n"
 "{ \n"
-"  background-color: #607D8B;\n"
+"	background-color: #607D8B;\n"
 "}\n"
 "\n"
-"\n"
-"/*not visible */\n"
 "QCalendarWidget QMenu {\n"
-"background-color: #607D8B;\n"
-"color: #1b2327;\n"
-"selection-background-color: #1b2327;\n"
+"	background-color: #607D8B;\n"
+"	color: #1b2327;\n"
+"	selection-background-color: #1b2327;\n"
 "    selection-color: #607D8B;\n"
-"font: bold \"Calibri\";\n"
-"font-size:14px;\n"
-"\n"
+"	font: bold \"Calibri\";\n"
+"	font-size:14px;\n"
 "  }\n"
 "\n"
 "QCalendarWidget QSpinBox { \n"
-"\n"
-"    color: #607D8B; \n"
-"background-colo"
-                        "r: #607D8B;\n"
-"color: #1b2327;\n"
-"selection-background-color: #1b2327;\n"
-"    selection-color: #607D8B;\n"
-"font: bold \"Calibri\";\n"
-"font-size:14px;\n"
+"	color: #607D8B; \n"
+"	background-color: #607D8B;\n"
+"	color: #1b2327;"
+                        "\n"
+"	selection-background-color: #1b2327;\n"
+"	selection-color: #607D8B;\n"
+"	font: bold \"Calibri\";\n"
+"	font-size:14px;\n"
 "  }\n"
-"\n"
-"\n"
 "\n"
 "\n"
 "/*--------------------------------Date edit--------------------------------*/\n"
@@ -163,11 +151,11 @@ public:
 "\n"
 "\n"
 "\n"
-"/*--------------------------------Table view---------------------------"
-                        "-----*/\n"
+"/*--------------------------------Table view--------------------------------*/\n"
 "\n"
 "#TrainsTable{\n"
-"	background-color:#37474F ;\n"
+"	backg"
+                        "round-color:#37474F ;\n"
 "}\n"
 "\n"
 "\n"
@@ -220,9 +208,9 @@ public:
 "	background-color:#37474F ;\n"
 "\n"
 "	border-style: solid;\n"
-"	bor"
-                        "der-width: 2px;\n"
-"	border-color: #455A64;\n"
+"	border-width: 2px;\n"
+"	border-color: #455A6"
+                        "4;\n"
 "	border-radius: 10px;\n"
 "\n"
 "	color:#ECEFF1;\n"
@@ -249,7 +237,7 @@ public:
 "\n"
 "	color:#EEEEEE;\n"
 "	font: italic\"Calibri\";\n"
-"	font-size: 17px;\n"
+"	font-size: 14px;\n"
 "}\n"
 ""));
         gridLayout_5 = new QGridLayout(BuyTickets);
@@ -330,15 +318,6 @@ public:
 
         gridLayout_3->addItem(horizontalSpacer_3, 1, 0, 1, 1);
 
-        HoursComboBox = new QComboBox(TopBar);
-        HoursComboBox->setObjectName(QString::fromUtf8("HoursComboBox"));
-        sizePolicy.setHeightForWidth(HoursComboBox->sizePolicy().hasHeightForWidth());
-        HoursComboBox->setSizePolicy(sizePolicy);
-        HoursComboBox->setMinimumSize(QSize(70, 25));
-        HoursComboBox->setMaximumSize(QSize(110, 45));
-
-        gridLayout_3->addWidget(HoursComboBox, 1, 5, 1, 1);
-
         DepartureLineEdit = new QLineEdit(TopBar);
         DepartureLineEdit->setObjectName(QString::fromUtf8("DepartureLineEdit"));
         sizePolicy.setHeightForWidth(DepartureLineEdit->sizePolicy().hasHeightForWidth());
@@ -377,8 +356,14 @@ public:
 
         HourLabel = new QLabel(TopBar);
         HourLabel->setObjectName(QString::fromUtf8("HourLabel"));
+        HourLabel->setMinimumSize(QSize(120, 0));
 
         gridLayout_3->addWidget(HourLabel, 0, 5, 1, 1);
+
+        TimeEdit = new QTimeEdit(TopBar);
+        TimeEdit->setObjectName(QString::fromUtf8("TimeEdit"));
+
+        gridLayout_3->addWidget(TimeEdit, 1, 5, 1, 1);
 
 
         gridLayout->addLayout(gridLayout_3, 0, 0, 1, 1);
@@ -416,8 +401,9 @@ public:
         DepartureLineEdit->setPlaceholderText(QCoreApplication::translate("BuyTickets", "Departure", nullptr));
         FromLabel->setText(QCoreApplication::translate("BuyTickets", "From:", nullptr));
         ToLabel->setText(QCoreApplication::translate("BuyTickets", "To:", nullptr));
-        DepTimeLab->setText(QCoreApplication::translate("BuyTickets", "Departure day:", nullptr));
-        HourLabel->setText(QCoreApplication::translate("BuyTickets", "Hour:", nullptr));
+        DepTimeLab->setText(QCoreApplication::translate("BuyTickets", "Departure date:", nullptr));
+        HourLabel->setText(QCoreApplication::translate("BuyTickets", "Departure time from:", nullptr));
+        TimeEdit->setDisplayFormat(QCoreApplication::translate("BuyTickets", "HH:mm", nullptr));
     } // retranslateUi
 
 };
