@@ -49,19 +49,19 @@ public:
         SpacerMenuBlack = new QWidget(PurchasesMenu);
         SpacerMenuBlack->setObjectName(QString::fromUtf8("SpacerMenuBlack"));
         SpacerMenuBlack->setStyleSheet(QString::fromUtf8("QPushButton{\n"
-"	background-color: rgba(29,29,29,150);\n"
+"	background-color:#37474F;\n"
 "	border:none;\n"
 "\n"
 "}\n"
 "\n"
 "\n"
 "#SpacerMenuBlack{\n"
-"	background-color:rgba(0,0,0,150);;\n"
+"	background-color:#0f1416;\n"
 "\n"
 "}\n"
 "\n"
 "#SpacerMenuGrey{\n"
-"	background-color:rgba(29,29,29,150);\n"
+"	background-color:#37474F;\n"
 "}\n"
 "\n"
 ""));

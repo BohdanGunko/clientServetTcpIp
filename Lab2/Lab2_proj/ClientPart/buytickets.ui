@@ -20,67 +20,172 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">#TopBar{
-  background-color:none;
+   <string notr="true">
+
+
+QCalendarWidget QToolButton {
+	color:#1b2327;
+    background-color: #607D8B;
+font: bold &quot;Calibri&quot;;
+font-size:14px;
+  }
+
+ QCalendarWidget QWidget { 
+
+alternate-background-color:#546E7A ; 
 
 }
+
+QCalendarWidget QAbstractItemView:enabled 
+  {
+  
+    color:#d4d6d7;
+	font-family:  &quot;Calibri Bold&quot;;
+	font-size: 14px;
+    background-color: #1e282d;  
+    selection-background-color: #546E7A; 
+    selection-color:#1b2327; 
+
+  }
+
+/* days in other months */
+  /* navigation bar */
+QCalendarWidget QWidget#qt_calendar_navigationbar
+{ 
+  background-color: #607D8B;
+}
+
+
+/*not visible */
+QCalendarWidget QMenu {
+background-color: #607D8B;
+color: #1b2327;
+selection-background-color: #1b2327;
+    selection-color: #607D8B;
+font: bold &quot;Calibri&quot;;
+font-size:14px;
+
+  }
+
+QCalendarWidget QSpinBox { 
+
+    color: #607D8B; 
+background-color: #607D8B;
+color: #1b2327;
+selection-background-color: #1b2327;
+    selection-color: #607D8B;
+font: bold &quot;Calibri&quot;;
+font-size:14px;
+  }
+
+
+
+
+/*--------------------------------Date edit--------------------------------*/
+QDateEdit {
+	background-color:#37474F ;
+
+	border-style: solid;
+	border-width: 2px;
+	border-color: #455A64;
+	border-radius: 10px;
+
+	color:#EEEEEE;
+	font-family: &quot;Calibri&quot;;
+	font-size: 15px;
+
+	padding-left:10px;
+	padding-right:10px;
+}
+
+QDateEdit:hover {
+background-color: #263238;
+}
+
+
+
+
+QDateEdit::drop-down {
+  image: url(:/recources/img/Arrow.png);
+
+
+    
+    
+    background-color: #455A64;
+    border-style: solid;
+    border-width: 1px;
+	border-radius:right 7px;
+    border-color:#455A64;
+border-radius:6px;
+ 
+}
+
+
+
+
+/*--------------------------------Table view--------------------------------*/
+
 #TrainsTable{
-background-color:rgb(33, 33, 33);
-border:none;
-border-radius: 20px;
+	background-color:#37474F ;
 }
-#TopBar{
-background-color:rgba(21, 115, 60, 150);
-border:none;
-border-radius: 20px;
-}
+
+
 /*--------------------------------Button--------------------------------*/
 
 QPushButton{
 	
-	background-color: #2C2C2C;
+	background-color: rgba(242, 150, 47, 220);
 	
-	border: 2px solid #232323;
+	border:none;
 	border-radius:10px;
 
-	color:#B9B9B9;
-	font-family: &quot;Open Sans Light&quot;;
-	font-size: 15px;
+	color:#1b2327;
+	font-family:  &quot;Calibri Bold&quot;;
+	font-size: 17px;
 
 }
 
 QPushButton:hover:!pressed{
-	background-color: #136836;
-border-color:#232323;
+	background-color: #455A64;
+color:#EEEEEE;
+
 }
 
 QPushButton:hover:pressed{
-	background-color: #082E18;
-border-color:#232323;
+	background-color: #37474F;
+color:#DDDDDD;
 }
+QPushButton#ReverseDepDest{
+	
+	background-color: none;
+	
 
-/*--------------------------------Label--------------------------------*/
-QLabel{
-	background:none;
-color:#B9B9B9;
-	font:   &quot;Calibri&quot;;
-	font-size: 15px;
+
+	color:#78909C;
+	font-family:  &quot;Calibri Bold&quot;;
+	font-size: 19px;
+
+}
+QPushButton#ReverseDepDest:hover:!pressed{
+	color:rgba(242, 150, 47, 220);
+
+
 }
 
 
 /*--------------------------------Line edit--------------------------------*/
 
 QLineEdit{
-	background-color:#262626 ;
+	background-color:#37474F ;
 
 	border-style: solid;
 	border-width: 2px;
-	border-color: #565656;
+	border-color: #455A64;
 	border-radius: 10px;
 
-	color:#CCCCCC;
-	font-family: &quot;Open Sans Light&quot;;
-	font-size: 15px;
+	color:#ECEFF1;
+	font-family: &quot;Calibri&quot;;
+	font-size: 17px;
 
 	padding-left:10px;
 	padding-right:10px;
@@ -88,16 +193,23 @@ QLineEdit{
 
 
 QLineEdit:hover{
-	background-color: #212121;
- 
-    border-color: #115C30;
+	background-color: #263238;
 }
 
 QLineEdit:focus{
-	background-color: #1A1A1A;
+	background-color: #1c2428;
+}
 
-	border-color: #15733C;
-}</string>
+
+/*--------------------------------Label--------------------------------*/
+QLabel{
+	background:none ;
+
+	color:#EEEEEE;
+	font: italic&quot;Calibri&quot;;
+	font-size: 17px;
+}
+</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_5" rowstretch="1,5">
    <property name="leftMargin">
@@ -205,18 +317,18 @@ QLineEdit:focus{
             </property>
             <property name="minimumSize">
              <size>
-              <width>100</width>
-              <height>27</height>
+              <width>50</width>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>200</width>
-              <height>45</height>
+              <width>100</width>
+              <height>16777215</height>
              </size>
             </property>
             <property name="text">
-             <string>PushButton</string>
+             <string>Serch</string>
             </property>
            </widget>
           </item>
@@ -250,15 +362,18 @@ QLineEdit:focus{
             </property>
             <property name="minimumSize">
              <size>
-              <width>100</width>
+              <width>70</width>
               <height>27</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>150</width>
+              <width>140</width>
               <height>45</height>
              </size>
+            </property>
+            <property name="specialValueText">
+             <string/>
             </property>
             <property name="calendarPopup">
              <bool>true</bool>
@@ -276,7 +391,7 @@ QLineEdit:focus{
             <property name="minimumSize">
              <size>
               <width>200</width>
-              <height>27</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -301,13 +416,13 @@ QLineEdit:focus{
             <property name="minimumSize">
              <size>
               <width>40</width>
-              <height>30</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>40</width>
-              <height>45</height>
+              <height>16777215</height>
              </size>
             </property>
             <property name="sizeIncrement">
@@ -318,6 +433,9 @@ QLineEdit:focus{
             </property>
             <property name="text">
              <string>↔</string>
+            </property>
+            <property name="autoDefault">
+             <bool>false</bool>
             </property>
            </widget>
           </item>
@@ -367,7 +485,7 @@ QLineEdit:focus{
             <property name="minimumSize">
              <size>
               <width>200</width>
-              <height>27</height>
+              <height>0</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -398,28 +516,40 @@ QLineEdit:focus{
            </spacer>
           </item>
           <item row="0" column="1">
-           <widget class="QLabel" name="label">
+           <widget class="QLabel" name="FromLabel">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="text">
              <string>From:</string>
             </property>
            </widget>
           </item>
           <item row="0" column="3">
-           <widget class="QLabel" name="label_2">
+           <widget class="QLabel" name="ToLabel">
             <property name="text">
-             <string>To</string>
+             <string>To:</string>
             </property>
            </widget>
           </item>
           <item row="0" column="4">
-           <widget class="QLabel" name="label_3">
+           <widget class="QLabel" name="DepTimeLab">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="text">
-             <string>Departure time:</string>
+             <string>Departure day:</string>
             </property>
            </widget>
           </item>
           <item row="0" column="5">
-           <widget class="QLabel" name="label_4">
+           <widget class="QLabel" name="HourLabel">
             <property name="text">
              <string>Hour:</string>
             </property>

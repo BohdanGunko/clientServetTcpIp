@@ -63,7 +63,7 @@ public:
         gridLayout_2->setContentsMargins(0, 0, 0, 0);
         stackedWidget = new QStackedWidget(centralwidget);
         stackedWidget->setObjectName(QString::fromUtf8("stackedWidget"));
-        stackedWidget->setStyleSheet(QString::fromUtf8("background-color:qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(23, 30, 34, 255), stop:0.5 rgba(30, 40, 45, 255), stop:1 rgba(23, 30, 34, 255));"));
+        stackedWidget->setStyleSheet(QString::fromUtf8("background-color:#1e282d;"));
         LoginMenu = new QWidget();
         LoginMenu->setObjectName(QString::fromUtf8("LoginMenu"));
         QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -178,7 +178,7 @@ public:
         ExitButton = new QPushButton(LoginMenu);
         ExitButton->setObjectName(QString::fromUtf8("ExitButton"));
         ExitButton->setEnabled(true);
-        ExitButton->setGeometry(QRect(410, 340, 100, 27));
+        ExitButton->setGeometry(QRect(440, 310, 100, 27));
         QSizePolicy sizePolicy2(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy2.setHorizontalStretch(0);
         sizePolicy2.setVerticalStretch(0);
@@ -189,7 +189,7 @@ public:
         ExitButton->setStyleSheet(QString::fromUtf8(""));
         LogButton = new QPushButton(LoginMenu);
         LogButton->setObjectName(QString::fromUtf8("LogButton"));
-        LogButton->setGeometry(QRect(410, 270, 100, 27));
+        LogButton->setGeometry(QRect(440, 250, 100, 27));
         sizePolicy2.setHeightForWidth(LogButton->sizePolicy().hasHeightForWidth());
         LogButton->setSizePolicy(sizePolicy2);
         LogButton->setMinimumSize(QSize(0, 0));
@@ -197,7 +197,7 @@ public:
         LogButton->setStyleSheet(QString::fromUtf8(""));
         RegButton = new QPushButton(LoginMenu);
         RegButton->setObjectName(QString::fromUtf8("RegButton"));
-        RegButton->setGeometry(QRect(410, 310, 100, 27));
+        RegButton->setGeometry(QRect(440, 280, 100, 27));
         sizePolicy2.setHeightForWidth(RegButton->sizePolicy().hasHeightForWidth());
         RegButton->setSizePolicy(sizePolicy2);
         RegButton->setMinimumSize(QSize(0, 0));

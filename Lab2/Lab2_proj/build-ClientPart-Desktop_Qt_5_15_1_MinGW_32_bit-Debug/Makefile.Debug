@@ -120,6 +120,7 @@ debug/qrc_recources.cpp: ../ClientPart/recources.qrc \
 		../ClientPart/img/BookedTicketsIcon.png \
 		../ClientPart/img/ExitIconFocus.png \
 		../ClientPart/img/ExitIconHover.png \
+		../ClientPart/img/Arrow.png \
 		../ClientPart/img/TrainIcon.png \
 		../ClientPart/img/BookedTicketsIconFocus.png \
 		../ClientPart/img/BookedTicketsIconHover.png \

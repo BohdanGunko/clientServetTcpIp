@@ -9,5 +9,6 @@
         <file>img/ExitIconHover.png</file>
         <file>img/TrainIconFocus.png</file>
         <file>img/TrainIconHover.png</file>
+        <file>img/Arrow.png</file>
     </qresource>
 </RCC>

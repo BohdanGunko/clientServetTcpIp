@@ -44,19 +44,19 @@
       <widget class="QWidget" name="SpacerMenuBlack" native="true">
        <property name="styleSheet">
         <string notr="true">QPushButton{
-	background-color: rgba(29,29,29,150);
+	background-color:#37474F;
 	border:none;
 
 }
 
 
 #SpacerMenuBlack{
-	background-color:rgba(0,0,0,150);;
+	background-color:#0f1416;
 
 }
 
 #SpacerMenuGrey{
-	background-color:rgba(29,29,29,150);
+	background-color:#37474F;
 }
 
 </string>

@@ -43,10 +43,10 @@ public:
     QComboBox *HoursComboBox;
     QLineEdit *DepartureLineEdit;
     QSpacerItem *horizontalSpacer_4;
-    QLabel *label;
-    QLabel *label_2;
-    QLabel *label_3;
-    QLabel *label_4;
+    QLabel *FromLabel;
+    QLabel *ToLabel;
+    QLabel *DepTimeLab;
+    QLabel *HourLabel;
     QTableView *TrainsTable;
 
     void setupUi(QWidget *BuyTickets)
@@ -59,68 +59,175 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(BuyTickets->sizePolicy().hasHeightForWidth());
         BuyTickets->setSizePolicy(sizePolicy);
-        BuyTickets->setStyleSheet(QString::fromUtf8("#TopBar{\n"
-"  background-color:none;\n"
+        BuyTickets->setStyleSheet(QString::fromUtf8("\n"
+"\n"
+"\n"
+"QCalendarWidget QToolButton {\n"
+"	color:#1b2327;\n"
+"    background-color: #607D8B;\n"
+"font: bold \"Calibri\";\n"
+"font-size:14px;\n"
+"  }\n"
+"\n"
+" QCalendarWidget QWidget { \n"
+"\n"
+"alternate-background-color:#546E7A ; \n"
 "\n"
 "}\n"
+"\n"
+"QCalendarWidget QAbstractItemView:enabled \n"
+"  {\n"
+"  \n"
+"    color:#d4d6d7;\n"
+"	font-family:  \"Calibri Bold\";\n"
+"	font-size: 14px;\n"
+"    background-color: #1e282d;  \n"
+"    selection-background-color: #546E7A; \n"
+"    selection-color:#1b2327; \n"
+"\n"
+"  }\n"
+"\n"
+"/* days in other months */\n"
+"  /* navigation bar */\n"
+"QCalendarWidget QWidget#qt_calendar_navigationbar\n"
+"{ \n"
+"  background-color: #607D8B;\n"
+"}\n"
+"\n"
+"\n"
+"/*not visible */\n"
+"QCalendarWidget QMenu {\n"
+"background-color: #607D8B;\n"
+"color: #1b2327;\n"
+"selection-background-color: #1b2327;\n"
+"    selection-color: #607D8B;\n"
+"font: bold \"Calibri\";\n"
+"font-size:14px;\n"
+"\n"
+"  }\n"
+"\n"
+"QCalendarWidget QSpinBox { \n"
+"\n"
+"    color: #607D8B; \n"
+"background-colo"
+                        "r: #607D8B;\n"
+"color: #1b2327;\n"
+"selection-background-color: #1b2327;\n"
+"    selection-color: #607D8B;\n"
+"font: bold \"Calibri\";\n"
+"font-size:14px;\n"
+"  }\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"/*--------------------------------Date edit--------------------------------*/\n"
+"QDateEdit {\n"
+"	background-color:#37474F ;\n"
+"\n"
+"	border-style: solid;\n"
+"	border-width: 2px;\n"
+"	border-color: #455A64;\n"
+"	border-radius: 10px;\n"
+"\n"
+"	color:#EEEEEE;\n"
+"	font-family: \"Calibri\";\n"
+"	font-size: 15px;\n"
+"\n"
+"	padding-left:10px;\n"
+"	padding-right:10px;\n"
+"}\n"
+"\n"
+"QDateEdit:hover {\n"
+"background-color: #263238;\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"QDateEdit::drop-down {\n"
+"  image: url(:/recources/img/Arrow.png);\n"
+"\n"
+"\n"
+"    \n"
+"    \n"
+"    background-color: #455A64;\n"
+"    border-style: solid;\n"
+"    border-width: 1px;\n"
+"	border-radius:right 7px;\n"
+"    border-color:#455A64;\n"
+"border-radius:6px;\n"
+" \n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"/*--------------------------------Table view---------------------------"
+                        "-----*/\n"
+"\n"
 "#TrainsTable{\n"
-"background-color:rgb(33, 33, 33);\n"
-"border:none;\n"
-"border-radius: 20px;\n"
+"	background-color:#37474F ;\n"
 "}\n"
-"#TopBar{\n"
-"background-color:rgba(21, 115, 60, 150);\n"
-"border:none;\n"
-"border-radius: 20px;\n"
-"}\n"
+"\n"
+"\n"
 "/*--------------------------------Button--------------------------------*/\n"
 "\n"
 "QPushButton{\n"
 "	\n"
-"	background-color: #2C2C2C;\n"
+"	background-color: rgba(242, 150, 47, 220);\n"
 "	\n"
-"	border: 2px solid #232323;\n"
+"	border:none;\n"
 "	border-radius:10px;\n"
 "\n"
-"	color:#B9B9B9;\n"
-"	font-family: \"Open Sans Light\";\n"
-"	font-size: 15px;\n"
+"	color:#1b2327;\n"
+"	font-family:  \"Calibri Bold\";\n"
+"	font-size: 17px;\n"
 "\n"
 "}\n"
 "\n"
 "QPushButton:hover:!pressed{\n"
-"	background-color: #136836;\n"
-"border-color:#232323;\n"
+"	background-color: #455A64;\n"
+"color:#EEEEEE;\n"
+"\n"
 "}\n"
 "\n"
 "QPushButton:hover:pressed{\n"
-"	background-color: #082E18;\n"
-"border-color:#232323;\n"
+"	background-color: #37474F;\n"
+"color:#DDDDDD;\n"
+"}\n"
+"QPushButton#ReverseDepDest{\n"
+"	\n"
+"	background-color: none;\n"
+"	\n"
+"\n"
+"\n"
+"	color:#78909C;\n"
+"	font-family:  \"Calibri Bold\";\n"
+"	font-size: 19px;\n"
+"\n"
+"}\n"
+"QPushButton#ReverseDepDest:hover:!pressed{\n"
+"	color:rgba(242, 150, 47, 220);\n"
+"\n"
+"\n"
 "}\n"
 "\n"
-"/*--------------------------------Label--------------------------------*/\n"
-"QLabel{\n"
-"	background:none;\n"
-"color:#B9B9B9;\n"
-"	font:   \"Calibri\";\n"
-"	font-size: 15px;\n"
-"}\n"
 "\n"
-"\n"
-"/*--------------------------------Line edit-------------------"
-                        "-------------*/\n"
+"/*--------------------------------Line edit--------------------------------*/\n"
 "\n"
 "QLineEdit{\n"
-"	background-color:#262626 ;\n"
+"	background-color:#37474F ;\n"
 "\n"
 "	border-style: solid;\n"
-"	border-width: 2px;\n"
-"	border-color: #565656;\n"
+"	bor"
+                        "der-width: 2px;\n"
+"	border-color: #455A64;\n"
 "	border-radius: 10px;\n"
 "\n"
-"	color:#CCCCCC;\n"
-"	font-family: \"Open Sans Light\";\n"
-"	font-size: 15px;\n"
+"	color:#ECEFF1;\n"
+"	font-family: \"Calibri\";\n"
+"	font-size: 17px;\n"
 "\n"
 "	padding-left:10px;\n"
 "	padding-right:10px;\n"
@@ -128,16 +235,23 @@ public:
 "\n"
 "\n"
 "QLineEdit:hover{\n"
-"	background-color: #212121;\n"
-" \n"
-"    border-color: #115C30;\n"
+"	background-color: #263238;\n"
 "}\n"
 "\n"
 "QLineEdit:focus{\n"
-"	background-color: #1A1A1A;\n"
+"	background-color: #1c2428;\n"
+"}\n"
 "\n"
-"	border-color: #15733C;\n"
-"}"));
+"\n"
+"/*--------------------------------Label--------------------------------*/\n"
+"QLabel{\n"
+"	background:none ;\n"
+"\n"
+"	color:#EEEEEE;\n"
+"	font: italic\"Calibri\";\n"
+"	font-size: 17px;\n"
+"}\n"
+""));
         gridLayout_5 = new QGridLayout(BuyTickets);
         gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
         gridLayout_5->setHorizontalSpacing(0);
@@ -167,8 +281,8 @@ public:
         SearchButton->setObjectName(QString::fromUtf8("SearchButton"));
         sizePolicy.setHeightForWidth(SearchButton->sizePolicy().hasHeightForWidth());
         SearchButton->setSizePolicy(sizePolicy);
-        SearchButton->setMinimumSize(QSize(100, 27));
-        SearchButton->setMaximumSize(QSize(200, 45));
+        SearchButton->setMinimumSize(QSize(50, 0));
+        SearchButton->setMaximumSize(QSize(100, 16777215));
 
         gridLayout_4->addWidget(SearchButton, 0, 1, 1, 1);
 
@@ -186,8 +300,8 @@ public:
         DateEdit->setObjectName(QString::fromUtf8("DateEdit"));
         sizePolicy.setHeightForWidth(DateEdit->sizePolicy().hasHeightForWidth());
         DateEdit->setSizePolicy(sizePolicy);
-        DateEdit->setMinimumSize(QSize(100, 27));
-        DateEdit->setMaximumSize(QSize(150, 45));
+        DateEdit->setMinimumSize(QSize(70, 27));
+        DateEdit->setMaximumSize(QSize(140, 45));
         DateEdit->setCalendarPopup(true);
 
         gridLayout_3->addWidget(DateEdit, 1, 4, 1, 1);
@@ -196,7 +310,7 @@ public:
         DestinationLineEdit->setObjectName(QString::fromUtf8("DestinationLineEdit"));
         sizePolicy.setHeightForWidth(DestinationLineEdit->sizePolicy().hasHeightForWidth());
         DestinationLineEdit->setSizePolicy(sizePolicy);
-        DestinationLineEdit->setMinimumSize(QSize(200, 27));
+        DestinationLineEdit->setMinimumSize(QSize(200, 0));
         DestinationLineEdit->setMaximumSize(QSize(500, 45));
 
         gridLayout_3->addWidget(DestinationLineEdit, 1, 3, 1, 1);
@@ -205,9 +319,10 @@ public:
         ReverseDepDest->setObjectName(QString::fromUtf8("ReverseDepDest"));
         sizePolicy.setHeightForWidth(ReverseDepDest->sizePolicy().hasHeightForWidth());
         ReverseDepDest->setSizePolicy(sizePolicy);
-        ReverseDepDest->setMinimumSize(QSize(40, 30));
-        ReverseDepDest->setMaximumSize(QSize(40, 45));
+        ReverseDepDest->setMinimumSize(QSize(40, 0));
+        ReverseDepDest->setMaximumSize(QSize(40, 16777215));
         ReverseDepDest->setSizeIncrement(QSize(1, 1));
+        ReverseDepDest->setAutoDefault(false);
 
         gridLayout_3->addWidget(ReverseDepDest, 1, 2, 1, 1);
 
@@ -228,7 +343,7 @@ public:
         DepartureLineEdit->setObjectName(QString::fromUtf8("DepartureLineEdit"));
         sizePolicy.setHeightForWidth(DepartureLineEdit->sizePolicy().hasHeightForWidth());
         DepartureLineEdit->setSizePolicy(sizePolicy);
-        DepartureLineEdit->setMinimumSize(QSize(200, 27));
+        DepartureLineEdit->setMinimumSize(QSize(200, 0));
         DepartureLineEdit->setMaximumSize(QSize(500, 45));
         DepartureLineEdit->setFrame(true);
 
@@ -238,25 +353,32 @@ public:
 
         gridLayout_3->addItem(horizontalSpacer_4, 1, 6, 1, 1);
 
-        label = new QLabel(TopBar);
-        label->setObjectName(QString::fromUtf8("label"));
+        FromLabel = new QLabel(TopBar);
+        FromLabel->setObjectName(QString::fromUtf8("FromLabel"));
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(FromLabel->sizePolicy().hasHeightForWidth());
+        FromLabel->setSizePolicy(sizePolicy1);
 
-        gridLayout_3->addWidget(label, 0, 1, 1, 1);
+        gridLayout_3->addWidget(FromLabel, 0, 1, 1, 1);
 
-        label_2 = new QLabel(TopBar);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
+        ToLabel = new QLabel(TopBar);
+        ToLabel->setObjectName(QString::fromUtf8("ToLabel"));
 
-        gridLayout_3->addWidget(label_2, 0, 3, 1, 1);
+        gridLayout_3->addWidget(ToLabel, 0, 3, 1, 1);
 
-        label_3 = new QLabel(TopBar);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
+        DepTimeLab = new QLabel(TopBar);
+        DepTimeLab->setObjectName(QString::fromUtf8("DepTimeLab"));
+        sizePolicy1.setHeightForWidth(DepTimeLab->sizePolicy().hasHeightForWidth());
+        DepTimeLab->setSizePolicy(sizePolicy1);
 
-        gridLayout_3->addWidget(label_3, 0, 4, 1, 1);
+        gridLayout_3->addWidget(DepTimeLab, 0, 4, 1, 1);
 
-        label_4 = new QLabel(TopBar);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
+        HourLabel = new QLabel(TopBar);
+        HourLabel->setObjectName(QString::fromUtf8("HourLabel"));
 
-        gridLayout_3->addWidget(label_4, 0, 5, 1, 1);
+        gridLayout_3->addWidget(HourLabel, 0, 5, 1, 1);
 
 
         gridLayout->addLayout(gridLayout_3, 0, 0, 1, 1);
@@ -287,14 +409,15 @@ public:
     void retranslateUi(QWidget *BuyTickets)
     {
         BuyTickets->setWindowTitle(QCoreApplication::translate("BuyTickets", "Form", nullptr));
-        SearchButton->setText(QCoreApplication::translate("BuyTickets", "PushButton", nullptr));
+        SearchButton->setText(QCoreApplication::translate("BuyTickets", "Serch", nullptr));
+        DateEdit->setSpecialValueText(QString());
         DestinationLineEdit->setPlaceholderText(QCoreApplication::translate("BuyTickets", "Destination", nullptr));
         ReverseDepDest->setText(QCoreApplication::translate("BuyTickets", "\342\206\224", nullptr));
         DepartureLineEdit->setPlaceholderText(QCoreApplication::translate("BuyTickets", "Departure", nullptr));
-        label->setText(QCoreApplication::translate("BuyTickets", "From:", nullptr));
-        label_2->setText(QCoreApplication::translate("BuyTickets", "To", nullptr));
-        label_3->setText(QCoreApplication::translate("BuyTickets", "Departure time:", nullptr));
-        label_4->setText(QCoreApplication::translate("BuyTickets", "Hour:", nullptr));
+        FromLabel->setText(QCoreApplication::translate("BuyTickets", "From:", nullptr));
+        ToLabel->setText(QCoreApplication::translate("BuyTickets", "To:", nullptr));
+        DepTimeLab->setText(QCoreApplication::translate("BuyTickets", "Departure day:", nullptr));
+        HourLabel->setText(QCoreApplication::translate("BuyTickets", "Hour:", nullptr));
     } // retranslateUi
 
 };
