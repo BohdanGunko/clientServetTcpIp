@@ -2,7 +2,7 @@
 #define BUYTICKETS_H
 
 #include <QWidget>
-
+#include <QCalendarWidget>
 namespace Ui {
 class BuyTickets;
 }
@@ -17,10 +17,6 @@ public:
 
 private slots:
     void on_SearchButton_clicked();
-
-    void on_DateEdit_customContextMenuRequested(const QPoint &pos);
-
-    void on_DateEdit_userDateChanged(const QDate &date);
 
 private:
     Ui::BuyTickets *ui;

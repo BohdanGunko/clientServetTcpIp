@@ -2,6 +2,7 @@
 #include "ui_buytickets.h"
 #include <QGraphicsDropShadowEffect>
 #include <QDebug>
+#include <QCalendarWidget>
 
 
 BuyTickets::BuyTickets(QWidget *parent) :
@@ -87,12 +88,6 @@ void BuyTickets::on_SearchButton_clicked()
 
 }
 
-void BuyTickets::on_DateEdit_customContextMenuRequested(const QPoint &pos)
-{
-    qDebug()<<"fdsf";
-}
 
-void BuyTickets::on_DateEdit_userDateChanged(const QDate &date)
-{
-    qDebug()<<"fdsf";
-}
+
+

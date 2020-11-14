@@ -20,7 +20,26 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">/*--------------------------------PopUp calendar--------------------------------*/
+   <string notr="true">/*--------------------------------Time Edit--------------------------------*/
+QTimeEdit{
+icon:none;
+	background-color:#37474F ;
+
+	border-style: solid;
+	border-width: 2px;
+	border-color: #455A64;
+	border-radius: 10px;
+
+	color:#ECEFF1;
+	font-family: &quot;Calibri&quot;;
+	font-size: 17px;
+
+	padding-left:10px;
+	padding-right:10px;
+}
+
+
+/*--------------------------------PopUp calendar--------------------------------*/
 
 QCalendarWidget QToolButton {
 	color:#1b2327;
@@ -360,6 +379,9 @@ QLabel{
               <height>45</height>
              </size>
             </property>
+            <property name="readOnly">
+             <bool>false</bool>
+            </property>
             <property name="specialValueText">
              <string/>
             </property>
@@ -529,8 +551,20 @@ QLabel{
           </item>
           <item row="1" column="5">
            <widget class="QTimeEdit" name="TimeEdit">
+            <property name="showGroupSeparator" stdset="0">
+             <bool>false</bool>
+            </property>
+            <property name="currentSection">
+             <enum>QDateTimeEdit::HourSection</enum>
+            </property>
             <property name="displayFormat">
              <string>HH:mm</string>
+            </property>
+            <property name="calendarPopup">
+             <bool>false</bool>
+            </property>
+            <property name="currentSectionIndex">
+             <number>0</number>
             </property>
            </widget>
           </item>

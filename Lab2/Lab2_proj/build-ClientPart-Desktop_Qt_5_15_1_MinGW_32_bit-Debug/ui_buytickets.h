@@ -59,7 +59,26 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(BuyTickets->sizePolicy().hasHeightForWidth());
         BuyTickets->setSizePolicy(sizePolicy);
-        BuyTickets->setStyleSheet(QString::fromUtf8("/*--------------------------------PopUp calendar--------------------------------*/\n"
+        BuyTickets->setStyleSheet(QString::fromUtf8("/*--------------------------------Time Edit--------------------------------*/\n"
+"QTimeEdit{\n"
+"icon:none;\n"
+"	background-color:#37474F ;\n"
+"\n"
+"	border-style: solid;\n"
+"	border-width: 2px;\n"
+"	border-color: #455A64;\n"
+"	border-radius: 10px;\n"
+"\n"
+"	color:#ECEFF1;\n"
+"	font-family: \"Calibri\";\n"
+"	font-size: 17px;\n"
+"\n"
+"	padding-left:10px;\n"
+"	padding-right:10px;\n"
+"}\n"
+"\n"
+"\n"
+"/*--------------------------------PopUp calendar--------------------------------*/\n"
 "\n"
 "QCalendarWidget QToolButton {\n"
 "	color:#1b2327;\n"
@@ -83,7 +102,8 @@ public:
 "  }\n"
 "\n"
 "\n"
-"QCalendarWidget QWidget#qt_calendar_navigationbar\n"
+"QCalendarWidget QWidget#q"
+                        "t_calendar_navigationbar\n"
 "{ \n"
 "	background-color: #607D8B;\n"
 "}\n"
@@ -100,8 +120,7 @@ public:
 "QCalendarWidget QSpinBox { \n"
 "	color: #607D8B; \n"
 "	background-color: #607D8B;\n"
-"	color: #1b2327;"
-                        "\n"
+"	color: #1b2327;\n"
 "	selection-background-color: #1b2327;\n"
 "	selection-color: #607D8B;\n"
 "	font: bold \"Calibri\";\n"
@@ -133,7 +152,8 @@ public:
 "\n"
 "\n"
 "\n"
-"QDateEdit::drop-down {\n"
+"QDateEdit::drop-d"
+                        "own {\n"
 "  image: url(:/recources/img/Arrow.png);\n"
 "\n"
 "\n"
@@ -154,8 +174,7 @@ public:
 "/*--------------------------------Table view--------------------------------*/\n"
 "\n"
 "#TrainsTable{\n"
-"	backg"
-                        "round-color:#37474F ;\n"
+"	background-color:#37474F ;\n"
 "}\n"
 "\n"
 "\n"
@@ -190,7 +209,8 @@ public:
 "	\n"
 "\n"
 "\n"
-"	color:#78909C;\n"
+"	color:#"
+                        "78909C;\n"
 "	font-family:  \"Calibri Bold\";\n"
 "	font-size: 19px;\n"
 "\n"
@@ -209,8 +229,7 @@ public:
 "\n"
 "	border-style: solid;\n"
 "	border-width: 2px;\n"
-"	border-color: #455A6"
-                        "4;\n"
+"	border-color: #455A64;\n"
 "	border-radius: 10px;\n"
 "\n"
 "	color:#ECEFF1;\n"
@@ -290,6 +309,7 @@ public:
         DateEdit->setSizePolicy(sizePolicy);
         DateEdit->setMinimumSize(QSize(70, 27));
         DateEdit->setMaximumSize(QSize(140, 45));
+        DateEdit->setReadOnly(false);
         DateEdit->setCalendarPopup(true);
 
         gridLayout_3->addWidget(DateEdit, 1, 4, 1, 1);
@@ -362,6 +382,10 @@ public:
 
         TimeEdit = new QTimeEdit(TopBar);
         TimeEdit->setObjectName(QString::fromUtf8("TimeEdit"));
+        TimeEdit->setProperty("showGroupSeparator", QVariant(false));
+        TimeEdit->setCurrentSection(QDateTimeEdit::HourSection);
+        TimeEdit->setCalendarPopup(false);
+        TimeEdit->setCurrentSectionIndex(0);
 
         gridLayout_3->addWidget(TimeEdit, 1, 5, 1, 1);
 

@@ -86,6 +86,7 @@ MainWindow::MainWindow(QWidget *parent)
     RegBackfEffect->setColor(Qt::black);
     ui->RegGoBackButton->setGraphicsEffect(RegBackfEffect);
 
+
 }
 
 MainWindow::~MainWindow()
