@@ -3,6 +3,12 @@
 #include <QtSql>
 #include <QSqlDatabase>
 #include <QDebug>
+#include <QSqlQuery>
+#include <QSqlQueryModel>
+#include <QTableView>
+#include <QSqlRelationalTableModel>
+#include <QSqlTableModel>
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -22,9 +28,13 @@ MainWindow::MainWindow(QWidget *parent)
     db.setDatabaseName(dsn);
 
     if(db.open()){
+        model = new QSqlQueryModel(this); //Without this line code crashes
+        model->setQuery("SELECT * FROM UsersInfo");
+        ui->tableView->setModel(model);
+
 
         qDebug()<<"opened";
-        db.close();
+
 
     }else{
 
