@@ -8,6 +8,7 @@
 #include <QTableView>
 #include <QSqlRelationalTableModel>
 #include <QSqlTableModel>
+#include <QHostInfo>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -17,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
 
-    QString serverName = "DESKTOP-UJSLV1O\\SQLEXPRESS";
+    QString serverName = QHostInfo::localHostName()+"\\SQLEXPRESS";
     QString dbName = "TrainsDb";
     QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
 
