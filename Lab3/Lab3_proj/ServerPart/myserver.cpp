@@ -1,6 +1,6 @@
 #include "myserver.h"
 #include <QDebug>
-
+#include <QNetworkInterface>
 
 myServer::myServer() {};
 myServer::~myServer() {};
@@ -8,8 +8,12 @@ myServer::~myServer() {};
 void myServer::startServer()
 {
     QHostAddress _adres;
-    _adres.setAddress(QHostAddress::LocalHost);
-    if(this->listen(_adres, 80))
+    _adres.setAddress("192.168.0.102");
+
+
+
+
+    if(this->listen(_adres, 60000))
     {
         qDebug()<<"listening"<<_adres.toIPv4Address();
 

@@ -33,8 +33,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     //to be
     QHostAddress _adres;
-    _adres.setAddress("178.137.161.32");
-    socket->connectToHost(_adres, 80);
+    _adres.setAddress("192.168.0.102");
+    socket->connectToHost(_adres, 60000);
 }
 
 //destructor
