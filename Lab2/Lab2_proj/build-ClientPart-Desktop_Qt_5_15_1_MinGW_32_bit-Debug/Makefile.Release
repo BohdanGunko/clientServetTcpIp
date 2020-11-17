@@ -241,6 +241,9 @@ release/moc_buytickets.cpp: ../ClientPart/buytickets.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qfiledevice.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qvector2d.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtouchdevice.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QCalendarWidget \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qcalendarwidget.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qdatetime.h \
 		release/moc_predefs.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/bin/moc.exe
 	P:\Programs\Qt\5.15.1\mingw81_32\bin\moc.exe $(DEFINES) --include S:/Git/ipz_1_gunko_2020/Lab2/Lab2_proj/build-ClientPart-Desktop_Qt_5_15_1_MinGW_32_bit-Debug/release/moc_predefs.h -IP:/Programs/Qt/5.15.1/mingw81_32/mkspecs/win32-g++ -IS:/Git/ipz_1_gunko_2020/Lab2/Lab2_proj/ClientPart -IP:/Programs/Qt/5.15.1/mingw81_32/include -IP:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets -IP:/Programs/Qt/5.15.1/mingw81_32/include/QtGui -IP:/Programs/Qt/5.15.1/mingw81_32/include/QtANGLE -IP:/Programs/Qt/5.15.1/mingw81_32/include/QtCore -I. -IP:/Programs/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++ -IP:/Programs/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32 -IP:/Programs/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward -IP:/Programs/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include -IP:/Programs/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed -IP:/Programs/Qt/Tools/mingw810_32/i686-w64-mingw32/include ..\ClientPart\buytickets.h -o release\moc_buytickets.cpp
@@ -351,6 +354,9 @@ release/moc_mainwindow.cpp: ../ClientPart/mainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qvector2d.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtouchdevice.h \
 		../ClientPart/buytickets.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QCalendarWidget \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qcalendarwidget.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qdatetime.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QMainWindow \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qmainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtabwidget.h \
@@ -464,6 +470,9 @@ release/moc_purchasesmenu.cpp: ../ClientPart/purchasesmenu.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qvector2d.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtouchdevice.h \
 		../ClientPart/buytickets.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QCalendarWidget \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qcalendarwidget.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qdatetime.h \
 		release/moc_predefs.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/bin/moc.exe
 	P:\Programs\Qt\5.15.1\mingw81_32\bin\moc.exe $(DEFINES) --include S:/Git/ipz_1_gunko_2020/Lab2/Lab2_proj/build-ClientPart-Desktop_Qt_5_15_1_MinGW_32_bit-Debug/release/moc_predefs.h -IP:/Programs/Qt/5.15.1/mingw81_32/mkspecs/win32-g++ -IS:/Git/ipz_1_gunko_2020/Lab2/Lab2_proj/ClientPart -IP:/Programs/Qt/5.15.1/mingw81_32/include -IP:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets -IP:/Programs/Qt/5.15.1/mingw81_32/include/QtGui -IP:/Programs/Qt/5.15.1/mingw81_32/include/QtANGLE -IP:/Programs/Qt/5.15.1/mingw81_32/include/QtCore -I. -IP:/Programs/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++ -IP:/Programs/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32 -IP:/Programs/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward -IP:/Programs/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include -IP:/Programs/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed -IP:/Programs/Qt/Tools/mingw810_32/i686-w64-mingw32/include ..\ClientPart\purchasesmenu.h -o release\moc_purchasesmenu.cpp
@@ -603,9 +612,63 @@ release/buytickets.o: ../ClientPart/buytickets.cpp ../ClientPart/buytickets.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qfiledevice.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qvector2d.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtouchdevice.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QCalendarWidget \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qcalendarwidget.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qdatetime.h \
 		ui_buytickets.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QVariant \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QApplication \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qapplication.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcoreapplication.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qeventloop.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qdesktopwidget.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qguiapplication.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qinputmethod.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QDateEdit \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qdatetimeedit.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcalendar.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qabstractspinbox.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qvalidator.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qregularexpression.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QGridLayout \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qgridlayout.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qlayout.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qlayoutitem.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qboxlayout.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QHeaderView \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qheaderview.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qabstractitemview.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qabstractscrollarea.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qframe.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qabstractitemmodel.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qitemselectionmodel.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qabstractitemdelegate.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qstyleoption.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qicon.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qslider.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qabstractslider.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qstyle.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtabbar.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtabwidget.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qrubberband.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QLabel \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qlabel.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QLineEdit \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qlineedit.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtextcursor.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtextformat.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qpen.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtextoption.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QPushButton \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qpushbutton.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QSpacerItem \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QTableView \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtableview.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QTimeEdit \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QGraphicsDropShadowEffect \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qgraphicseffect.h
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qgraphicseffect.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\buytickets.o ..\ClientPart\buytickets.cpp
 
 release/main.o: ../ClientPart/main.cpp ../ClientPart/mainwindow.h \
@@ -714,6 +777,9 @@ release/main.o: ../ClientPart/main.cpp ../ClientPart/mainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qvector2d.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtouchdevice.h \
 		../ClientPart/buytickets.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QCalendarWidget \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qcalendarwidget.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qdatetime.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QMainWindow \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qmainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtabwidget.h \
@@ -833,17 +899,46 @@ release/mainwindow.o: ../ClientPart/mainwindow.cpp ../ClientPart/mainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qvector2d.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtouchdevice.h \
 		../ClientPart/buytickets.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QCalendarWidget \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qcalendarwidget.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qdatetime.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QMainWindow \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qmainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtabwidget.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qicon.h \
 		ui_mainwindow.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QEvent \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QDebug \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QStyle \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qstyle.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QVariant \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QApplication \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qapplication.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcoreapplication.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qeventloop.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qdesktopwidget.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qguiapplication.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qinputmethod.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QCheckBox \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qcheckbox.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QGridLayout \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qgridlayout.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qlayout.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qlayoutitem.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qboxlayout.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QLineEdit \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qlineedit.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qframe.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtextcursor.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtextformat.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qpen.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtextoption.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QPushButton \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qpushbutton.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QStackedWidget \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qstackedwidget.h \
+		../ClientPart/UiHelperMainWindow.cpp \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QGraphicsDropShadowEffect \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qgraphicseffect.h
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qgraphicseffect.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QEvent \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o ..\ClientPart\mainwindow.cpp
 
 release/purchasesmenu.o: ../ClientPart/purchasesmenu.cpp ../ClientPart/purchasesmenu.h \
@@ -951,7 +1046,32 @@ release/purchasesmenu.o: ../ClientPart/purchasesmenu.cpp ../ClientPart/purchases
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qvector2d.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtouchdevice.h \
 		../ClientPart/buytickets.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QCalendarWidget \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qcalendarwidget.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qdatetime.h \
 		ui_purchasesmenu.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QVariant \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QApplication \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qapplication.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcoreapplication.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qeventloop.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qdesktopwidget.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qguiapplication.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qinputmethod.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QGridLayout \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qgridlayout.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qlayout.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qlayoutitem.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qboxlayout.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QLabel \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qlabel.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qframe.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QPushButton \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qpushbutton.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qicon.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QStackedWidget \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qstackedwidget.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/QPixmap \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QEvent
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\purchasesmenu.o ..\ClientPart\purchasesmenu.cpp
