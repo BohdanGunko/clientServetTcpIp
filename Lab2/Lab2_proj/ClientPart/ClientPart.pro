@@ -9,7 +9,9 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    UiHelperBuyTickets.cpp \
     UiHelperMainWindow.cpp \
+    UiHelperPurchasesMenu.cpp \
     buytickets.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -31,4 +33,17 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
+    recources.qrc \
     recources.qrc
+
+DISTFILES += \
+    img/Arrow.png \
+    img/BookedTicketsIcon.png \
+    img/BookedTicketsIconFocus.png \
+    img/BookedTicketsIconHover.png \
+    img/ExitIcon.png \
+    img/ExitIconFocus.png \
+    img/ExitIconHover.png \
+    img/TrainIcon.png \
+    img/TrainIconFocus.png \
+    img/TrainIconHover.png

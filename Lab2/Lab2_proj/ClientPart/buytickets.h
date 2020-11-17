@@ -14,6 +14,7 @@ class BuyTickets : public QWidget
 public:
     explicit BuyTickets(QWidget *parent = nullptr);
     ~BuyTickets();
+    void setShadowEff();    //set shadows in BuyTickets menu
 
 private slots:
     void on_SearchButton_clicked();

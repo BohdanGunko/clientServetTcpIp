@@ -33,22 +33,21 @@ struct qt_meta_stringdata_MainWindow_t {
 static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {
     {
 QT_MOC_LITERAL(0, 0, 10), // "MainWindow"
-QT_MOC_LITERAL(1, 11, 20), // "on_RegButton_clicked"
-QT_MOC_LITERAL(2, 32, 0), // ""
-QT_MOC_LITERAL(3, 33, 26), // "on_RegGoBackButton_clicked"
-QT_MOC_LITERAL(4, 60, 20), // "on_LogButton_clicked"
-QT_MOC_LITERAL(5, 81, 11), // "resizeEvent"
-QT_MOC_LITERAL(6, 93, 13), // "QResizeEvent*"
-QT_MOC_LITERAL(7, 107, 13), // "resizeLogMenu"
-QT_MOC_LITERAL(8, 121, 13), // "resizeRegMenu"
-QT_MOC_LITERAL(9, 135, 21) // "on_ExitButton_clicked"
+QT_MOC_LITERAL(1, 11, 21), // "on_ExitButton_clicked"
+QT_MOC_LITERAL(2, 33, 0), // ""
+QT_MOC_LITERAL(3, 34, 20), // "on_RegButton_clicked"
+QT_MOC_LITERAL(4, 55, 26), // "on_RegGoBackButton_clicked"
+QT_MOC_LITERAL(5, 82, 20), // "on_LogButton_clicked"
+QT_MOC_LITERAL(6, 103, 11), // "resizeEvent"
+QT_MOC_LITERAL(7, 115, 13), // "QResizeEvent*"
+QT_MOC_LITERAL(8, 129, 13), // "resizeLogMenu"
+QT_MOC_LITERAL(9, 143, 13) // "resizeRegMenu"
 
     },
-    "MainWindow\0on_RegButton_clicked\0\0"
-    "on_RegGoBackButton_clicked\0"
+    "MainWindow\0on_ExitButton_clicked\0\0"
+    "on_RegButton_clicked\0on_RegGoBackButton_clicked\0"
     "on_LogButton_clicked\0resizeEvent\0"
-    "QResizeEvent*\0resizeLogMenu\0resizeRegMenu\0"
-    "on_ExitButton_clicked"
+    "QResizeEvent*\0resizeLogMenu\0resizeRegMenu"
 };
 #undef QT_MOC_LITERAL
 
@@ -69,8 +68,8 @@ static const uint qt_meta_data_MainWindow[] = {
        1,    0,   49,    2, 0x08 /* Private */,
        3,    0,   50,    2, 0x08 /* Private */,
        4,    0,   51,    2, 0x08 /* Private */,
-       5,    1,   52,    2, 0x08 /* Private */,
-       7,    0,   55,    2, 0x08 /* Private */,
+       5,    0,   52,    2, 0x08 /* Private */,
+       6,    1,   53,    2, 0x08 /* Private */,
        8,    0,   56,    2, 0x08 /* Private */,
        9,    0,   57,    2, 0x08 /* Private */,
 
@@ -78,8 +77,8 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 6,    2,
     QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 7,    2,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -92,13 +91,13 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         auto *_t = static_cast<MainWindow *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->on_RegButton_clicked(); break;
-        case 1: _t->on_RegGoBackButton_clicked(); break;
-        case 2: _t->on_LogButton_clicked(); break;
-        case 3: _t->resizeEvent((*reinterpret_cast< QResizeEvent*(*)>(_a[1]))); break;
-        case 4: _t->resizeLogMenu(); break;
-        case 5: _t->resizeRegMenu(); break;
-        case 6: _t->on_ExitButton_clicked(); break;
+        case 0: _t->on_ExitButton_clicked(); break;
+        case 1: _t->on_RegButton_clicked(); break;
+        case 2: _t->on_RegGoBackButton_clicked(); break;
+        case 3: _t->on_LogButton_clicked(); break;
+        case 4: _t->resizeEvent((*reinterpret_cast< QResizeEvent*(*)>(_a[1]))); break;
+        case 5: _t->resizeLogMenu(); break;
+        case 6: _t->resizeRegMenu(); break;
         default: ;
         }
     }
