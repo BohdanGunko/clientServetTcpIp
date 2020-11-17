@@ -249,6 +249,7 @@ Makefile: ../ClientPart/ClientPart.pro P:/Programs/Qt/5.15.1/mingw81_32/mkspecs/
 		../ClientPart/ClientPart.pro \
 		P:/Programs/Qt/5.15.1/mingw81_32/lib/Qt5Widgets.prl \
 		P:/Programs/Qt/5.15.1/mingw81_32/lib/Qt5Gui.prl \
+		P:/Programs/Qt/5.15.1/mingw81_32/lib/Qt5Network.prl \
 		P:/Programs/Qt/5.15.1/mingw81_32/lib/Qt5Core.prl \
 		P:/Programs/Qt/5.15.1/mingw81_32/lib/qtmain.prl \
 		P:/Programs/Qt/5.15.1/mingw81_32/mkspecs/features/build_pass.prf \
@@ -433,6 +434,7 @@ P:/Programs/Qt/5.15.1/mingw81_32/mkspecs/features/lex.prf:
 ../ClientPart/ClientPart.pro:
 P:/Programs/Qt/5.15.1/mingw81_32/lib/Qt5Widgets.prl:
 P:/Programs/Qt/5.15.1/mingw81_32/lib/Qt5Gui.prl:
+P:/Programs/Qt/5.15.1/mingw81_32/lib/Qt5Network.prl:
 P:/Programs/Qt/5.15.1/mingw81_32/lib/Qt5Core.prl:
 P:/Programs/Qt/5.15.1/mingw81_32/lib/qtmain.prl:
 P:/Programs/Qt/5.15.1/mingw81_32/mkspecs/features/build_pass.prf:

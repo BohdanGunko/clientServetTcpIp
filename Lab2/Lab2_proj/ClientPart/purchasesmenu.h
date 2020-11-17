@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include<buytickets.h>
+#include <QTcpSocket>
 
 namespace Ui {
 class PurchasesMenu;
@@ -16,6 +17,8 @@ public:
     explicit PurchasesMenu(QWidget *parent = nullptr);
     ~PurchasesMenu();
     bool eventFilter(QObject * watched, QEvent * event);    //for handling on button click event
+    void setSocket(QTcpSocket* sck);
+    QTcpSocket* socket;
 
 private:
     Ui::PurchasesMenu *ui;

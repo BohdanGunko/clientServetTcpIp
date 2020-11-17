@@ -1,8 +1,18 @@
 #include "purchasesmenu.h"
 #include "ui_purchasesmenu.h"
+
+
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+
+
 #include <UiHelperPurchasesMenu.cpp>
 #include <QPixmap>
 #include <QEvent>
+
+
+
+
 
 //constructor
 PurchasesMenu::PurchasesMenu(QWidget *parent) :
@@ -49,6 +59,11 @@ bool PurchasesMenu::eventFilter(QObject * watched, QEvent * event)
     }
 
     return false;
+}
+
+void PurchasesMenu::setSocket(QTcpSocket *sck)
+{
+    socket=sck;
 }
 
 

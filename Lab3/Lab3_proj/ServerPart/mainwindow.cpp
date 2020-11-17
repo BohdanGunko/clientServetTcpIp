@@ -1,7 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <myserver.h>
 #include <QtSql>
-#include <QSqlDatabase>
+
 #include <QDebug>
 #include <QSqlQuery>
 #include <QSqlQueryModel>
@@ -18,33 +19,34 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
 
+{
     QString serverName = QHostInfo::localHostName()+"\\SQLEXPRESS";
     QString dbName = "TrainsDb";
     QSqlDatabase db = QSqlDatabase::addDatabase("QODBC");
-
-
     db.setConnectOptions();
     QString dsn =QString("Driver={SQL Server};Server=%1;Database=%2;Trusted_Connection=Yes;").arg(serverName).arg(dbName);
-
     db.setDatabaseName(dsn);
-
     if(db.open()){
         model = new QSqlQueryModel(this); //Without this line code crashes
-        model->setQuery("SELECT * FROM UsersInfo");
+        model->setQuery("SELECT * FROM uInfo");
         ui->tableView->setModel(model);
-
-
         qDebug()<<"opened";
-
-
     }else{
 
         qDebug()<<db.lastError().text();
     }
+
+  }
+
+    server = new myServer();
+    server->startServer();
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+
 

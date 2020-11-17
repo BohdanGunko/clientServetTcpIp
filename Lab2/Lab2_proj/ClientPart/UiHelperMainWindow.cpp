@@ -193,8 +193,3 @@ void MainWindow::resizeRegMenu()
     ui->RegRegButton->setStyleSheet( bordRadButton );
 
 }
-
-
-
-
-

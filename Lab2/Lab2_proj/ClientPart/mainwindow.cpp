@@ -22,14 +22,28 @@ MainWindow::MainWindow(QWidget *parent)
 
     //calling func to make shadows in login and reg menus
     setShadowEff();
+
+    //setting same socket to purchases ui
+    OvScreen.setSocket(socket);
+
+    //create socket and connect signals
+    socket = new QTcpSocket();
+        connect(socket, SIGNAL(readyRead()), this, SLOT(sockReady()));
+        connect(socket, SIGNAL(disconnected()), this, SLOT(sockDick()));
+
+    //to be
+    QHostAddress _adres;
+    _adres.setAddress("178.137.161.32");
+    socket->connectToHost(_adres, 80);
 }
 
 //destructor
 MainWindow::~MainWindow()
 {
-
-    delete ui;  
+    delete ui;
 }
+
+
 
 
 void MainWindow::on_RegButton_clicked()
@@ -46,6 +60,10 @@ void MainWindow::on_RegGoBackButton_clicked()
 
 void MainWindow::on_LogButton_clicked()
 {
+    qDebug()<<"Host name: "<<QHostAddress::LocalHost;
+
+
+    //go to main menu
     ui->stackedWidget->setCurrentIndex(2);
 }
 
@@ -66,5 +84,22 @@ void MainWindow::resizeEvent(QResizeEvent* event)
     }
 }
 
+void MainWindow::sockReady()
+{
+    if(socket->waitForConnected(3000))
+    {
+        socket->waitForReadyRead(3000);
+        recievedData = socket->readAll();
+        qDebug()<<"Recieved data from server: "<<recievedData;
+    }
+    else
+    {
+        qDebug()<<"Can not read data from server";
+    }
+}
 
+void MainWindow::sockDick()
+{
+
+}
 

@@ -3,6 +3,8 @@
 
 #include <purchasesmenu.h>
 #include <QMainWindow>
+#include <QTcpServer>
+#include <QTcpSocket>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -15,7 +17,12 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    QTcpSocket* socket;
+    QByteArray recievedData;
 
+public slots:
+    void sockReady();
+    void sockDick();
 private slots:
     void on_ExitButton_clicked();
     void on_RegButton_clicked();
@@ -24,6 +31,7 @@ private slots:
     void resizeEvent(QResizeEvent*);    //redefinition of QResize event
     void resizeLogMenu();   //resizing elements in Log menu when window size changes
     void resizeRegMenu();   //resizing elements in Reg menu when window size changes
+
 
 
 
