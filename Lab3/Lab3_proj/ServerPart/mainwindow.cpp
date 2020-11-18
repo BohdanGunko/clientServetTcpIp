@@ -50,3 +50,9 @@ MainWindow::~MainWindow()
 
 
 
+
+void MainWindow::on_pushButton_clicked()
+{
+    server->writeToClient(QByteArray::fromStdString( ui->lineEdit->text().toStdString()));
+
+}

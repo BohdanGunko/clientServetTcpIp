@@ -19,6 +19,9 @@ public:
     myServer* server;
 
 
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     QSqlQueryModel* model;

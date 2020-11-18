@@ -12,11 +12,16 @@ public:
     ~myServer();
     QTcpSocket* socket;
 
+
+    void writeToClient(QByteArray text);
+
 public slots:
     void startServer();
     void incomingConnection(qintptr socketDescriptor);
     void sockReady();
     void sockDisc();
+
+
 };
 
 #endif // MYSERVER_H

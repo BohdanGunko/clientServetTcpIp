@@ -32,9 +32,12 @@ MainWindow::MainWindow(QWidget *parent)
         connect(socket, SIGNAL(disconnected()), this, SLOT(sockDick()));
 
     //to be
+
     QHostAddress _adres;
-    _adres.setAddress("192.168.0.102");
-    socket->connectToHost(_adres, 60000);
+    _adres.setAddress("178.137.161.32");
+    socket->connectToHost(_adres, 27000);
+    socket->waitForConnected(10000);
+
 }
 
 //destructor
@@ -90,7 +93,10 @@ void MainWindow::sockReady()
     {
         socket->waitForReadyRead(3000);
         recievedData = socket->readAll();
-        qDebug()<<"Recieved data from server: "<<recievedData;
+        //to be deleted
+        ui->LoginLineEdit->setText(recievedData);
+
+       // qDebug()<<"Recieved data from server: "<<recievedData;
     }
     else
     {

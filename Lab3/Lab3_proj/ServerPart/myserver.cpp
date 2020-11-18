@@ -1,26 +1,33 @@
 #include "myserver.h"
 #include <QDebug>
 #include <QNetworkInterface>
+#include <QLocalServer>
+#include <QHostInfo>
+#include <QDnsLookup>
 
 myServer::myServer() {};
-myServer::~myServer() {};
+myServer::~myServer() {}
+
+void myServer::writeToClient(QByteArray text)
+{
+    socket->write(text);
+    socket->waitForBytesWritten(3000);
+};
 
 void myServer::startServer()
 {
-    QHostAddress _adres;
-    _adres.setAddress("192.168.0.102");
 
 
+    QHostAddress _adress("192.168.0.102");
 
-
-    if(this->listen(_adres, 60000))
+    if(this->listen(_adress, 27000))
     {
-        qDebug()<<"listening"<<_adres.toIPv4Address();
+        qDebug()<<"listening"<<_adress;
 
     }
     else
     {
-        qDebug()<<"not listening"<<_adres.toIPv4Address();
+        qDebug()<<"not listening"<<_adress;
     }
 }
 
