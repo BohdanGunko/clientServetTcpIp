@@ -4,7 +4,6 @@
 
 #include <QEvent>
 #include <QDebug>
-#include <QGraphicsDropShadowEffect>
 
 
 //constructor
@@ -23,21 +22,8 @@ MainWindow::MainWindow(QWidget *parent)
     //calling func to make shadows in login and reg menus
     setShadowEff();
 
-    //setting same socket to purchases ui
-    OvScreen.setSocket(socket);
-
-    //create socket and connect signals
-    socket = new QTcpSocket();
-        connect(socket, SIGNAL(readyRead()), this, SLOT(sockReady()));
-        connect(socket, SIGNAL(disconnected()), this, SLOT(sockDick()));
-
-    //to be
-
-    QHostAddress _adres;
-    _adres.setAddress("178.137.161.32");
-    socket->connectToHost(_adres, 27000);
-    socket->waitForConnected(10000);
-
+    //create socket
+    createSocket();
 }
 
 //destructor
@@ -63,11 +49,15 @@ void MainWindow::on_RegGoBackButton_clicked()
 
 void MainWindow::on_LogButton_clicked()
 {
-    qDebug()<<"Host name: "<<QHostAddress::LocalHost;
+    //read data from line edits
+    QString txtToSend = QString("log:%1; pass:%2").arg(ui->LoginLineEdit->text()).arg(ui->PassLineEdit->text());
+
+    //send log and pass to server
+    socket->write(txtToSend.toLocal8Bit());
 
 
     //go to main menu
-    ui->stackedWidget->setCurrentIndex(2);
+    //ui->stackedWidget->setCurrentIndex(2);
 }
 
 void MainWindow::on_ExitButton_clicked()
@@ -87,25 +77,42 @@ void MainWindow::resizeEvent(QResizeEvent* event)
     }
 }
 
+//creating and initializing socket
+void MainWindow::createSocket()
+{
+    //create socket and connect signals
+    socket = new QTcpSocket();
+        connect(socket, SIGNAL(readyRead()), this, SLOT(sockReady()));
+        connect(socket, SIGNAL(disconnected()), this, SLOT(sockDisk()));
+
+    //init socket with ip and port of server
+    socket->connectToHost("178.137.161.32", 27000);
+
+    //wait for connection to be established
+    socket->waitForConnected(1500);
+}
+
+//reading from socket
 void MainWindow::sockReady()
 {
-    if(socket->waitForConnected(3000))
+    //wait for stable connection
+    if(socket->waitForConnected(1500))
     {
-        socket->waitForReadyRead(3000);
+        //read all data
         recievedData = socket->readAll();
-        //to be deleted
-        ui->LoginLineEdit->setText(recievedData);
-
-       // qDebug()<<"Recieved data from server: "<<recievedData;
+        qDebug()<<"Recieved data from server: "<<recievedData;
     }
+    //if connecting failed
     else
     {
-        qDebug()<<"Can not read data from server";
+        qDebug()<<"Can not connect to server";
     }
 }
 
-void MainWindow::sockDick()
+//disconnect from server event
+void MainWindow::sockDisk()
 {
-
+    qDebug()<<"Disconnected from server";
+    socket->deleteLater();
 }
 

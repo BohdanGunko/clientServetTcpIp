@@ -3,8 +3,8 @@
 
 #include <purchasesmenu.h>
 #include <QMainWindow>
-#include <QTcpServer>
 #include <QTcpSocket>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -19,10 +19,8 @@ public:
     ~MainWindow();
     QTcpSocket* socket;
     QByteArray recievedData;
+    void createSocket();
 
-public slots:
-    void sockReady();
-    void sockDick();
 private slots:
     void on_ExitButton_clicked();
     void on_RegButton_clicked();
@@ -31,9 +29,8 @@ private slots:
     void resizeEvent(QResizeEvent*);    //redefinition of QResize event
     void resizeLogMenu();   //resizing elements in Log menu when window size changes
     void resizeRegMenu();   //resizing elements in Reg menu when window size changes
-
-
-
+    void sockReady();   //reading from socket
+    void sockDisk();    //disconnect from server event
 
 private:
     Ui::MainWindow *ui;

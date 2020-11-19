@@ -1,0 +1,10 @@
+debug/backend.o
+debug/buytickets.o
+debug/main.o
+debug/mainwindow.o
+debug/purchasesmenu.o
+debug/qrc_recources.o
+debug/moc_backend.o
+debug/moc_buytickets.o
+debug/moc_mainwindow.o
+debug/moc_purchasesmenu.o

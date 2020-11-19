@@ -4,14 +4,16 @@
 
 #include <QTcpServer>
 #include <QTcpSocket>
+#include <QObject>
 
 class myServer : public QTcpServer
 {
+    Q_OBJECT
 public:
     myServer();
     ~myServer();
     QTcpSocket* socket;
-
+    QByteArray recievedData;
 
     void writeToClient(QByteArray text);
 

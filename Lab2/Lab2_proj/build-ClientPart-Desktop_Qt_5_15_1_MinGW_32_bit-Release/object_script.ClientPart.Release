@@ -1,0 +1,10 @@
+release/backend.o
+release/buytickets.o
+release/main.o
+release/mainwindow.o
+release/purchasesmenu.o
+release/qrc_recources.o
+release/moc_backend.o
+release/moc_buytickets.o
+release/moc_mainwindow.o
+release/moc_purchasesmenu.o
