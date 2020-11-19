@@ -272,11 +272,9 @@ debug/moc_buytickets.cpp: ../ClientPart/buytickets.h \
 	P:\Programs\Qt\5.15.1\mingw81_32\bin\moc.exe $(DEFINES) --include S:/Git/ipz_1_gunko_2020/Lab2/Lab2_proj/build-ClientPart-Desktop_Qt_5_15_1_MinGW_32_bit-Debug/debug/moc_predefs.h -IP:/Programs/Qt/5.15.1/mingw81_32/mkspecs/win32-g++ -IS:/Git/ipz_1_gunko_2020/Lab2/Lab2_proj/ClientPart -IP:/Programs/Qt/5.15.1/mingw81_32/include -IP:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets -IP:/Programs/Qt/5.15.1/mingw81_32/include/QtGui -IP:/Programs/Qt/5.15.1/mingw81_32/include/QtANGLE -IP:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork -IP:/Programs/Qt/5.15.1/mingw81_32/include/QtCore -I. -IP:/Programs/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++ -IP:/Programs/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32 -IP:/Programs/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward -IP:/Programs/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include -IP:/Programs/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed -IP:/Programs/Qt/Tools/mingw810_32/i686-w64-mingw32/include ..\ClientPart\buytickets.h -o debug\moc_buytickets.cpp
 
 debug/moc_mainwindow.cpp: ../ClientPart/mainwindow.h \
-		../ClientPart/purchasesmenu.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QWidget \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qwidget.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtwidgetsglobal.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtguiglobal.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QEvent \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcoreevent.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qnamespace.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qglobal.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qconfig-bootstrapped.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qconfig.h \
@@ -298,27 +296,24 @@ debug/moc_mainwindow.cpp: ../ClientPart/mainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qmutex.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qnumeric.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qversiontagging.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtgui-config.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtwidgets-config.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qwindowdefs.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobjectdefs.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qnamespace.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobjectdefs_impl.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qwindowdefs_win.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobject.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstring.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qchar.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qbytearray.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qrefcount.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qarraydata.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobjectdefs.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobjectdefs_impl.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QDebug \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qdebug.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qalgorithms.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qhash.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qchar.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qiterator.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qlist.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qhashfunctions.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstring.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstringliteral.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstringalgorithms.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstringview.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstringbuilder.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qlist.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qalgorithms.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qiterator.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qhashfunctions.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qpair.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qvector.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcontainertools_impl.h \
@@ -327,12 +322,31 @@ debug/moc_mainwindow.cpp: ../ClientPart/mainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstringlist.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qregexp.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstringmatcher.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcoreevent.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qmap.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qtextstream.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qiodevice.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobject.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qscopedpointer.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qmetatype.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qvarlengtharray.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcontainerfwd.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobject_impl.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qlocale.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qvariant.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qshareddata.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qset.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcontiguouscache.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qsharedpointer.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qsharedpointer_impl.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QMainWindow \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qmainwindow.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtwidgetsglobal.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtguiglobal.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtgui-config.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtwidgets-config.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qwidget.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qwindowdefs.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qwindowdefs_win.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qmargins.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qpaintdevice.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qrect.h \
@@ -346,16 +360,11 @@ debug/moc_mainwindow.cpp: ../ClientPart/mainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qpolygon.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qregion.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qdatastream.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qiodevice.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qline.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtransform.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qimage.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qpixelformat.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qpixmap.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qsharedpointer.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qshareddata.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qhash.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qsharedpointer_impl.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qfont.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qfontmetrics.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qfontinfo.h \
@@ -363,19 +372,16 @@ debug/moc_mainwindow.cpp: ../ClientPart/mainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qcursor.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qkeysequence.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qevent.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qvariant.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qmap.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qdebug.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qtextstream.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qlocale.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qset.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcontiguouscache.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qurl.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qurlquery.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qfile.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qfiledevice.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qvector2d.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtouchdevice.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtabwidget.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qicon.h \
+		../ClientPart/purchasesmenu.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QWidget \
 		../ClientPart/buytickets.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QCalendarWidget \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qcalendarwidget.h \
@@ -385,20 +391,19 @@ debug/moc_mainwindow.cpp: ../ClientPart/mainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qtnetworkglobal.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qtnetwork-config.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qabstractsocket.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QMainWindow \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qmainwindow.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtabwidget.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qicon.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonDocument \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsondocument.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QMessageBox \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qmessagebox.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qdialog.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonObject \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsonobject.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsonvalue.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcborvalue.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcborcommon.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qregularexpression.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/quuid.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonObject \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsonobject.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonParseError \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsondocument.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonDocument \
 		debug/moc_predefs.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/bin/moc.exe
 	P:\Programs\Qt\5.15.1\mingw81_32\bin\moc.exe $(DEFINES) --include S:/Git/ipz_1_gunko_2020/Lab2/Lab2_proj/build-ClientPart-Desktop_Qt_5_15_1_MinGW_32_bit-Debug/debug/moc_predefs.h -IP:/Programs/Qt/5.15.1/mingw81_32/mkspecs/win32-g++ -IS:/Git/ipz_1_gunko_2020/Lab2/Lab2_proj/ClientPart -IP:/Programs/Qt/5.15.1/mingw81_32/include -IP:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets -IP:/Programs/Qt/5.15.1/mingw81_32/include/QtGui -IP:/Programs/Qt/5.15.1/mingw81_32/include/QtANGLE -IP:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork -IP:/Programs/Qt/5.15.1/mingw81_32/include/QtCore -I. -IP:/Programs/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++ -IP:/Programs/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32 -IP:/Programs/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward -IP:/Programs/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include -IP:/Programs/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed -IP:/Programs/Qt/Tools/mingw810_32/i686-w64-mingw32/include ..\ClientPart\mainwindow.h -o debug\moc_mainwindow.cpp
@@ -666,11 +671,9 @@ debug/buytickets.o: ../ClientPart/buytickets.cpp ../ClientPart/buytickets.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\buytickets.o ..\ClientPart\buytickets.cpp
 
 debug/main.o: ../ClientPart/main.cpp ../ClientPart/mainwindow.h \
-		../ClientPart/purchasesmenu.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QWidget \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qwidget.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtwidgetsglobal.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtguiglobal.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QEvent \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcoreevent.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qnamespace.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qglobal.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qconfig-bootstrapped.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qconfig.h \
@@ -692,27 +695,24 @@ debug/main.o: ../ClientPart/main.cpp ../ClientPart/mainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qmutex.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qnumeric.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qversiontagging.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtgui-config.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtwidgets-config.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qwindowdefs.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobjectdefs.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qnamespace.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobjectdefs_impl.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qwindowdefs_win.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobject.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstring.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qchar.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qbytearray.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qrefcount.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qarraydata.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobjectdefs.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobjectdefs_impl.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QDebug \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qdebug.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qalgorithms.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qhash.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qchar.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qiterator.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qlist.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qhashfunctions.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstring.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstringliteral.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstringalgorithms.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstringview.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstringbuilder.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qlist.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qalgorithms.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qiterator.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qhashfunctions.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qpair.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qvector.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcontainertools_impl.h \
@@ -721,12 +721,31 @@ debug/main.o: ../ClientPart/main.cpp ../ClientPart/mainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstringlist.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qregexp.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstringmatcher.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcoreevent.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qmap.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qtextstream.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qiodevice.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobject.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qscopedpointer.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qmetatype.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qvarlengtharray.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcontainerfwd.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobject_impl.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qlocale.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qvariant.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qshareddata.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qset.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcontiguouscache.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qsharedpointer.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qsharedpointer_impl.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QMainWindow \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qmainwindow.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtwidgetsglobal.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtguiglobal.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtgui-config.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtwidgets-config.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qwidget.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qwindowdefs.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qwindowdefs_win.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qmargins.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qpaintdevice.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qrect.h \
@@ -740,16 +759,11 @@ debug/main.o: ../ClientPart/main.cpp ../ClientPart/mainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qpolygon.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qregion.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qdatastream.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qiodevice.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qline.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtransform.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qimage.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qpixelformat.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qpixmap.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qsharedpointer.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qshareddata.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qhash.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qsharedpointer_impl.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qfont.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qfontmetrics.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qfontinfo.h \
@@ -757,19 +771,16 @@ debug/main.o: ../ClientPart/main.cpp ../ClientPart/mainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qcursor.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qkeysequence.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qevent.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qvariant.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qmap.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qdebug.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qtextstream.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qlocale.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qset.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcontiguouscache.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qurl.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qurlquery.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qfile.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qfiledevice.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qvector2d.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtouchdevice.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtabwidget.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qicon.h \
+		../ClientPart/purchasesmenu.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QWidget \
 		../ClientPart/buytickets.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QCalendarWidget \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qcalendarwidget.h \
@@ -779,20 +790,19 @@ debug/main.o: ../ClientPart/main.cpp ../ClientPart/mainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qtnetworkglobal.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qtnetwork-config.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qabstractsocket.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QMainWindow \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qmainwindow.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtabwidget.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qicon.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonDocument \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsondocument.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QMessageBox \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qmessagebox.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qdialog.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonObject \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsonobject.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsonvalue.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcborvalue.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcborcommon.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qregularexpression.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/quuid.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonObject \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsonobject.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonParseError \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsondocument.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonDocument \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QApplication \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qapplication.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcoreapplication.h \
@@ -803,11 +813,9 @@ debug/main.o: ../ClientPart/main.cpp ../ClientPart/mainwindow.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\ClientPart\main.cpp
 
 debug/mainwindow.o: ../ClientPart/mainwindow.cpp ../ClientPart/mainwindow.h \
-		../ClientPart/purchasesmenu.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QWidget \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qwidget.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtwidgetsglobal.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtguiglobal.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QEvent \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcoreevent.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qnamespace.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qglobal.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qconfig-bootstrapped.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qconfig.h \
@@ -829,27 +837,24 @@ debug/mainwindow.o: ../ClientPart/mainwindow.cpp ../ClientPart/mainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qmutex.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qnumeric.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qversiontagging.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtgui-config.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtwidgets-config.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qwindowdefs.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobjectdefs.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qnamespace.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobjectdefs_impl.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qwindowdefs_win.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobject.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstring.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qchar.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qbytearray.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qrefcount.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qarraydata.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobjectdefs.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobjectdefs_impl.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QDebug \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qdebug.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qalgorithms.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qhash.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qchar.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qiterator.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qlist.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qhashfunctions.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstring.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstringliteral.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstringalgorithms.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstringview.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstringbuilder.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qlist.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qalgorithms.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qiterator.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qhashfunctions.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qpair.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qvector.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcontainertools_impl.h \
@@ -858,12 +863,31 @@ debug/mainwindow.o: ../ClientPart/mainwindow.cpp ../ClientPart/mainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstringlist.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qregexp.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstringmatcher.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcoreevent.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qmap.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qtextstream.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qiodevice.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobject.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qscopedpointer.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qmetatype.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qvarlengtharray.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcontainerfwd.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobject_impl.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qlocale.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qvariant.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qshareddata.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qset.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcontiguouscache.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qsharedpointer.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qsharedpointer_impl.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QMainWindow \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qmainwindow.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtwidgetsglobal.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtguiglobal.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtgui-config.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtwidgets-config.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qwidget.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qwindowdefs.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qwindowdefs_win.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qmargins.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qpaintdevice.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qrect.h \
@@ -877,16 +901,11 @@ debug/mainwindow.o: ../ClientPart/mainwindow.cpp ../ClientPart/mainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qpolygon.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qregion.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qdatastream.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qiodevice.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qline.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtransform.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qimage.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qpixelformat.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qpixmap.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qsharedpointer.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qshareddata.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qhash.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qsharedpointer_impl.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qfont.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qfontmetrics.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qfontinfo.h \
@@ -894,19 +913,16 @@ debug/mainwindow.o: ../ClientPart/mainwindow.cpp ../ClientPart/mainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qcursor.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qkeysequence.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qevent.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qvariant.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qmap.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qdebug.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qtextstream.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qlocale.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qset.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcontiguouscache.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qurl.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qurlquery.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qfile.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qfiledevice.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qvector2d.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtouchdevice.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtabwidget.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qicon.h \
+		../ClientPart/purchasesmenu.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QWidget \
 		../ClientPart/buytickets.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QCalendarWidget \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qcalendarwidget.h \
@@ -916,26 +932,23 @@ debug/mainwindow.o: ../ClientPart/mainwindow.cpp ../ClientPart/mainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qtnetworkglobal.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qtnetwork-config.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qabstractsocket.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QMainWindow \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qmainwindow.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtabwidget.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qicon.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonDocument \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsondocument.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QMessageBox \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qmessagebox.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qdialog.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonObject \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsonobject.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsonvalue.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcborvalue.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcborcommon.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qregularexpression.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/quuid.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonObject \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsonobject.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonParseError \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsondocument.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonDocument \
 		ui_mainwindow.h \
 		../ClientPart/UiHelperMainWindow.cpp \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QGraphicsDropShadowEffect \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qgraphicseffect.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QEvent \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QDebug
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qgraphicseffect.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o ..\ClientPart\mainwindow.cpp
 
 debug/purchasesmenu.o: ../ClientPart/purchasesmenu.cpp ../ClientPart/purchasesmenu.h \
@@ -1053,24 +1066,28 @@ debug/purchasesmenu.o: ../ClientPart/purchasesmenu.cpp ../ClientPart/purchasesme
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qabstractsocket.h \
 		ui_purchasesmenu.h \
 		../ClientPart/mainwindow.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QEvent \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QDebug \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QMainWindow \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qmainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtabwidget.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qicon.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonDocument \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsondocument.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QMessageBox \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qmessagebox.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qdialog.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonObject \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsonobject.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsonvalue.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcborvalue.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcborcommon.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qregularexpression.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/quuid.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonObject \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsonobject.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonParseError \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsondocument.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonDocument \
 		ui_mainwindow.h \
 		../ClientPart/UiHelperPurchasesMenu.cpp \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/QPixmap \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QEvent
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/QPixmap
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\purchasesmenu.o ..\ClientPart\purchasesmenu.cpp
 
 debug/qrc_recources.o: debug/qrc_recources.cpp 

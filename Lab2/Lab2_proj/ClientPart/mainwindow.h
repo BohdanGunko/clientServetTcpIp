@@ -29,7 +29,7 @@ public:
     QTcpSocket* socket;
     QByteArray recievedData;
     QJsonDocument* jsnDoc;
-    QJsonParseError* errJsn;
+    QJsonParseError* errJsn = new QJsonParseError();
     QJsonObject* obj= new QJsonObject();
     void decEndExec();
     
