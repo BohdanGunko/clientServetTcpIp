@@ -221,13 +221,10 @@ debug/moc_mainwindow.cpp: ../ServerPart/mainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtouchdevice.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtabwidget.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qicon.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/QSqlQueryModel \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqlquerymodel.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qtsqlglobal.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qtsql-config.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qabstractitemmodel.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqldatabase.h \
 		../ServerPart/myserver.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QObject \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QList \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QDebug \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/QTcpServer \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qtcpserver.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qtnetworkglobal.h \
@@ -236,15 +233,34 @@ debug/moc_mainwindow.cpp: ../ServerPart/mainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qhostaddress.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/QTcpSocket \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qtcpsocket.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QObject \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonDocument \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsondocument.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsonvalue.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcborvalue.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qdatetime.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcborcommon.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qregularexpression.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/quuid.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonObject \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsonobject.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonParseError \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/QSqlQuery \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqlquery.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qtsqlglobal.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qtsql-config.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqldatabase.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/QSqlDatabase \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/QSqlError \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqlerror.h \
 		debug/moc_predefs.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/bin/moc.exe
 	P:\Programs\Qt\5.15.1\mingw81_32\bin\moc.exe $(DEFINES) --include S:/Git/ipz_1_gunko_2020/Lab3/Lab3_proj/build-ServerPart-Desktop_Qt_5_15_1_MinGW_32_bit-Debug/debug/moc_predefs.h -IP:/Programs/Qt/5.15.1/mingw81_32/mkspecs/win32-g++ -IS:/Git/ipz_1_gunko_2020/Lab3/Lab3_proj/ServerPart -IP:/Programs/Qt/5.15.1/mingw81_32/include -IP:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets -IP:/Programs/Qt/5.15.1/mingw81_32/include/QtGui -IP:/Programs/Qt/5.15.1/mingw81_32/include/QtANGLE -IP:/Programs/Qt/5.15.1/mingw81_32/include/QtSql -IP:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork -IP:/Programs/Qt/5.15.1/mingw81_32/include/QtCore -I. -IP:/Programs/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++ -IP:/Programs/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32 -IP:/Programs/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward -IP:/Programs/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include -IP:/Programs/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed -IP:/Programs/Qt/Tools/mingw810_32/i686-w64-mingw32/include ..\ServerPart\mainwindow.h -o debug\moc_mainwindow.cpp
 
 debug/moc_myserver.cpp: ../ServerPart/myserver.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/QTcpServer \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qtcpserver.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qtnetworkglobal.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QObject \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobject.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobjectdefs.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qnamespace.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qglobal.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qconfig-bootstrapped.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qconfig.h \
@@ -266,10 +282,6 @@ debug/moc_myserver.cpp: ../ServerPart/myserver.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qmutex.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qnumeric.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qversiontagging.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qtnetwork-config.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobject.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobjectdefs.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qnamespace.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobjectdefs_impl.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstring.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qchar.h \
@@ -298,12 +310,13 @@ debug/moc_myserver.cpp: ../ServerPart/myserver.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qvarlengtharray.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcontainerfwd.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobject_impl.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qabstractsocket.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qiodevice.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QList \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QDebug \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qdebug.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qhash.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qmap.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qtextstream.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qiodevice.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qlocale.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qvariant.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qshareddata.h \
@@ -311,10 +324,35 @@ debug/moc_myserver.cpp: ../ServerPart/myserver.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcontiguouscache.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qsharedpointer.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qsharedpointer_impl.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/QTcpServer \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qtcpserver.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qtnetworkglobal.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qtnetwork-config.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qabstractsocket.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qhostaddress.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/QTcpSocket \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qtcpsocket.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QObject \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonDocument \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsondocument.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsonvalue.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcborvalue.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qdatetime.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcborcommon.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qregularexpression.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qurl.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qurlquery.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/quuid.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonObject \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsonobject.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonParseError \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/QSqlQuery \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqlquery.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qtsqlglobal.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qtsql-config.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqldatabase.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/QSqlDatabase \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/QSqlError \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqlerror.h \
 		debug/moc_predefs.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/bin/moc.exe
 	P:\Programs\Qt\5.15.1\mingw81_32\bin\moc.exe $(DEFINES) --include S:/Git/ipz_1_gunko_2020/Lab3/Lab3_proj/build-ServerPart-Desktop_Qt_5_15_1_MinGW_32_bit-Debug/debug/moc_predefs.h -IP:/Programs/Qt/5.15.1/mingw81_32/mkspecs/win32-g++ -IS:/Git/ipz_1_gunko_2020/Lab3/Lab3_proj/ServerPart -IP:/Programs/Qt/5.15.1/mingw81_32/include -IP:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets -IP:/Programs/Qt/5.15.1/mingw81_32/include/QtGui -IP:/Programs/Qt/5.15.1/mingw81_32/include/QtANGLE -IP:/Programs/Qt/5.15.1/mingw81_32/include/QtSql -IP:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork -IP:/Programs/Qt/5.15.1/mingw81_32/include/QtCore -I. -IP:/Programs/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++ -IP:/Programs/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32 -IP:/Programs/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward -IP:/Programs/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include -IP:/Programs/Qt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed -IP:/Programs/Qt/Tools/mingw810_32/i686-w64-mingw32/include ..\ServerPart\myserver.h -o debug\moc_myserver.cpp
@@ -449,13 +487,10 @@ debug/main.o: ../ServerPart/main.cpp ../ServerPart/mainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtouchdevice.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtabwidget.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qicon.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/QSqlQueryModel \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqlquerymodel.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qtsqlglobal.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qtsql-config.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qabstractitemmodel.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqldatabase.h \
 		../ServerPart/myserver.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QObject \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QList \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QDebug \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/QTcpServer \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qtcpserver.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qtnetworkglobal.h \
@@ -464,7 +499,25 @@ debug/main.o: ../ServerPart/main.cpp ../ServerPart/mainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qhostaddress.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/QTcpSocket \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qtcpsocket.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QObject \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonDocument \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsondocument.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsonvalue.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcborvalue.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qdatetime.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcborcommon.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qregularexpression.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/quuid.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonObject \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsonobject.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonParseError \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/QSqlQuery \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqlquery.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qtsqlglobal.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qtsql-config.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqldatabase.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/QSqlDatabase \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/QSqlError \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqlerror.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QApplication \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qapplication.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcoreapplication.h \
@@ -581,13 +634,10 @@ debug/mainwindow.o: ../ServerPart/mainwindow.cpp ../ServerPart/mainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qtouchdevice.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtabwidget.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qicon.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/QSqlQueryModel \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqlquerymodel.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qtsqlglobal.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qtsql-config.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qabstractitemmodel.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqldatabase.h \
 		../ServerPart/myserver.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QObject \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QList \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QDebug \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/QTcpServer \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qtcpserver.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qtnetworkglobal.h \
@@ -596,176 +646,33 @@ debug/mainwindow.o: ../ServerPart/mainwindow.cpp ../ServerPart/mainwindow.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qhostaddress.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/QTcpSocket \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qtcpsocket.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QObject \
-		ui_mainwindow.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/QtSql \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/QtSqlDepends \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QtCore \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QtCoreDepends \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qabstractanimation.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qabstracteventdispatcher.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qeventloop.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qabstractnativeeventfilter.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qabstractproxymodel.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qabstractstate.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qabstracttransition.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qanimationgroup.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qarraydataops.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qarraydatapointer.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qbasictimer.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qbitarray.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qbuffer.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qbytearraymatcher.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcache.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcalendar.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcborarray.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonDocument \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsondocument.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsonvalue.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcborvalue.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qdatetime.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcborcommon.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qregularexpression.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/quuid.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcbormap.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcborstream.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcborstreamreader.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qfloat16.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcborstreamwriter.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcollator.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcommandlineoption.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcommandlineparser.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcoreapplication.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qconcatenatetablesproxymodel.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcryptographichash.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qdeadlinetimer.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qelapsedtimer.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qdir.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qfileinfo.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qdiriterator.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qeasingcurve.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qendian.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qeventtransition.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qexception.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qfactoryinterface.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qfileselector.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QStringList \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qfilesystemwatcher.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qfinalstate.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qfuture.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qfutureinterface.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qrunnable.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qresultstore.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qfuturesynchronizer.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qfuturewatcher.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qhistorystate.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qidentityproxymodel.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qisenum.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qitemselectionmodel.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsonarray.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsonvalue.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsondocument.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonObject \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsonobject.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qlibrary.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qlibraryinfo.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qversionnumber.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qlinkedlist.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qlockfile.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qloggingcategory.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qmath.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qmessageauthenticationcode.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qmetaobject.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qmimedata.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qmimedatabase.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qmimetype.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobjectcleanuphandler.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qoperatingsystemversion.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qparallelanimationgroup.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qpauseanimation.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qplugin.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qpointer.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qpluginloader.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qprocess.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qpropertyanimation.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qvariantanimation.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qqueue.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qrandom.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qreadwritelock.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qresource.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qsavefile.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qscopedvaluerollback.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qscopeguard.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qsemaphore.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qsequentialanimationgroup.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qsettings.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qsharedmemory.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qsignalmapper.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qsignaltransition.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qsocketnotifier.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qsortfilterproxymodel.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstack.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstandardpaths.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstate.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstatemachine.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstorageinfo.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstringlistmodel.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qsystemsemaphore.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qtemporarydir.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qtemporaryfile.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qtextboundaryfinder.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qtextcodec.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qthread.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qthreadpool.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qthreadstorage.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qtimeline.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qtimer.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qtimezone.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qtranslator.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qtransposeproxymodel.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qtypetraits.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qwaitcondition.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QDeadlineTimer \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qwineventnotifier.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qxmlstream.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qtcoreversion.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqldriver.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqldriverplugin.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqlerror.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqlfield.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqlindex.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqlrecord.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqlquery.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqlrelationaldelegate.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qitemdelegate.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qabstractitemdelegate.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qstyleoption.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qabstractspinbox.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtGui/qvalidator.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qslider.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qabstractslider.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qstyle.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtabbar.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qrubberband.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qframe.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qlistview.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qabstractitemview.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qabstractscrollarea.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qcombobox.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqlrelationaltablemodel.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqltablemodel.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqlresult.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qtsqlversion.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QDebug \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonParseError \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/QSqlQuery \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/QTableView \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtWidgets/qtableview.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/QSqlRelationalTableModel \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/QSqlTableModel \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/QHostInfo \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qhostinfo.h
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqlquery.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qtsqlglobal.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qtsql-config.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqldatabase.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/QSqlDatabase \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/QSqlError \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqlerror.h \
+		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o ..\ServerPart\mainwindow.cpp
 
 debug/myserver.o: ../ServerPart/myserver.cpp ../ServerPart/myserver.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/QTcpServer \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qtcpserver.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qtnetworkglobal.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QObject \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobject.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobjectdefs.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qnamespace.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qglobal.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qconfig-bootstrapped.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qconfig.h \
@@ -787,10 +694,6 @@ debug/myserver.o: ../ServerPart/myserver.cpp ../ServerPart/myserver.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qmutex.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qnumeric.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qversiontagging.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qtnetwork-config.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobject.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobjectdefs.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qnamespace.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobjectdefs_impl.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qstring.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qchar.h \
@@ -819,12 +722,13 @@ debug/myserver.o: ../ServerPart/myserver.cpp ../ServerPart/myserver.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qvarlengtharray.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcontainerfwd.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qobject_impl.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qabstractsocket.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qiodevice.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QList \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QDebug \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qdebug.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qhash.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qmap.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qtextstream.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qiodevice.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qlocale.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qvariant.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qshareddata.h \
@@ -832,19 +736,35 @@ debug/myserver.o: ../ServerPart/myserver.cpp ../ServerPart/myserver.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcontiguouscache.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qsharedpointer.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qsharedpointer_impl.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/QTcpServer \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qtcpserver.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qtnetworkglobal.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qtnetwork-config.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qabstractsocket.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qhostaddress.h \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/QTcpSocket \
 		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qtcpsocket.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QObject \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QDebug \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/QNetworkInterface \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qnetworkinterface.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/QLocalServer \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qlocalserver.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/QHostInfo \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qhostinfo.h \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/QDnsLookup \
-		P:/Programs/Qt/5.15.1/mingw81_32/include/QtNetwork/qdnslookup.h
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonDocument \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsondocument.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsonvalue.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcborvalue.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qdatetime.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qcborcommon.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qregularexpression.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qurl.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qurlquery.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/quuid.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonObject \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/qjsonobject.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtCore/QJsonParseError \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/QSqlQuery \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqlquery.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qtsqlglobal.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qtsql-config.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqldatabase.h \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/QSqlDatabase \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/QSqlError \
+		P:/Programs/Qt/5.15.1/mingw81_32/include/QtSql/qsqlerror.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\myserver.o ..\ServerPart\myserver.cpp
 
 debug/moc_mainwindow.o: debug/moc_mainwindow.cpp 

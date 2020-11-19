@@ -2,10 +2,6 @@
 #include "ui_mainwindow.h"
 #include <UiHelperMainWindow.cpp>
 
-#include <QEvent>
-#include <QDebug>
-#include <QJsonObject>
-#include <QJsonParseError>
 
 
 //constructor
@@ -101,22 +97,43 @@ void MainWindow::sockReady()
         //read all data
         recievedData = socket->readAll();
 
-        //convert to JSON
+        //create new JSON doc
+        jsnDoc = new QJsonDocument();
 
-        //do things according to server response
+        //convert recieved data to JSON format
+        *jsnDoc = QJsonDocument::fromJson(recievedData, errJsn);
 
-        qDebug()<<"Recieved data from server: "<<recievedData;
+        //get JSON object from JSON document
+        *obj = jsnDoc->object();
+
+        //chack if convertion eas successful
+        if(errJsn->errorString().toInt() == QJsonParseError::NoError)
+        {
+            //to do: smt accordin to command from server
+
+            return;
+        }
+        //if data could not be converted to json
+        else
+        {
+            //to do: show err msg box
+
+            return;
+        }
     }
     //if connecting failed
     else
     {
-        qDebug()<<"Can not connect to server";
+        //show bad connection error
+        qDebug()<<"Can not read data from client: Connestion failed";
+        return;
     }
 }
 
 //disconnect from server event
 void MainWindow::sockDisk()
 {
+    //to do:try to recconect
     qDebug()<<"Disconnected from server";
     socket->deleteLater();
 }

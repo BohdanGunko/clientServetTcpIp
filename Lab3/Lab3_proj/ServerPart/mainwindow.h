@@ -2,7 +2,6 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QSqlQueryModel>
 #include <myserver.h>
 
 QT_BEGIN_NAMESPACE
@@ -18,13 +17,9 @@ public:
     ~MainWindow();
     myServer* server;
 
-
 private slots:
-
 
 private:
     Ui::MainWindow *ui;
-    QSqlQueryModel* model;
-
 };
 #endif // MAINWINDOW_H
