@@ -5,6 +5,7 @@
 #include <QTcpServer>
 #include <QTcpSocket>
 #include <QObject>
+#include <QList>
 
 class myServer : public QTcpServer
 {
@@ -14,7 +15,7 @@ public:
     ~myServer();
     QTcpSocket* socket;
     QByteArray recievedData;
-
+    QList <QTcpSocket*> *connectedClients;
     void writeToClient(QByteArray text);
 
 public slots:

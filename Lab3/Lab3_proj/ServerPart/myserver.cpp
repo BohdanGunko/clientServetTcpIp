@@ -5,7 +5,11 @@
 #include <QHostInfo>
 #include <QDnsLookup>
 
-myServer::myServer() {};
+myServer::myServer()
+{
+    connectedClients = new QList <QTcpSocket*>();
+
+};
 myServer::~myServer() {}
 
 void myServer::writeToClient(QByteArray text)
@@ -33,18 +37,20 @@ void myServer::startServer()
 
 void myServer::incomingConnection(qintptr socketDescriptor)
 {
-    socket = new QTcpSocket(this);
+    socket =new QTcpSocket();
     socket->setSocketDescriptor(socketDescriptor);
+    connectedClients->append(socket);
         connect(socket,SIGNAL(readyRead()),this, SLOT(sockReady()));
         connect(socket, SIGNAL(disconnected()),this, SLOT(sockDisc()));
     qDebug()<<"Client is connected"<<"   "<<socketDescriptor;
     socket->write("U r connected test msg");
-    socket->waitForBytesWritten(3000);
+    socket->waitForBytesWritten(1500);
 
 }
 
 void myServer::sockReady()
 {
+    socket = qobject_cast<QTcpSocket*>(sender());
     //wait for stable connection
     if(socket->waitForConnected(1500))
     {
@@ -61,6 +67,7 @@ void myServer::sockReady()
 
 void myServer::sockDisc()
 {
+    socket = qobject_cast<QTcpSocket*>(sender());
     qDebug()<<"Disconected";
     socket->deleteLater();
 }
