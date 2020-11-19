@@ -30,7 +30,8 @@ public:
     QByteArray recievedData;
     QJsonDocument* jsnDoc;
     QJsonParseError* errJsn;
-    QJsonObject* obj;
+    QJsonObject* obj= new QJsonObject();
+    void decEndExec();
     
     
     

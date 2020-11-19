@@ -30,7 +30,6 @@ public:
     QJsonObject* obj;
     QSqlDatabase* db;
     QSqlQuery* qry;
-
     void decEndExec(QJsonDocument* doc, QTcpSocket* socket);
 
 public slots:

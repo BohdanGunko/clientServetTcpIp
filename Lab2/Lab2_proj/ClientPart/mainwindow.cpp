@@ -30,9 +30,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-
-
-
 void MainWindow::on_RegButton_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
@@ -53,7 +50,6 @@ void MainWindow::on_LogButton_clicked()
     //send log and pass to server
     socket->write(txtToSend.toLocal8Bit());
     socket->waitForBytesWritten(1500);
-
 }
 
 void MainWindow::on_ExitButton_clicked()
@@ -78,8 +74,8 @@ void MainWindow::createSocket()
 {
     //create socket and connect signals
     socket = new QTcpSocket();
-        connect(socket, SIGNAL(readyRead()), this, SLOT(sockReady()));
-        connect(socket, SIGNAL(disconnected()), this, SLOT(sockDisk()));
+    connect(socket, SIGNAL(readyRead()), this, SLOT(sockReady()));
+    connect(socket, SIGNAL(disconnected()), this, SLOT(sockDisk()));
 
     //init socket with ip and port of server
     socket->connectToHost("178.137.161.32", 27000);
@@ -104,13 +100,14 @@ void MainWindow::sockReady()
         *jsnDoc = QJsonDocument::fromJson(recievedData, errJsn);
 
         //get JSON object from JSON document
+
         *obj = jsnDoc->object();
 
         //chack if convertion eas successful
         if(errJsn->errorString().toInt() == QJsonParseError::NoError)
         {
             //to do: smt accordin to command from server
-
+            decEndExec();
             return;
         }
         //if data could not be converted to json
@@ -138,3 +135,27 @@ void MainWindow::sockDisk()
     socket->deleteLater();
 }
 
+
+void MainWindow::decEndExec()
+{
+    //if it is respond to login process
+    if(obj->value("operation").toString()=="login")
+    {
+        //if log and pass are good
+        if(obj->value("resp").toString()=="ok")
+        {
+            ui->stackedWidget->setCurrentIndex(2);
+        }
+        //if smt went wrong
+        else
+        {
+            QMessageBox::critical(this,"Error information",obj->value("err").toString(),"Ok");
+        }
+    }
+    //if server send unknown operation
+    else
+    {
+        QMessageBox::critical(this,"Error information","Something went wrong. Please check your internet connection","Ok");
+    }
+
+}

@@ -124,8 +124,8 @@ void myServer::decEndExec(QJsonDocument *doc, QTcpSocket* socket)
     obj = new QJsonObject;
     *obj = doc->object();
 
+    //when client try to login
     if(obj->value("operation") == "login"){
-        //when client try to login
         //find log in database
         qry->prepare("select * from uInfo where uLog = :log");
         qry->bindValue(":log", obj->value("log").toString());
