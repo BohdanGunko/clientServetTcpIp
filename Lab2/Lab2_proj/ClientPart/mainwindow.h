@@ -4,7 +4,9 @@
 #include <purchasesmenu.h>
 #include <QMainWindow>
 #include <QTcpSocket>
-
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonParseError>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -19,7 +21,10 @@ public:
     ~MainWindow();
     QTcpSocket* socket;
     QByteArray recievedData;
-    void createSocket();
+    QJsonDocument* jsnDoc;
+    QJsonParseError* errJsn;
+
+
 
 private slots:
     void on_ExitButton_clicked();
@@ -36,6 +41,7 @@ private:
     Ui::MainWindow *ui;
     PurchasesMenu OvScreen; //main menu screen
     void setShadowEff();    //set shadows in Log and Reg menus
+    void createSocket();    //create and init socket with IP and port number
 
 };
 #endif // MAINWINDOW_H

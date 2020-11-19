@@ -4,6 +4,8 @@
 
 #include <QEvent>
 #include <QDebug>
+#include <QJsonObject>
+#include <QJsonParseError>
 
 
 //constructor
@@ -49,15 +51,13 @@ void MainWindow::on_RegGoBackButton_clicked()
 
 void MainWindow::on_LogButton_clicked()
 {
-    //read data from line edits
-    QString txtToSend = QString("log:%1; pass:%2").arg(ui->LoginLineEdit->text()).arg(ui->PassLineEdit->text());
+    //read data from line edits and convert it to JSON format
+    QString txtToSend = QString("{\"operation\":\"login\", \"log\":\"%1\", \"pass\":\"%2\"}").arg(ui->LoginLineEdit->text()).arg(ui->PassLineEdit->text());
 
     //send log and pass to server
     socket->write(txtToSend.toLocal8Bit());
+    socket->waitForBytesWritten(1500);
 
-
-    //go to main menu
-    //ui->stackedWidget->setCurrentIndex(2);
 }
 
 void MainWindow::on_ExitButton_clicked()
@@ -100,6 +100,11 @@ void MainWindow::sockReady()
     {
         //read all data
         recievedData = socket->readAll();
+
+        //convert to JSON
+
+        //do things according to server response
+
         qDebug()<<"Recieved data from server: "<<recievedData;
     }
     //if connecting failed

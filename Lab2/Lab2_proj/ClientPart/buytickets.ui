@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1214</width>
-    <height>524</height>
+    <width>737</width>
+    <height>2000</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -218,7 +218,7 @@ QLabel{
 }
 </string>
   </property>
-  <layout class="QGridLayout" name="gridLayout_5" rowstretch="1,5">
+  <layout class="QGridLayout" name="gridLayout_5" rowstretch="1,13">
    <property name="leftMargin">
     <number>10</number>
    </property>
@@ -231,11 +231,8 @@ QLabel{
    <property name="bottomMargin">
     <number>10</number>
    </property>
-   <property name="horizontalSpacing">
+   <property name="spacing">
     <number>0</number>
-   </property>
-   <property name="verticalSpacing">
-    <number>10</number>
    </property>
    <item row="0" column="0">
     <widget class="QWidget" name="TopBar" native="true">
@@ -268,7 +265,7 @@ QLabel{
        <number>0</number>
       </property>
       <item row="0" column="0">
-       <layout class="QGridLayout" name="gridLayout" rowstretch="0,0">
+       <layout class="QGridLayout" name="gridLayout" rowstretch="5,3">
         <property name="leftMargin">
          <number>10</number>
         </property>
@@ -331,7 +328,7 @@ QLabel{
             <property name="maximumSize">
              <size>
               <width>100</width>
-              <height>16777215</height>
+              <height>35</height>
              </size>
             </property>
             <property name="text">
@@ -376,7 +373,7 @@ QLabel{
             <property name="maximumSize">
              <size>
               <width>140</width>
-              <height>45</height>
+              <height>40</height>
              </size>
             </property>
             <property name="readOnly">
@@ -407,7 +404,7 @@ QLabel{
             <property name="maximumSize">
              <size>
               <width>500</width>
-              <height>45</height>
+              <height>40</height>
              </size>
             </property>
             <property name="placeholderText">
@@ -479,7 +476,7 @@ QLabel{
             <property name="maximumSize">
              <size>
               <width>500</width>
-              <height>45</height>
+              <height>40</height>
              </size>
             </property>
             <property name="frame">
@@ -551,6 +548,30 @@ QLabel{
           </item>
           <item row="1" column="5">
            <widget class="QTimeEdit" name="TimeEdit">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>70</width>
+              <height>27</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="sizeIncrement">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
             <property name="showGroupSeparator" stdset="0">
              <bool>false</bool>
             </property>

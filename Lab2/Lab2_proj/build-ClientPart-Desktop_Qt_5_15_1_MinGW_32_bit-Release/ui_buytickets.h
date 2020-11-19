@@ -53,7 +53,7 @@ public:
     {
         if (BuyTickets->objectName().isEmpty())
             BuyTickets->setObjectName(QString::fromUtf8("BuyTickets"));
-        BuyTickets->resize(1214, 524);
+        BuyTickets->resize(737, 2000);
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -260,9 +260,8 @@ public:
 "}\n"
 ""));
         gridLayout_5 = new QGridLayout(BuyTickets);
+        gridLayout_5->setSpacing(0);
         gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
-        gridLayout_5->setHorizontalSpacing(0);
-        gridLayout_5->setVerticalSpacing(10);
         gridLayout_5->setContentsMargins(10, 10, 10, 10);
         TopBar = new QWidget(BuyTickets);
         TopBar->setObjectName(QString::fromUtf8("TopBar"));
@@ -289,7 +288,7 @@ public:
         sizePolicy.setHeightForWidth(SearchButton->sizePolicy().hasHeightForWidth());
         SearchButton->setSizePolicy(sizePolicy);
         SearchButton->setMinimumSize(QSize(50, 0));
-        SearchButton->setMaximumSize(QSize(100, 16777215));
+        SearchButton->setMaximumSize(QSize(100, 35));
 
         gridLayout_4->addWidget(SearchButton, 0, 1, 1, 1);
 
@@ -308,7 +307,7 @@ public:
         sizePolicy.setHeightForWidth(DateEdit->sizePolicy().hasHeightForWidth());
         DateEdit->setSizePolicy(sizePolicy);
         DateEdit->setMinimumSize(QSize(70, 27));
-        DateEdit->setMaximumSize(QSize(140, 45));
+        DateEdit->setMaximumSize(QSize(140, 40));
         DateEdit->setReadOnly(false);
         DateEdit->setCalendarPopup(true);
 
@@ -319,7 +318,7 @@ public:
         sizePolicy.setHeightForWidth(DestinationLineEdit->sizePolicy().hasHeightForWidth());
         DestinationLineEdit->setSizePolicy(sizePolicy);
         DestinationLineEdit->setMinimumSize(QSize(200, 0));
-        DestinationLineEdit->setMaximumSize(QSize(500, 45));
+        DestinationLineEdit->setMaximumSize(QSize(500, 40));
 
         gridLayout_3->addWidget(DestinationLineEdit, 1, 3, 1, 1);
 
@@ -343,7 +342,7 @@ public:
         sizePolicy.setHeightForWidth(DepartureLineEdit->sizePolicy().hasHeightForWidth());
         DepartureLineEdit->setSizePolicy(sizePolicy);
         DepartureLineEdit->setMinimumSize(QSize(200, 0));
-        DepartureLineEdit->setMaximumSize(QSize(500, 45));
+        DepartureLineEdit->setMaximumSize(QSize(500, 40));
         DepartureLineEdit->setFrame(true);
 
         gridLayout_3->addWidget(DepartureLineEdit, 1, 1, 1, 1);
@@ -382,6 +381,11 @@ public:
 
         TimeEdit = new QTimeEdit(TopBar);
         TimeEdit->setObjectName(QString::fromUtf8("TimeEdit"));
+        sizePolicy.setHeightForWidth(TimeEdit->sizePolicy().hasHeightForWidth());
+        TimeEdit->setSizePolicy(sizePolicy);
+        TimeEdit->setMinimumSize(QSize(70, 27));
+        TimeEdit->setMaximumSize(QSize(100, 40));
+        TimeEdit->setSizeIncrement(QSize(0, 0));
         TimeEdit->setProperty("showGroupSeparator", QVariant(false));
         TimeEdit->setCurrentSection(QDateTimeEdit::HourSection);
         TimeEdit->setCalendarPopup(false);
@@ -392,6 +396,8 @@ public:
 
         gridLayout->addLayout(gridLayout_3, 0, 0, 1, 1);
 
+        gridLayout->setRowStretch(0, 5);
+        gridLayout->setRowStretch(1, 3);
 
         gridLayout_2->addLayout(gridLayout, 0, 0, 1, 1);
 
@@ -408,7 +414,7 @@ public:
         gridLayout_5->addWidget(TrainsTable, 1, 0, 1, 1);
 
         gridLayout_5->setRowStretch(0, 1);
-        gridLayout_5->setRowStretch(1, 5);
+        gridLayout_5->setRowStretch(1, 13);
 
         retranslateUi(BuyTickets);
 

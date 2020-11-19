@@ -6,6 +6,9 @@
 #include <QTcpSocket>
 #include <QObject>
 #include <QList>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonParseError>
 
 class myServer : public QTcpServer
 {
@@ -16,7 +19,10 @@ public:
     QTcpSocket* socket;
     QByteArray recievedData;
     QList <QTcpSocket*> *connectedClients;
-    void writeToClient(QByteArray text);
+    QJsonDocument* jsnDoc;
+    QJsonParseError* errJsn;
+    QJsonObject* obj;
+    void decEndExec(QJsonDocument* doc);
 
 public slots:
     void startServer();

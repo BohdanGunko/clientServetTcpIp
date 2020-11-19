@@ -399,6 +399,12 @@ public:
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         ExitButton->setText(QCoreApplication::translate("MainWindow", "Exit", nullptr));
+#if QT_CONFIG(tooltip)
+        LogButton->setToolTip(QString());
+#endif // QT_CONFIG(tooltip)
+#if QT_CONFIG(statustip)
+        LogButton->setStatusTip(QString());
+#endif // QT_CONFIG(statustip)
         LogButton->setText(QCoreApplication::translate("MainWindow", "Login", nullptr));
         RegButton->setText(QCoreApplication::translate("MainWindow", "Register", nullptr));
         PassLineEdit->setPlaceholderText(QCoreApplication::translate("MainWindow", "Password", nullptr));

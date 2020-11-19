@@ -247,6 +247,12 @@ QCheckBox{
         <property name="tabletTracking">
          <bool>false</bool>
         </property>
+        <property name="toolTip">
+         <string/>
+        </property>
+        <property name="statusTip">
+         <string/>
+        </property>
         <property name="styleSheet">
          <string notr="true"/>
         </property>
@@ -371,7 +377,7 @@ QCheckBox{
          <string/>
         </property>
         <property name="statusTip">
-         <string/>
+         <string extracomment="ewrwer"/>
         </property>
         <property name="whatsThis">
          <string/>
