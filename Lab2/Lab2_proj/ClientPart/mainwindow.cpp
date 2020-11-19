@@ -106,15 +106,15 @@ void MainWindow::sockReady()
         //chack if convertion eas successful
         if(errJsn->errorString().toInt() == QJsonParseError::NoError)
         {
-            //to do: smt accordin to command from server
+            //do smt accordin to command from server
             decEndExec();
             return;
         }
         //if data could not be converted to json
         else
         {
-            //to do: show err msg box
-
+            //show can not convert err msg box
+            QMessageBox::critical(this,"Error information","Something went wrong. Please restert the app","Ok");
             return;
         }
     }
