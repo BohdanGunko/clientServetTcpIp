@@ -29,14 +29,14 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_RegButton_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(1);
     resizeRegMenu();
+    ui->stackedWidget->setCurrentIndex(1);
 }
 
 void MainWindow::on_RegGoBackButton_clicked()
 {
-    ui->stackedWidget->setCurrentIndex(0);
     resizeLogMenu();
+    ui->stackedWidget->setCurrentIndex(0);
 }
 
 void MainWindow::on_LogButton_clicked()
@@ -74,12 +74,6 @@ void MainWindow::createSocket()
     socket = new QTcpSocket();
     connect(socket, SIGNAL(readyRead()), this, SLOT(sockReady()));
     connect(socket, SIGNAL(disconnected()), this, SLOT(sockDisk()));
-
-    // init socket with ip and port of server
-    socket->connectToHost("178.137.161.32", 27000);
-
-    // wait for connection to be established
-    socket->waitForConnected(1500);
 }
 
 // reading from socket
@@ -125,12 +119,55 @@ void MainWindow::sockReady()
     }
 }
 
+// trying to reconnect to server
+bool MainWindow::tryToReccon()
+{
+    bool reconnRepl = 1;
+    while (reconnRepl == 1)
+    {
+        // try to recconect to server
+        socket->connectToHost("178.137.161.32", 27000);
+
+        // wait for connection to be established
+        socket->waitForConnected(7000);
+
+        // if client is not connected reconnect
+        if (socket->state() != QTcpSocket::ConnectedState)
+        {
+            // ask if user want to try to connect again
+            QMessageBox recMsgBox;
+            recMsgBox.setWindowTitle("Connection with server lost");
+            recMsgBox.setInformativeText("Unable connect to server. Do u want to try again?");
+            recMsgBox.addButton("Yes", QMessageBox::YesRole);
+            QAbstractButton* recNoBtn = recMsgBox.addButton("Quit app", QMessageBox::NoRole);
+            recMsgBox.setIcon(QMessageBox::Question);
+            recMsgBox.exec();
+            if (recMsgBox.clickedButton() == recNoBtn)
+            {
+                reconnRepl = 0;
+            }
+        }
+        // if we connected
+        else
+        {
+            // if connected returk true
+            return 1;
+        }
+    }
+    // if not connected and user dont want to try again
+    return 0;
+}
+
 // disconnect from server event
 void MainWindow::sockDisk()
 {
-    // to do:try to recconect
-    qDebug() << "Disconnected from server";
-    socket->deleteLater();
+    // if we user dont want to reconnect
+    if (!tryToReccon())
+    {
+        // if user dont want to reconnect
+        socket->deleteLater();
+        this->close();
+    }
 }
 
 void MainWindow::decEndExec()

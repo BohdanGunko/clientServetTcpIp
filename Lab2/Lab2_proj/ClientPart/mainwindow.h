@@ -34,6 +34,8 @@ public:
     QJsonParseError* errJsn = new QJsonParseError();
     QJsonObject* obj = new QJsonObject();
     void decEndExec();
+    bool tryToReccon();
+    void createSocket();	// create and init socket with IP and port number
 
 private slots:
     void on_ExitButton_clicked();
@@ -50,6 +52,5 @@ private:
     Ui::MainWindow* ui;
     PurchasesMenu OvScreen;	 // main menu screen
     void setShadowEff();	// set shadows in Log and Reg menus
-    void createSocket();	// create and init socket with IP and port number
 };
 #endif	// MAINWINDOW_H
