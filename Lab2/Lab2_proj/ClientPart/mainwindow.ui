@@ -60,7 +60,7 @@
        <string notr="true">background-color:#1e282d;</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="LoginMenu">
        <property name="sizePolicy">

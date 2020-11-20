@@ -33,12 +33,6 @@ void MainWindow::on_RegButton_clicked()
     ui->stackedWidget->setCurrentIndex(1);
 }
 
-void MainWindow::on_RegGoBackButton_clicked()
-{
-    resizeLogMenu();
-    ui->stackedWidget->setCurrentIndex(0);
-}
-
 void MainWindow::on_LogButton_clicked()
 {
     // read data from line edits and convert it to JSON format
@@ -51,9 +45,37 @@ void MainWindow::on_LogButton_clicked()
 
 void MainWindow::on_ExitButton_clicked()
 {
+    // to do: ask if user really want to exit
     this->close();
 }
 
+void MainWindow::on_RegGoBackButton_clicked()
+{
+    resizeLogMenu();
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::on_RegRegButton_clicked()
+{
+    // to do: check if login fits login format
+    // to do :check if password fits password format
+
+    // check if pass and pass confirmation line edits have same text
+    // if same
+    if (ui->RegPassLineEdit->text() == ui->RegConfLineEdit->text())
+    {
+        // read data from line edits and convert it to JSON format
+        QString txtToSend = QString("{\"operation\":\"register\", \"log\":\"%1\", \"pass\":\"%2\"}").arg(ui->RegLogLineEdit->text()).arg(ui->RegPassLineEdit->text());
+
+        // send log and pass to server
+        socket->write(txtToSend.toLocal8Bit());
+        socket->waitForBytesWritten(1500);
+    }
+    else
+    {
+        QMessageBox::critical(this, "Registration error", "Passwords don't match.\nPassword and confirmation password must match", "Ok");
+    }
+}
 // for handeling MainWindow resize event
 void MainWindow::resizeEvent(QResizeEvent* event)
 {
@@ -134,6 +156,7 @@ bool MainWindow::tryToReccon()
         // if client is not connected reconnect
         if (socket->state() != QTcpSocket::ConnectedState)
         {
+            // create msf box
             // ask if user want to try to connect again
             QMessageBox recMsgBox;
             recMsgBox.setWindowTitle("Connection with server lost");
@@ -175,20 +198,50 @@ void MainWindow::decEndExec()
     // if it is respond to login process
     if (obj->value("operation").toString() == "login")
     {
-        // if log and pass are good
-        if (obj->value("resp").toString() == "ok")
-        {
-            ui->stackedWidget->setCurrentIndex(2);
-        }
-        // if smt went wrong
-        else
-        {
-            QMessageBox::critical(this, "Error information", obj->value("err").toString(), "Ok");
-        }
+        // call login funct
+        logProc();
+    }
+    // if it is respond to registration process
+    else if (obj->value("operation").toString() == "register")
+    {
+        regProc();
     }
     // if server send unknown operation
     else
     {
         QMessageBox::critical(this, "Error information", "Something went wrong. Please check your internet connection", "Ok");
+    }
+}
+
+// reacting to login reslond
+void MainWindow::logProc()
+{
+    // if log and pass are good
+    if (obj->value("resp").toString() == "ok")
+    {
+        ui->stackedWidget->setCurrentIndex(2);
+    }
+    // if smt went wrong
+    else
+    {
+        QMessageBox::critical(this, "Error information", obj->value("err").toString(), "Ok");
+    }
+}
+
+// reacting to registration reslond
+void MainWindow::regProc()
+{
+    // if registration is successful
+    if (obj->value("resp").toString() == "ok")
+    {
+        // show msg and go to login menu
+        QMessageBox::information(this, "Registration info", "Registration is successful. Now yoo can login");
+        resizeLogMenu();
+        ui->stackedWidget->setCurrentIndex(0);
+    }
+    // if smt went wrong
+    else
+    {
+        QMessageBox::critical(this, "Registration error", obj->value("err").toString(), "Ok");
     }
 }

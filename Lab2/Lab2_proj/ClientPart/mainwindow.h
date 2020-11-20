@@ -36,8 +36,11 @@ public:
     void decEndExec();
     bool tryToReccon();
     void createSocket();	// create and init socket with IP and port number
+    void logProc();
+    void regProc();
 
 private slots:
+    void on_RegRegButton_clicked();
     void on_ExitButton_clicked();
     void on_RegButton_clicked();
     void on_RegGoBackButton_clicked();

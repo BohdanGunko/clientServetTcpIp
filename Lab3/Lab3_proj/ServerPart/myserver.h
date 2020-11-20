@@ -31,9 +31,10 @@ public:
     QSqlDatabase* db;
     QSqlQuery* qry;
     void decEndExec(QJsonDocument* doc, QTcpSocket* socket);
-
-public slots:
     void startServer();
+    void logProc(QTcpSocket* socket);
+    void regProc(QTcpSocket* socket);
+public slots:
     void incomingConnection(qintptr socketDescriptor);
     void sockReady();
     void sockDisc();

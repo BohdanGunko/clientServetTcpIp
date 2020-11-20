@@ -69,8 +69,7 @@ void myServer::incomingConnection(qintptr socketDescriptor)
     connect(socket, SIGNAL(readyRead()), this, SLOT(sockReady()));
     connect(socket, SIGNAL(disconnected()), this, SLOT(sockDisc()));
 
-    qDebug() << "Client is connected"
-                     << "   " << socketDescriptor;
+    qDebug() << "Client is connected    " << socketDescriptor;
 }
 
 // this func gets exec when server recieve smt from client
@@ -106,9 +105,7 @@ void myServer::sockReady()
         else
         {
             // send client respond about bad data format
-            socket->write("{\"operation\":\"convetrion to JSON\", \"resp\":\"bad\", "
-                                        "\"err\":\"Something went wrong when transfering data. "
-                                        "Please check your internet connection\"}");
+            socket->write("{\"operation\":\"convetrion to JSON\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please check your internet connection\"}");
             socket->waitForBytesWritten(1500);
             return;
         }
@@ -130,48 +127,14 @@ void myServer::decEndExec(QJsonDocument* doc, QTcpSocket* socket)
     // when client try to login
     if (obj->value("operation") == "login")
     {
-        // find log in database
-        qry->prepare("select * from uInfo where uLog = :log");
-        qry->bindValue(":log", obj->value("log").toString());
-
-        // if qry is not empty (if log exist)
-        if (qry->exec())
-        {
-            if (qry->next())
-            {
-                // if password is correct
-                if (qry->value(1).toString() == obj->value("pass").toString())
-                {
-                    // return validation is ok respond to client
-                    socket->write("{\"operation\":\"login\", \"resp\":\"ok\"}");
-                    socket->waitForBytesWritten(1500);
-                }
-                // if password is not correct
-                else
-                {
-                    // send invalid password respond to client
-                    socket->write("{\"operation\":\"login\", \"resp\":\"bad\", "
-                                                "\"err\":\"Invalid password\"}");
-                    socket->waitForBytesWritten(1500);
-                }
-            }
-            // qry is empty so login does not exist
-            else
-            {
-                // send no such login respond to client
-                socket->write("{\"operation\":\"login\", \"resp\":\"bad\", "
-                                            "\"err\":\"Login doesn't exist\"}");
-                socket->waitForBytesWritten(1500);
-            }
-        }
-        else
-        {
-            // handle bad query execution
-            socket->write("{\"operation\":\"login\", \"resp\":\"bad\", "
-                                        "\"err\":\"Something went wrong when transfering data. "
-                                        "Please check your internet connection\"}");
-            socket->waitForBytesWritten(1500);
-        }
+        // call login func
+        logProc(socket);
+    }
+    // new user registration
+    else if (obj->value("operation") == "register")
+    {
+        // call registration func
+        regProc(socket);
     }
     // if we dont know command that client send
     else
@@ -181,3 +144,93 @@ void myServer::decEndExec(QJsonDocument* doc, QTcpSocket* socket)
         socket->waitForBytesWritten(1500);
     }
 };
+
+// when user try to login
+void myServer::logProc(QTcpSocket* socket)
+{
+    // find log in database
+    qry->prepare("select * from uInfo where uLog = :log");
+    qry->bindValue(":log", obj->value("log").toString());
+
+    // if qry is not empty (if log exist)
+    if (qry->exec())
+    {
+        if (qry->next())
+        {
+            // if password is correct
+            if (qry->value(1).toString() == obj->value("pass").toString())
+            {
+                // return validation is ok respond to client
+                socket->write("{\"operation\":\"login\", \"resp\":\"ok\"}");
+                socket->waitForBytesWritten(1500);
+            }
+            // if password is not correct
+            else
+            {
+                // send invalid password respond to client
+                socket->write("{\"operation\":\"login\", \"resp\":\"bad\", \"err\":\"Invalid password\"}");
+                socket->waitForBytesWritten(1500);
+            }
+        }
+        // qry is empty so login does not exist
+        else
+        {
+            // send no such login respond to client
+            socket->write("{\"operation\":\"login\", \"resp\":\"bad\", \"err\":\"Login doesn't exist\"}");
+            socket->waitForBytesWritten(1500);
+        }
+    }
+    else
+    {
+        // handle bad query execution
+        socket->write("{\"operation\":\"login\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please check your internet connection\"}");
+        socket->waitForBytesWritten(1500);
+    }
+}
+
+// whan user try to register new account
+void myServer::regProc(QTcpSocket* socket)
+{
+    // find log in database
+    qry->prepare("select * from uInfo where uLog = :log");
+    qry->bindValue(":log", obj->value("log").toString());
+
+    if (qry->exec())
+    {
+        // if qry is not empty (if log exist)
+        if (qry->next())
+        {
+            // send user already exist password respond to client
+            socket->write("{\"operation\":\"register\", \"resp\":\"bad\", \"err\":\"User already exist\"}");
+            socket->waitForBytesWritten(1500);
+        }
+        // qry is empty so login does not exist
+        else
+        {
+            // insert login and password to database
+            qry->prepare("insert into uInfo (uLog, uPass) values (:log, :pass)");
+            qry->bindValue(":log", obj->value("log").toString());
+            qry->bindValue(":pass", obj->value("pass").toString());
+
+            // if registration successful
+            if (qry->exec())
+            {
+                // send good respond
+                socket->write("{\"operation\":\"register\", \"resp\":\"ok\"}");
+                socket->waitForBytesWritten(1500);
+            }
+            else
+            {
+                // set smt went wrong respond
+                socket->write("{\"operation\":\"register\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please check your internet connection\"}");
+                socket->waitForBytesWritten(1500);
+            }
+        }
+    }
+    else
+    {
+        // handle bad query execution
+        socket->write("{\"operation\":\"register\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please check your internet connection\"}");
+        socket->waitForBytesWritten(1500);
+    }
+}
