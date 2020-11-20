@@ -37,7 +37,6 @@ Thumbs.db
 
 # Applications
 *.app
-*.exe
 *.war
 
 # Large media files
@@ -47,4 +46,7 @@ Thumbs.db
 *.flv
 *.mov
 *.wmv
+
+# Code formater file
+.clang-format
 

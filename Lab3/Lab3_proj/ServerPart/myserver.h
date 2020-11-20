@@ -1,21 +1,21 @@
 #ifndef MYSERVER_H
 #define MYSERVER_H
 
-//secondary libraries
-#include <QObject>
-#include <QList>
+// secondary libraries
 #include <QDebug>
-//server stuff
+#include <QList>
+#include <QObject>
+// server stuff
 #include <QTcpServer>
 #include <QTcpSocket>
-//JSON
+// JSON
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonParseError>
-//SQL
-#include <QSqlQuery>
+// SQL
 #include <QSqlDatabase>
 #include <QSqlError>
+#include <QSqlQuery>
 
 class myServer : public QTcpServer
 {
@@ -24,7 +24,7 @@ public:
     myServer();
     ~myServer();
     QByteArray recievedData;
-    QList <QTcpSocket*> *connectedClients;
+    QList<QTcpSocket*>* connectedClients;
     QJsonDocument* jsnDoc;
     QJsonParseError* errJsn = new QJsonParseError();
     QJsonObject* obj;
@@ -37,8 +37,6 @@ public slots:
     void incomingConnection(qintptr socketDescriptor);
     void sockReady();
     void sockDisc();
-
-
 };
 
-#endif // MYSERVER_H
+#endif	// MYSERVER_H
