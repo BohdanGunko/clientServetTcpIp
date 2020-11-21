@@ -6,13 +6,12 @@
 #include <QDebug>
 #include <QMainWindow>
 #include <purchasesmenu.h>
-#include <QMessageBox>
-// communication with server related
-#include <QTcpSocket>
-// JSON
-#include <QJsonObject>
-#include <QJsonParseError>
-#include <QJsonDocument>
+// for communication with server
+#include <backend.h>
+// for showing loading scree gif
+#include <loadingscreen.h>
+// for multi threading
+#include <QThread>
 
 QT_BEGIN_NAMESPACE
 namespace Ui
@@ -24,20 +23,12 @@ QT_END_NAMESPACE
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
-
 public:
     MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
-    QTcpSocket* socket;
-    QByteArray recievedData;
-    QJsonDocument* jsnDoc;
-    QJsonParseError* errJsn = new QJsonParseError();
-    QJsonObject* obj = new QJsonObject();
-    void decEndExec();
-    bool tryToReccon();
-    void createSocket();	// create and init socket with IP and port number
-    void logProc();
-    void regProc();
+    QThread* secThread;
+    LoadingScreen* loadingScrn;
+    BackEnd* bckEnd;
 
 private slots:
     void on_RegRegButton_clicked();
@@ -46,14 +37,20 @@ private slots:
     void on_RegGoBackButton_clicked();
     void on_LogButton_clicked();
     void resizeEvent(QResizeEvent*);	// redefinition of QResize event
-    void resizeLogMenu();	 // resizing elements in Log menu when window size changes
-    void resizeRegMenu();	 // resizing elements in Reg menu when window size changes
-    void sockReady();	 // reading from socket
-    void sockDisk();	// disconnect from server event
+    void connFailed();
+    void logSuccess();
+    void regSuccess();
+    void errSlot(QString titel, QString Info);
 
 private:
     Ui::MainWindow* ui;
+    void resizeLogMenu();	 // resizing elements in Log menu when window size changes
+    void resizeRegMenu();	 // resizing elements in Reg menu when window size changes
     PurchasesMenu OvScreen;	 // main menu screen
     void setShadowEff();	// set shadows in Log and Reg menus
+
+signals:
+    void _dataToSend(QByteArray dataToSend);
+    void _tryToReconn();
 };
 #endif	// MAINWINDOW_H

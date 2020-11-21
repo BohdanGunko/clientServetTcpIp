@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1040</width>
-    <height>585</height>
+    <height>605</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -34,6 +34,9 @@
   <property name="styleSheet">
    <string notr="true"/>
   </property>
+  <property name="toolButtonStyle">
+   <enum>Qt::ToolButtonIconOnly</enum>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
     <string notr="true"/>
@@ -56,6 +59,9 @@
     </property>
     <item row="0" column="0">
      <widget class="QStackedWidget" name="stackedWidget">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="styleSheet">
        <string notr="true">background-color:#1e282d;</string>
       </property>
@@ -637,7 +643,7 @@ QLineEdit:focus{
          <rect>
           <x>433</x>
           <y>464</y>
-          <width>59</width>
+          <width>71</width>
           <height>25</height>
          </rect>
         </property>

@@ -13,18 +13,23 @@ SOURCES += \
     UiHelperBuyTickets.cpp \
     UiHelperMainWindow.cpp \
     UiHelperPurchasesMenu.cpp \
+    backend.cpp \
     buytickets.cpp \
+    loadingscreen.cpp \
     main.cpp \
     mainwindow.cpp \
     purchasesmenu.cpp
 
 HEADERS += \
+    backend.h \
     buytickets.h \
+    loadingscreen.h \
     mainwindow.h \
     purchasesmenu.h
 
 FORMS += \
     buytickets.ui \
+    loadingscreen.ui \
     mainwindow.ui \
     purchasesmenu.ui
 

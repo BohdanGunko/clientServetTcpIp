@@ -87,7 +87,8 @@ void myServer::sockReady()
     {
         // read all data
         recievedData = socket->readAll();
-
+        // to delete
+        qDebug() << recievedData;
         // create new JSON doc
         jsnDoc = new QJsonDocument();
 
