@@ -45,7 +45,7 @@ void BackEnd::sendData(QByteArray dataToSend)
 
 void BackEnd::sockDisk()
 {
-    socket->waitForConnected(100000);
+    socket->waitForConnected(5000);
 }
 
 // when recieved data from server

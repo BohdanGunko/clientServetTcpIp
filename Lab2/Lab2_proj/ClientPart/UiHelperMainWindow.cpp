@@ -76,6 +76,23 @@ void MainWindow::setShadowEff()
     ui->RegGoBackButton->setGraphicsEffect(RegBackfEffect);
 }
 
+void MainWindow::resizeLoadindScreen()
+{
+    short wW = this->width();
+    short wH = this->height();
+    short hM = 10;
+    short totalH = loadingGif->height() + retConnLabel->height() + retryLoadingYesBtn->height() + 2 * hM;
+    short totalW = retryLoadingYesBtn->width() + retryLoadingNoBtn->width() + 20;
+    loadingBckGround->resize(wW, wH);
+    loadingBckGround->move(0, 0);
+
+    loadingGif->move(wW / 2 - loadingGif->width() / 2 + 30, wH / 2 - totalH / 2);
+
+    retConnLabel->move(wW / 2 - retConnLabel->width() / 2, wH / 2 - totalH / 2 + loadingGif->height() + hM);
+    retryLoadingYesBtn->move(wW / 2 - totalW / 2, wH / 2 - totalH / 2 + loadingGif->height() + hM + retConnLabel->height() + hM);
+    retryLoadingNoBtn->move(wW / 2 - totalW / 2 + retryLoadingYesBtn->width() + 20, wH / 2 - totalH / 2 + loadingGif->height() + hM + retConnLabel->height() + hM);
+}
+
 // resizing Log menuacording ro window size
 void MainWindow::resizeLogMenu()
 {

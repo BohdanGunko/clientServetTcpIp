@@ -8,10 +8,12 @@
 #include <purchasesmenu.h>
 // for communication with server
 #include <backend.h>
-// for showing loading scree gif
-#include <loadingscreen.h>
 // for multi threading
 #include <QThread>
+// for showing gifs
+#include <QMovie>
+// for loading screen
+#include <QLabel>
 
 QT_BEGIN_NAMESPACE
 namespace Ui
@@ -27,8 +29,13 @@ public:
     MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
     QThread* secThread;
-    LoadingScreen* loadingScrn;
     BackEnd* bckEnd;
+    QLabel* loadingGif;
+    QLabel* loadingBckGround;
+    QMovie* movie;
+    QLabel* retConnLabel;
+    QPushButton* retryLoadingYesBtn;
+    QPushButton* retryLoadingNoBtn;
 
 private slots:
     void on_RegRegButton_clicked();
@@ -37,7 +44,8 @@ private slots:
     void on_RegGoBackButton_clicked();
     void on_LogButton_clicked();
     void resizeEvent(QResizeEvent*);	// redefinition of QResize event
-    void connFailed();
+    void loadScrnShow();
+    void loadScrnHide();
     void logSuccess();
     void regSuccess();
     void errSlot(QString titel, QString Info);
@@ -48,6 +56,7 @@ private:
     void resizeRegMenu();	 // resizing elements in Reg menu when window size changes
     PurchasesMenu OvScreen;	 // main menu screen
     void setShadowEff();	// set shadows in Log and Reg menus
+    void resizeLoadindScreen();
 
 signals:
     void _dataToSend(QByteArray dataToSend);
