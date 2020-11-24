@@ -74,6 +74,52 @@ void MainWindow::setShadowEff()
     RegBackfEffect->setYOffset(0);
     RegBackfEffect->setColor(Qt::black);
     ui->RegGoBackButton->setGraphicsEffect(RegBackfEffect);
+
+    retryLoadingYesBtn->setStyleSheet(
+            "QPushButton"
+            "{"
+            "background-color: rgba(242, 150, 47, 220);"
+            "border:none;"
+            "border-radius:10px;"
+            "color:#1b2327;"
+            "font-family:  \"Calibri Bold\";"
+            "font-size: 17px;"
+            "}"
+            "QPushButton:hover:!pressed{"
+            "background-color: #455A64;"
+            "color:#EEEEEE;"
+            "}"
+            "QPushButton:hover:pressed{"
+            "   background-color: #37474F;"
+            "color:#DDDDDD;"
+            "}");
+
+    retryLoadingNoBtn->setStyleSheet(
+            "QPushButton"
+            "{"
+            "background-color: rgba(242, 150, 47, 220);"
+            "border:none;"
+            "border-radius:10px;"
+            "color:#1b2327;"
+            "font-family:  \"Calibri Bold\";"
+            "font-size: 17px;"
+            "}"
+            "QPushButton:hover:!pressed{"
+            "background-color: #455A64;"
+            "color:#EEEEEE;"
+            "}"
+            "QPushButton:hover:pressed{"
+            "   background-color: #37474F;"
+            "color:#DDDDDD;"
+            "}");
+
+    retConnLabel->setStyleSheet(
+            "QLabel{"
+            "background:none ;"
+            "color:#EEEEEE;"
+            "font: \"Calibri\";"
+            "font-size: 14px;"
+            "}");
 }
 
 void MainWindow::resizeLoadindScreen()
@@ -81,16 +127,16 @@ void MainWindow::resizeLoadindScreen()
     short wW = this->width();
     short wH = this->height();
     short hM = 10;
-    short totalH = loadingGif->height() + retConnLabel->height() + retryLoadingYesBtn->height() + 2 * hM;
+    short totalH = retConnLabel->height() + retryLoadingYesBtn->height() + 2 * hM;
     short totalW = retryLoadingYesBtn->width() + retryLoadingNoBtn->width() + 20;
     loadingBckGround->resize(wW, wH);
     loadingBckGround->move(0, 0);
 
-    loadingGif->move(wW / 2 - loadingGif->width() / 2 + 30, wH / 2 - totalH / 2);
+    loadingGif->move(wW / 2 - loadingGif->width() / 2 + 25, wH / 2 - loadingGif->height() / 2);
 
-    retConnLabel->move(wW / 2 - retConnLabel->width() / 2, wH / 2 - totalH / 2 + loadingGif->height() + hM);
-    retryLoadingYesBtn->move(wW / 2 - totalW / 2, wH / 2 - totalH / 2 + loadingGif->height() + hM + retConnLabel->height() + hM);
-    retryLoadingNoBtn->move(wW / 2 - totalW / 2 + retryLoadingYesBtn->width() + 20, wH / 2 - totalH / 2 + loadingGif->height() + hM + retConnLabel->height() + hM);
+    retConnLabel->move(wW / 2 - retConnLabel->width() / 2, wH / 2 - totalH / 2);
+    retryLoadingYesBtn->move(wW / 2 - totalW / 2, wH / 2 - totalH / 2 + retConnLabel->height() + hM);
+    retryLoadingNoBtn->move(wW / 2 - totalW / 2 + retryLoadingYesBtn->width() + 20, wH / 2 - totalH / 2 + retConnLabel->height() + hM);
 }
 
 // resizing Log menuacording ro window size

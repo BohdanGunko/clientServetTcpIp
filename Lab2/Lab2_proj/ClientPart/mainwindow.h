@@ -4,6 +4,7 @@
 // secondary libreries
 #include <QEvent>
 #include <QDebug>
+#include <QToolTip>
 #include <QMainWindow>
 #include <purchasesmenu.h>
 // for communication with server
@@ -14,6 +15,10 @@
 #include <QMovie>
 // for loading screen
 #include <QLabel>
+// for format of strings checking
+#include <QRegularExpression>
+// user errors showing
+#include <QWhatsThis>
 
 QT_BEGIN_NAMESPACE
 namespace Ui
@@ -28,14 +33,6 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
-    QThread* secThread;
-    BackEnd* bckEnd;
-    QLabel* loadingGif;
-    QLabel* loadingBckGround;
-    QMovie* movie;
-    QLabel* retConnLabel;
-    QPushButton* retryLoadingYesBtn;
-    QPushButton* retryLoadingNoBtn;
 
 private slots:
     void on_RegRegButton_clicked();
@@ -43,23 +40,31 @@ private slots:
     void on_RegButton_clicked();
     void on_RegGoBackButton_clicked();
     void on_LogButton_clicked();
+    void retryLoadingYesBtn_clicked();
     void resizeEvent(QResizeEvent*);	// redefinition of QResize event
-    void loadScrnShow();
-    void loadScrnHide();
-    void logSuccess();
-    void regSuccess();
+    void loadScrnShow();	// show loading screen
+    void loadScrnHide();	// hide loading screen
+    void regSuccess();	// go to lof menu if registration is successful
     void errSlot(QString titel, QString Info);
 
 private:
     Ui::MainWindow* ui;
+    QThread* secThread;
+    BackEnd* bckEnd;
+    QLabel* loadingGif;
+    QLabel* retConnLabel;
+    QLabel* loadingBckGround;
+    QMovie* movie;
+    QPushButton* retryLoadingYesBtn;
+    QPushButton* retryLoadingNoBtn;
     void resizeLogMenu();	 // resizing elements in Log menu when window size changes
     void resizeRegMenu();	 // resizing elements in Reg menu when window size changes
     PurchasesMenu OvScreen;	 // main menu screen
     void setShadowEff();	// set shadows in Log and Reg menus
-    void resizeLoadindScreen();
+    void resizeLoadindScreen();	 // resizing loading screen
 
 signals:
-    void _dataToSend(QByteArray dataToSend);
-    void _tryToReconn();
+    void _dataToSend(QByteArray dataToSend);	// emit this signal when you need send data to server
+    void _tryToReconn();	// tells back end to try to reconnect to server
 };
 #endif	// MAINWINDOW_H

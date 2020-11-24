@@ -39,13 +39,15 @@ void BackEnd::tryToReccon()
 // send data to server
 void BackEnd::sendData(QByteArray dataToSend)
 {
-    socket->write(dataToSend);
-    socket->waitForBytesWritten(1500);
-}
-
-void BackEnd::sockDisk()
-{
-    socket->waitForConnected(5000);
+    if (socket->state() == QTcpSocket::ConnectedState)
+    {
+        socket->write(dataToSend);
+        socket->waitForBytesWritten(1500);
+    }
+    else
+    {
+        tryToReccon();
+    }
 }
 
 // when recieved data from server
@@ -110,7 +112,7 @@ void BackEnd::decEndExec()
         // to do: show bad respond msg
     }
 }
-//// disconnect from server event
+// disconnect from server eventvoid BackEnd::sockDisk()
 void BackEnd::sockDisc()
 {
     emit _reconnFailed();
@@ -122,7 +124,7 @@ void BackEnd::logProc()
     // if log and pass are good
     if (obj->value("resp").toString() == "ok")
     {
-        emit _logSuccess();
+        emit _logSuccess(2);
     }
     // if smt went wrong
     else

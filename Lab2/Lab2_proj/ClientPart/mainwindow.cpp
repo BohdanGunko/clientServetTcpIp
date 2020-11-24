@@ -7,69 +7,29 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
 {
     ui->setupUi(this);
 
+    // create blue background for loading screen
     loadingBckGround = new QLabel(this);
     loadingBckGround->setStyleSheet("QLabel{background-color:rgb(38,50,56);}");
-    loadingBckGround->show();
 
+    // create view for gif
     loadingGif = new QLabel(this);
     loadingGif->resize(200, 124);
-
     movie = new QMovie(":/recources/img/loadingGif.gif");
     movie->setScaledSize(QSize(loadingGif->width(), loadingGif->height()));
     loadingGif->setMovie(movie);
-
     movie->setSpeed(110);
 
+    // create buttons for loading screen
     retryLoadingYesBtn = new QPushButton(this);
     retryLoadingNoBtn = new QPushButton(this);
     retryLoadingYesBtn->setText("Retry");
     retryLoadingNoBtn->setText("Quit app");
-    retryLoadingYesBtn->setStyleSheet("QPushButton\
-                                  {\
-                                      background-color: rgba(242, 150, 47, 220);\
-                                      border:none;                             \
-                                      border-radius:10px;                      \
-                                      color:#1b2327;                           \
-                                      font-family:  \"Calibri Bold\";            \
-                                      font-size: 17px;                         \
-                                  }                                            \
-                                  QPushButton:hover:!pressed{                  \
-                                      background-color: #455A64;               \
-                                  color:#EEEEEE;                               \
-                                  }                                            \
-                                  QPushButton:hover:pressed{                   \
-                                      background-color: #37474F;               \
-                                  color:#DDDDDD;                               \
-                                  }");
 
-    retryLoadingNoBtn->setStyleSheet("QPushButton{\
-                                  background-color: rgba(242, 150, 47, 220);\
-                                  border:none;                             \
-                                  border-radius:10px;                      \
-                                  color:#1b2327;                           \
-                                  font-family:  \"Calibri Bold\";            \
-                                  font-size: 17px;                         \
-                              }                                            \
-                              QPushButton:hover:!pressed{                  \
-                                  background-color: #455A64;               \
-                              color:#EEEEEE;                               \
-                              }                                            \
-                              QPushButton:hover:pressed{                   \
-                                  background-color: #37474F;               \
-                              color:#DDDDDD;                               \
-                              }");
-
+    // create lable to show text on loading screen
     retConnLabel = new QLabel(this);
-    retConnLabel->setText("Connection with server lost. Do you want to rty again?");
-    retConnLabel->setStyleSheet("QLabel{\
-                                background:none ;\
-                                color:#EEEEEE;\
-                                font: \"Calibri\";\
-                                font-size: 14px;\
-                            }");
+    retConnLabel->setText("Could not connect to server. Do you want to rty again?");
     retConnLabel->adjustSize();
-    loadingGif->show();
-    movie->start();
+
     // adding main menu ui to stacked widget
     ui->stackedWidget->addWidget(&OvScreen);
 
@@ -94,14 +54,14 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
     // to be able to send data to bckEnd object
     connect(this, SIGNAL(_dataToSend(QByteArray)), bckEnd, SLOT(sendData(QByteArray)));
 
-    // when back end can not connect to server call connFailed()
+    // when back end can not connect to server show loading screen
     connect(bckEnd, SIGNAL(_reconnFailed()), this, SLOT(loadScrnShow()));
 
     // close loading screen when connection restored
     connect(bckEnd, SIGNAL(_reconnSuccess()), this, SLOT(loadScrnHide()));
 
     // when loginization is successful
-    connect(bckEnd, SIGNAL(_logSuccess()), this, SLOT(logSuccess()));
+    connect(bckEnd, SIGNAL(_logSuccess(int)), ui->stackedWidget, SLOT(setCurrentIndex(int)));
 
     // when registration is successful
     connect(bckEnd, SIGNAL(_regSuccess()), this, SLOT(regSuccess()));
@@ -109,15 +69,19 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
     // when error in log or reg process
     connect(bckEnd, SIGNAL(_errSignal(QString, QString)), this, SLOT(errSlot(QString, QString)));
 
-    //
+    // when user dont want to try connecting again
     connect(retryLoadingNoBtn, SIGNAL(clicked()), this, SLOT(on_ExitButton_clicked()));
 
-    //
+    // when user dont want to try connecting again
     connect(retryLoadingYesBtn, SIGNAL(clicked()), bckEnd, SLOT(tryToReccon()));
+
+    // show gif while trying to conect
+    connect(retryLoadingYesBtn, SIGNAL(clicked()), this, SLOT(retryLoadingYesBtn_clicked()));
 
     // start new thread
     bckEnd->moveToThread(secThread);
     secThread->start();
+
     resizeLoadindScreen();
 }
 
@@ -137,11 +101,62 @@ void MainWindow::on_RegButton_clicked()
 
 void MainWindow::on_LogButton_clicked()
 {
-    // read data from line edits and convert it to JSON format
-    QString txtToSend = QString("{\"operation\":\"login\", \"log\":\"%1\", \"pass\":\"%2\"}").arg(ui->LoginLineEdit->text()).arg(ui->PassLineEdit->text());
+    QString logTxt = ui->LoginLineEdit->text();
+    QString passTxt = ui->PassLineEdit->text();
+    QRegularExpression logPattern("[a-zA-Z0-9@.]{5,}");
+    QRegularExpression passPattern("[a-zA-Z0-9]{6,}");
 
-    // send log and pass to server
-    emit _dataToSend(txtToSend.toLocal8Bit());
+    if (logPattern.match(logTxt).capturedLength() >= 5 && logPattern.match(logTxt).capturedLength() == logTxt.length())
+    // if login format is correct
+    {
+        if (passPattern.match(passTxt).capturedLength() >= 6 && passPattern.match(passTxt).capturedLength() == passTxt.length())
+        // if pass format is correct
+        {
+            // read data from line edits and convert it to JSON format
+            QString txtToSend = QString("{\"operation\":\"login\", \"log\":\"%1\", \"pass\":\"%2\"}").arg(logTxt).arg(passTxt);
+
+            // send log and pass to server
+            emit _dataToSend(txtToSend.toLocal8Bit());
+        }
+        // if passs format is not correct
+        else
+        {
+            QWhatsThis::showText(ui->PassLineEdit->mapToGlobal(QPoint(ui->PassLineEdit->width() / 2, ui->PassLineEdit->height())),
+                                                     "<html><ul style =\"font: 12px;\">"
+                                                     "<li>Password can only contain latin letters and numbers and must be longer than 6 characters</li>"
+                                                     "</ul></html>");
+        }
+    }
+    // if log format is incorrect
+    else
+    {
+        // check pass format
+        if (passPattern.match(passTxt).capturedLength() < 6 || passPattern.match(passTxt).capturedLength() != passTxt.length())
+        // if password format is incorrect
+        {
+            QWhatsThis::showText(ui->LoginLineEdit->mapToGlobal(QPoint(ui->LoginLineEdit->width() / 2, ui->LoginLineEdit->height())),
+                                                     "<html><ul style =\"font: 12px;\">"
+                                                     "<li>Login can only contain latin letters, numbers and characters . and @ and must be longer than 5 characters </li>"
+                                                     "<li>Password can only contain latin letters and numbers and must be longer than 6 characters</li>"
+                                                     "</ul></html>");
+        }
+        else
+        {
+            QWhatsThis::showText(ui->LoginLineEdit->mapToGlobal(QPoint(ui->LoginLineEdit->width() / 2, ui->LoginLineEdit->height())),
+                                                     "<html><ul style =\"font: 12px;\">"
+                                                     "<li>Login can only contain latin letters, numbers and characters . and @ and must be longer than 5 characters </li>"
+                                                     "</ul></html>");
+        }
+    }
+}
+
+void MainWindow::retryLoadingYesBtn_clicked()
+{
+    retryLoadingYesBtn->hide();
+    retryLoadingNoBtn->hide();
+    retConnLabel->hide();
+    movie->start();
+    loadingGif->show();
 }
 
 void MainWindow::on_ExitButton_clicked()
@@ -158,24 +173,65 @@ void MainWindow::on_RegGoBackButton_clicked()
 
 void MainWindow::on_RegRegButton_clicked()
 {
-    // to do: check if login fits login format
-    // to do :check if password fits password format
+    QString logTxt = ui->RegLogLineEdit->text();
+    QString passTxt = ui->RegPassLineEdit->text();
+    QString confTxt = ui->RegConfLineEdit->text();
+    QRegularExpression logFormat("[a-zA-Z0-9@.]{5,}");
+    QRegularExpression passFormat("[A-Za-z0-9]{6,}");
 
-    // check if pass and pass confirmation line edits have same text
-    // if same
-    if (ui->RegPassLineEdit->text() == ui->RegConfLineEdit->text())
+    if (logFormat.match(logTxt).capturedLength() >= 5 && logFormat.match(logTxt).capturedLength() == logTxt.length())
+    // if login fits log format
     {
-        // read data from line edits and convert it to JSON format
-        QString txtToSend = QString("{\"operation\":\"register\", \"log\":\"%1\", \"pass\":\"%2\"}").arg(ui->RegLogLineEdit->text()).arg(ui->RegPassLineEdit->text());
+        if (passFormat.match(passTxt).capturedLength() >= 6 && passFormat.match(passTxt).capturedLength() == passTxt.length())
+        // if pass match pass format
+        {
+            if (passTxt == confTxt)
+            // if pass==conf
+            {
+                // read data from line edits and convert it to JSON format
+                QString txtToSend = QString("{\"operation\":\"register\", \"log\":\"%1\", \"pass\":\"%2\"}").arg(logTxt).arg(passTxt);
 
-        // send log and pass to server
-        _dataToSend(txtToSend.toLocal8Bit());
+                // send log and pass to server
+                _dataToSend(txtToSend.toLocal8Bit());
+            }
+            else
+            {
+                QWhatsThis::showText(ui->RegConfLineEdit->mapToGlobal(QPoint(ui->RegConfLineEdit->width() / 2, ui->RegConfLineEdit->height())),
+                                                         "<html><ul style =\"font: 12px;\">"
+                                                         "<li>Password and confirm field must match</li>"
+                                                         "</ul></html>");
+            }
+        }
+        else
+        {
+            QWhatsThis::showText(ui->RegPassLineEdit->mapToGlobal(QPoint(ui->RegPassLineEdit->width() / 2, ui->RegPassLineEdit->height())),
+                                                     "<html><ul style =\"font: 12px;\">"
+                                                     "<li>Password can only contain latin letters and numbers and must be longer than 6 characters</li>"
+                                                     "</ul></html>");
+        }
     }
+    // if login doesnt match needed format
     else
     {
-        QMessageBox::critical(this, "Registration error", "Passwords don't match.\nPassword and confirmation password must match", "Ok");
+        if (passFormat.match(passTxt).capturedLength() < 6 || passFormat.match(passTxt).capturedLength() != passTxt.length())
+        // if pass doesnt match needed format
+        {
+            QWhatsThis::showText(ui->RegPassLineEdit->mapToGlobal(QPoint(ui->RegPassLineEdit->width() / 2, ui->RegPassLineEdit->height())),
+                                                     "<html><ul style =\"font: 12px;\">"
+                                                     "<li>Login can only contain latin letters, numbers and characters . and @ and must be longer than 5 characters </li>"
+                                                     "<li>Password can only contain latin letters and numbers and must be longer than 6 characters</li>"
+                                                     "</ul></html>");
+        }
+        else
+        {
+            QWhatsThis::showText(ui->RegPassLineEdit->mapToGlobal(QPoint(ui->RegPassLineEdit->width() / 2, ui->RegPassLineEdit->height())),
+                                                     "<html><ul style =\"font: 12px;\">"
+                                                     "<li>Password can only contain latin letters and numbers and must be longer than 6 characters</li>"
+                                                     "</ul></html>");
+        }
     }
 }
+
 // for handeling MainWindow resize event
 void MainWindow::resizeEvent(QResizeEvent* event)
 {
@@ -191,18 +247,20 @@ void MainWindow::resizeEvent(QResizeEvent* event)
     {
         resizeRegMenu();
     }
+    QWidget::resizeEvent(event);
 }
 
 void MainWindow::loadScrnShow()
 {
+    retryLoadingYesBtn->show();
+    retryLoadingNoBtn->show();
+    retConnLabel->show();
+    movie->stop();
+    loadingGif->hide();
     if (!loadingBckGround->isVisible())
     {
-        retryLoadingYesBtn->show();
-        retryLoadingNoBtn->show();
-        retConnLabel->show();
         resizeLoadindScreen();
         loadingGif->show();
-        movie->start();
         loadingBckGround->show();
     }
 }
@@ -217,15 +275,10 @@ void MainWindow::loadScrnHide()
     loadingGif->hide();
 }
 
-void MainWindow::logSuccess()
-{
-    ui->stackedWidget->setCurrentIndex(2);
-}
-
 void MainWindow::regSuccess()
 {
-    QMessageBox::information(this, "Registration successful", "Registration is successful, now you can login");
     ui->stackedWidget->setCurrentIndex(0);
+    QWhatsThis::showText(ui->LoginLineEdit->mapToGlobal(QPoint(ui->LoginLineEdit->width() / 2, ui->LoginLineEdit->height())), "Registration is successful, now you can login.");
 }
 
 void MainWindow::errSlot(QString titel, QString Info)

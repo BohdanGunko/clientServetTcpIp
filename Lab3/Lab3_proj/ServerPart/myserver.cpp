@@ -150,7 +150,7 @@ void myServer::decEndExec(QJsonDocument* doc, QTcpSocket* socket)
 void myServer::logProc(QTcpSocket* socket)
 {
     // find log in database
-    qry->prepare("select * from uInfo where uLog = :log");
+    qry->prepare("select * from uInfo where uLog like :log COLLATE SQL_Latin1_General_Cp1_CS_AS");
     qry->bindValue(":log", obj->value("log").toString());
 
     // if qry is not empty (if log exist)
@@ -193,7 +193,7 @@ void myServer::logProc(QTcpSocket* socket)
 void myServer::regProc(QTcpSocket* socket)
 {
     // find log in database
-    qry->prepare("select * from uInfo where uLog = :log");
+    qry->prepare("select * from uInfo where uLog like :log COLLATE SQL_Latin1_General_Cp1_CS_AS");
     qry->bindValue(":log", obj->value("log").toString());
 
     if (qry->exec())

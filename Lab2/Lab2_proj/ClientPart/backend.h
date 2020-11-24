@@ -29,13 +29,12 @@ public slots:
     void createSocket();	// create and init socket with IP and port number
     void sendData(QByteArray dataToSend);
     void sockReady();	 // reading from socket
-    void sockDisk();	// disconnect from server event
     void tryToReccon();
     void sockDisc();
 signals:
     void _reconnFailed();
     void _reconnSuccess();
-    void _logSuccess();
+    void _logSuccess(int page);
     void _regSuccess();
     void _errSignal(QString titel, QString info);
 };
