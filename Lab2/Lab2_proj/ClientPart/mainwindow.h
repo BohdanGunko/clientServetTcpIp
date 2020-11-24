@@ -6,6 +6,8 @@
 #include <QDebug>
 #include <QToolTip>
 #include <QMainWindow>
+#include <QFile>
+#include <QDir>
 #include <purchasesmenu.h>
 // for communication with server
 #include <backend.h>
@@ -35,17 +37,24 @@ public:
     ~MainWindow();
 
 private slots:
+
     void on_RegRegButton_clicked();
     void on_ExitButton_clicked();
     void on_RegButton_clicked();
     void on_RegGoBackButton_clicked();
     void on_LogButton_clicked();
     void retryLoadingYesBtn_clicked();
+    void on_LoginLineEdit_textChanged(const QString &arg1);
+    void on_PassLineEdit_textEdited(const QString &arg1);
     void resizeEvent(QResizeEvent*);	// redefinition of QResize event
     void loadScrnShow();	// show loading screen
     void loadScrnHide();	// hide loading screen
+    void logSuccess();
     void regSuccess();	// go to lof menu if registration is successful
-    void errSlot(QString titel, QString Info);
+    void errSlot( QString Info);
+
+
+
 
 private:
     Ui::MainWindow* ui;

@@ -61,13 +61,13 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(bckEnd, SIGNAL(_reconnSuccess()), this, SLOT(loadScrnHide()));
 
     // when loginization is successful
-    connect(bckEnd, SIGNAL(_logSuccess(int)), ui->stackedWidget, SLOT(setCurrentIndex(int)));
+    connect(bckEnd, SIGNAL(_logSuccess()), this, SLOT(logSuccess()));
 
     // when registration is successful
     connect(bckEnd, SIGNAL(_regSuccess()), this, SLOT(regSuccess()));
 
     // when error in log or reg process
-    connect(bckEnd, SIGNAL(_errSignal(QString, QString)), this, SLOT(errSlot(QString, QString)));
+    connect(bckEnd, SIGNAL(_errSignalMW(QString)), this, SLOT(errSlot(QString)));
 
     // when user dont want to try connecting again
     connect(retryLoadingNoBtn, SIGNAL(clicked()), this, SLOT(on_ExitButton_clicked()));
@@ -83,6 +83,21 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
     secThread->start();
 
     resizeLoadindScreen();
+
+    // check if any user pressed remember me
+    QFile rMeFile(".remMe");
+    if (rMeFile.open(QIODevice::ReadOnly))
+    {
+        {
+            ui->LoginLineEdit->setText(rMeFile.readLine().replace("\n", ""));
+            ui->PassLineEdit->setText(rMeFile.readLine().replace("\n", ""));
+            rMeFile.close();
+            if (ui->LoginLineEdit->text() != "")
+            {
+                ui->LogButton->animateClick(0);
+            }
+        }
+    }
 }
 
 // destructor
@@ -91,6 +106,16 @@ MainWindow::~MainWindow()
     secThread->quit();
     secThread->wait();
     delete ui;
+}
+
+void MainWindow::on_LoginLineEdit_textChanged(const QString& arg1)
+{
+    ui->LoginLineEdit->setStyleSheet("border-color: #455A64;");
+}
+
+void MainWindow::on_PassLineEdit_textEdited(const QString& arg1)
+{
+    ui->PassLineEdit->setStyleSheet("border-color: #455A64;");
 }
 
 void MainWindow::on_RegButton_clicked()
@@ -122,9 +147,9 @@ void MainWindow::on_LogButton_clicked()
         else
         {
             QWhatsThis::showText(ui->PassLineEdit->mapToGlobal(QPoint(ui->PassLineEdit->width() / 2, ui->PassLineEdit->height())),
-                                                     "<html><ul style =\"font: 12px;\">"
-                                                     "<li>Password can only contain latin letters and numbers and must be longer than 6 characters</li>"
-                                                     "</ul></html>");
+                                                     "<html><font style =\"font: 12px;\">"
+                                                     "Password can only contain latin letters and numbers and must be longer than 6 characters"
+                                                     "</font></html>");
         }
     }
     // if log format is incorrect
@@ -135,17 +160,17 @@ void MainWindow::on_LogButton_clicked()
         // if password format is incorrect
         {
             QWhatsThis::showText(ui->LoginLineEdit->mapToGlobal(QPoint(ui->LoginLineEdit->width() / 2, ui->LoginLineEdit->height())),
-                                                     "<html><ul style =\"font: 12px;\">"
-                                                     "<li>Login can only contain latin letters, numbers and characters . and @ and must be longer than 5 characters </li>"
-                                                     "<li>Password can only contain latin letters and numbers and must be longer than 6 characters</li>"
-                                                     "</ul></html>");
+                                                     "<html><font style =\"font: 12px;\">"
+                                                     "<p>Login can only contain latin letters, numbers and characters . and @ and must be longer than 5 characters</p>"
+                                                     "<p>Password can only contain latin letters and numbers and must be longer than 6 characters</p>"
+                                                     "</font></html>");
         }
         else
         {
             QWhatsThis::showText(ui->LoginLineEdit->mapToGlobal(QPoint(ui->LoginLineEdit->width() / 2, ui->LoginLineEdit->height())),
-                                                     "<html><ul style =\"font: 12px;\">"
-                                                     "<li>Login can only contain latin letters, numbers and characters . and @ and must be longer than 5 characters </li>"
-                                                     "</ul></html>");
+                                                     "<html><font style =\"font: 12px;\">"
+                                                     "Login can only contain latin letters, numbers and characters . and @ and must be longer than 5 characters"
+                                                     "</font></html>");
         }
     }
 }
@@ -197,17 +222,17 @@ void MainWindow::on_RegRegButton_clicked()
             else
             {
                 QWhatsThis::showText(ui->RegConfLineEdit->mapToGlobal(QPoint(ui->RegConfLineEdit->width() / 2, ui->RegConfLineEdit->height())),
-                                                         "<html><ul style =\"font: 12px;\">"
-                                                         "<li>Password and confirm field must match</li>"
-                                                         "</ul></html>");
+                                                         "<html><font style =\"font: 12px;\">"
+                                                         "Password and confirm field must match"
+                                                         "</font></html>");
             }
         }
         else
         {
             QWhatsThis::showText(ui->RegPassLineEdit->mapToGlobal(QPoint(ui->RegPassLineEdit->width() / 2, ui->RegPassLineEdit->height())),
-                                                     "<html><ul style =\"font: 12px;\">"
-                                                     "<li>Password can only contain latin letters and numbers and must be longer than 6 characters</li>"
-                                                     "</ul></html>");
+                                                     "<html><font style =\"font: 12px;\">"
+                                                     "Password can only contain latin letters and numbers and must be longer than 6 characters"
+                                                     "</font></html>");
         }
     }
     // if login doesnt match needed format
@@ -217,17 +242,17 @@ void MainWindow::on_RegRegButton_clicked()
         // if pass doesnt match needed format
         {
             QWhatsThis::showText(ui->RegPassLineEdit->mapToGlobal(QPoint(ui->RegPassLineEdit->width() / 2, ui->RegPassLineEdit->height())),
-                                                     "<html><ul style =\"font: 12px;\">"
-                                                     "<li>Login can only contain latin letters, numbers and characters . and @ and must be longer than 5 characters </li>"
-                                                     "<li>Password can only contain latin letters and numbers and must be longer than 6 characters</li>"
-                                                     "</ul></html>");
+                                                     "<html><font style = \"font: 12px;\">"
+                                                     "<p>Login can only contain latin letters, numbers and characters . and @ and must be longer than 5 characters</p>"
+                                                     "<p>Password can only contain latin letters and numbers and must be longer than 6 characters</p>"
+                                                     "</font></html>");
         }
         else
         {
-            QWhatsThis::showText(ui->RegPassLineEdit->mapToGlobal(QPoint(ui->RegPassLineEdit->width() / 2, ui->RegPassLineEdit->height())),
-                                                     "<html><ul style =\"font: 12px;\">"
-                                                     "<li>Password can only contain latin letters and numbers and must be longer than 6 characters</li>"
-                                                     "</ul></html>");
+            QWhatsThis::showText(ui->RegLogLineEdit->mapToGlobal(QPoint(ui->RegLogLineEdit->width() / 2, ui->RegLogLineEdit->height())),
+                                                     "<html><font style =\"font: 12px;\">"
+                                                     "Login can only contain latin letters, numbers and characters . and @ and must be longer than 5 characters"
+                                                     "</font></html>");
         }
     }
 }
@@ -275,13 +300,67 @@ void MainWindow::loadScrnHide()
     loadingGif->hide();
 }
 
+void MainWindow::logSuccess()
+{
+    QDir dir(QCoreApplication::applicationDirPath() + ".remMe");
+    QFile rMeFile(".remMe");
+    // if remember me is checked
+
+    // write log and pass to remME file
+    if (rMeFile.open(QIODevice::WriteOnly))
+    {
+        if (ui->RemMeCheckBox->isChecked())
+        {
+            {
+                QString fileInputTex = ui->LoginLineEdit->text() + "\n" + ui->PassLineEdit->text();
+                rMeFile.write(fileInputTex.toLocal8Bit());
+                rMeFile.waitForBytesWritten(100);
+                rMeFile.close();
+            }
+        }
+        else
+        {
+            rMeFile.close();
+        }
+    }
+
+    // go to main menu
+    ui->stackedWidget->setCurrentIndex(2);
+}
+
 void MainWindow::regSuccess()
 {
     ui->stackedWidget->setCurrentIndex(0);
     QWhatsThis::showText(ui->LoginLineEdit->mapToGlobal(QPoint(ui->LoginLineEdit->width() / 2, ui->LoginLineEdit->height())), "Registration is successful, now you can login.");
 }
 
-void MainWindow::errSlot(QString titel, QString Info)
+void MainWindow::errSlot(QString Info)
 {
-    QMessageBox::critical(this, titel, Info);
+    if (Info == "Login doesn't exist")
+    {
+        QWhatsThis::showText(ui->LoginLineEdit->mapToGlobal(QPoint(ui->LoginLineEdit->width() / 2, ui->LoginLineEdit->height())),
+                                                 "<html><font style =\"font: 12px;\">"
+                                                 "Login doesn't exist"
+                                                 "</font></html>");
+        ui->LoginLineEdit->setStyleSheet("border-color:#990329;");
+    }
+    else if (Info == "Invalid password")
+    {
+        QWhatsThis::showText(ui->PassLineEdit->mapToGlobal(QPoint(ui->PassLineEdit->width() / 2, ui->PassLineEdit->height())),
+                                                 "<html><font style =\"font: 12px;\">"
+                                                 "Invalid password"
+                                                 "</font></html>");
+        ui->PassLineEdit->setStyleSheet("border-color:#990329;");
+    }
+    else if (Info == "User already exist")
+    {
+        QWhatsThis::showText(ui->RegLogLineEdit->mapToGlobal(QPoint(ui->RegLogLineEdit->width() / 2, ui->RegLogLineEdit->height())),
+                                                 "<html><font style =\"font: 12px;\">"
+                                                 "User already exist"
+                                                 "</font></html>");
+    }
+    else
+    {
+        QMessageBox::critical(this, "Fatal error", Info);
+    }
 }

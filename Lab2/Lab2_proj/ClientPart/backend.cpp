@@ -3,6 +3,7 @@
 BackEnd::BackEnd(QObject* parent) : QObject(parent)
 {
 }
+
 // create socket and try connecting to sever
 void BackEnd::createSocket()
 {
@@ -124,12 +125,12 @@ void BackEnd::logProc()
     // if log and pass are good
     if (obj->value("resp").toString() == "ok")
     {
-        emit _logSuccess(2);
+        emit _logSuccess();
     }
     // if smt went wrong
     else
     {
-        emit _errSignal("Ligon error", obj->value("err").toString());
+        emit _errSignalMW(obj->value("err").toString());
     }
 }
 
@@ -144,6 +145,6 @@ void BackEnd::regProc()
     // if smt went wrong
     else
     {
-        emit _errSignal("Registration error", obj->value("err").toString());
+        emit _errSignalMW(obj->value("err").toString());
     }
 }

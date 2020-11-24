@@ -34,9 +34,9 @@ public slots:
 signals:
     void _reconnFailed();
     void _reconnSuccess();
-    void _logSuccess(int page);
+    void _logSuccess();
     void _regSuccess();
-    void _errSignal(QString titel, QString info);
+    void _errSignalMW( QString info);
 };
 
 #endif	// BACKEND_H

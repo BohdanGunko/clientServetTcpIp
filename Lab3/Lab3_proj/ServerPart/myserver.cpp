@@ -106,7 +106,7 @@ void myServer::sockReady()
         else
         {
             // send client respond about bad data format
-            socket->write("{\"operation\":\"convetrion to JSON\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please check your internet connection\"}");
+            socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data.  Please restart the app\"}");
             socket->waitForBytesWritten(1500);
             return;
         }
@@ -141,7 +141,7 @@ void myServer::decEndExec(QJsonDocument* doc, QTcpSocket* socket)
     else
     {
         // send to cliend command error msg
-        socket->write("{\"operation\":\"not exist\"}");
+        socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please restart the app\"}");
         socket->waitForBytesWritten(1500);
     }
 };
@@ -184,7 +184,7 @@ void myServer::logProc(QTcpSocket* socket)
     else
     {
         // handle bad query execution
-        socket->write("{\"operation\":\"login\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please check your internet connection\"}");
+        socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please restart the app\"}");
         socket->waitForBytesWritten(1500);
     }
 }
@@ -222,8 +222,8 @@ void myServer::regProc(QTcpSocket* socket)
             }
             else
             {
-                // set smt went wrong respond
-                socket->write("{\"operation\":\"register\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please check your internet connection\"}");
+                // if query executed with error
+                socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please restart the app\"}");
                 socket->waitForBytesWritten(1500);
             }
         }
@@ -231,7 +231,7 @@ void myServer::regProc(QTcpSocket* socket)
     else
     {
         // handle bad query execution
-        socket->write("{\"operation\":\"register\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please check your internet connection\"}");
+        socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please restart the app\"}");
         socket->waitForBytesWritten(1500);
     }
 }

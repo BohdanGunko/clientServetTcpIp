@@ -12,4 +12,5 @@
         <file>img/Arrow.png</file>
         <file>img/loadingGif.gif</file>
     </qresource>
+    <qresource prefix="/files"/>
 </RCC>
