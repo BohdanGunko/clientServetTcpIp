@@ -7,15 +7,22 @@
 #include <QEvent>
 
 // constructor
-PurchasesMenu::PurchasesMenu(QWidget* parent) : QWidget(parent), ui(new Ui::PurchasesMenu)
+PurchasesMenu::PurchasesMenu(BackEnd* bckEnd, QWidget* parent) : QWidget(parent), ui(new Ui::PurchasesMenu)
 {
     ui->setupUi(this);
 
+    // create pointer wich points to mainwindow bckEnd
+    this->bckEnd = bckEnd;
+
     // adding BuyTickets screen to stacked widget
-    ui->stackedWidget->addWidget(&BuyScreen);
+    BuyScreen = new BuyTickets(bckEnd);
+    ui->stackedWidget->addWidget(BuyScreen);
 
     // seting ButTickets as start screen
     ui->stackedWidget->setCurrentIndex(0);
+
+    // to be able to send data to bckEnd object
+    connect(this, SIGNAL(_dataToSend(QByteArray)), bckEnd, SLOT(sendData(QByteArray)));
 
     // set icons on start of ui
     setIcons();
@@ -54,9 +61,4 @@ bool PurchasesMenu::eventFilter(QObject* watched, QEvent* event)
     }
 
     return false;
-}
-
-void PurchasesMenu::setSocket(QTcpSocket* sck)
-{
-    socket = sck;
 }

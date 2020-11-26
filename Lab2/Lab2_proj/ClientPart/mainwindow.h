@@ -37,24 +37,20 @@ public:
     ~MainWindow();
 
 private slots:
-
     void on_RegRegButton_clicked();
     void on_ExitButton_clicked();
     void on_RegButton_clicked();
     void on_RegGoBackButton_clicked();
     void on_LogButton_clicked();
     void retryLoadingYesBtn_clicked();
-    void on_LoginLineEdit_textChanged(const QString &arg1);
-    void on_PassLineEdit_textEdited(const QString &arg1);
+    void on_LoginLineEdit_textChanged(const QString& arg1);
+    void on_PassLineEdit_textEdited(const QString& arg1);
     void resizeEvent(QResizeEvent*);	// redefinition of QResize event
     void loadScrnShow();	// show loading screen
     void loadScrnHide();	// hide loading screen
     void logSuccess();
     void regSuccess();	// go to lof menu if registration is successful
-    void errSlot( QString Info);
-
-
-
+    void errSlot(QString Info);
 
 private:
     Ui::MainWindow* ui;
@@ -66,9 +62,9 @@ private:
     QMovie* movie;
     QPushButton* retryLoadingYesBtn;
     QPushButton* retryLoadingNoBtn;
+    PurchasesMenu* OvScreen;	 // main menu screen
     void resizeLogMenu();	 // resizing elements in Log menu when window size changes
     void resizeRegMenu();	 // resizing elements in Reg menu when window size changes
-    PurchasesMenu OvScreen;	 // main menu screen
     void setShadowEff();	// set shadows in Log and Reg menus
     void resizeLoadindScreen();	 // resizing loading screen
 

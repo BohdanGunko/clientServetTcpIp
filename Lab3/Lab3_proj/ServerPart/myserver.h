@@ -16,6 +16,8 @@
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
+// for ukrainian language
+#include <QTextCodec>
 
 class myServer : public QTcpServer
 {
@@ -30,10 +32,12 @@ public:
     QJsonObject* obj;
     QSqlDatabase* db;
     QSqlQuery* qry;
+    QTextCodec* codec = QTextCodec::codecForName("KOI8-U");
     void decEndExec(QJsonDocument* doc, QTcpSocket* socket);
     void startServer();
     void logProc(QTcpSocket* socket);
     void regProc(QTcpSocket* socket);
+    void getCities(QTcpSocket* socket);
 public slots:
     void incomingConnection(qintptr socketDescriptor);
     void sockReady();

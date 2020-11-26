@@ -19,8 +19,14 @@ void BackEnd::createSocket()
 // trying to reconnect to server
 void BackEnd::tryToReccon()
 {
+    //    // try to recconect to server
+    //    socket->connectToHost("178.137.161.32", 27000);
+    //
+    //    // wait for connection to be established
+    //    socket->waitForConnected(7000);
+
     // try to recconect to server
-    socket->connectToHost("178.137.161.32", 27000);
+    socket->connectToHost("127.0.0.1", 27000);
 
     // wait for connection to be established
     socket->waitForConnected(7000);
@@ -80,7 +86,7 @@ void BackEnd::sockReady()
         else
         {
             // to do: show can not convert err msg box
-
+            qDebug() << "Can not read convetr data from server";
             return;
         }
     }
@@ -88,7 +94,7 @@ void BackEnd::sockReady()
     else
     {
         // show bad connection error
-        qDebug() << "Can not read data from client: Connestion failed";
+        qDebug() << "Can not read data from server: Connestion failed";
         return;
     }
 }
@@ -106,6 +112,10 @@ void BackEnd::decEndExec()
     else if (obj->value("operation").toString() == "register")
     {
         regProc();
+    }
+    else if (obj->value("operation").toString() == "getCities")
+    {
+        cListProc();
     }
     // if server send unknown operation
     else
@@ -141,6 +151,20 @@ void BackEnd::regProc()
     if (obj->value("resp").toString() == "ok")
     {
         emit _regSuccess();
+    }
+    // if smt went wrong
+    else
+    {
+        emit _errSignalMW(obj->value("err").toString());
+    }
+}
+
+void BackEnd::cListProc()
+{
+    // if registration is successful
+    if (obj->value("resp").toString() == "ok")
+    {
+        emit _cList(obj->value("data").toVariant().toStringList());
     }
     // if smt went wrong
     else

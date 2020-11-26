@@ -13,8 +13,8 @@ myServer::~myServer()
 // start server and make it listening local ip
 void myServer::startServer()
 {
-    QHostAddress _adress("192.168.0.102");
-
+    // QHostAddress _adress("192.168.0.102");
+    QHostAddress _adress("127.0.0.1");
     // check if server started
     if (this->listen(_adress, 27000))
     {
@@ -137,6 +137,11 @@ void myServer::decEndExec(QJsonDocument* doc, QTcpSocket* socket)
         // call registration func
         regProc(socket);
     }
+    else if (obj->value("operation") == "getCities")
+    {
+        // call registration func
+        getCities(socket);
+    }
     // if we dont know command that client send
     else
     {
@@ -227,6 +232,29 @@ void myServer::regProc(QTcpSocket* socket)
                 socket->waitForBytesWritten(1500);
             }
         }
+    }
+    else
+    {
+        // handle bad query execution
+        socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please restart the app\"}");
+        socket->waitForBytesWritten(1500);
+    }
+}
+
+void myServer::getCities(QTcpSocket* socket)
+{
+    // fget cities list from db
+    if (qry->exec("select * from citiesList"))
+    {
+        QString cList = "{\"operation\":\"getCities\", \"resp\":\"ok\", \"data\":[";
+        while (qry->next())
+        {
+            cList.push_back("\"" + qry->value(0).toString() + "\",");
+        }
+        cList.remove(cList.length() - 1, 1);
+        cList.push_back("]}");
+        socket->write(cList.toUtf8());
+        socket->waitForBytesWritten(1500);
     }
     else
     {

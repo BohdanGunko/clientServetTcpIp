@@ -10,6 +10,8 @@
 #include <QJsonObject>
 #include <QJsonParseError>
 #include <QJsonDocument>
+// for ukrainian language
+#include <QTextCodec>
 
 class BackEnd : public QObject
 {
@@ -21,9 +23,11 @@ public:
     QJsonDocument* jsnDoc;
     QJsonParseError* errJsn = new QJsonParseError();
     QJsonObject* obj = new QJsonObject();
+    QTextCodec* codec = QTextCodec::codecForName("KOI8-U");
     void decEndExec();
     void logProc();
     void regProc();
+    void cListProc();
 
 public slots:
     void createSocket();	// create and init socket with IP and port number
@@ -36,7 +40,8 @@ signals:
     void _reconnSuccess();
     void _logSuccess();
     void _regSuccess();
-    void _errSignalMW( QString info);
+    void _errSignalMW(QString info);
+    void _cList(QStringList cList);
 };
 
 #endif	// BACKEND_H

@@ -30,9 +30,6 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
     retConnLabel->setText("Could not connect to server. Do you want to rty again?");
     retConnLabel->adjustSize();
 
-    // adding main menu ui to stacked widget
-    ui->stackedWidget->addWidget(&OvScreen);
-
     // setting Log menu as starting screen (0 is index of login menu in stackedwidget)
     ui->stackedWidget->setCurrentIndex(0);
 
@@ -83,6 +80,10 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
     secThread->start();
 
     resizeLoadindScreen();
+
+    // adding main menu ui to stacked widget
+    OvScreen = new PurchasesMenu(bckEnd);
+    ui->stackedWidget->addWidget(OvScreen);
 
     // check if any user pressed remember me
     QFile rMeFile(".remMe");
@@ -141,7 +142,7 @@ void MainWindow::on_LogButton_clicked()
             QString txtToSend = QString("{\"operation\":\"login\", \"log\":\"%1\", \"pass\":\"%2\"}").arg(logTxt).arg(passTxt);
 
             // send log and pass to server
-            emit _dataToSend(txtToSend.toLocal8Bit());
+            emit _dataToSend(txtToSend.toUtf8());
         }
         // if passs format is not correct
         else
@@ -217,7 +218,7 @@ void MainWindow::on_RegRegButton_clicked()
                 QString txtToSend = QString("{\"operation\":\"register\", \"log\":\"%1\", \"pass\":\"%2\"}").arg(logTxt).arg(passTxt);
 
                 // send log and pass to server
-                _dataToSend(txtToSend.toLocal8Bit());
+                _dataToSend(txtToSend.toUtf8());
             }
             else
             {
@@ -313,7 +314,7 @@ void MainWindow::logSuccess()
         {
             {
                 QString fileInputTex = ui->LoginLineEdit->text() + "\n" + ui->PassLineEdit->text();
-                rMeFile.write(fileInputTex.toLocal8Bit());
+                rMeFile.write(fileInputTex.toUtf8());
                 rMeFile.waitForBytesWritten(100);
                 rMeFile.close();
             }
@@ -326,6 +327,9 @@ void MainWindow::logSuccess()
 
     // go to main menu
     ui->stackedWidget->setCurrentIndex(2);
+
+    // send lrequest to get cities list
+    _dataToSend("{\"operation\":\"getCities\"}");
 }
 
 void MainWindow::regSuccess()
