@@ -28,7 +28,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
     // create lable to show text on loading screen
     retConnLabel = new QLabel(this);
     retConnLabel->setText("Could not connect to server. Do you want to rty again?");
-    retConnLabel->adjustSize();
+    retConnLabel->resize(345,17);
 
     // setting Log menu as starting screen (0 is index of login menu in stackedwidget)
     ui->stackedWidget->setCurrentIndex(0);
@@ -95,6 +95,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
             rMeFile.close();
             if (ui->LoginLineEdit->text() != "")
             {
+                ui->RemMeCheckBox->setChecked(1);
                 ui->LogButton->animateClick(0);
             }
         }

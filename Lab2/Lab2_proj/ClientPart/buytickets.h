@@ -1,9 +1,12 @@
 #ifndef BUYTICKETS_H
 #define BUYTICKETS_H
 
+// secondary libraries
 #include <QWidget>
-#include <QCalendarWidget>
+#include <QDebug>
 #include <backend.h>
+//auto complition
+#include <QCompleter>
 namespace Ui
 {
 class BuyTickets;
@@ -25,6 +28,8 @@ private slots:
 private:
     Ui::BuyTickets* ui;
     BackEnd* bckEnd;
+    QCompleter* depCompleter;
+    QCompleter* destCompleter;
     void setShadowEff();	// set shadows in BuyTickets menu
 };
 
