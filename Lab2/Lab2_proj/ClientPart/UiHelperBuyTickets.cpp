@@ -68,3 +68,4 @@ void BuyTickets::setShadowEff()
     SearchButtonEffect->setColor(Qt::black);
     ui->SearchButton->setGraphicsEffect(SearchButtonEffect);
 }
+

@@ -21,7 +21,7 @@ void myServer::startServer()
         qDebug() << "Server listening to: " << _adress;
 
         // connect to db
-        QString serverName = "DESKTOP-UJSLV1O\\SQLEXPRESS";
+        QString serverName = "GF65\\SQLEXPRESS";
         QString dbName = "TrainsDb";
         db = new QSqlDatabase();
         *db = QSqlDatabase::addDatabase("QODBC");
@@ -99,14 +99,15 @@ void myServer::sockReady()
         if (errJsn->errorString().toInt() == QJsonParseError::NoError)
         {
             // do smt accordin to command from client
-            decEndExec(jsnDoc, socket);
+            decAndExec(jsnDoc, socket);
             return;
         }
         // if data could not be converted to json
         else
         {
             // send client respond about bad data format
-            socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data.  Please restart the app\"}");
+            socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data.  Please restart the "
+                                        "app\"}");
             socket->waitForBytesWritten(1500);
             return;
         }
@@ -120,7 +121,7 @@ void myServer::sockReady()
 }
 
 // find what command does client send and do needed things to execute it
-void myServer::decEndExec(QJsonDocument* doc, QTcpSocket* socket)
+void myServer::decAndExec(QJsonDocument* doc, QTcpSocket* socket)
 {
     obj = new QJsonObject;
     *obj = doc->object();
@@ -141,6 +142,16 @@ void myServer::decEndExec(QJsonDocument* doc, QTcpSocket* socket)
     {
         // call registration func
         getCities(socket);
+    }
+    else if (obj->value("operation") == "getTrainsList")
+    {
+        // call registration func
+        getTrainsList(socket);
+    }
+    else if (obj->value("operation") == "getAvailableSeats")
+    {
+        // call registration func
+        getAvailableSeats(socket);
     }
     // if we dont know command that client send
     else
@@ -228,7 +239,8 @@ void myServer::regProc(QTcpSocket* socket)
             else
             {
                 // if query executed with error
-                socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please restart the app\"}");
+                socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please restart the "
+                                            "app\"}");
                 socket->waitForBytesWritten(1500);
             }
         }
@@ -255,6 +267,95 @@ void myServer::getCities(QTcpSocket* socket)
         cList.push_back("]}");
         socket->write(cList.toUtf8());
         socket->waitForBytesWritten(1500);
+    }
+    else
+    {
+        // handle bad query execution
+        socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please restart the app\"}");
+        socket->waitForBytesWritten(1500);
+    }
+}
+
+void myServer::getTrainsList(QTcpSocket* socket)
+{
+    // find log in database
+    qry->prepare("select * from getNeededTrainsList(:dep, :dest, :date, :time)");
+    qry->bindValue(":dep", obj->value("dep").toString());
+    qry->bindValue(":dest", obj->value("dest").toString());
+    qry->bindValue(":date", obj->value("arrDate").toString());
+    qry->bindValue(":time", obj->value("arrTime").toString());
+
+    if (qry->exec())
+    {
+        QString trainsList = "{\"operation\":\"getTrainsList\", \"resp\":\"ok\", \"data\":[";
+        unsigned dataCounter = 0;
+        while (qry->next())
+        {
+            for (unsigned short iter = 0; iter < 7; ++iter)
+            {
+                ++dataCounter;
+                trainsList.push_back("\"" + qry->value(iter).toString() + "\",");
+            }
+        }
+        if (dataCounter)
+        {
+            trainsList.remove(trainsList.length() - 1, 1);
+        }
+        trainsList.push_back("]}");
+        socket->write(trainsList.toUtf8());
+        socket->waitForBytesWritten(1500);
+        qDebug() << trainsList;
+    }
+    else
+    {
+        // handle bad query execution
+        socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please restart the app\"}");
+        socket->waitForBytesWritten(1500);
+    }
+}
+
+void myServer::getAvailableSeats(QTcpSocket* socket)
+{
+    qry->prepare("select MAX(wagonNumber) from wagonsList where trainid = :trainId");
+    qry->bindValue(":trainId", obj->value("trainId").toString());
+
+    if (qry->exec())
+    {
+        qry->next();
+        QString notAvailiableSeats = "{\"operation\":\"getAvailableSeats\", \"resp\":\"ok\", \"wagons\":\"" + qry->value(0).toString() + "\", \"data\":[";
+
+        qry->prepare("select * from getAvailablePlaces(:trainDate, :trainId, :dep, :dest)");
+        qry->bindValue(":trainDate", obj->value("trainDate").toString());
+        qry->bindValue(":trainId", obj->value("trainId").toString());
+        qry->bindValue(":dep", obj->value("dep").toString());
+        qry->bindValue(":dest", obj->value("dest").toString());
+
+        if (qry->exec())
+        {
+            unsigned dataCounter = 0;
+            while (qry->next())
+            {
+                for (unsigned short iter = 0; iter < 2; ++iter)
+                {
+                    ++dataCounter;
+                    notAvailiableSeats.push_back("\"" + qry->value(iter).toString() + "\",");
+                }
+            }
+            if (dataCounter)
+            {
+                notAvailiableSeats.remove(notAvailiableSeats.length() - 1, 1);
+            }
+            notAvailiableSeats.push_back("]}");
+            socket->write(notAvailiableSeats.toUtf8());
+            socket->waitForBytesWritten(1500);
+            qDebug() << notAvailiableSeats;
+        }
+        else
+        {
+            // handle bad query execution
+            socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please restart the app\"}");
+            socket->waitForBytesWritten(1500);
+        }
     }
     else
     {

@@ -12,6 +12,7 @@
 #include <QJsonDocument>
 // for ukrainian language
 #include <QTextCodec>
+#include "QPushButton"
 
 class BackEnd : public QObject
 {
@@ -22,12 +23,13 @@ public:
     QByteArray recievedData;
     QJsonDocument* jsnDoc;
     QJsonParseError* errJsn = new QJsonParseError();
-    QJsonObject* obj = new QJsonObject();
-    QTextCodec* codec = QTextCodec::codecForName("KOI8-U");
-    void decEndExec();
+    QJsonObject* obj = new QJsonObject();;
+    void decAndExec();
     void logProc();
     void regProc();
     void cListProc();
+    void trainsListProc();
+    void getAvailableSeats();
 
 public slots:
     void createSocket();	// create and init socket with IP and port number
@@ -35,6 +37,7 @@ public slots:
     void sockReady();	 // reading from socket
     void tryToReccon();
     void sockDisc();
+    void buyNeededTicket();
 signals:
     void _reconnFailed();
     void _reconnSuccess();
@@ -42,6 +45,8 @@ signals:
     void _regSuccess();
     void _errSignalMW(QString info);
     void _cList(QStringList cList);
+    void _trainsList(QStringList trainsList);
+    void _availableSeats(QString wagonsCounr, QStringList trainsList);
 };
 
 #endif	// BACKEND_H

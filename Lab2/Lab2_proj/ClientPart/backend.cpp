@@ -79,7 +79,7 @@ void BackEnd::sockReady()
         if (errJsn->errorString().toInt() == QJsonParseError::NoError)
         {
             // do smt accordin to command from server
-            decEndExec();
+            decAndExec();
             return;
         }
         // if data could not be converted to json
@@ -100,7 +100,7 @@ void BackEnd::sockReady()
 }
 
 // decode server respond and do needed things
-void BackEnd::decEndExec()
+void BackEnd::decAndExec()
 {
     // if it is respond to login process
     if (obj->value("operation").toString() == "login")
@@ -117,6 +117,14 @@ void BackEnd::decEndExec()
     {
         cListProc();
     }
+    else if (obj->value("operation").toString() == "getTrainsList")
+    {
+        trainsListProc();
+    }
+    else if (obj->value("operation").toString() == "getAvailableSeats")
+    {
+        getAvailableSeats();
+    }
     // if server send unknown operation
     else
     {
@@ -127,6 +135,10 @@ void BackEnd::decEndExec()
 void BackEnd::sockDisc()
 {
     emit _reconnFailed();
+}
+
+void BackEnd::buyNeededTicket()
+{
 }
 
 // reacting to login reslond
@@ -167,6 +179,31 @@ void BackEnd::cListProc()
         emit _cList(obj->value("data").toVariant().toStringList());
     }
     // if smt went wrong
+    else
+    {
+        emit _errSignalMW(obj->value("err").toString());
+    }
+}
+
+void BackEnd::trainsListProc()
+{
+    if (obj->value("resp").toString() == "ok")
+    {
+        emit _trainsList(obj->value("data").toVariant().toStringList());
+    }
+    // if smt went wrong
+    else
+    {
+        emit _errSignalMW(obj->value("err").toString());
+    }
+}
+
+void BackEnd::getAvailableSeats()
+{
+    if (obj->value("resp").toString() == "ok")
+    {
+        emit _availableSeats(obj->value("wagons").toString(), obj->value("data").toVariant().toStringList());
+    }
     else
     {
         emit _errSignalMW(obj->value("err").toString());

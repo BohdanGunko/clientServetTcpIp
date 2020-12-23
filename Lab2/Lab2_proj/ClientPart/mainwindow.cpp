@@ -28,7 +28,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
     // create lable to show text on loading screen
     retConnLabel = new QLabel(this);
     retConnLabel->setText("Could not connect to server. Do you want to rty again?");
-    retConnLabel->resize(345,17);
+    retConnLabel->resize(345, 17);
 
     // setting Log menu as starting screen (0 is index of login menu in stackedwidget)
     ui->stackedWidget->setCurrentIndex(0);
@@ -148,10 +148,14 @@ void MainWindow::on_LogButton_clicked()
         // if passs format is not correct
         else
         {
-            QWhatsThis::showText(ui->PassLineEdit->mapToGlobal(QPoint(ui->PassLineEdit->width() / 2, ui->PassLineEdit->height())),
-                                                     "<html><font style =\"font: 12px;\">"
-                                                     "Password can only contain latin letters and numbers and must be longer than 6 characters"
-                                                     "</font></html>");
+            QWhatsThis::showText(ui->PassLineEdit->mapToGlobal(QPoint(ui->PassLineEdit->width() / 2, ui->PassLineEdit->height())), "<html><font style "
+                                                                                                                                                                                                                                                         "=\"font: 12px;\">"
+                                                                                                                                                                                                                                                         "Password can only "
+                                                                                                                                                                                                                                                         "contain latin letters "
+                                                                                                                                                                                                                                                         "and numbers and must "
+                                                                                                                                                                                                                                                         "be longer "
+                                                                                                                                                                                                                                                         "than 6 characters"
+                                                                                                                                                                                                                                                         "</font></html>");
         }
     }
     // if log format is incorrect
@@ -163,15 +167,18 @@ void MainWindow::on_LogButton_clicked()
         {
             QWhatsThis::showText(ui->LoginLineEdit->mapToGlobal(QPoint(ui->LoginLineEdit->width() / 2, ui->LoginLineEdit->height())),
                                                      "<html><font style =\"font: 12px;\">"
-                                                     "<p>Login can only contain latin letters, numbers and characters . and @ and must be longer than 5 characters</p>"
-                                                     "<p>Password can only contain latin letters and numbers and must be longer than 6 characters</p>"
+                                                     "<p>Login can only contain latin letters, numbers and characters . and "
+                                                     "@ and must be longer than 5 characters</p>"
+                                                     "<p>Password can only contain latin letters and numbers and must be "
+                                                     "longer than 6 characters</p>"
                                                      "</font></html>");
         }
         else
         {
             QWhatsThis::showText(ui->LoginLineEdit->mapToGlobal(QPoint(ui->LoginLineEdit->width() / 2, ui->LoginLineEdit->height())),
                                                      "<html><font style =\"font: 12px;\">"
-                                                     "Login can only contain latin letters, numbers and characters . and @ and must be longer than 5 characters"
+                                                     "Login can only contain latin letters, numbers and characters . and @ "
+                                                     "and must be longer than 5 characters"
                                                      "</font></html>");
         }
     }
@@ -219,7 +226,7 @@ void MainWindow::on_RegRegButton_clicked()
                 QString txtToSend = QString("{\"operation\":\"register\", \"log\":\"%1\", \"pass\":\"%2\"}").arg(logTxt).arg(passTxt);
 
                 // send log and pass to server
-                _dataToSend(txtToSend.toUtf8());
+                emit _dataToSend(txtToSend.toUtf8());
             }
             else
             {
@@ -233,7 +240,9 @@ void MainWindow::on_RegRegButton_clicked()
         {
             QWhatsThis::showText(ui->RegPassLineEdit->mapToGlobal(QPoint(ui->RegPassLineEdit->width() / 2, ui->RegPassLineEdit->height())),
                                                      "<html><font style =\"font: 12px;\">"
-                                                     "Password can only contain latin letters and numbers and must be longer than 6 characters"
+                                                     "Password can only contain latin letters and numbers and must be "
+                                                     "longer "
+                                                     "than 6 characters"
                                                      "</font></html>");
         }
     }
@@ -245,15 +254,21 @@ void MainWindow::on_RegRegButton_clicked()
         {
             QWhatsThis::showText(ui->RegPassLineEdit->mapToGlobal(QPoint(ui->RegPassLineEdit->width() / 2, ui->RegPassLineEdit->height())),
                                                      "<html><font style = \"font: 12px;\">"
-                                                     "<p>Login can only contain latin letters, numbers and characters . and @ and must be longer than 5 characters</p>"
-                                                     "<p>Password can only contain latin letters and numbers and must be longer than 6 characters</p>"
+                                                     "<p>Login can only contain latin letters, numbers and characters "
+                                                     ". and "
+                                                     "@ and must be longer than 5 characters</p>"
+                                                     "<p>Password can only contain latin letters and numbers and must "
+                                                     "be "
+                                                     "longer than 6 characters</p>"
                                                      "</font></html>");
         }
         else
         {
             QWhatsThis::showText(ui->RegLogLineEdit->mapToGlobal(QPoint(ui->RegLogLineEdit->width() / 2, ui->RegLogLineEdit->height())),
                                                      "<html><font style =\"font: 12px;\">"
-                                                     "Login can only contain latin letters, numbers and characters . and @ and must be longer than 5 characters"
+                                                     "Login can only contain latin letters, numbers and characters . and "
+                                                     "@ "
+                                                     "and must be longer than 5 characters"
                                                      "</font></html>");
         }
     }
@@ -330,39 +345,41 @@ void MainWindow::logSuccess()
     ui->stackedWidget->setCurrentIndex(2);
 
     // send lrequest to get cities list
-    _dataToSend("{\"operation\":\"getCities\"}");
+    emit _dataToSend("{\"operation\":\"getCities\"}");
 }
 
 void MainWindow::regSuccess()
 {
     ui->stackedWidget->setCurrentIndex(0);
-    QWhatsThis::showText(ui->LoginLineEdit->mapToGlobal(QPoint(ui->LoginLineEdit->width() / 2, ui->LoginLineEdit->height())), "Registration is successful, now you can login.");
+    QWhatsThis::showText(ui->LoginLineEdit->mapToGlobal(QPoint(ui->LoginLineEdit->width() / 2, ui->LoginLineEdit->height())), "Registration is "
+                                                                                                                                                                                                                                                        "successful, now you can "
+                                                                                                                                                                                                                                                        "login.");
 }
 
 void MainWindow::errSlot(QString Info)
 {
     if (Info == "Login doesn't exist")
     {
-        QWhatsThis::showText(ui->LoginLineEdit->mapToGlobal(QPoint(ui->LoginLineEdit->width() / 2, ui->LoginLineEdit->height())),
-                                                 "<html><font style =\"font: 12px;\">"
-                                                 "Login doesn't exist"
-                                                 "</font></html>");
+        QWhatsThis::showText(ui->LoginLineEdit->mapToGlobal(QPoint(ui->LoginLineEdit->width() / 2, ui->LoginLineEdit->height())), "<html><font style "
+                                                                                                                                                                                                                                                            "=\"font: 12px;\">"
+                                                                                                                                                                                                                                                            "Login doesn't exist"
+                                                                                                                                                                                                                                                            "</font></html>");
         ui->LoginLineEdit->setStyleSheet("border-color:#990329;");
     }
     else if (Info == "Invalid password")
     {
-        QWhatsThis::showText(ui->PassLineEdit->mapToGlobal(QPoint(ui->PassLineEdit->width() / 2, ui->PassLineEdit->height())),
-                                                 "<html><font style =\"font: 12px;\">"
-                                                 "Invalid password"
-                                                 "</font></html>");
+        QWhatsThis::showText(ui->PassLineEdit->mapToGlobal(QPoint(ui->PassLineEdit->width() / 2, ui->PassLineEdit->height())), "<html><font style "
+                                                                                                                                                                                                                                                     "=\"font: 12px;\">"
+                                                                                                                                                                                                                                                     "Invalid password"
+                                                                                                                                                                                                                                                     "</font></html>");
         ui->PassLineEdit->setStyleSheet("border-color:#990329;");
     }
     else if (Info == "User already exist")
     {
-        QWhatsThis::showText(ui->RegLogLineEdit->mapToGlobal(QPoint(ui->RegLogLineEdit->width() / 2, ui->RegLogLineEdit->height())),
-                                                 "<html><font style =\"font: 12px;\">"
-                                                 "User already exist"
-                                                 "</font></html>");
+        QWhatsThis::showText(ui->RegLogLineEdit->mapToGlobal(QPoint(ui->RegLogLineEdit->width() / 2, ui->RegLogLineEdit->height())), "<html><font style "
+                                                                                                                                                                                                                                                                 "=\"font: 12px;\">"
+                                                                                                                                                                                                                                                                 "User already exist"
+                                                                                                                                                                                                                                                                 "</font></html>");
     }
     else
     {

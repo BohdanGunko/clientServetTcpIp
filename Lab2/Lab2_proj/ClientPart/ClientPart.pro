@@ -15,6 +15,7 @@ SOURCES += \
     UiHelperPurchasesMenu.cpp \
     backend.cpp \
     buytickets.cpp \
+    customButton.cpp \
     loadingscreen.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -23,6 +24,7 @@ SOURCES += \
 HEADERS += \
     backend.h \
     buytickets.h \
+    customButton.h \
     loadingscreen.h \
     mainwindow.h \
     purchasesmenu.h
