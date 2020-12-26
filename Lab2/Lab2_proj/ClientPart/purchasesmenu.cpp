@@ -29,6 +29,10 @@ PurchasesMenu::PurchasesMenu(BackEnd* bckEnd, QWidget* parent) : QWidget(parent)
 
     // set icons on start of ui
     setIcons();
+
+    ui->BuyButton->setCheckable(0);
+    QPixmap BuyIcon(":/recources/img/TrainIconFocus.png");
+    ui->BuyButton->setIcon(BuyIcon);
 }
 
 // destructor
@@ -47,19 +51,14 @@ bool PurchasesMenu::eventFilter(QObject* watched, QEvent* event)
         return false;
     }
 
-    if (event->type() == QEvent::Enter)
+    if (event->type() == QEvent::HoverEnter)
     {
         setEnterIcon(watched);
         return true;
     }
-    else if (event->type() == QEvent::Leave)
+    else if (event->type() == QEvent::HoverLeave)
     {
         setLeaveIcon(watched);
-        return true;
-    }
-    else if (event->type() == QEvent::FocusIn)
-    {
-        setFocusIcon(watched);
         return true;
     }
 
@@ -70,4 +69,57 @@ void PurchasesMenu::showTicketsForCurrentUser()
 {
     QString txtToSend = QString("{\"operation\":\"getUserTickets\", \"userName\":\"%1\"}").arg(bckEnd->getCurUserame());
     emit _dataToSend(txtToSend.toUtf8());
+}
+
+void PurchasesMenu::on_BuyButton_clicked()
+{
+    ui->BuyButton->setCheckable(0);
+    QPixmap BuyIcon(":/recources/img/TrainIconFocus.png");
+    ui->BuyButton->setIcon(BuyIcon);
+
+    ui->ReserveButton->setCheckable(1);
+    QPixmap ReservedIcon(":/recources/img/BookedTicketsIcon.png");
+    ui->ReserveButton->setIcon(ReservedIcon);
+
+    ui->LogOutButton->setCheckable(1);
+    QPixmap LogOutIcon(":/recources/img/ExitIcon.png");
+    ui->LogOutButton->setIcon(LogOutIcon);
+
+    ui->stackedWidget->setCurrentWidget(BuyScreen);
+}
+
+void PurchasesMenu::on_ReserveButton_clicked()
+{
+    showTicketsForCurrentUser();
+
+    ui->BuyButton->setCheckable(1);
+    QPixmap BuyIcon(":/recources/img/TrainIcon.png");
+    ui->BuyButton->setIcon(BuyIcon);
+
+    ui->ReserveButton->setCheckable(0);
+    QPixmap ReservedIcon(":/recources/img/BookedTicketsIconFocus.png");
+    ui->ReserveButton->setIcon(ReservedIcon);
+
+    ui->LogOutButton->setCheckable(1);
+    QPixmap LogOutIcon(":/recources/img/ExitIcon.png");
+    ui->LogOutButton->setIcon(LogOutIcon);
+
+    ui->stackedWidget->setCurrentWidget(reserveScreen);
+}
+
+void PurchasesMenu::on_LogOutButton_clicked()
+{
+    // to do: exit menu
+
+    ui->BuyButton->setCheckable(1);
+    QPixmap BuyIcon(":/recources/img/TrainIcon.png");
+    ui->BuyButton->setIcon(BuyIcon);
+
+    ui->ReserveButton->setCheckable(1);
+    QPixmap ReservedIcon(":/recources/img/BookedTicketsIcon.png");
+    ui->ReserveButton->setIcon(ReservedIcon);
+
+    ui->LogOutButton->setCheckable(0);
+    QPixmap LogOutIcon(":/recources/img/ExitIconFocus.png");
+    ui->LogOutButton->setIcon(LogOutIcon);
 }

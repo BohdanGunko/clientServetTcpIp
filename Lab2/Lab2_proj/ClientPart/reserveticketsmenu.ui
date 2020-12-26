@@ -194,6 +194,9 @@ QCheckBox{
                <height>30</height>
               </size>
              </property>
+             <property name="placeholderText">
+              <string>Owner last name</string>
+             </property>
             </widget>
            </item>
            <item row="0" column="3">
@@ -251,6 +254,9 @@ QCheckBox{
                <width>300</width>
                <height>30</height>
               </size>
+             </property>
+             <property name="placeholderText">
+              <string>Owner first name</string>
              </property>
             </widget>
            </item>

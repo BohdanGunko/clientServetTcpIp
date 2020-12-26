@@ -25,22 +25,26 @@ reserveTicketsMenu::~reserveTicketsMenu()
 
 void reserveTicketsMenu::showBoughtTickets(QVariantList boughtTicketsList)
 {
-    //    if (trainsList.length() == 0)
-    //    {
-    //        ui->TrainsTable->hide();
-    //        bckEnd->showErrorMsg(ui->SearchButton, "Sorry but we can't find any trains from " + this->depTxt + " to " + this->destTxt);
-    //        return;
-    //    }
-
     delete boughtTicketsModel;
 
-    unsigned short columnCount = 11;
-    boughtTicketsModel = new QStandardItemModel(boughtTicketsList.length(), columnCount, this);
+    if (boughtTicketsList.length() == 0)
+    {
+        boughtTicketsModel = new QStandardItemModel(1, 1, this);
+        QModelIndex modelIndex;
+
+        modelIndex = boughtTicketsModel->index(0, 0);
+        boughtTicketsModel->setData(modelIndex, "You dont have any bought tickets that are active", Qt::DisplayRole);
+
+        ui->boughtTicketsTable->setModel(boughtTicketsModel);
+        return;
+    }
 
     QModelIndex modelIndex;
 
     QStringList jsonFields = { "trainId",		 "trainDate",	 "dep",					 "dest",				 "wagonNumber", "placeNumber",
                                                          "ownerFname", "ownerLname", "purchaseDate", "purchaseTime", "buyOrRes" };
+
+    boughtTicketsModel = new QStandardItemModel(boughtTicketsList.length(), jsonFields.length(), this);
 
     int row = 0;
     int col = 0;
@@ -49,31 +53,103 @@ void reserveTicketsMenu::showBoughtTickets(QVariantList boughtTicketsList)
         col = 0;
         QJsonObject ticket = _ticket.toJsonObject();
 
-        for (QString&  field : jsonFields)
+        for (QString& field : jsonFields)
         {
             modelIndex = boughtTicketsModel->index(row, col);
             boughtTicketsModel->setData(modelIndex, ticket.value(field).toString(), Qt::DisplayRole);
             ++col;
         }
 
-        //	trainModel->setHeaderData(0, Qt::Horizontal, "Train number");
-        //	trainModel->setHeaderData(1, Qt::Horizontal, "Departure info");
-        //	trainModel->setHeaderData(2, Qt::Horizontal, "Destination arrival time");
-        //	trainModel->setHeaderData(3, Qt::Horizontal, "Tickets available");
-
         ui->boughtTicketsTable->setModel(boughtTicketsModel);
 
-        //	ui->TrainsTable->show();
         ++row;
     }
 }
 
 void reserveTicketsMenu::showReservedTickets(QVariantList reservedTicketsList)
 {
+    delete reservedTicketsModel;
+
+    if (reservedTicketsList.length() == 0)
+    {
+        reservedTicketsModel = new QStandardItemModel(1, 1, this);
+        QModelIndex modelIndex;
+
+        modelIndex = reservedTicketsModel->index(0, 0);
+        reservedTicketsModel->setData(modelIndex, "You dont have any reserved tickets that are active", Qt::DisplayRole);
+
+        ui->reservedTicketsTable->setModel(reservedTicketsModel);
+        return;
+    }
+
+    QStringList jsonFields = { "trainId",		 "trainDate",	 "dep",					 "dest",				 "wagonNumber", "placeNumber",
+                                                         "ownerFname", "ownerLname", "purchaseDate", "purchaseTime", "buyOrRes" };
+
+    reservedTicketsModel = new QStandardItemModel(reservedTicketsList.length(), jsonFields.length(), this);
+
+    QModelIndex modelIndex;
+
+    int row = 0;
+    int col = 0;
+    for (auto& _ticket : reservedTicketsList)
+    {
+        col = 0;
+        QJsonObject ticket = _ticket.toJsonObject();
+
+        for (QString& field : jsonFields)
+        {
+            modelIndex = reservedTicketsModel->index(row, col);
+            reservedTicketsModel->setData(modelIndex, ticket.value(field).toString(), Qt::DisplayRole);
+            ++col;
+        }
+
+        ui->reservedTicketsTable->setModel(reservedTicketsModel);
+
+        ++row;
+    }
 }
 
 void reserveTicketsMenu::showUnActiveTickets(QVariantList unActiveTicketsList)
 {
+    delete unActiveTicketsModel;
+
+    if (unActiveTicketsList.length() == 0)
+    {
+        unActiveTicketsModel = new QStandardItemModel(1, 1, this);
+        QModelIndex modelIndex;
+
+        modelIndex = unActiveTicketsModel->index(0, 0);
+        unActiveTicketsModel->setData(modelIndex, "You dont have any unactive tickets that are active", Qt::DisplayRole);
+
+        ui->unActiveTicketsTable->setModel(unActiveTicketsModel);
+        return;
+    }
+
+    QStringList jsonFields = { "trainId",		 "trainDate",	 "dep",					 "dest",				 "wagonNumber", "placeNumber",
+                                                         "ownerFname", "ownerLname", "purchaseDate", "purchaseTime", "buyOrRes" };
+
+    unActiveTicketsModel = new QStandardItemModel(unActiveTicketsList.length(), jsonFields.length(), this);
+
+    QModelIndex modelIndex;
+
+    int row = 0;
+    int col = 0;
+    for (auto& _ticket : unActiveTicketsList)
+    {
+        col = 0;
+        QJsonObject ticket = _ticket.toJsonObject();
+
+        for (QString& field : jsonFields)
+        {
+            modelIndex = unActiveTicketsModel->index(row, col);
+            unActiveTicketsModel->setData(modelIndex, ticket.value(field).toString(), Qt::DisplayRole);
+            ++col;
+        }
+
+        ui->unActiveTicketsTable->setModel(unActiveTicketsModel);
+
+        ++row;
+    }
 }
 
 void reserveTicketsMenu::showUserTickets(QVariantList unActiveTickets, QVariantList boughtTickets, QVariantList reservedTickets)
