@@ -2,28 +2,21 @@
 
 BackEnd::BackEnd(QObject* parent) : QObject(parent)
 {
-    errJsn = new QJsonParseError();
-    obj = new QJsonObject();
-    socket = new QTcpSocket();
-    jsnDoc = new QJsonDocument();
 }
 
-BackEnd::~BackEnd()
-{
-    delete socket;
-    delete obj;
-    delete errJsn;
-    delete jsnDoc;
-}
-
+// create socket and try connecting to sever
 void BackEnd::createSocket()
 {
+    // create socket and connect signals
+    socket = new QTcpSocket();
     connect(socket, SIGNAL(readyRead()), this, SLOT(sockReady()));
     connect(socket, SIGNAL(disconnected()), this, SLOT(sockDisc()));
 
+    // try connecting to server
     tryToReccon();
 }
 
+// trying to reconnect to server
 void BackEnd::tryToReccon()
 {
     //    // try to recconect to server
@@ -32,21 +25,25 @@ void BackEnd::tryToReccon()
     //    // wait for connection to be established
     //    socket->waitForConnected(7000);
 
+    // try to recconect to server
     socket->connectToHost("127.0.0.1", 27000);
 
+    // wait for connection to be established
     socket->waitForConnected(7000);
 
+    // if connection was not established
     if (socket->state() != QTcpSocket::ConnectedState)
     {
         emit _reconnFailed();
     }
-
+    // if we connected
     else
     {
         emit _reconnSuccess();
     }
 }
 
+// send data to server
 void BackEnd::sendData(QByteArray dataToSend)
 {
     if (socket->state() == QTcpSocket::ConnectedState)
@@ -63,20 +60,29 @@ void BackEnd::sendData(QByteArray dataToSend)
 // when recieved data from server
 void BackEnd::sockReady()
 {
+    // wait for stable connection
     if (socket->waitForConnected(1500))
     {
+        // read all data
         recievedData = socket->readAll();
 
+        // create new JSON doc
+        jsnDoc = new QJsonDocument();
+
+        // convert recieved data to JSON format
         *jsnDoc = QJsonDocument::fromJson(recievedData, errJsn);
 
+        // get JSON object from JSON document
         *obj = jsnDoc->object();
 
+        // chack if convertion is successful
         if (errJsn->errorString().toInt() == QJsonParseError::NoError)
         {
+            // do smt accordin to command from server
             decAndExec();
             return;
         }
-
+        // if data could not be converted to json
         else
         {
             // to do: show can not convert err msg box
@@ -84,14 +90,16 @@ void BackEnd::sockReady()
             return;
         }
     }
-
+    // if connecting failed
     else
     {
+        // show bad connection error
         qDebug() << "Can not read data from server: Connestion failed";
         return;
     }
 }
 
+// decode server respond and do needed things
 void BackEnd::decAndExec()
 {
     if (obj->value("operation").toString() == "login")
@@ -128,32 +136,36 @@ void BackEnd::decAndExec()
         // to do: show bad respond msg
     }
 }
-
+// disconnect from server eventvoid BackEnd::sockDisk()
 void BackEnd::sockDisc()
 {
     emit _reconnFailed();
 }
 
+// reacting to login reslond
 void BackEnd::logProc()
 {
+    // if log and pass are good
     if (obj->value("resp").toString() == "ok")
     {
         emit _logSuccess();
     }
-
+    // if smt went wrong
     else
     {
         emit _errSignalMW(obj->value("err").toString());
     }
 }
 
+// reacting to registration reslond
 void BackEnd::regProc()
 {
+    // if registration is successful
     if (obj->value("resp").toString() == "ok")
     {
         emit _regSuccess();
     }
-
+    // if smt went wrong
     else
     {
         emit _errSignalMW(obj->value("err").toString());
@@ -162,11 +174,12 @@ void BackEnd::regProc()
 
 void BackEnd::cListProc()
 {
+    // if registration is successful
     if (obj->value("resp").toString() == "ok")
     {
         emit _cList(obj->value("data").toVariant().toStringList());
     }
-
+    // if smt went wrong
     else
     {
         emit _errSignalMW(obj->value("err").toString());
@@ -179,7 +192,7 @@ void BackEnd::trainsListProc()
     {
         emit _trainsList(obj->value("data").toVariant().toStringList());
     }
-
+    // if smt went wrong
     else
     {
         emit _errSignalMW(obj->value("err").toString());
@@ -215,9 +228,9 @@ void BackEnd::getUserTickets()
     if (obj->value("resp").toString() == "ok")
     {
         emit _userTickets(obj->value("unActiveTickets").toVariant().toStringList(), obj->value("boughtTickets").toVariant().toStringList(),
-                                            obj->value("reservedTickets").toVariant().toStringList());
+                                         obj->value("reservedTickets").toVariant().toStringList());
     }
-
+    // if smt went wrong
     else
     {
         emit _errSignalMW(obj->value("err").toString());

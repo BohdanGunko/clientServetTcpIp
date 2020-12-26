@@ -1,11 +1,12 @@
 #ifndef BACKEND_H
 #define BACKEND_H
 
+// secondary libraries
 #include <QMessageBox>
 #include <QObject>
-
+// communication with server related
 #include <QTcpSocket>
-
+// JSON
 #include <QJsonObject>
 #include <QJsonParseError>
 #include <QJsonDocument>
@@ -16,12 +17,11 @@ class BackEnd : public QObject
     Q_OBJECT
 public:
     explicit BackEnd(QObject* parent = nullptr);
-    ~BackEnd();
     QTcpSocket* socket;
     QByteArray recievedData;
     QJsonDocument* jsnDoc;
-    QJsonParseError* errJsn;
-    QJsonObject* obj;
+    QJsonParseError* errJsn = new QJsonParseError();
+    QJsonObject* obj = new QJsonObject();;
     QString curUsername;
     void decAndExec();
     void logProc();
