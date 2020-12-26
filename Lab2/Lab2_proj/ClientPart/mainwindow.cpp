@@ -321,8 +321,10 @@ void MainWindow::logSuccess()
 {
     QDir dir(QCoreApplication::applicationDirPath() + ".remMe");
     QFile rMeFile(".remMe");
-    // if remember me is checked
 
+    bckEnd->curUsername = ui->LoginLineEdit->text();
+
+    // if remember me is checked
     // write log and pass to remME file
     if (rMeFile.open(QIODevice::WriteOnly))
     {

@@ -126,32 +126,30 @@ void myServer::decAndExec(QJsonDocument* doc, QTcpSocket* socket)
     obj = new QJsonObject;
     *obj = doc->object();
 
-    // when client try to login
     if (obj->value("operation") == "login")
     {
-        // call login func
         logProc(socket);
     }
-    // new user registration
+
     else if (obj->value("operation") == "register")
     {
-        // call registration func
         regProc(socket);
     }
     else if (obj->value("operation") == "getCities")
     {
-        // call registration func
         getCities(socket);
     }
     else if (obj->value("operation") == "getTrainsList")
     {
-        // call registration func
         getTrainsList(socket);
     }
     else if (obj->value("operation") == "getAvailableSeats")
     {
-        // call registration func
         getAvailableSeats(socket);
+    }
+    else if (obj->value("operation") == "buyTicket")
+    {
+        buyTicket(socket);
     }
     // if we dont know command that client send
     else
@@ -291,7 +289,7 @@ void myServer::getTrainsList(QTcpSocket* socket)
         unsigned dataCounter = 0;
         while (qry->next())
         {
-            for (unsigned short iter = 0; iter < 7; ++iter)
+            for (unsigned short iter = 0; iter < 8; ++iter)
             {
                 ++dataCounter;
                 trainsList.push_back("\"" + qry->value(iter).toString() + "\",");
@@ -356,6 +354,35 @@ void myServer::getAvailableSeats(QTcpSocket* socket)
             socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please restart the app\"}");
             socket->waitForBytesWritten(1500);
         }
+    }
+    else
+    {
+        // handle bad query execution
+        socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please restart the app\"}");
+        socket->waitForBytesWritten(1500);
+    }
+}
+
+void myServer::buyTicket(QTcpSocket* socket)
+{
+    qry->prepare("insert into takenSeats values(:trainDate, :trainId, :wagonNumber, :placeNumber, dbo.getStationNumber(:trainId, :dep) , "
+                             "dbo.getStationNumber(:trainId, :dest), :buyOrReserve, :ownerInfo, :fName, :lName,   CONVERT(DATE,GETDATE()),  CONVERT(TIME,GETDATE()))");
+    qry->bindValue(":trainDate", obj->value("trainDate").toString());
+    qry->bindValue(":trainId", obj->value("trainId").toString());
+    qry->bindValue(":wagonNumber", obj->value("wagonNumber").toString());
+    qry->bindValue(":placeNumber", obj->value("placeNumber").toString());
+    qry->bindValue(":dep", obj->value("dep").toString());
+    qry->bindValue(":dest", obj->value("dest").toString());
+    qry->bindValue(":buyOrReserve", obj->value("buyOrReserve").toString());
+    qry->bindValue(":ownerInfo", obj->value("ownerInfo").toString());
+    qry->bindValue(":fName", obj->value("fName").toString());
+    qry->bindValue(":lName", obj->value("lName").toString());
+
+    if (qry->exec())
+    {
+        QString txtToSend = "{\"operation\":\"buyTicket\", \"resp\":\"ok\"}";
+        socket->write(txtToSend.toUtf8());
+        socket->waitForBytesWritten(1500);
     }
     else
     {

@@ -7,5 +7,5 @@ customButton::customButton(QWidget* parent) : QPushButton(parent)
 
 void customButton::slotForClick()
 {
-    emit this->cB_clicked(this->text());
+    emit this->cB_clicked(number);
 }

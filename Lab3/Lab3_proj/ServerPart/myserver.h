@@ -37,6 +37,7 @@ public:
     void getCities(QTcpSocket* socket);
     void getTrainsList(QTcpSocket* socket);
     void getAvailableSeats(QTcpSocket* socket);
+    void buyTicket(QTcpSocket* socket);
 public slots:
     void incomingConnection(qintptr socketDescriptor);
     void sockReady();

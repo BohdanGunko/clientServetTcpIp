@@ -125,6 +125,10 @@ void BackEnd::decAndExec()
     {
         getAvailableSeats();
     }
+    else if (obj->value("operation").toString() == "buyTicket")
+    {
+        buyTicket();
+    }
     // if server send unknown operation
     else
     {
@@ -137,9 +141,7 @@ void BackEnd::sockDisc()
     emit _reconnFailed();
 }
 
-void BackEnd::buyNeededTicket()
-{
-}
+
 
 // reacting to login reslond
 void BackEnd::logProc()
@@ -203,6 +205,18 @@ void BackEnd::getAvailableSeats()
     if (obj->value("resp").toString() == "ok")
     {
         emit _availableSeats(obj->value("wagons").toString(), obj->value("data").toVariant().toStringList());
+    }
+    else
+    {
+        emit _errSignalMW(obj->value("err").toString());
+    }
+}
+
+void BackEnd::buyTicket()
+{
+    if (obj->value("resp").toString() == "ok")
+    {
+        emit _ticketPurchaseSuccess();
     }
     else
     {

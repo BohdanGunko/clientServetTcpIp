@@ -9,10 +9,11 @@ class customButton : public QPushButton
 {
    Q_OBJECT
 public:
+    int number;
     customButton(QWidget* parent);
 
 signals:
-    void cB_clicked(QString wagonName);
+    void cB_clicked(int wagonName);
 
 protected slots:
     void slotForClick();

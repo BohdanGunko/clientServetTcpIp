@@ -30,9 +30,13 @@ private slots:
     void aComplete(QStringList cList);
     void showTrainsList(QStringList trainsList);
     void on_TrainsTable_pressed(const QModelIndex& index);
-    void on_pushButton_clicked();
+    void on_goToTrainSelect_clicked();
     void showAvailableSeats(QString wagonCount, QStringList takenSeats);
-    void changeWagon(QString wagonNumber);
+    void changeWagon(int wagonNumber);
+    void showTicketPurchaseMenu(int seatNumber);
+    void on_buyTicketButton_clicked();
+    void on_reserveTicketButton_clicked();
+    void ticketPurchaseDone();
 
 private:
     Ui::BuyTickets* ui;
@@ -45,12 +49,19 @@ private:
     QString depTxt;
     QString destTxt;
     QString dateTxt;
-    QStringList*  cityList;
-    QStringList*  takenSeatslist;
+    QString timeTxt;
+    QString trainId;
+    QStringList* cityList;
+    QStringList* takenSeatslist;
+    QModelIndex trainTableIndex;
+    int currentWagon;
+    int currentSeat;
 
     void setShadowEff();	// set shadows in BuyTickets menu
     void deleteSeatsAndWagons();
-    void showSeatsForWagon (QString wagonNumber);
+    void showSeatsForWagon(int wagonNumber);
+    int countFreeSpaces(QString wagonNumber);
+    void buyOrReserveTicket(QString buyOrReserve);
 signals:
     void _dataToSend(QByteArray dataToSend);
 };
