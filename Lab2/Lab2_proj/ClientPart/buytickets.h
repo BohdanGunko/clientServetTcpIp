@@ -1,16 +1,14 @@
 #ifndef BUYTICKETS_H
 #define BUYTICKETS_H
 
-// secondary libraries
 #include <QWidget>
 #include <QDebug>
 #include <backend.h>
-// auto complition
 #include <QCompleter>
 #include <QWhatsThis>
 #include <customButton.h>
-
 #include <QStandardItemModel>
+
 namespace Ui
 {
 class BuyTickets;
@@ -56,12 +54,13 @@ private:
     QModelIndex trainTableIndex;
     int currentWagon;
     int currentSeat;
-
-    void setShadowEff();	// set shadows in BuyTickets menu
+    void setShadowEff();
+    void setCompleterStyle(QAbstractItemView* popup);
     void deleteSeatsAndWagons();
     void showSeatsForWagon(int wagonNumber);
     int countFreeSpaces(QString wagonNumber);
     void buyOrReserveTicket(QString buyOrReserve);
+
 signals:
     void _dataToSend(QByteArray dataToSend);
 };

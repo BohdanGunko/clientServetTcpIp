@@ -68,6 +68,6 @@ bool PurchasesMenu::eventFilter(QObject* watched, QEvent* event)
 
 void PurchasesMenu::showTicketsForCurrentUser()
 {
-    QString txtToSend = QString("{\"operation\":\"getUserTickets\", \"userName\":\"%1\"}").arg(bckEnd->curUsername);
+    QString txtToSend = QString("{\"operation\":\"getUserTickets\", \"userName\":\"%1\"}").arg(bckEnd->getCurUserame());
     emit _dataToSend(txtToSend.toUtf8());
 }

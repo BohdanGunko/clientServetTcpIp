@@ -4,8 +4,8 @@ BackEnd::BackEnd(QObject* parent) : QObject(parent)
 {
     errJsn = new QJsonParseError();
     obj = new QJsonObject();
-    socket = new QTcpSocket();
     jsnDoc = new QJsonDocument();
+    socket = nullptr;
 }
 
 BackEnd::~BackEnd()
@@ -16,8 +16,26 @@ BackEnd::~BackEnd()
     delete jsnDoc;
 }
 
+void BackEnd::setCurUsername(QString userName)
+{
+    this->curUsername = userName;
+}
+
+QString BackEnd::getCurUserame()
+{
+    return this->curUsername;
+}
+
+void BackEnd::showErrorMsg(QWidget* widget, QString errMsg)
+{
+    QWhatsThis::showText(widget->mapToGlobal(QPoint(widget->width() / 2, widget->height())),
+                                             "<html><font style =\"font: 12px;\">" + errMsg + "</font></html>");
+}
+
 void BackEnd::createSocket()
 {
+    delete socket;
+    socket = new QTcpSocket();
     connect(socket, SIGNAL(readyRead()), this, SLOT(sockReady()));
     connect(socket, SIGNAL(disconnected()), this, SLOT(sockDisc()));
 

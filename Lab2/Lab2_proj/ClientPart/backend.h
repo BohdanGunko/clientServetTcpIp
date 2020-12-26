@@ -1,8 +1,10 @@
+#pragma once
 #ifndef BACKEND_H
 #define BACKEND_H
 
 #include <QMessageBox>
 #include <QObject>
+#include <QWhatsThis>
 
 #include <QTcpSocket>
 
@@ -17,6 +19,11 @@ class BackEnd : public QObject
 public:
     explicit BackEnd(QObject* parent = nullptr);
     ~BackEnd();
+    void setCurUsername(QString userName);
+    QString getCurUserame();
+    void showErrorMsg(QWidget* widget, QString errMsg);
+
+private:
     QTcpSocket* socket;
     QByteArray recievedData;
     QJsonDocument* jsnDoc;
@@ -32,10 +39,10 @@ public:
     void buyTicket();
     void getUserTickets();
 
-public slots:
-    void createSocket();	// create and init socket with IP and port number
+private slots:
+    void createSocket();
     void sendData(QByteArray dataToSend);
-    void sockReady();	 // reading from socket
+    void sockReady();
     void tryToReccon();
     void sockDisc();
 
@@ -52,4 +59,4 @@ signals:
     void _userTickets(QStringList unActiveTickets, QStringList boughtTickets, QStringList reservedTickets);
 };
 
-#endif	// BACKEND_H
+#endif

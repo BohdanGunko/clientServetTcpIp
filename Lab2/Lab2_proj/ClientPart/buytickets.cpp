@@ -1,40 +1,51 @@
 #include "buytickets.h"
 #include "ui_buytickets.h"
 #include <UiHelperBuyTickets.cpp>
-#include <QStringListModel>
+
+#define selectBuy "0"
+#define selectReserve "1"
 
 BuyTickets::BuyTickets(BackEnd* bckEnd, QWidget* parent) : QWidget(parent), ui(new Ui::BuyTickets)
 {
     ui->setupUi(this);
-
     this->bckEnd = bckEnd;
 
     connect(bckEnd, SIGNAL(_cList(QStringList)), this, SLOT(aComplete(QStringList)));
-
     connect(bckEnd, SIGNAL(_trainsList(QStringList)), this, SLOT(showTrainsList(QStringList)));
-
     connect(bckEnd, SIGNAL(_availableSeats(QString, QStringList)), this, SLOT(showAvailableSeats(QString, QStringList)));
-
     connect(bckEnd, SIGNAL(_ticketPurchaseSuccess()), this, SLOT(ticketPurchaseDone()));
-
-    // to be able to send data to bckEnd object
     connect(this, SIGNAL(_dataToSend(QByteArray)), bckEnd, SLOT(sendData(QByteArray)));
 
     ui->DateEdit->setMinimumDateTime(QDateTime::currentDateTime());
 
-    // calling func to make shadows in BuyTickets menu
+    trainModel = nullptr;
+    depCompleter = nullptr;
+    destCompleter = nullptr;
+    seatsList = nullptr;
+    wagonsList = nullptr;
+    cityList = nullptr;
+    takenSeatslist = nullptr;
+
     setShadowEff();
 
     ui->TrainsTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->TrainsTable->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->TrainsTable->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
-    this->currentWagon = 1;
+
     ui->stackedWidget->setCurrentIndex(0);
+
+    this->currentWagon = 1;
 }
 
 BuyTickets::~BuyTickets()
 {
     delete ui;
+    delete trainModel;
+    delete bckEnd;
+    delete depCompleter;
+    delete destCompleter;
+    delete cityList;
+    delete takenSeatslist;
 }
 
 void BuyTickets::on_SearchButton_clicked()
@@ -44,37 +55,22 @@ void BuyTickets::on_SearchButton_clicked()
 
     if (!cityList->contains(depTxt, Qt::CaseInsensitive))
     {
-        QWhatsThis::showText(ui->DepartureLineEdit->mapToGlobal(QPoint(ui->DepartureLineEdit->width() / 2, ui->DepartureLineEdit->height())),
-                                                 "<html><font style "
-                                                 "=\"font: 12px;\">"
-                                                 "There is no \"" +
-                                                         depTxt +
-                                                         "\" city in the system"
-
-                                                         "</font></html>");
+        bckEnd->showErrorMsg(ui->DepartureLineEdit, ("There is no \"" + depTxt + "\" city in the system"));
     }
     else if (!cityList->contains(destTxt, Qt::CaseInsensitive))
     {
-        QWhatsThis::showText(ui->DestinationLineEdit->mapToGlobal(QPoint(ui->DestinationLineEdit->width() / 2, ui->DestinationLineEdit->height())),
-                                                 "<html><font style "
-                                                 "=\"font: 12px;\">"
-                                                 "There is no \"" +
-                                                         destTxt +
-                                                         "\" city in the system"
-
-                                                         "</font></html>");
+        bckEnd->showErrorMsg(ui->DestinationLineEdit, ("There is no \"" + destTxt + "\" city in the system"));
     }
     else
     {
         this->dateTxt = QString::number(ui->DateEdit->date().year()) + "-" + QString::number(ui->DateEdit->date().month()) + "-" +
                                         QString::number(ui->DateEdit->date().day());
+
         this->timeTxt = ui->TimeEdit->time().toString();
 
         if (ui->DateEdit->date() == QDate::currentDate() && ui->TimeEdit->time() < QTime::currentTime())
         {
-            QWhatsThis::showText(ui->TimeEdit->mapToGlobal(QPoint(ui->TimeEdit->width() / 2, ui->TimeEdit->height())), "<html><font style =\"font: \
-                                                                                                                        12px;\">This time already \
-                                                                                                                        passed</font></html>");
+            bckEnd->showErrorMsg(ui->TimeEdit, "This time already passed");
         }
         else
         {
@@ -97,64 +93,33 @@ void BuyTickets::on_ReverseDepDest_clicked()
 
 void BuyTickets::aComplete(QStringList cList)
 {
+    delete depCompleter;
+    delete destCompleter;
+    delete cityList;
+
     cityList = new QStringList(cList);
+
     depCompleter = new QCompleter(cList, this);
     destCompleter = new QCompleter(cList, this);
+
     depCompleter->setCaseSensitivity(Qt::CaseInsensitive);
     destCompleter->setCaseSensitivity(Qt::CaseInsensitive);
+
     ui->DepartureLineEdit->setCompleter(depCompleter);
     ui->DestinationLineEdit->setCompleter(destCompleter);
+
     QAbstractItemView* popup = depCompleter->popup();
 
-    // to do: style sheet
-    popup->setStyleSheet(" QListView {background-color:#37474F ;  "
-                                             "                             "
-                                             "     border-style: solid;    "
-                                             "     border-width: 2px;      "
-                                             "     border-color: #455A64;  "
-                                             "     color:#ECEFF1;          "
-                                             "     font-family: \" Calibri \"; "
-                                             "     font-size: 13px;        }"
-                                             "    QScrollBar:vertical {                                                              \
-                     border: 2px solid #90A4AE;                                                     \
-                     background: #263238;                                                           \
-                     width: 15px;                                                                   \
-                     margin: 22px 0 22px 0;                                                         \
-                 }                                                                                  \
-                 QScrollBar::handle:vertical {                                                      \
-                     background: white;                                                             \
-                     min-height: 20px;                                                              \
-                 }                                                                                  \
-                 QScrollBar::add-line:vertical {                                                    \
-                     border: 2px solid grey;                                                        \
-                     background: #32CC99;                                                           \
-                     height: 20px;                                                                  \
-                     subcontrol-position: bottom;                                                   \
-                     subcontrol-origin: margin;                                                     \
-                 }                                                                                  \
-                                                                                                    \
-                 QScrollBar::sub-line:vertical {                                                    \
-                     border: 2px solid grey;                                                        \
-                     background: #32CC99;                                                           \
-                     height: 20px;                                                                  \
-                     subcontrol-position: top;                                                      \
-                     subcontrol-origin: margin;                                                     \
-                 }                                                                                  \
-                 QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {                   \
-                     border: 2px solid grey;                                                        \
-                     width: 3px;                                                                    \
-                     height: 3px;                                                                   \
-                     background: white;                                                             \
-                 }                                                                                  \
-                                                                                                    \
-                 QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {                     \
-                     background: none;\
-                 }");
+    setCompleterStyle(popup);
 }
 
 void BuyTickets::showTrainsList(QStringList trainsList)
 {
     // to do check if list is empty (respond is bad)
+
+    delete trainModel;
+
+
 
     unsigned short colCount = 4;
     unsigned short skipCol = 8;
@@ -226,6 +191,8 @@ void BuyTickets::on_goToTrainSelect_clicked()
 
 void BuyTickets::showAvailableSeats(QString wagonCount, QStringList takenSeats)
 {
+    delete takenSeatslist;
+
     takenSeatslist = new QStringList(takenSeats);
     seatsList = new QVector<customButton*>;
     wagonsList = new QVector<customButton*>;
@@ -359,75 +326,59 @@ int BuyTickets::countFreeSpaces(QString wagonNumber)
 
 void BuyTickets::buyOrReserveTicket(QString buyOrReserve)
 {
-
     QString fName = ui->ownerFnameLineEdit->text();
     QString lName = ui->ownerLnameLineEdit->text();
 
     QRegularExpression rgx("[\\p{Cyrillic}[a-zA-z]{1,50}");
 
-    if (fName.length() != 0)
+    if (fName.length() == 0)
     {
-        if (lName.length() != 0)
-        {
-            if (rgx.match(fName).capturedLength() == fName.length() && rgx.match(lName).capturedLength() == lName.length())
-            {
-                // read data from line edits and convert it to JSON format
-                QString txtToSend = QString("{\"operation\":\"buyTicket\", \"trainDate\":\"%1\", \"trainId\":\"%2\", \"wagonNumber\":\"%3\", "
-                                                                        "\"placeNumber\":\"%4\", \"dep\":\"%5\", \"dest\":\"%6\", \"buyOrReserve\":\"%7\", \"ownerInfo\":\"%8\", "
-                                                                        "\"fName\":\"%9\", "
-                                                                        "\"lName\":\"%10\"}")
-                                                                .arg(this->dateTxt)
-                                                                .arg(this->trainId)
-                                                                .arg(this->currentWagon)
-                                                                .arg(this->currentSeat + 1)
-                                                                .arg(this->depTxt)
-                                                                .arg(this->destTxt)
-                                                                .arg(buyOrReserve)
-                                                                .arg(bckEnd->curUsername)
-                                                                .arg(fName)
-                                                                .arg(lName);
+        bckEnd->showErrorMsg(ui->ownerFnameLineEdit, "First name can't be empty");
+        return;
+    }
+    if (lName.length() != 0)
+    {
+        bckEnd->showErrorMsg(ui->ownerLnameLineEdit, "Last name can't be empty");
+        return;
+    }
+    if (rgx.match(fName).capturedLength() == fName.length())
+    {
+        bckEnd->showErrorMsg(ui->ownerFnameLineEdit, "first name can only contain latin and cyrylic characters");
+        return;
+    }
+    if (rgx.match(lName).capturedLength() == lName.length())
+    {
+        bckEnd->showErrorMsg(ui->ownerLnameLineEdit, "last name can only contain latin and cyrylic characters");
+        return;
+    }
 
-                // send log and pass to server
-                emit _dataToSend(txtToSend.toUtf8());
-            }
-            else
-            {
-                QWhatsThis::showText(ui->ownerFnameLineEdit->mapToGlobal(QPoint(ui->ownerFnameLineEdit->width(), ui->ownerFnameLineEdit->height())),
-                                                         "<html><font style "
-                                                         "=\"font: 12px;\">"
-                                                         "first and last name can only contain latin and cyrylic characters"
-                                                         "</font></html>");
-            }
-        }
-        else
-        {
-            QWhatsThis::showText(ui->ownerLnameLineEdit->mapToGlobal(QPoint(ui->ownerLnameLineEdit->width() / 2, ui->ownerLnameLineEdit->height())),
-                                                     "<html><font style "
-                                                     "=\"font: 12px;\">"
-                                                     "Last name can't be empty"
-                                                     "</font></html>");
-        }
-    }
-    else
-    {
-        QWhatsThis::showText(ui->ownerFnameLineEdit->mapToGlobal(QPoint(ui->ownerFnameLineEdit->width() / 2, ui->ownerFnameLineEdit->height())),
-                                                 "<html><font style "
-                                                 "=\"font: 12px;\">"
-                                                 "First name can't be empty"
-                                                 "</font></html>");
-    }
+    QString txtToSend = QString("{\"operation\":\"buyTicket\", \"trainDate\":\"%1\", \"trainId\":\"%2\", \"wagonNumber\":\"%3\", "
+                                                            "\"placeNumber\":\"%4\", \"dep\":\"%5\", \"dest\":\"%6\", \"buyOrReserve\":\"%7\", \"ownerInfo\":\"%8\", "
+                                                            "\"fName\":\"%9\", "
+                                                            "\"lName\":\"%10\"}")
+                                                    .arg(this->dateTxt)
+                                                    .arg(this->trainId)
+                                                    .arg(this->currentWagon)
+                                                    .arg(this->currentSeat + 1)
+                                                    .arg(this->depTxt)
+                                                    .arg(this->destTxt)
+                                                    .arg(buyOrReserve)
+                                                    .arg(bckEnd->getCurUserame())
+                                                    .arg(fName)
+                                                    .arg(lName);
+
+    emit _dataToSend(txtToSend.toUtf8());
 }
 
 void BuyTickets::on_buyTicketButton_clicked()
 {
-    // 0 stands for by ticket 1 is reserve
-    buyOrReserveTicket("0");
+    buyOrReserveTicket(selectBuy);
 }
 
 void BuyTickets::on_reserveTicketButton_clicked()
 {
     // 0 stands for by ticket 1 is reserve
-    buyOrReserveTicket("1");
+    buyOrReserveTicket(selectReserve);
 }
 
 void BuyTickets::ticketPurchaseDone()

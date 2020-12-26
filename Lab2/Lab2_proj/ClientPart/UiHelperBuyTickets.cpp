@@ -2,7 +2,7 @@
 #include "ui_buytickets.h"
 #include <QGraphicsDropShadowEffect>
 
-// set shadows in BuyTickets menu
+
 void BuyTickets::setShadowEff()
 {
     QGraphicsDropShadowEffect* DepartEffect = new QGraphicsDropShadowEffect;
@@ -67,5 +67,53 @@ void BuyTickets::setShadowEff()
     SearchButtonEffect->setYOffset(0);
     SearchButtonEffect->setColor(Qt::black);
     ui->SearchButton->setGraphicsEffect(SearchButtonEffect);
+}
+
+void BuyTickets::setCompleterStyle(QAbstractItemView *popup)
+{
+
+    popup->setStyleSheet(" QListView {background-color:#37474F ;  "
+                                             "                             "
+                                             "     border-style: solid;    "
+                                             "     border-width: 2px;      "
+                                             "     border-color: #455A64;  "
+                                             "     color:#ECEFF1;          "
+                                             "     font-family: \" Calibri \"; "
+                                             "     font-size: 13px;        }"
+                                             "    QScrollBar:vertical {                                                              \
+                     border: 2px solid #90A4AE;                                                     \
+                     background: #263238;                                                           \
+                     width: 15px;                                                                   \
+                     margin: 22px 0 22px 0;                                                         \
+                 }                                                                                  \
+                 QScrollBar::handle:vertical {                                                      \
+                     background: white;                                                             \
+                     min-height: 20px;                                                              \
+                 }                                                                                  \
+                 QScrollBar::add-line:vertical {                                                    \
+                     border: 2px solid grey;                                                        \
+                     background: #32CC99;                                                           \
+                     height: 20px;                                                                  \
+                     subcontrol-position: bottom;                                                   \
+                     subcontrol-origin: margin;                                                     \
+                 }                                                                                  \
+                                                                                                    \
+                 QScrollBar::sub-line:vertical {                                                    \
+                     border: 2px solid grey;                                                        \
+                     background: #32CC99;                                                           \
+                     height: 20px;                                                                  \
+                     subcontrol-position: top;                                                      \
+                     subcontrol-origin: margin;                                                     \
+                 }                                                                                  \
+                 QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {                   \
+                     border: 2px solid grey;                                                        \
+                     width: 3px;                                                                    \
+                     height: 3px;                                                                   \
+                     background: white;                                                             \
+                 }                                                                                  \
+                                                                                                    \
+                 QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {                     \
+                     background: none;\
+                 }");
 }
 
