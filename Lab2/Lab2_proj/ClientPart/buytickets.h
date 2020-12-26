@@ -5,7 +5,6 @@
 #include <QDebug>
 #include <backend.h>
 #include <QCompleter>
-#include <QWhatsThis>
 #include <customButton.h>
 #include <QStandardItemModel>
 
@@ -26,7 +25,7 @@ private slots:
     void on_SearchButton_clicked();
     void on_ReverseDepDest_clicked();
     void aComplete(QStringList cList);
-    void showTrainsList(QStringList trainsList);
+    void showTrainsList(QVariantList trainsList);
     void on_TrainsTable_pressed(const QModelIndex& index);
     void on_goToTrainSelect_clicked();
     void showAvailableSeats(QString wagonCount, QStringList takenSeats);

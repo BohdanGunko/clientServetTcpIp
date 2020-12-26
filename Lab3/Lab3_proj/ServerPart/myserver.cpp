@@ -2,7 +2,6 @@
 
 myServer::myServer()
 {
-    // sreate connected clients list
     connectedClients = new QList<QTcpSocket*>();
 };
 
@@ -10,23 +9,21 @@ myServer::~myServer()
 {
 }
 
-// start server and make it listening local ip
 void myServer::startServer()
 {
-    // QHostAddress _adress("192.168.0.102");
     QHostAddress _adress("127.0.0.1");
-    // check if server started
+
     if (this->listen(_adress, 27000))
     {
         qDebug() << "Server listening to: " << _adress;
 
-        // connect to db
         QString serverName = "GF65\\SQLEXPRESS";
         QString dbName = "TrainsDb";
         db = new QSqlDatabase();
         *db = QSqlDatabase::addDatabase("QODBC");
         QString dsn = QString("Driver={SQL Server};Server=%1;Database=%2;Trusted_Connection=Yes;").arg(serverName).arg(dbName);
         db->setDatabaseName(dsn);
+
         if (db->open())
         {
             qDebug() << "Database opened";
@@ -43,21 +40,18 @@ void myServer::startServer()
     }
 }
 
-// to handle disconnection from server
 void myServer::sockDisc()
 {
-    // create new socket (just to make code more readeble)
     QTcpSocket* socket;
     socket = new QTcpSocket();
     socket = qobject_cast<QTcpSocket*>(sender());
-    qDebug() << "Disconected";
     socket->deleteLater();
+
+    qDebug() << "Disconected";
 }
 
-// gets executed when new client connects to server
 void myServer::incomingConnection(qintptr socketDescriptor)
 {
-    // create new socket (just to make code more readeble)
     QTcpSocket* socket;
     socket = new QTcpSocket();
 
@@ -72,55 +66,48 @@ void myServer::incomingConnection(qintptr socketDescriptor)
     qDebug() << "Client is connected    " << socketDescriptor;
 }
 
-// this func gets exec when server recieve smt from client
 void myServer::sockReady()
 {
-    // create new socket (just to make code more readeble)
     QTcpSocket* socket;
     socket = new QTcpSocket();
 
-    // detect sender info
     socket = qobject_cast<QTcpSocket*>(sender());
 
-    // wait for stable connection
     if (socket->waitForConnected(1500))
     {
-        // read all data
         recievedData = socket->readAll();
-        // to delete
+
         qDebug() << recievedData;
-        // create new JSON doc
+
         jsnDoc = new QJsonDocument();
 
-        // convert recieved data to JSON format
         *jsnDoc = QJsonDocument::fromJson(recievedData, errJsn);
 
-        // chack if convertion eas successful
         if (errJsn->errorString().toInt() == QJsonParseError::NoError)
         {
-            // do smt accordin to command from client
             decAndExec(jsnDoc, socket);
             return;
         }
-        // if data could not be converted to json
         else
         {
-            // send client respond about bad data format
             socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data.  Please restart the "
                                         "app\"}");
             socket->waitForBytesWritten(1500);
             return;
         }
     }
-    // if connecting failed
+
     else
     {
+        socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data.  Please restart the "
+                                    "app\"}");
+        socket->waitForBytesWritten(1500);
+
         qDebug() << "Can not read data from client: Connestion failed";
         return;
     }
 }
 
-// find what command does client send and do needed things to execute it
 void myServer::decAndExec(QJsonDocument* doc, QTcpSocket* socket)
 {
     obj = new QJsonObject;
@@ -130,7 +117,6 @@ void myServer::decAndExec(QJsonDocument* doc, QTcpSocket* socket)
     {
         logProc(socket);
     }
-
     else if (obj->value("operation") == "register")
     {
         regProc(socket);
@@ -155,92 +141,75 @@ void myServer::decAndExec(QJsonDocument* doc, QTcpSocket* socket)
     {
         getUserTickets(socket);
     }
-    // if we dont know command that client send
+
     else
     {
-        // send to cliend command error msg
         socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please restart the app\"}");
         socket->waitForBytesWritten(1500);
     }
-};
+}
 
-// when user try to login
 void myServer::logProc(QTcpSocket* socket)
 {
-    // find log in database
     qry->prepare("select * from uInfo where uLog like :log COLLATE SQL_Latin1_General_Cp1_CS_AS");
     qry->bindValue(":log", obj->value("log").toString());
 
-    // if qry is not empty (if log exist)
     if (qry->exec())
     {
         if (qry->next())
         {
-            // if password is correct
             if (qry->value(1).toString() == obj->value("pass").toString())
             {
-                // return validation is ok respond to client
                 socket->write("{\"operation\":\"login\", \"resp\":\"ok\"}");
                 socket->waitForBytesWritten(1500);
             }
-            // if password is not correct
+
             else
             {
-                // send invalid password respond to client
                 socket->write("{\"operation\":\"login\", \"resp\":\"bad\", \"err\":\"Invalid password\"}");
                 socket->waitForBytesWritten(1500);
             }
         }
-        // qry is empty so login does not exist
+
         else
         {
-            // send no such login respond to client
             socket->write("{\"operation\":\"login\", \"resp\":\"bad\", \"err\":\"Login doesn't exist\"}");
             socket->waitForBytesWritten(1500);
         }
     }
     else
     {
-        // handle bad query execution
         socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please restart the app\"}");
         socket->waitForBytesWritten(1500);
     }
 }
 
-// whan user try to register new account
 void myServer::regProc(QTcpSocket* socket)
 {
-    // find log in database
     qry->prepare("select * from uInfo where uLog like :log COLLATE SQL_Latin1_General_Cp1_CS_AS");
     qry->bindValue(":log", obj->value("log").toString());
 
     if (qry->exec())
     {
-        // if qry is not empty (if log exist)
         if (qry->next())
         {
-            // send user already exist password respond to client
             socket->write("{\"operation\":\"register\", \"resp\":\"bad\", \"err\":\"User already exist\"}");
             socket->waitForBytesWritten(1500);
         }
-        // qry is empty so login does not exist
+
         else
         {
-            // insert login and password to database
             qry->prepare("insert into uInfo (uLog, uPass) values (:log, :pass)");
             qry->bindValue(":log", obj->value("log").toString());
             qry->bindValue(":pass", obj->value("pass").toString());
 
-            // if registration successful
             if (qry->exec())
             {
-                // send good respond
                 socket->write("{\"operation\":\"register\", \"resp\":\"ok\"}");
                 socket->waitForBytesWritten(1500);
             }
             else
             {
-                // if query executed with error
                 socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please restart the "
                                             "app\"}");
                 socket->waitForBytesWritten(1500);
@@ -249,7 +218,6 @@ void myServer::regProc(QTcpSocket* socket)
     }
     else
     {
-        // handle bad query execution
         socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please restart the app\"}");
         socket->waitForBytesWritten(1500);
     }
@@ -257,22 +225,27 @@ void myServer::regProc(QTcpSocket* socket)
 
 void myServer::getCities(QTcpSocket* socket)
 {
-    // fget cities list from db
     if (qry->exec("select * from citiesList"))
     {
         QString cList = "{\"operation\":\"getCities\", \"resp\":\"ok\", \"data\":[";
+
+        unsigned dataCounter = 0;
         while (qry->next())
         {
+            ++dataCounter;
+
             cList.push_back("\"" + qry->value(0).toString() + "\",");
         }
-        cList.remove(cList.length() - 1, 1);
+
+        if (dataCounter)
+            cList.remove(cList.length() - 1, 1);
+
         cList.push_back("]}");
         socket->write(cList.toUtf8());
         socket->waitForBytesWritten(1500);
     }
     else
     {
-        // handle bad query execution
         socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please restart the app\"}");
         socket->waitForBytesWritten(1500);
     }
@@ -280,7 +253,6 @@ void myServer::getCities(QTcpSocket* socket)
 
 void myServer::getTrainsList(QTcpSocket* socket)
 {
-    // find log in database
     qry->prepare("select * from getNeededTrainsList(:dep, :dest, :date, :time)");
     qry->bindValue(":dep", obj->value("dep").toString());
     qry->bindValue(":dest", obj->value("dest").toString());
@@ -289,27 +261,20 @@ void myServer::getTrainsList(QTcpSocket* socket)
 
     if (qry->exec())
     {
-        QString trainsList = "{\"operation\":\"getTrainsList\", \"resp\":\"ok\", \"data\":[";
-        unsigned dataCounter = 0;
-        while (qry->next())
-        {
-            for (unsigned short iter = 0; iter < 8; ++iter)
-            {
-                ++dataCounter;
-                trainsList.push_back("\"" + qry->value(iter).toString() + "\",");
-            }
-        }
-        if (dataCounter)
-        {
-            trainsList.remove(trainsList.length() - 1, 1);
-        }
-        trainsList.push_back("]}");
+        QString trainsList = "{\"operation\":\"getTrainsList\", \"resp\":\"ok\", \"data\":";
+
+        QStringList jsonFields = { "trainId",		 "depArriveDate",	 "depArriveTime",	 "dapDepDate",
+                                                             "dapDepTime", "destArriveDate", "destArriveTime", "freeSeats" };
+
+        trainsList += createJsonStringFromQuery(jsonFields, qry);
+
+        trainsList += "}";
+
         socket->write(trainsList.toUtf8());
         socket->waitForBytesWritten(1500);
     }
     else
     {
-        // handle bad query execution
         socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please restart the app\"}");
         socket->waitForBytesWritten(1500);
     }
@@ -347,6 +312,7 @@ void myServer::getAvailableSeats(QTcpSocket* socket)
                 notAvailiableSeats.remove(notAvailiableSeats.length() - 1, 1);
             }
             notAvailiableSeats.push_back("]}");
+
             socket->write(notAvailiableSeats.toUtf8());
             socket->waitForBytesWritten(1500);
         }
@@ -399,67 +365,37 @@ void myServer::buyTicket(QTcpSocket* socket)
 
 void myServer::getUserTickets(QTcpSocket* socket)
 {
-    QString userTickets = "{\"operation\":\"getUserTickets\", \"resp\":\"ok\", \"unActiveTickets\":[";
-
     qry->prepare("select * from getUnActiveTickets(:userName)");
     qry->bindValue(":userName", obj->value("userName").toString());
 
     if (qry->exec())
     {
-        unsigned dataCounter = 0;
-        while (qry->next())
-        {
-            for (unsigned short iter = 0; iter < 11; ++iter)
-            {
-                ++dataCounter;
-                userTickets.push_back("\"" + qry->value(iter).toString() + "\",");
-            }
-        }
-        if (dataCounter)
-        {
-            userTickets.remove(userTickets.length() - 1, 1);
-        }
-        userTickets.push_back("], \"boughtTickets\":[ ");
+        QString userTickets = "{\"operation\":\"getUserTickets\", \"resp\":\"ok\", \"unActiveTickets\":";
+
+        QStringList jsonFields = { "trainId",		 "trainDate",	 "dep",					 "dest",				 "wagonNumber", "placeNumber",
+                                                             "ownerFname", "ownerLname", "purchaseDate", "purchaseTime", "buyOrRes" };
+
+        userTickets += createJsonStringFromQuery(jsonFields, qry);
+
+        userTickets += ", \"boughtTickets\":";
 
         qry->prepare("select * from getBoughtTickets(:userName)");
         qry->bindValue(":userName", obj->value("userName").toString());
 
         if (qry->exec())
         {
-            dataCounter = 0;
-            while (qry->next())
-            {
-                for (unsigned short iter = 0; iter < 11; ++iter)
-                {
-                    ++dataCounter;
-                    userTickets.push_back("\"" + qry->value(iter).toString() + "\",");
-                }
-            }
-            if (dataCounter)
-            {
-                userTickets.remove(userTickets.length() - 1, 1);
-            }
-            userTickets.push_back("], \"reservedTickets\":[ ");
+            userTickets += createJsonStringFromQuery(jsonFields, qry);
+
+            userTickets += ", \"reservedTickets\":";
 
             qry->prepare("select * from getReservedTickets(:userName)");
             qry->bindValue(":userName", obj->value("userName").toString());
 
             if (qry->exec())
             {
-                dataCounter = 0;
-                while (qry->next())
-                {
-                    for (unsigned short iter = 0; iter < 11; ++iter)
-                    {
-                        ++dataCounter;
-                        userTickets.push_back("\"" + qry->value(iter).toString() + "\",");
-                    }
-                }
-                if (dataCounter)
-                {
-                    userTickets.remove(userTickets.length() - 1, 1);
-                }
-                userTickets.push_back("]}");
+                userTickets += createJsonStringFromQuery(jsonFields, qry);
+
+                userTickets.push_back("}");
                 qDebug() << userTickets;
                 socket->write(userTickets.toUtf8());
                 socket->waitForBytesWritten(1500);
@@ -485,4 +421,31 @@ void myServer::getUserTickets(QTcpSocket* socket)
         socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please restart the app\"}");
         socket->waitForBytesWritten(1500);
     }
+}
+
+QString myServer::createJsonStringFromQuery(QStringList& jsonFields, QSqlQuery* qry)
+{
+    QString resStr = "[";
+
+    unsigned dataCounter = 0;
+    while (qry->next())
+    {
+        resStr.push_back("{");
+        for (unsigned short iter = 0; iter < jsonFields.length(); ++iter)
+        {
+            ++dataCounter;
+            resStr.push_back("\"" + jsonFields[iter] + "\":\"" + qry->value(iter).toString() + "\",");
+        }
+
+        resStr.remove(resStr.length() - 1, 1);
+        resStr.push_back("},");
+    }
+
+    if (dataCounter)
+    {
+        resStr.remove(resStr.length() - 1, 1);
+    }
+    resStr.push_back("]");
+
+    return resStr;
 }

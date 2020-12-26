@@ -5,12 +5,11 @@
 #include <QMessageBox>
 #include <QObject>
 #include <QWhatsThis>
-
 #include <QTcpSocket>
-
 #include <QJsonObject>
 #include <QJsonParseError>
 #include <QJsonDocument>
+#include <QJsonArray>
 #include <QPushButton>
 
 class BackEnd : public QObject
@@ -53,10 +52,10 @@ signals:
     void _regSuccess();
     void _errSignalMW(QString info);
     void _cList(QStringList cList);
-    void _trainsList(QStringList trainsList);
+    void _trainsList(QVariantList trainsList);
     void _availableSeats(QString wagonsCounr, QStringList trainsList);
     void _ticketPurchaseSuccess();
-    void _userTickets(QStringList unActiveTickets, QStringList boughtTickets, QStringList reservedTickets);
+    void _userTickets(QVariantList unActiveTickets, QVariantList boughtTickets, QVariantList reservedTickets);
 };
 
 #endif

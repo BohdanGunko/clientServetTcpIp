@@ -11,7 +11,7 @@ BuyTickets::BuyTickets(BackEnd* bckEnd, QWidget* parent) : QWidget(parent), ui(n
     this->bckEnd = bckEnd;
 
     connect(bckEnd, SIGNAL(_cList(QStringList)), this, SLOT(aComplete(QStringList)));
-    connect(bckEnd, SIGNAL(_trainsList(QStringList)), this, SLOT(showTrainsList(QStringList)));
+    connect(bckEnd, SIGNAL(_trainsList(QVariantList)), this, SLOT(showTrainsList(QVariantList)));
     connect(bckEnd, SIGNAL(_availableSeats(QString, QStringList)), this, SLOT(showAvailableSeats(QString, QStringList)));
     connect(bckEnd, SIGNAL(_ticketPurchaseSuccess()), this, SLOT(ticketPurchaseDone()));
     connect(this, SIGNAL(_dataToSend(QByteArray)), bckEnd, SLOT(sendData(QByteArray)));
@@ -33,6 +33,8 @@ BuyTickets::BuyTickets(BackEnd* bckEnd, QWidget* parent) : QWidget(parent), ui(n
     ui->TrainsTable->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 
     ui->stackedWidget->setCurrentIndex(0);
+
+    ui->TrainsTable->hide();
 
     this->currentWagon = 1;
 }
@@ -113,43 +115,46 @@ void BuyTickets::aComplete(QStringList cList)
     setCompleterStyle(popup);
 }
 
-void BuyTickets::showTrainsList(QStringList trainsList)
+void BuyTickets::showTrainsList(QVariantList trainsList)
 {
-    // to do check if list is empty (respond is bad)
+    if (trainsList.length() == 0)
+    {
+        ui->TrainsTable->hide();
+        bckEnd->showErrorMsg(ui->SearchButton, "Sorry but we can't find any trains from " + this->depTxt + " to " + this->destTxt);
+        return;
+    }
 
     delete trainModel;
 
+    unsigned short columnCount = 4;
+    trainModel = new QStandardItemModel(trainsList.length(), columnCount, this);
 
+    int row = 0;
 
-    unsigned short colCount = 4;
-    unsigned short skipCol = 8;
-
-    trainModel = new QStandardItemModel(trainsList.length() / skipCol, colCount, this);
-
-    QModelIndex modelIndex;
-    for (int row = 0; row < trainsList.length(); row += skipCol)
+    for (auto& _train : trainsList)
     {
-        // trainId
-        modelIndex = trainModel->index(row / skipCol, 0);
-        trainModel->setData(modelIndex, trainsList[row], Qt::DisplayRole);
+        QJsonObject train = _train.toJsonObject();
 
-        /*
-04:39 2020-26-12
-        -
-04:55 2020-26-12
-        */
+        QModelIndex modelIndex;
 
-        modelIndex = trainModel->index(row / skipCol, 1);
-        QString depDateInfo = trainsList[row + 2] + " " + trainsList[row + 1] + " - " + trainsList[row + 4] + " " + trainsList[row + 3];
+        modelIndex = trainModel->index(row, 0);
+        trainModel->setData(modelIndex, train.value("trainId").toString(), Qt::DisplayRole);
+
+        modelIndex = trainModel->index(row, 1);
+        QString depDateInfo = train.value("depArriveTime").toString() + " " + train.value("depArriveDate").toString() + " - " +
+                                                    train.value("dapDepTime").toString() + " " + train.value("dapDepDate").toString();
+
         trainModel->setData(modelIndex, depDateInfo, Qt::DisplayRole);
 
-        // 04:55 2020-26-12
-        modelIndex = trainModel->index(row / skipCol, 2);
-        trainModel->setData(modelIndex, "  " + trainsList[row + 6] + " " + trainsList[row + 5], Qt::DisplayRole);
+        modelIndex = trainModel->index(row, 2);
+        QString destArriveTime = "  " + train.value("destArriveTime").toString() + " " + train.value("destArriveDate").toString();
 
-        // free seats
-        modelIndex = trainModel->index(row / skipCol, 3);
-        trainModel->setData(modelIndex, trainsList[row + 7], Qt::DisplayRole);
+        trainModel->setData(modelIndex, destArriveTime, Qt::DisplayRole);
+
+        modelIndex = trainModel->index(row, 3);
+        trainModel->setData(modelIndex, train.value("freeSeats").toString(), Qt::DisplayRole);
+        ++row;
+        qDebug() << destArriveTime;
     }
 
     trainModel->setHeaderData(0, Qt::Horizontal, "Train number");
@@ -158,6 +163,8 @@ void BuyTickets::showTrainsList(QStringList trainsList)
     trainModel->setHeaderData(3, Qt::Horizontal, "Tickets available");
 
     ui->TrainsTable->setModel(trainModel);
+
+    ui->TrainsTable->show();
 }
 
 void BuyTickets::on_TrainsTable_pressed(const QModelIndex& index)
@@ -167,7 +174,6 @@ void BuyTickets::on_TrainsTable_pressed(const QModelIndex& index)
 
     this->trainId = trainModel->data(tNameIndex).toString();
 
-    // send to server train date and train id
     QString txtToSend = QString("{\"operation\":\"getAvailableSeats\", \"trainDate\":\"%1\", \"trainId\":\"%2\", \"dep\":\"%3\", \"dest\":\"%4\"}")
                                                     .arg(dateTxt)
                                                     .arg(trainId)
@@ -336,17 +342,17 @@ void BuyTickets::buyOrReserveTicket(QString buyOrReserve)
         bckEnd->showErrorMsg(ui->ownerFnameLineEdit, "First name can't be empty");
         return;
     }
-    if (lName.length() != 0)
+    if (lName.length() == 0)
     {
         bckEnd->showErrorMsg(ui->ownerLnameLineEdit, "Last name can't be empty");
         return;
     }
-    if (rgx.match(fName).capturedLength() == fName.length())
+    if (rgx.match(fName).capturedLength() != fName.length())
     {
         bckEnd->showErrorMsg(ui->ownerFnameLineEdit, "first name can only contain latin and cyrylic characters");
         return;
     }
-    if (rgx.match(lName).capturedLength() == lName.length())
+    if (rgx.match(lName).capturedLength() != lName.length())
     {
         bckEnd->showErrorMsg(ui->ownerLnameLineEdit, "last name can only contain latin and cyrylic characters");
         return;
@@ -392,9 +398,5 @@ void BuyTickets::ticketPurchaseDone()
 
     emit _dataToSend(txtToSend.toUtf8());
 
-    QWhatsThis::showText(ui->ownerFnameLineEdit->mapToGlobal(QPoint(ui->ownerFnameLineEdit->width(), ui->ownerFnameLineEdit->height())),
-                                             "<html><font style "
-                                             "=\"font: 12px;\">"
-                                             "Operation done succesfully"
-                                             "</font></html>");
+    bckEnd->showErrorMsg(ui->ownerFnameLineEdit, "Operation done succesfully");
 }

@@ -24,9 +24,13 @@ private:
     QStandardItemModel* unActiveTicketsModel;
     QStandardItemModel* reservedTicketsModel;
     QStandardItemModel* boughtTicketsModel;
+    void showBoughtTickets(QVariantList boughtTicketsList);
+    void showReservedTickets(QVariantList reservedTicketsList);
+    void showUnActiveTickets(QVariantList unActiveTicketsList);
 
 private slots:
-    void showUserTickets(QStringList unActiveTickets, QStringList boughtTickets, QStringList reservedTickets);
+    void showUserTickets(QVariantList unActiveTickets, QVariantList boughtTickets, QVariantList reservedTickets);
+    void on_tabWidget_currentChanged(int index);
 };
 
 #endif	// RESERVETICKETSMENU_H

@@ -23,6 +23,9 @@ class myServer : public QTcpServer
 public:
     myServer();
     ~myServer();
+    void startServer();
+
+private:
     QByteArray recievedData;
     QList<QTcpSocket*>* connectedClients;
     QJsonDocument* jsnDoc;
@@ -31,7 +34,6 @@ public:
     QSqlDatabase* db;
     QSqlQuery* qry;
     void decAndExec(QJsonDocument* doc, QTcpSocket* socket);
-    void startServer();
     void logProc(QTcpSocket* socket);
     void regProc(QTcpSocket* socket);
     void getCities(QTcpSocket* socket);
@@ -39,7 +41,9 @@ public:
     void getAvailableSeats(QTcpSocket* socket);
     void buyTicket(QTcpSocket* socket);
     void getUserTickets(QTcpSocket* socket);
-public slots:
+    QString createJsonStringFromQuery(QStringList& jsonFields, QSqlQuery* qry);
+
+private slots:
     void incomingConnection(qintptr socketDescriptor);
     void sockReady();
     void sockDisc();

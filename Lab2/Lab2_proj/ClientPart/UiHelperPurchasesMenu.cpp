@@ -60,6 +60,7 @@ void PurchasesMenu::setEnterIcon(QObject* watched)
 // set icon on mouse leave button event
 void PurchasesMenu::setLeaveIcon(QObject* watched)
 {
+
     QPushButton* button = qobject_cast<QPushButton*>(watched);
 
     if (button->objectName() == "BuyButton")
@@ -95,13 +96,12 @@ void PurchasesMenu::setLeaveIcon(QObject* watched)
 // set icon on button clecked event
 void PurchasesMenu::setFocusIcon(QObject* watched)
 {
+    qDebug()<<"focus in";
     QPushButton* button = qobject_cast<QPushButton*>(watched);
 
     if (button->objectName() == "BuyButton")
     {
         ui->stackedWidget->setCurrentWidget(BuyScreen);
-
-
 
         ui->BuyButton->setCheckable(0);
         QPixmap BuyIcon(":/recources/img/TrainIconFocus.png");
@@ -118,7 +118,6 @@ void PurchasesMenu::setFocusIcon(QObject* watched)
     else if (button->objectName() == "ReserveButton")
     {
         ui->stackedWidget->setCurrentWidget(reserveScreen);
-
 
         showTicketsForCurrentUser();
 
@@ -150,5 +149,3 @@ void PurchasesMenu::setFocusIcon(QObject* watched)
     }
     return;
 }
-
-

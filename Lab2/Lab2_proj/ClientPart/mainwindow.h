@@ -19,8 +19,6 @@
 #include <QLabel>
 // for format of strings checking
 #include <QRegularExpression>
-// user errors showing
-#include <QWhatsThis>
 
 QT_BEGIN_NAMESPACE
 namespace Ui

@@ -98,13 +98,14 @@ void BackEnd::sockReady()
         else
         {
             // to do: show can not convert err msg box
-            qDebug() << "Can not read convetr data from server";
+            qDebug() << "Can not convert convetr data from server";
             return;
         }
     }
 
     else
     {
+        // to do: show can not convert err msg box
         qDebug() << "Can not read data from server: Connestion failed";
         return;
     }
@@ -195,7 +196,7 @@ void BackEnd::trainsListProc()
 {
     if (obj->value("resp").toString() == "ok")
     {
-        emit _trainsList(obj->value("data").toVariant().toStringList());
+        emit _trainsList(obj->value("data").toVariant().toJsonArray().toVariantList());
     }
 
     else
@@ -232,8 +233,9 @@ void BackEnd::getUserTickets()
 {
     if (obj->value("resp").toString() == "ok")
     {
-        emit _userTickets(obj->value("unActiveTickets").toVariant().toStringList(), obj->value("boughtTickets").toVariant().toStringList(),
-                                            obj->value("reservedTickets").toVariant().toStringList());
+        emit _userTickets(obj->value("unActiveTickets").toVariant().toJsonArray().toVariantList(),
+                                            obj->value("boughtTickets").toVariant().toJsonArray().toVariantList(),
+                                            obj->value("reservedTickets").toVariant().toJsonArray().toVariantList());
     }
 
     else

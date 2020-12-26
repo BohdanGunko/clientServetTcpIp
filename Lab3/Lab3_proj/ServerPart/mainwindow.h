@@ -18,11 +18,9 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
-    myServer* server;
-
-private slots:
 
 private:
     Ui::MainWindow* ui;
+    myServer* server;
 };
 #endif	// MAINWINDOW_H

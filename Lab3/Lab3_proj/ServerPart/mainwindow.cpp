@@ -6,7 +6,6 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
 {
     ui->setupUi(this);
 
-    // create and start server
     server = new myServer();
     server->startServer();
 }
