@@ -99,6 +99,10 @@ void PurchasesMenu::setFocusIcon(QObject* watched)
 
     if (button->objectName() == "BuyButton")
     {
+        ui->stackedWidget->setCurrentWidget(BuyScreen);
+
+
+
         ui->BuyButton->setCheckable(0);
         QPixmap BuyIcon(":/recources/img/TrainIconFocus.png");
         ui->BuyButton->setIcon(BuyIcon);
@@ -113,6 +117,11 @@ void PurchasesMenu::setFocusIcon(QObject* watched)
     }
     else if (button->objectName() == "ReserveButton")
     {
+        ui->stackedWidget->setCurrentWidget(reserveScreen);
+
+
+        showTicketsForCurrentUser();
+
         ui->BuyButton->setCheckable(1);
         QPixmap BuyIcon(":/recources/img/TrainIcon.png");
         ui->BuyButton->setIcon(BuyIcon);
@@ -141,3 +150,5 @@ void PurchasesMenu::setFocusIcon(QObject* watched)
     }
     return;
 }
+
+

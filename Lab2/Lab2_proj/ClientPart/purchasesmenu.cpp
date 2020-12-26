@@ -18,8 +18,11 @@ PurchasesMenu::PurchasesMenu(BackEnd* bckEnd, QWidget* parent) : QWidget(parent)
     BuyScreen = new BuyTickets(bckEnd);
     ui->stackedWidget->addWidget(BuyScreen);
 
+    reserveScreen = new reserveTicketsMenu(bckEnd);
+    ui->stackedWidget->addWidget(reserveScreen);
+
     // seting ButTickets as start screen
-    ui->stackedWidget->setCurrentIndex(0);
+    ui->stackedWidget->setCurrentWidget(BuyScreen);
 
     // to be able to send data to bckEnd object
     connect(this, SIGNAL(_dataToSend(QByteArray)), bckEnd, SLOT(sendData(QByteArray)));
@@ -61,4 +64,10 @@ bool PurchasesMenu::eventFilter(QObject* watched, QEvent* event)
     }
 
     return false;
+}
+
+void PurchasesMenu::showTicketsForCurrentUser()
+{
+    QString txtToSend = QString("{\"operation\":\"getUserTickets\", \"userName\":\"%1\"}").arg(bckEnd->curUsername);
+    emit _dataToSend(txtToSend.toUtf8());
 }

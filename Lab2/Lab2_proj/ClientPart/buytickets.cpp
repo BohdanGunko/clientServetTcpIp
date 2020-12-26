@@ -276,11 +276,11 @@ void BuyTickets::changeWagon(int wagonNumber)
 {
     this->currentWagon = wagonNumber;
 
-    ui->ownerFnameLineEdit->setVisible(0);
-    ui->ownerLnameLineEdit->setVisible(0);
+    ui->ownerFnameLineEdit->hide();
+    ui->ownerLnameLineEdit->hide();
     ui->buyTicketButton->setVisible((0));
-    ui->reserveTicketButton->setVisible(0);
-    ui->seatNumberLabel->setVisible(0);
+    ui->reserveTicketButton->hide();
+    ui->seatNumberLabel->hide();
 
     for (auto& wagon : *wagonsList)
     {
@@ -297,11 +297,12 @@ void BuyTickets::showTicketPurchaseMenu(int seatNumber)
 {
     this->currentSeat = seatNumber;
 
-    ui->ownerFnameLineEdit->setVisible(1);
-    ui->ownerLnameLineEdit->setVisible(1);
-    ui->buyTicketButton->setVisible((1));
-    ui->reserveTicketButton->setVisible(1);
-    ui->seatNumberLabel->setVisible(1);
+    ui->ownerFnameLineEdit->show();
+    ui->ownerLnameLineEdit->show();
+    ui->buyTicketButton->show();
+    ui->reserveTicketButton->show();
+    ui->seatNumberLabel->show();
+
     ui->seatNumberLabel->setText("Seat number: " + QString::number(seatNumber + 1) + "\nprice 250 uah");
 
     showSeatsForWagon(currentWagon);
@@ -358,6 +359,7 @@ int BuyTickets::countFreeSpaces(QString wagonNumber)
 
 void BuyTickets::buyOrReserveTicket(QString buyOrReserve)
 {
+
     QString fName = ui->ownerFnameLineEdit->text();
     QString lName = ui->ownerLnameLineEdit->text();
 

@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <buytickets.h>
+#include <reserveticketsmenu.h>
 #include <backend.h>
 
 namespace Ui
@@ -22,12 +23,13 @@ public:
 private:
     Ui::PurchasesMenu* ui;
     BuyTickets* BuyScreen;
+    reserveTicketsMenu* reserveScreen;
     BackEnd* bckEnd;
-    void setIcons();	// set icons on start of ui
+    void setIcons();											// set icons on start of ui
     void setEnterIcon(QObject* watched);	// set new icon when mouse enter button
     void setLeaveIcon(QObject* watched);	// set new icon when mouse leave button
     void setFocusIcon(QObject* watched);	// set new icon when button was clicked
-
+    void showTicketsForCurrentUser();
 signals:
     void _dataToSend(QByteArray dataToSend);	// emit this signal when you need send data to server
 };

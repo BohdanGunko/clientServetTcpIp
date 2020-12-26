@@ -151,6 +151,10 @@ void myServer::decAndExec(QJsonDocument* doc, QTcpSocket* socket)
     {
         buyTicket(socket);
     }
+    else if (obj->value("operation") == "getUserTickets")
+    {
+        getUserTickets(socket);
+    }
     // if we dont know command that client send
     else
     {
@@ -302,7 +306,6 @@ void myServer::getTrainsList(QTcpSocket* socket)
         trainsList.push_back("]}");
         socket->write(trainsList.toUtf8());
         socket->waitForBytesWritten(1500);
-        qDebug() << trainsList;
     }
     else
     {
@@ -346,7 +349,6 @@ void myServer::getAvailableSeats(QTcpSocket* socket)
             notAvailiableSeats.push_back("]}");
             socket->write(notAvailiableSeats.toUtf8());
             socket->waitForBytesWritten(1500);
-            qDebug() << notAvailiableSeats;
         }
         else
         {
@@ -365,8 +367,11 @@ void myServer::getAvailableSeats(QTcpSocket* socket)
 
 void myServer::buyTicket(QTcpSocket* socket)
 {
+    // to do: check ifticket is not taken
+
     qry->prepare("insert into takenSeats values(:trainDate, :trainId, :wagonNumber, :placeNumber, dbo.getStationNumber(:trainId, :dep) , "
-                             "dbo.getStationNumber(:trainId, :dest), :buyOrReserve, :ownerInfo, :fName, :lName,   CONVERT(DATE,GETDATE()),  CONVERT(TIME,GETDATE()))");
+                             "dbo.getStationNumber(:trainId, :dest), :buyOrReserve, :ownerInfo, :fName, :lName,   CONVERT(DATE,GETDATE()),  "
+                             "CONVERT(TIME,GETDATE()))");
     qry->bindValue(":trainDate", obj->value("trainDate").toString());
     qry->bindValue(":trainId", obj->value("trainId").toString());
     qry->bindValue(":wagonNumber", obj->value("wagonNumber").toString());
@@ -383,6 +388,96 @@ void myServer::buyTicket(QTcpSocket* socket)
         QString txtToSend = "{\"operation\":\"buyTicket\", \"resp\":\"ok\"}";
         socket->write(txtToSend.toUtf8());
         socket->waitForBytesWritten(1500);
+    }
+    else
+    {
+        // handle bad query execution
+        socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please restart the app\"}");
+        socket->waitForBytesWritten(1500);
+    }
+}
+
+void myServer::getUserTickets(QTcpSocket* socket)
+{
+    QString userTickets = "{\"operation\":\"getUserTickets\", \"resp\":\"ok\", \"unActiveTickets\":[";
+
+    qry->prepare("select * from getUnActiveTickets(:userName)");
+    qry->bindValue(":userName", obj->value("userName").toString());
+
+    if (qry->exec())
+    {
+        unsigned dataCounter = 0;
+        while (qry->next())
+        {
+            for (unsigned short iter = 0; iter < 11; ++iter)
+            {
+                ++dataCounter;
+                userTickets.push_back("\"" + qry->value(iter).toString() + "\",");
+            }
+        }
+        if (dataCounter)
+        {
+            userTickets.remove(userTickets.length() - 1, 1);
+        }
+        userTickets.push_back("], \"boughtTickets\":[ ");
+
+        qry->prepare("select * from getBoughtTickets(:userName)");
+        qry->bindValue(":userName", obj->value("userName").toString());
+
+        if (qry->exec())
+        {
+            dataCounter = 0;
+            while (qry->next())
+            {
+                for (unsigned short iter = 0; iter < 11; ++iter)
+                {
+                    ++dataCounter;
+                    userTickets.push_back("\"" + qry->value(iter).toString() + "\",");
+                }
+            }
+            if (dataCounter)
+            {
+                userTickets.remove(userTickets.length() - 1, 1);
+            }
+            userTickets.push_back("], \"reservedTickets\":[ ");
+
+            qry->prepare("select * from getReservedTickets(:userName)");
+            qry->bindValue(":userName", obj->value("userName").toString());
+
+            if (qry->exec())
+            {
+                dataCounter = 0;
+                while (qry->next())
+                {
+                    for (unsigned short iter = 0; iter < 11; ++iter)
+                    {
+                        ++dataCounter;
+                        userTickets.push_back("\"" + qry->value(iter).toString() + "\",");
+                    }
+                }
+                if (dataCounter)
+                {
+                    userTickets.remove(userTickets.length() - 1, 1);
+                }
+                userTickets.push_back("]}");
+                qDebug() << userTickets;
+                socket->write(userTickets.toUtf8());
+                socket->waitForBytesWritten(1500);
+            }
+            else
+            {
+                // handle bad query execution
+                socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please restart the "
+                                            "app\"}");
+                socket->waitForBytesWritten(1500);
+            }
+        }
+        else
+        {
+            // handle bad query execution
+            socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please restart the app\"}");
+            socket->waitForBytesWritten(1500);
+        }
     }
     else
     {

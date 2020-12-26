@@ -102,13 +102,11 @@ void BackEnd::sockReady()
 // decode server respond and do needed things
 void BackEnd::decAndExec()
 {
-    // if it is respond to login process
     if (obj->value("operation").toString() == "login")
     {
-        // call login funct
         logProc();
     }
-    // if it is respond to registration process
+
     else if (obj->value("operation").toString() == "register")
     {
         regProc();
@@ -129,7 +127,10 @@ void BackEnd::decAndExec()
     {
         buyTicket();
     }
-    // if server send unknown operation
+    else if (obj->value("operation").toString() == "getUserTickets")
+    {
+        getUserTickets();
+    }
     else
     {
         // to do: show bad respond msg
@@ -140,8 +141,6 @@ void BackEnd::sockDisc()
 {
     emit _reconnFailed();
 }
-
-
 
 // reacting to login reslond
 void BackEnd::logProc()
@@ -218,6 +217,20 @@ void BackEnd::buyTicket()
     {
         emit _ticketPurchaseSuccess();
     }
+    else
+    {
+        emit _errSignalMW(obj->value("err").toString());
+    }
+}
+
+void BackEnd::getUserTickets()
+{
+    if (obj->value("resp").toString() == "ok")
+    {
+        emit _userTickets(obj->value("unActiveTickets").toVariant().toStringList(), obj->value("boughtTickets").toVariant().toStringList(),
+                                         obj->value("reservedTickets").toVariant().toStringList());
+    }
+    // if smt went wrong
     else
     {
         emit _errSignalMW(obj->value("err").toString());

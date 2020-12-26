@@ -19,7 +19,8 @@ SOURCES += \
     loadingscreen.cpp \
     main.cpp \
     mainwindow.cpp \
-    purchasesmenu.cpp
+    purchasesmenu.cpp \
+    reserveticketsmenu.cpp
 
 HEADERS += \
     backend.h \
@@ -27,13 +28,15 @@ HEADERS += \
     customButton.h \
     loadingscreen.h \
     mainwindow.h \
-    purchasesmenu.h
+    purchasesmenu.h \
+    reserveticketsmenu.h
 
 FORMS += \
     buytickets.ui \
     loadingscreen.ui \
     mainwindow.ui \
-    purchasesmenu.ui
+    purchasesmenu.ui \
+    reserveticketsmenu.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

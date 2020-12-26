@@ -364,7 +364,7 @@ QLabel{
                  </size>
                 </property>
                 <property name="text">
-                 <string>Serch</string>
+                 <string>Search</string>
                 </property>
                 <property name="checkable">
                  <bool>false</bool>

@@ -10,9 +10,7 @@
 #include <QJsonObject>
 #include <QJsonParseError>
 #include <QJsonDocument>
-// for ukrainian language
-#include <QTextCodec>
-#include "QPushButton"
+#include <QPushButton>
 
 class BackEnd : public QObject
 {
@@ -32,6 +30,7 @@ public:
     void trainsListProc();
     void getAvailableSeats();
     void buyTicket();
+    void getUserTickets();
 
 public slots:
     void createSocket();	// create and init socket with IP and port number
@@ -50,6 +49,7 @@ signals:
     void _trainsList(QStringList trainsList);
     void _availableSeats(QString wagonsCounr, QStringList trainsList);
     void _ticketPurchaseSuccess();
+    void _userTickets(QStringList unActiveTickets, QStringList boughtTickets, QStringList reservedTickets);
 };
 
 #endif	// BACKEND_H
