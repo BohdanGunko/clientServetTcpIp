@@ -62,6 +62,8 @@ void reserveTicketsMenu::showBoughtTickets(QVariantList boughtTicketsList)
         boughtTicketsModel->setData(modelIndex, "You dont have any bought tickets that are active", Qt::DisplayRole);
 
         ui->boughtTicketsTable->setModel(boughtTicketsModel);
+
+        reservedTicketsModel->setHeaderData(0, Qt::Horizontal, "Information");
         return;
     }
 
@@ -113,8 +115,14 @@ void reserveTicketsMenu::showReservedTickets(QVariantList reservedTicketsList)
         reservedTicketsModel->setData(modelIndex, "You dont have any reserved tickets that are active", Qt::DisplayRole);
 
         ui->reservedTicketsTable->setModel(reservedTicketsModel);
+
+        reservedTicketsModel->setHeaderData(0, Qt::Horizontal, "Information");
+
+        disconnect(ui->reservedTicketsTable, SIGNAL(clicked(QModelIndex)), this, SLOT(reservedTicketTableClicked(QModelIndex)));
         return;
     }
+
+    connect(ui->reservedTicketsTable, SIGNAL(clicked(QModelIndex)), this, SLOT(reservedTicketTableClicked(QModelIndex)));
 
     QStringList jsonFields = { "trainId",			"trainDate",	"dep",				"dest",					"wagonNumber",
                                                          "placeNumber", "ownerFname", "ownerLname", "purchaseDate", "purchaseTime" };
@@ -164,6 +172,8 @@ void reserveTicketsMenu::showUnActiveTickets(QVariantList unActiveTicketsList)
         unActiveTicketsModel->setData(modelIndex, "You dont have any unactive tickets", Qt::DisplayRole);
 
         ui->unActiveTicketsTable->setModel(unActiveTicketsModel);
+
+        reservedTicketsModel->setHeaderData(0, Qt::Horizontal, "Information");
         return;
     }
 
@@ -225,7 +235,7 @@ void reserveTicketsMenu::showUserTickets(QVariantList unActiveTickets, QVariantL
     showUnActiveTickets(unActiveTickets);
 }
 
-void reserveTicketsMenu::on_reservedTicketsTable_clicked(const QModelIndex& index)
+void reserveTicketsMenu::reservedTicketTableClicked(const QModelIndex& index)
 {
     reservedTicketIndex = index;
 
@@ -322,6 +332,11 @@ void reserveTicketsMenu::reservedTicketBought()
     emit _dataToSend(txtToSend.toUtf8());
 
     bckEnd->showErrorMsg(ui->ownerLname, "Reserved ticket bought successfully");
+
+    ui->buyButton->hide();
+    ui->returnButton->hide();
+    ui->ownerFname->hide();
+    ui->ownerLname->hide();
 }
 
 void reserveTicketsMenu::returnTicket()
@@ -330,4 +345,9 @@ void reserveTicketsMenu::returnTicket()
     emit _dataToSend(txtToSend.toUtf8());
 
     bckEnd->showErrorMsg(ui->ownerLname, "Ticket returned successfully");
+
+    ui->buyButton->hide();
+    ui->returnButton->hide();
+    ui->ownerFname->hide();
+    ui->ownerLname->hide();
 }
