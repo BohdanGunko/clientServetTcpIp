@@ -44,13 +44,7 @@ void BackEnd::createSocket()
 
 void BackEnd::tryToReccon()
 {
-    //    // try to recconect to server
-    //    socket->connectToHost("178.137.161.32", 27000);
-    //
-    //    // wait for connection to be established
-    //    socket->waitForConnected(7000);
-
-    socket->connectToHost("127.0.0.1", 27000);
+    socket->connectToHost("178.137.161.32", 27000);
 
     socket->waitForConnected(7000);
 
@@ -70,7 +64,7 @@ void BackEnd::sendData(QByteArray dataToSend)
     if (socket->state() == QTcpSocket::ConnectedState)
     {
         socket->write(dataToSend);
-        socket->waitForBytesWritten(1500);
+        socket->waitForBytesWritten(5000);
     }
     else
     {
@@ -83,24 +77,7 @@ void BackEnd::sockReady()
 {
     if (socket->waitForConnected(1500))
     {
-        recievedData = socket->readAll();
-
-        *jsnDoc = QJsonDocument::fromJson(recievedData, errJsn);
-
-        *obj = jsnDoc->object();
-
-        if (errJsn->errorString().toInt() == QJsonParseError::NoError)
-        {
-            decAndExec();
-            return;
-        }
-
-        else
-        {
-            // to do: show can not convert err msg box
-            qDebug() << "Can not convert convetr data from server";
-            return;
-        }
+        recievedData += socket->readAll();
     }
 
     else
@@ -109,16 +86,43 @@ void BackEnd::sockReady()
         qDebug() << "Can not read data from server: Connestion failed";
         return;
     }
+
+    QByteArray terminantWord = "DATAEND";
+    int recDatLength = recievedData.length();
+
+    for (int i = 1; i <= terminantWord.length(); ++i)
+    {
+        if (recievedData[recDatLength - i] != terminantWord[terminantWord.length() - i] || (recDatLength - i < 0))
+        {
+            return;
+        }
+    }
+
+    recievedData.resize(recievedData.length() - terminantWord.length());
+    *jsnDoc = QJsonDocument::fromJson(recievedData, errJsn);
+
+    recievedData.clear();
+    *obj = jsnDoc->object();
+
+    if (errJsn->error == QJsonParseError::NoError)
+    {
+        decAndExec();
+        return;
+    }
+
+    else
+    {
+        emit _errSignalMW("Cannot convert data from server");
+        return;
+    }
 }
 
 void BackEnd::decAndExec()
 {
-    qDebug()<<obj->value("operation").toString();
     if (obj->value("operation").toString() == "login")
     {
         logProc();
     }
-
     else if (obj->value("operation").toString() == "register")
     {
         regProc();
@@ -235,13 +239,12 @@ void BackEnd::buyTicket()
     }
     else if (obj->value("resp").toString() == "alreadyTaken")
     {
-         emit _ticketAlreadyTaken();
+        emit _ticketAlreadyTaken();
     }
     else
     {
         emit _errSignalMW(obj->value("err").toString());
     }
-
 }
 
 void BackEnd::getUserTickets()

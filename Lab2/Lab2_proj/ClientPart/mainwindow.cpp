@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
 {
     ui->setupUi(this);
 
+
     // create blue background for loading screen
     loadingBckGround = new QLabel(this);
     loadingBckGround->setStyleSheet("QLabel{background-color:rgb(38,50,56);}");

@@ -3,7 +3,6 @@
 
 // secondary libreries
 #include <QEvent>
-#include <QDebug>
 #include <QToolTip>
 #include <QMainWindow>
 #include <QFile>

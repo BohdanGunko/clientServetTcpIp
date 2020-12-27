@@ -26,6 +26,7 @@ public:
     void startServer();
 
 private:
+    QString errStrMsg;
     QByteArray recievedData;
     QList<QTcpSocket*>* connectedClients;
     QJsonDocument* jsnDoc;
@@ -33,6 +34,7 @@ private:
     QJsonObject* obj;
     QSqlDatabase* db;
     QSqlQuery* qry;
+    void sendData(QTcpSocket* socket, QString& data);
     void decAndExec(QJsonDocument* doc, QTcpSocket* socket);
     void logProc(QTcpSocket* socket);
     void regProc(QTcpSocket* socket);

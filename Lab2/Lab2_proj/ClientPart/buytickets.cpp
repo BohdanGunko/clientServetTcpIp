@@ -156,7 +156,7 @@ void BuyTickets::showTrainsList(QVariantList trainsList)
         modelIndex = trainModel->index(row, 3);
         trainModel->setData(modelIndex, train.value("freeSeats").toString(), Qt::DisplayRole);
         ++row;
-        qDebug() << destArriveTime;
+
     }
 
     trainModel->setHeaderData(0, Qt::Horizontal, "Train number");

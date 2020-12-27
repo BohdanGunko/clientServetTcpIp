@@ -34,8 +34,18 @@
   <property name="windowTitle">
    <string>Train tickets</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="recources.qrc">
+    <normaloff>:/recources/img/programicon.png</normaloff>:/recources/img/programicon.png</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true"/>
+  </property>
+  <property name="iconSize">
+   <size>
+    <width>64</width>
+    <height>64</height>
+   </size>
   </property>
   <property name="toolButtonStyle">
    <enum>Qt::ToolButtonIconOnly</enum>
@@ -739,6 +749,8 @@ QLineEdit:focus{
   <tabstop>RegRegButton</tabstop>
   <tabstop>RegGoBackButton</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="recources.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -11,6 +11,7 @@
         <file>img/TrainIconHover.png</file>
         <file>img/Arrow.png</file>
         <file>img/loadingGif.gif</file>
+        <file>img/programicon.png</file>
     </qresource>
     <qresource prefix="/files"/>
 </RCC>
