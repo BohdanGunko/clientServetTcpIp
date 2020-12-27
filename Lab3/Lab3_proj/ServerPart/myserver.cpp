@@ -141,7 +141,14 @@ void myServer::decAndExec(QJsonDocument* doc, QTcpSocket* socket)
     {
         getUserTickets(socket);
     }
-
+    else if (obj->value("operation") == "buyReservedTicket")
+    {
+        buyReservedTicket(socket);
+    }
+    else if (obj->value("operation") == "returnTicket")
+    {
+        returnTicket(socket);
+    }
     else
     {
         socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please restart the app\"}");
@@ -444,6 +451,66 @@ void myServer::getUserTickets(QTcpSocket* socket)
             socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please restart the app\"}");
             socket->waitForBytesWritten(1500);
         }
+    }
+    else
+    {
+        // handle bad query execution
+        socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please restart the app\"}");
+        socket->waitForBytesWritten(1500);
+    }
+}
+
+void myServer::buyReservedTicket(QTcpSocket* socket)
+{
+    qry->prepare("UPDATE takenSeats"
+                             " SET buyOrReserve = 0, ownerFirstName =:fName, ownerLastName = :lName, purchaseDate = convert(date,GETDATE()), purchaseTime = "
+                             "convert(time,GETDATE())"
+                             " WHERE trainDate =:trainDate and trainId = :trainId and wagonNumber = :wagonNumber and placeNumber = :placeNumber and "
+                             "takenFromStation = dbo.getStationNumber(:trainId, :dep) and takenToStation = dbo.getStationNumber(:trainId,:dest )");
+
+    qry->bindValue(":trainDate", obj->value("trainDate").toString());
+    qry->bindValue(":trainId", obj->value("trainId").toString());
+    qry->bindValue(":wagonNumber", obj->value("wagonNumber").toString());
+    qry->bindValue(":placeNumber", obj->value("placeNumber").toString());
+    qry->bindValue(":dep", obj->value("dep").toString());
+    qry->bindValue(":dest", obj->value("dest").toString());
+    qry->bindValue(":fName", obj->value("fName").toString());
+    qry->bindValue(":lName", obj->value("lName").toString());
+
+    if (qry->exec())
+    {
+        qDebug() << "reserved ticket bought";
+        socket->write("{\"operation\":\"buyReservedTicket\", \"resp\":\"ok\"}");
+        socket->waitForBytesWritten(1500);
+    }
+
+    else
+    {
+        // handle bad query execution
+        socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please restart the app\"}");
+        socket->waitForBytesWritten(1500);
+    }
+}
+
+void myServer::returnTicket(QTcpSocket* socket)
+{
+    qDebug() << recievedData;
+    qry->prepare("delete from takenSeats where trainDate =:trainDate and trainId = :trainId and wagonNumber = :wagonNumber and placeNumber = "
+                             ":placeNumber and "
+                             "takenFromStation = dbo.getStationNumber(:trainId, :dep) and takenToStation = dbo.getStationNumber(:trainId,:dest )");
+
+    qry->bindValue(":trainDate", obj->value("trainDate").toString());
+    qry->bindValue(":trainId", obj->value("trainId").toString());
+    qry->bindValue(":wagonNumber", obj->value("wagonNumber").toString());
+    qry->bindValue(":placeNumber", obj->value("placeNumber").toString());
+    qry->bindValue(":dep", obj->value("dep").toString());
+    qry->bindValue(":dest", obj->value("dest").toString());
+
+    if (qry->exec())
+    {
+        qDebug() << "reserved ticket bought";
+        socket->write("{\"operation\":\"returnTicket\", \"resp\":\"ok\"}");
+        socket->waitForBytesWritten(1500);
     }
     else
     {

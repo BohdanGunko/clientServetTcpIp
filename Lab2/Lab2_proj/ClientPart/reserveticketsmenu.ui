@@ -134,7 +134,7 @@ QCheckBox{
       <enum>QTabWidget::Rounded</enum>
      </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>0</number>
      </property>
      <property name="elideMode">
       <enum>Qt::ElideNone</enum>
@@ -236,6 +236,9 @@ QCheckBox{
                <height>30</height>
               </size>
              </property>
+             <property name="maxLength">
+              <number>70</number>
+             </property>
              <property name="placeholderText">
               <string>Owner last name</string>
              </property>
@@ -299,6 +302,9 @@ QCheckBox{
                <width>300</width>
                <height>30</height>
               </size>
+             </property>
+             <property name="maxLength">
+              <number>70</number>
              </property>
              <property name="placeholderText">
               <string>Owner first name</string>

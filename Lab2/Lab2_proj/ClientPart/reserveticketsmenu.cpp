@@ -9,6 +9,10 @@ reserveTicketsMenu::reserveTicketsMenu(BackEnd* bckEnd, QWidget* parent) : QWidg
     connect(bckEnd, SIGNAL(_userTickets(QVariantList, QVariantList, QVariantList)), this,
                     SLOT(showUserTickets(QVariantList, QVariantList, QVariantList)));
 
+    connect(this, SIGNAL(_dataToSend(QByteArray)), bckEnd, SLOT(sendData(QByteArray)));
+    connect(bckEnd, SIGNAL(_reservedTicketBought()), this, SLOT(reservedTicketBought()));
+    connect(bckEnd, SIGNAL(_returnTicket()), this, SLOT(returnTicket()));
+
     ui->unActiveTicketsTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->unActiveTicketsTable->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->unActiveTicketsTable->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
@@ -250,9 +254,6 @@ void reserveTicketsMenu::on_buyButton_clicked()
 {
     ui->reservedTicketsTable->selectRow(reservedTicketIndex.row());
 
-    reservedTicketIndex = reservedTicketsModel->index(reservedTicketIndex.row(), 0);
-    qDebug() << reservedTicketsModel->data(reservedTicketIndex);
-
     QString fName = ui->ownerFname->text();
     QString lName = ui->ownerLname->text();
 
@@ -281,32 +282,52 @@ void reserveTicketsMenu::on_buyButton_clicked()
 
     int row = reservedTicketIndex.row();
 
-    QString txtToSend = "{\"operation\":\"buyTicket\", \"trainId\":\"%1\", \"trainDate\":\"%2\", \"dep\":\"%5\", \"dest\":\"%6\", "
-                                            "\"wagonNumber\":\"%3\", "
-                                            "\"placeNumber\":\"%4\", \"fName\":\"%7\", \"lName\":\"%8\"}";
+    QString ticketInfo = "{\"operation\":\"buyReservedTicket\", \"trainId\":\"%1\", \"trainDate\":\"%2\", \"dep\":\"%3\", \"dest\":\"%4\", "
+                                             "\"wagonNumber\":\"%5\", "
+                                             "\"placeNumber\":\"%6\", \"fName\":\"%7\", \"lName\":\"%8\"}";
     for (int column = 0; column < 8; ++column)
     {
         reservedTicketIndex = reservedTicketsModel->index(row, column);
-        txtToSend.replace("%" + QString::number(column + 1), reservedTicketsModel->data(reservedTicketIndex).toString());
+        QString modelData = reservedTicketsModel->data(reservedTicketIndex).toString();
+
+        ticketInfo.replace("%" + QString::number(column + 1), modelData);
     }
 
-    qDebug() << txtToSend;
-
-    //        emit _dataToSend(txtToSend.toUtf8());
-
-    //        QModelIndex tNameIndex = boughtTicketsModel->index(index.row(), 0);
-
-    //        this->trainId = trainModel->data(tNameIndex).toString();
-
-    //        QString txtToSend = QString("{\"operation\":\"getAvailableSeats\", \"trainDate\":\"%1\", \"trainId\":\"%2\", \"dep\":\"%3\",
-    //        \"dest\":\"%4\"}")
-    //                                                        .arg(dateTxt)
-    //                                                        .arg(trainId)
-    //                                                        .arg(depTxt)
-    //                                                        .arg(destTxt);
-    //        emit _dataToSend(txtToSend.toUtf8());
+    emit _dataToSend(ticketInfo.toUtf8());
 }
 
 void reserveTicketsMenu::on_returnButton_clicked()
 {
+    ui->reservedTicketsTable->selectRow(reservedTicketIndex.row());
+
+    int row = reservedTicketIndex.row();
+
+    QString ticketInfo = "{\"operation\":\"returnTicket\", \"trainId\":\"%1\", \"trainDate\":\"%2\", \"dep\":\"%3\", \"dest\":\"%4\", "
+                                             "\"wagonNumber\":\"%5\", "
+                                             "\"placeNumber\":\"%6\"}";
+    for (int column = 0; column < 6; ++column)
+    {
+        reservedTicketIndex = reservedTicketsModel->index(row, column);
+        QString modelData = reservedTicketsModel->data(reservedTicketIndex).toString();
+
+        ticketInfo.replace("%" + QString::number(column + 1), modelData);
+    }
+
+    emit _dataToSend(ticketInfo.toUtf8());
+}
+
+void reserveTicketsMenu::reservedTicketBought()
+{
+    QString txtToSend = QString("{\"operation\":\"getUserTickets\", \"userName\":\"%1\"}").arg(bckEnd->getCurUserame());
+    emit _dataToSend(txtToSend.toUtf8());
+
+    bckEnd->showErrorMsg(ui->ownerLname, "Reserved ticket bought successfully");
+}
+
+void reserveTicketsMenu::returnTicket()
+{
+    QString txtToSend = QString("{\"operation\":\"getUserTickets\", \"userName\":\"%1\"}").arg(bckEnd->getCurUserame());
+    emit _dataToSend(txtToSend.toUtf8());
+
+    bckEnd->showErrorMsg(ui->ownerLname, "Ticket returned successfully");
 }

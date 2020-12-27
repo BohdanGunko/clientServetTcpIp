@@ -474,6 +474,9 @@ QLabel{
                   <height>33</height>
                  </size>
                 </property>
+                <property name="maxLength">
+                 <number>70</number>
+                </property>
                 <property name="placeholderText">
                  <string>Destination</string>
                 </property>
@@ -545,6 +548,9 @@ QLabel{
                   <width>250</width>
                   <height>33</height>
                  </size>
+                </property>
+                <property name="maxLength">
+                 <number>70</number>
                 </property>
                 <property name="frame">
                  <bool>true</bool>
@@ -879,6 +885,9 @@ QLabel{
              <height>30</height>
             </size>
            </property>
+           <property name="maxLength">
+            <number>70</number>
+           </property>
            <property name="placeholderText">
             <string>Owner first name</string>
            </property>
@@ -982,6 +991,9 @@ QLabel{
              <width>300</width>
              <height>30</height>
             </size>
+           </property>
+           <property name="maxLength">
+            <number>70</number>
            </property>
            <property name="placeholderText">
             <string>Owner last name</string>

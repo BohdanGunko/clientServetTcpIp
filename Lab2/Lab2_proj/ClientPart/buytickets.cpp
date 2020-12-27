@@ -149,7 +149,7 @@ void BuyTickets::showTrainsList(QVariantList trainsList)
         trainModel->setData(modelIndex, depDateInfo, Qt::DisplayRole);
 
         modelIndex = trainModel->index(row, 2);
-        QString destArriveTime = "  " + train.value("destArriveTime").toString() + " " + train.value("destArriveDate").toString();
+        QString destArriveTime = train.value("destArriveTime").toString() + " " + train.value("destArriveDate").toString();
 
         trainModel->setData(modelIndex, destArriveTime, Qt::DisplayRole);
 
@@ -171,17 +171,17 @@ void BuyTickets::showTrainsList(QVariantList trainsList)
 
 void BuyTickets::on_TrainsTable_pressed(const QModelIndex& index)
 {
-        this->currentWagon = 1;
-        QModelIndex tNameIndex = trainModel->index(index.row(), 0);
+    this->currentWagon = 1;
+    QModelIndex tNameIndex = trainModel->index(index.row(), 0);
 
-        this->trainId = trainModel->data(tNameIndex).toString();
+    this->trainId = trainModel->data(tNameIndex).toString();
 
-        QString txtToSend = QString("{\"operation\":\"getAvailableSeats\", \"trainDate\":\"%1\", \"trainId\":\"%2\", \"dep\":\"%3\", \"dest\":\"%4\"}")
-                                                        .arg(dateTxt)
-                                                        .arg(trainId)
-                                                        .arg(depTxt)
-                                                        .arg(destTxt);
-        emit _dataToSend(txtToSend.toUtf8());
+    QString txtToSend = QString("{\"operation\":\"getAvailableSeats\", \"trainDate\":\"%1\", \"trainId\":\"%2\", \"dep\":\"%3\", \"dest\":\"%4\"}")
+                                                    .arg(dateTxt)
+                                                    .arg(trainId)
+                                                    .arg(depTxt)
+                                                    .arg(destTxt);
+    emit _dataToSend(txtToSend.toUtf8());
 }
 
 void BuyTickets::on_goToTrainSelect_clicked()

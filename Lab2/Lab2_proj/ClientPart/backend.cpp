@@ -113,6 +113,7 @@ void BackEnd::sockReady()
 
 void BackEnd::decAndExec()
 {
+    qDebug()<<obj->value("operation").toString();
     if (obj->value("operation").toString() == "login")
     {
         logProc();
@@ -142,9 +143,18 @@ void BackEnd::decAndExec()
     {
         getUserTickets();
     }
+    else if (obj->value("operation").toString() == "buyReservedTicket")
+    {
+        buyReservedTicket();
+    }
+    else if (obj->value("operation").toString() == "returnTicket")
+    {
+        returnTicket();
+    }
     else
     {
         // to do: show bad respond msg
+        emit _errSignalMW(obj->value("err").toString());
     }
 }
 
@@ -247,4 +257,14 @@ void BackEnd::getUserTickets()
     {
         emit _errSignalMW(obj->value("err").toString());
     }
+}
+
+void BackEnd::buyReservedTicket()
+{
+    emit _reservedTicketBought();
+}
+
+void BackEnd::returnTicket()
+{
+    emit _returnTicket();
 }

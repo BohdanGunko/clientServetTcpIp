@@ -37,6 +37,8 @@ private:
     void getAvailableSeats();
     void buyTicket();
     void getUserTickets();
+    void buyReservedTicket();
+    void returnTicket();
 
 private slots:
     void createSocket();
@@ -57,6 +59,8 @@ signals:
     void _ticketPurchaseSuccess();
     void _userTickets(QVariantList unActiveTickets, QVariantList boughtTickets, QVariantList reservedTickets);
     void _ticketAlreadyTaken();
+    void _reservedTicketBought();
+    void _returnTicket();
 };
 
 #endif

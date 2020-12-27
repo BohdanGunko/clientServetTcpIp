@@ -41,6 +41,8 @@ private:
     void getAvailableSeats(QTcpSocket* socket);
     void buyTicket(QTcpSocket* socket);
     void getUserTickets(QTcpSocket* socket);
+    void buyReservedTicket(QTcpSocket* socket);
+    void returnTicket(QTcpSocket* socket);
     QString createJsonStringFromQuery(QStringList& jsonFields, QSqlQuery* qry);
 
 private slots:

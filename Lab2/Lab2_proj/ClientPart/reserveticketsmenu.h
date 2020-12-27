@@ -15,7 +15,7 @@ class reserveTicketsMenu : public QWidget
     Q_OBJECT
 
 public:
-    explicit reserveTicketsMenu( BackEnd* bckEnd, QWidget* parent = nullptr);
+    explicit reserveTicketsMenu(BackEnd* bckEnd, QWidget* parent = nullptr);
     ~reserveTicketsMenu();
 
 private:
@@ -31,10 +31,15 @@ private:
 
 private slots:
     void showUserTickets(QVariantList unActiveTickets, QVariantList boughtTickets, QVariantList reservedTickets);
-    void on_reservedTicketsTable_clicked(const QModelIndex &index);
+    void on_reservedTicketsTable_clicked(const QModelIndex& index);
     void on_tabWidget_currentChanged(int index);
     void on_buyButton_clicked();
     void on_returnButton_clicked();
+    void reservedTicketBought();
+    void returnTicket();
+
+signals:
+    void _dataToSend(QByteArray);
 };
 
 #endif	// RESERVETICKETSMENU_H
