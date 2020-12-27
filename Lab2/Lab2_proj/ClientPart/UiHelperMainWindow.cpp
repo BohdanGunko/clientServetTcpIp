@@ -75,51 +75,48 @@ void MainWindow::setShadowEff()
     RegBackfEffect->setColor(Qt::black);
     ui->RegGoBackButton->setGraphicsEffect(RegBackfEffect);
 
-    retryLoadingYesBtn->setStyleSheet(
-            "QPushButton"
-            "{"
-            "background-color: rgba(242, 150, 47, 220);"
-            "border:none;"
-            "border-radius:10px;"
-            "color:#1b2327;"
-            "font-family:  \"Calibri Bold\";"
-            "font-size: 17px;"
-            "}"
-            "QPushButton:hover:!pressed{"
-            "background-color: #455A64;"
-            "color:#EEEEEE;"
-            "}"
-            "QPushButton:hover:pressed{"
-            "   background-color: #37474F;"
-            "color:#DDDDDD;"
-            "}");
+    retryLoadingYesBtn->setStyleSheet("QPushButton"
+                                                                        "{"
+                                                                        "background-color: rgba(242, 150, 47, 220);"
+                                                                        "border:none;"
+                                                                        "border-radius:10px;"
+                                                                        "color:#1b2327;"
+                                                                        "font-family:  \"Calibri Bold\";"
+                                                                        "font-size: 17px;"
+                                                                        "}"
+                                                                        "QPushButton:hover:!pressed{"
+                                                                        "background-color: #455A64;"
+                                                                        "color:#EEEEEE;"
+                                                                        "}"
+                                                                        "QPushButton:hover:pressed{"
+                                                                        "   background-color: #37474F;"
+                                                                        "color:#DDDDDD;"
+                                                                        "}");
 
-    retryLoadingNoBtn->setStyleSheet(
-            "QPushButton"
-            "{"
-            "background-color: rgba(242, 150, 47, 220);"
-            "border:none;"
-            "border-radius:10px;"
-            "color:#1b2327;"
-            "font-family:  \"Calibri Bold\";"
-            "font-size: 17px;"
-            "}"
-            "QPushButton:hover:!pressed{"
-            "background-color: #455A64;"
-            "color:#EEEEEE;"
-            "}"
-            "QPushButton:hover:pressed{"
-            "   background-color: #37474F;"
-            "color:#DDDDDD;"
-            "}");
+    retryLoadingNoBtn->setStyleSheet("QPushButton"
+                                                                     "{"
+                                                                     "background-color: rgba(242, 150, 47, 220);"
+                                                                     "border:none;"
+                                                                     "border-radius:10px;"
+                                                                     "color:#1b2327;"
+                                                                     "font-family:  \"Calibri Bold\";"
+                                                                     "font-size: 17px;"
+                                                                     "}"
+                                                                     "QPushButton:hover:!pressed{"
+                                                                     "background-color: #455A64;"
+                                                                     "color:#EEEEEE;"
+                                                                     "}"
+                                                                     "QPushButton:hover:pressed{"
+                                                                     "   background-color: #37474F;"
+                                                                     "color:#DDDDDD;"
+                                                                     "}");
 
-    retConnLabel->setStyleSheet(
-            "QLabel{"
-            "background:none ;"
-            "color:#EEEEEE;"
-            "font: \"Calibri\";"
-            "font-size: 14px;"
-            "}");
+    retConnLabel->setStyleSheet("QLabel{"
+                                                            "background:none ;"
+                                                            "color:#EEEEEE;"
+                                                            "font: \"Calibri\";"
+                                                            "font-size: 14px;"
+                                                            "}");
 }
 
 void MainWindow::resizeLoadindScreen()
@@ -148,11 +145,11 @@ void MainWindow::resizeLogMenu()
     const short wW = this->size().width();
     const short wH = this->size().height();
 
-    const short LeH = wH / 18;
-    const short LeW = wW / 4;
+    const short LeH = 22 + wH / 50;
+    const short LeW = 250 + wW / 15;
 
-    const short bH = wH / 20;
-    const short bW = wW / 8;
+    const short bH = 17 + wH / 75;
+    const short bW = 52 + wW / 25;
 
     const short CbH = ui->RemMeCheckBox->size().height();
     const short CbW = ui->RemMeCheckBox->size().width();
@@ -193,11 +190,11 @@ void MainWindow::resizeRegMenu()
     const short wW = this->size().width();
     const short wH = this->size().height();
 
-    const short LeH = wH / 18;
-    const short LeW = wW / 4;
+    const short LeH = 22 + wH / 50;
+    const short LeW = 250 + wW / 15;
 
-    const short bH = wH / 20;
-    const short bW = wW / 8;
+    const short bH = 17 + wH / 75;
+    const short bW = 52 + wW / 25;
 
     short totalHeight = 2 * hMarg + betweenMarg + 3 * LeH + bH;
 

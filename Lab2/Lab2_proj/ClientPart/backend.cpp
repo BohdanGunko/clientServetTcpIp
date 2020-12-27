@@ -223,10 +223,15 @@ void BackEnd::buyTicket()
     {
         emit _ticketPurchaseSuccess();
     }
+    else if (obj->value("resp").toString() == "alreadyTaken")
+    {
+         emit _ticketAlreadyTaken();
+    }
     else
     {
         emit _errSignalMW(obj->value("err").toString());
     }
+
 }
 
 void BackEnd::getUserTickets()

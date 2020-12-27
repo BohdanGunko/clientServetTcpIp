@@ -81,10 +81,6 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     resizeLoadindScreen();
 
-    // adding main menu ui to stacked widget
-    OvScreen = new PurchasesMenu(bckEnd);
-    ui->stackedWidget->addWidget(OvScreen);
-
     // check if any user pressed remember me
     QFile rMeFile(".remMe");
     if (rMeFile.open(QIODevice::ReadOnly))
@@ -107,6 +103,7 @@ MainWindow::~MainWindow()
 {
     secThread->quit();
     secThread->wait();
+    delete bckEnd;
     delete ui;
 }
 
@@ -309,8 +306,16 @@ void MainWindow::logSuccess()
         }
     }
 
+    // adding main menu ui to stacked widget
+    OvScreen = new PurchasesMenu(bckEnd);
+    ui->stackedWidget->addWidget(OvScreen);
+
+    connect(OvScreen, SIGNAL(_closeApp()), this, SLOT(on_ExitButton_clicked()));
+
+    connect(OvScreen, SIGNAL(_logOut()), this, SLOT(logOutSlot()));
+
     // go to main menu
-    ui->stackedWidget->setCurrentIndex(2);
+    ui->stackedWidget->setCurrentWidget(OvScreen);
 
     // send lrequest to get cities list
     emit _dataToSend("{\"operation\":\"getCities\"}");
@@ -342,4 +347,26 @@ void MainWindow::errSlot(QString Info)
     {
         QMessageBox::critical(this, "Fatal error", Info);
     }
+}
+
+void MainWindow::logOutSlot()
+{
+    ui->stackedWidget->removeWidget(OvScreen);
+
+    disconnect(OvScreen, SIGNAL(_closeApp()), this, SLOT(on_ExitButton_clicked()));
+
+    disconnect(OvScreen, SIGNAL(_logOut()), this, SLOT(logOutSlot()));
+
+    QFile rMeFile(".remMe");
+
+    rMeFile.open(QIODevice::WriteOnly);
+    rMeFile.close();
+
+    ui->LoginLineEdit->clear();
+    ui->PassLineEdit->clear();
+
+    resizeLogMenu();
+    ui->stackedWidget->setCurrentIndex(0);
+
+    delete OvScreen;
 }

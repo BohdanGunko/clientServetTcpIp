@@ -110,7 +110,7 @@ void PurchasesMenu::on_ReserveButton_clicked()
 void PurchasesMenu::on_LogOutButton_clicked()
 {
     // to do: exit menu
-
+    ui->stackedWidget->setCurrentIndex(0);
     ui->BuyButton->setCheckable(1);
     QPixmap BuyIcon(":/recources/img/TrainIcon.png");
     ui->BuyButton->setIcon(BuyIcon);
@@ -122,4 +122,14 @@ void PurchasesMenu::on_LogOutButton_clicked()
     ui->LogOutButton->setCheckable(0);
     QPixmap LogOutIcon(":/recources/img/ExitIconFocus.png");
     ui->LogOutButton->setIcon(LogOutIcon);
+}
+
+void PurchasesMenu::on_exitButton_clicked()
+{
+    emit _closeApp();
+}
+
+void PurchasesMenu::on_logOutButton_clicked()
+{
+    emit _logOut();
 }

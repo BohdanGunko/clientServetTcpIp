@@ -49,6 +49,7 @@ private slots:
     void logSuccess();
     void regSuccess();	// go to lof menu if registration is successful
     void errSlot(QString Info);
+    void logOutSlot();
 
 private:
     Ui::MainWindow* ui;

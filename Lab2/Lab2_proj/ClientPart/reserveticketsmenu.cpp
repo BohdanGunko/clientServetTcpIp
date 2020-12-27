@@ -16,6 +16,28 @@ reserveTicketsMenu::reserveTicketsMenu(BackEnd* bckEnd, QWidget* parent) : QWidg
     this->boughtTicketsModel = nullptr;
     this->reservedTicketsModel = nullptr;
     this->unActiveTicketsModel = nullptr;
+
+    ui->boughtTicketsTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->boughtTicketsTable->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->boughtTicketsTable->setSelectionMode(QAbstractItemView::SingleSelection);
+    ui->boughtTicketsTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+
+    ui->reservedTicketsTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->reservedTicketsTable->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->reservedTicketsTable->setSelectionMode(QAbstractItemView::SingleSelection);
+    ui->reservedTicketsTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+
+    ui->unActiveTicketsTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->unActiveTicketsTable->setSelectionBehavior(QAbstractItemView::SelectRows);
+    ui->unActiveTicketsTable->setSelectionMode(QAbstractItemView::SingleSelection);
+    ui->unActiveTicketsTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+
+    ui->tabWidget->setCurrentIndex(0);
+
+    ui->buyButton->hide();
+    ui->returnButton->hide();
+    ui->ownerFname->hide();
+    ui->ownerLname->hide();
 }
 
 reserveTicketsMenu::~reserveTicketsMenu()
@@ -41,8 +63,8 @@ void reserveTicketsMenu::showBoughtTickets(QVariantList boughtTicketsList)
 
     QModelIndex modelIndex;
 
-    QStringList jsonFields = { "trainId",		 "trainDate",	 "dep",					 "dest",				 "wagonNumber", "placeNumber",
-                                                         "ownerFname", "ownerLname", "purchaseDate", "purchaseTime", "buyOrRes" };
+    QStringList jsonFields = { "trainId",			"trainDate",	"dep",				"dest",					"wagonNumber",
+                                                         "placeNumber", "ownerFname", "ownerLname", "purchaseDate", "purchaseTime" };
 
     boughtTicketsModel = new QStandardItemModel(boughtTicketsList.length(), jsonFields.length(), this);
 
@@ -64,6 +86,14 @@ void reserveTicketsMenu::showBoughtTickets(QVariantList boughtTicketsList)
 
         ++row;
     }
+
+    QStringList headerNames = { "Train id",			"Departure date", "Departure",			 "Destination",		"Wagon number",
+                                                            "Place number", "Owner name",			"Owner last name", "Purchase date", "Purchase time" };
+
+    for (int i = 0; i < headerNames.length(); ++i)
+    {
+        boughtTicketsModel->setHeaderData(i, Qt::Horizontal, headerNames[i]);
+    }
 }
 
 void reserveTicketsMenu::showReservedTickets(QVariantList reservedTicketsList)
@@ -82,8 +112,8 @@ void reserveTicketsMenu::showReservedTickets(QVariantList reservedTicketsList)
         return;
     }
 
-    QStringList jsonFields = { "trainId",		 "trainDate",	 "dep",					 "dest",				 "wagonNumber", "placeNumber",
-                                                         "ownerFname", "ownerLname", "purchaseDate", "purchaseTime", "buyOrRes" };
+    QStringList jsonFields = { "trainId",			"trainDate",	"dep",				"dest",					"wagonNumber",
+                                                         "placeNumber", "ownerFname", "ownerLname", "purchaseDate", "purchaseTime" };
 
     reservedTicketsModel = new QStandardItemModel(reservedTicketsList.length(), jsonFields.length(), this);
 
@@ -107,6 +137,14 @@ void reserveTicketsMenu::showReservedTickets(QVariantList reservedTicketsList)
 
         ++row;
     }
+
+    QStringList headerNames = { "Train id",			"Departure date", "Departure",			 "Destination",			 "Wagon number",
+                                                            "Place number", "Owner name",			"Owner last name", "Reservation date", "Reservation time" };
+
+    for (int i = 0; i < headerNames.length(); ++i)
+    {
+        reservedTicketsModel->setHeaderData(i, Qt::Horizontal, headerNames[i]);
+    }
 }
 
 void reserveTicketsMenu::showUnActiveTickets(QVariantList unActiveTicketsList)
@@ -119,7 +157,7 @@ void reserveTicketsMenu::showUnActiveTickets(QVariantList unActiveTicketsList)
         QModelIndex modelIndex;
 
         modelIndex = unActiveTicketsModel->index(0, 0);
-        unActiveTicketsModel->setData(modelIndex, "You dont have any unactive tickets that are active", Qt::DisplayRole);
+        unActiveTicketsModel->setData(modelIndex, "You dont have any unactive tickets", Qt::DisplayRole);
 
         ui->unActiveTicketsTable->setModel(unActiveTicketsModel);
         return;
@@ -141,14 +179,38 @@ void reserveTicketsMenu::showUnActiveTickets(QVariantList unActiveTicketsList)
 
         for (QString& field : jsonFields)
         {
-            modelIndex = unActiveTicketsModel->index(row, col);
-            unActiveTicketsModel->setData(modelIndex, ticket.value(field).toString(), Qt::DisplayRole);
+            if (field == "buyOrRes")
+            {
+                if (ticket.value(field).toString() == "0")
+                {
+                    modelIndex = unActiveTicketsModel->index(row, col);
+                    unActiveTicketsModel->setData(modelIndex, "Bought", Qt::DisplayRole);
+                }
+                else
+                {
+                    modelIndex = unActiveTicketsModel->index(row, col);
+                    unActiveTicketsModel->setData(modelIndex, "Reserved", Qt::DisplayRole);
+                }
+            }
+            else
+            {
+                modelIndex = unActiveTicketsModel->index(row, col);
+                unActiveTicketsModel->setData(modelIndex, ticket.value(field).toString(), Qt::DisplayRole);
+            }
             ++col;
         }
 
         ui->unActiveTicketsTable->setModel(unActiveTicketsModel);
 
         ++row;
+    }
+
+    QStringList headerNames = { "Train id",		"Departure date",	 "Departure",				 "Destination",			 "Wagon number", "Place number",
+                                                            "Owner name", "Owner last name", "Reservation date", "Reservation time", "Status" };
+
+    for (int i = 0; i < headerNames.length(); ++i)
+    {
+        unActiveTicketsModel->setHeaderData(i, Qt::Horizontal, headerNames[i]);
     }
 }
 
@@ -157,12 +219,94 @@ void reserveTicketsMenu::showUserTickets(QVariantList unActiveTickets, QVariantL
     showBoughtTickets(boughtTickets);
     showReservedTickets(reservedTickets);
     showUnActiveTickets(unActiveTickets);
+}
 
-    //    qDebug() << unActiveTickets << "\n\n\n";
-    //	qDebug() << boughtTickets << "\n\n\n";
-    //	qDebug() << reservedTickets << "\n\n\n";
+void reserveTicketsMenu::on_reservedTicketsTable_clicked(const QModelIndex& index)
+{
+    reservedTicketIndex = index;
+
+    ui->buyButton->show();
+    ui->returnButton->show();
+    ui->ownerFname->show();
+    ui->ownerLname->show();
+
+    reservedTicketIndex = reservedTicketsModel->index(reservedTicketIndex.row(), 6);
+    ui->ownerFname->setText(reservedTicketsModel->data(reservedTicketIndex).toString());
+
+    reservedTicketIndex = reservedTicketsModel->index(reservedTicketIndex.row(), 7);
+    ui->ownerLname->setText(reservedTicketsModel->data(reservedTicketIndex).toString());
 }
 
 void reserveTicketsMenu::on_tabWidget_currentChanged(int index)
+{
+    ui->boughtTicketsTable->clearSelection();
+    ui->buyButton->hide();
+    ui->returnButton->hide();
+    ui->ownerFname->hide();
+    ui->ownerLname->hide();
+}
+
+void reserveTicketsMenu::on_buyButton_clicked()
+{
+    ui->reservedTicketsTable->selectRow(reservedTicketIndex.row());
+
+    reservedTicketIndex = reservedTicketsModel->index(reservedTicketIndex.row(), 0);
+    qDebug() << reservedTicketsModel->data(reservedTicketIndex);
+
+    QString fName = ui->ownerFname->text();
+    QString lName = ui->ownerLname->text();
+
+    QRegularExpression rgx("[\\p{Cyrillic}[a-zA-z]{1,50}");
+
+    if (fName.length() == 0)
+    {
+        bckEnd->showErrorMsg(ui->ownerFname, "First name can't be empty");
+        return;
+    }
+    if (lName.length() == 0)
+    {
+        bckEnd->showErrorMsg(ui->ownerLname, "Last name can't be empty");
+        return;
+    }
+    if (rgx.match(fName).capturedLength() != fName.length())
+    {
+        bckEnd->showErrorMsg(ui->ownerFname, "first name can only contain latin and cyrylic characters");
+        return;
+    }
+    if (rgx.match(lName).capturedLength() != lName.length())
+    {
+        bckEnd->showErrorMsg(ui->ownerFname, "last name can only contain latin and cyrylic characters");
+        return;
+    }
+
+    int row = reservedTicketIndex.row();
+
+    QString txtToSend = "{\"operation\":\"buyTicket\", \"trainId\":\"%1\", \"trainDate\":\"%2\", \"dep\":\"%5\", \"dest\":\"%6\", "
+                                            "\"wagonNumber\":\"%3\", "
+                                            "\"placeNumber\":\"%4\", \"fName\":\"%7\", \"lName\":\"%8\"}";
+    for (int column = 0; column < 8; ++column)
+    {
+        reservedTicketIndex = reservedTicketsModel->index(row, column);
+        txtToSend.replace("%" + QString::number(column + 1), reservedTicketsModel->data(reservedTicketIndex).toString());
+    }
+
+    qDebug() << txtToSend;
+
+    //        emit _dataToSend(txtToSend.toUtf8());
+
+    //        QModelIndex tNameIndex = boughtTicketsModel->index(index.row(), 0);
+
+    //        this->trainId = trainModel->data(tNameIndex).toString();
+
+    //        QString txtToSend = QString("{\"operation\":\"getAvailableSeats\", \"trainDate\":\"%1\", \"trainId\":\"%2\", \"dep\":\"%3\",
+    //        \"dest\":\"%4\"}")
+    //                                                        .arg(dateTxt)
+    //                                                        .arg(trainId)
+    //                                                        .arg(depTxt)
+    //                                                        .arg(destTxt);
+    //        emit _dataToSend(txtToSend.toUtf8());
+}
+
+void reserveTicketsMenu::on_returnButton_clicked()
 {
 }

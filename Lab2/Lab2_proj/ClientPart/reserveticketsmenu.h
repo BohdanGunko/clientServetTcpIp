@@ -24,13 +24,17 @@ private:
     QStandardItemModel* unActiveTicketsModel;
     QStandardItemModel* reservedTicketsModel;
     QStandardItemModel* boughtTicketsModel;
+    QModelIndex reservedTicketIndex;
     void showBoughtTickets(QVariantList boughtTicketsList);
     void showReservedTickets(QVariantList reservedTicketsList);
     void showUnActiveTickets(QVariantList unActiveTicketsList);
 
 private slots:
     void showUserTickets(QVariantList unActiveTickets, QVariantList boughtTickets, QVariantList reservedTickets);
+    void on_reservedTicketsTable_clicked(const QModelIndex &index);
     void on_tabWidget_currentChanged(int index);
+    void on_buyButton_clicked();
+    void on_returnButton_clicked();
 };
 
 #endif	// RESERVETICKETSMENU_H

@@ -29,12 +29,18 @@ private:
     void setEnterIcon(QObject* watched);	// set new icon when mouse enter button
     void setLeaveIcon(QObject* watched);	// set new icon when mouse leave button
     void showTicketsForCurrentUser();
-signals:
-    void _dataToSend(QByteArray dataToSend);	// emit this signal when you need send data to server
+
 private slots:
     void on_BuyButton_clicked();
     void on_ReserveButton_clicked();
     void on_LogOutButton_clicked();
+    void on_exitButton_clicked();
+    void on_logOutButton_clicked();
+
+signals:
+    void _dataToSend(QByteArray dataToSend);
+    void _closeApp();
+    void _logOut();
 };
 
 #endif	// PURCHASESMENU_H

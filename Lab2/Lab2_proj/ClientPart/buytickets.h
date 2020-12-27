@@ -34,6 +34,7 @@ private slots:
     void on_buyTicketButton_clicked();
     void on_reserveTicketButton_clicked();
     void ticketPurchaseDone();
+    void ticketAlreadyTaken();
 
 private:
     Ui::BuyTickets* ui;

@@ -15,6 +15,7 @@ BuyTickets::BuyTickets(BackEnd* bckEnd, QWidget* parent) : QWidget(parent), ui(n
     connect(bckEnd, SIGNAL(_availableSeats(QString, QStringList)), this, SLOT(showAvailableSeats(QString, QStringList)));
     connect(bckEnd, SIGNAL(_ticketPurchaseSuccess()), this, SLOT(ticketPurchaseDone()));
     connect(this, SIGNAL(_dataToSend(QByteArray)), bckEnd, SLOT(sendData(QByteArray)));
+    connect(bckEnd, SIGNAL(_ticketAlreadyTaken()), this, SLOT(ticketAlreadyTaken()));
 
     ui->DateEdit->setMinimumDateTime(QDateTime::currentDateTime());
 
@@ -30,7 +31,7 @@ BuyTickets::BuyTickets(BackEnd* bckEnd, QWidget* parent) : QWidget(parent), ui(n
 
     ui->TrainsTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
     ui->TrainsTable->setSelectionBehavior(QAbstractItemView::SelectRows);
-    ui->TrainsTable->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+    ui->TrainsTable->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
     ui->stackedWidget->setCurrentIndex(0);
 
@@ -43,7 +44,7 @@ BuyTickets::~BuyTickets()
 {
     delete ui;
     delete trainModel;
-    delete bckEnd;
+
     delete depCompleter;
     delete destCompleter;
     delete cityList;
@@ -120,6 +121,7 @@ void BuyTickets::showTrainsList(QVariantList trainsList)
     if (trainsList.length() == 0)
     {
         ui->TrainsTable->hide();
+
         bckEnd->showErrorMsg(ui->SearchButton, "Sorry but we can't find any trains from " + this->depTxt + " to " + this->destTxt);
         return;
     }
@@ -169,17 +171,17 @@ void BuyTickets::showTrainsList(QVariantList trainsList)
 
 void BuyTickets::on_TrainsTable_pressed(const QModelIndex& index)
 {
-    this->currentWagon = 1;
-    QModelIndex tNameIndex = trainModel->index(index.row(), 0);
+        this->currentWagon = 1;
+        QModelIndex tNameIndex = trainModel->index(index.row(), 0);
 
-    this->trainId = trainModel->data(tNameIndex).toString();
+        this->trainId = trainModel->data(tNameIndex).toString();
 
-    QString txtToSend = QString("{\"operation\":\"getAvailableSeats\", \"trainDate\":\"%1\", \"trainId\":\"%2\", \"dep\":\"%3\", \"dest\":\"%4\"}")
-                                                    .arg(dateTxt)
-                                                    .arg(trainId)
-                                                    .arg(depTxt)
-                                                    .arg(destTxt);
-    emit _dataToSend(txtToSend.toUtf8());
+        QString txtToSend = QString("{\"operation\":\"getAvailableSeats\", \"trainDate\":\"%1\", \"trainId\":\"%2\", \"dep\":\"%3\", \"dest\":\"%4\"}")
+                                                        .arg(dateTxt)
+                                                        .arg(trainId)
+                                                        .arg(depTxt)
+                                                        .arg(destTxt);
+        emit _dataToSend(txtToSend.toUtf8());
 }
 
 void BuyTickets::on_goToTrainSelect_clicked()
@@ -383,7 +385,6 @@ void BuyTickets::on_buyTicketButton_clicked()
 
 void BuyTickets::on_reserveTicketButton_clicked()
 {
-    // 0 stands for by ticket 1 is reserve
     buyOrReserveTicket(selectReserve);
 }
 
@@ -399,4 +400,19 @@ void BuyTickets::ticketPurchaseDone()
     emit _dataToSend(txtToSend.toUtf8());
 
     bckEnd->showErrorMsg(ui->ownerFnameLineEdit, "Operation done succesfully");
+}
+
+void BuyTickets::ticketAlreadyTaken()
+{
+    deleteSeatsAndWagons();
+    QString txtToSend = QString("{\"operation\":\"getAvailableSeats\", \"trainDate\":\"%1\", \"trainId\":\"%2\", \"dep\":\"%3\", \"dest\":\"%4\"}")
+                                                    .arg(dateTxt)
+                                                    .arg(trainId)
+                                                    .arg(depTxt)
+                                                    .arg(destTxt);
+
+    emit _dataToSend(txtToSend.toUtf8());
+
+    bckEnd->showErrorMsg(ui->ownerFnameLineEdit, "<p>Sorry this seat is already taken.<p>"
+                                                                                             "<p>Here is updatet information.<p>");
 }

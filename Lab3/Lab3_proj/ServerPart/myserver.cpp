@@ -333,8 +333,38 @@ void myServer::getAvailableSeats(QTcpSocket* socket)
 
 void myServer::buyTicket(QTcpSocket* socket)
 {
-    // to do: check ifticket is not taken
+    // check if ticket is still available
+    qry->prepare("select * from getAvailablePlaces(:trainDate, :trainId, :dep, :dest)");
+    qry->bindValue(":trainDate", obj->value("trainDate").toString());
+    qry->bindValue(":trainId", obj->value("trainId").toString());
+    qry->bindValue(":dep", obj->value("dep").toString());
+    qry->bindValue(":dest", obj->value("dest").toString());
 
+    QString wagonNumber = obj->value("wagonNumber").toString();
+    QString placeNumber = obj->value("placeNumber").toString();
+    if (qry->exec())
+    {
+        while (qry->next())
+        {
+            QString tmp1 = qry->value(0).toString();
+            QString tmp2 = qry->value(1).toString();
+            if (qry->value(0).toString() == wagonNumber && qry->value(1).toString() == placeNumber)
+            {
+                QString txtToSend = "{\"operation\":\"buyTicket\", \"resp\":\"alreadyTaken\"}";
+                socket->write(txtToSend.toUtf8());
+                socket->waitForBytesWritten(1500);
+                return;
+            }
+        }
+    }
+    else
+    {
+        socket->write("{\"operation\":\"fatalErr\", \"resp\":\"bad\", \"err\":\"Something went wrong when transfering data. Please restart the "
+                                    "app\"}");
+        socket->waitForBytesWritten(1500);
+    }
+
+    // buy ticket if it is available
     qry->prepare("insert into takenSeats values(:trainDate, :trainId, :wagonNumber, :placeNumber, dbo.getStationNumber(:trainId, :dep) , "
                              "dbo.getStationNumber(:trainId, :dest), :buyOrReserve, :ownerInfo, :fName, :lName,   CONVERT(DATE,GETDATE()),  "
                              "CONVERT(TIME,GETDATE()))");

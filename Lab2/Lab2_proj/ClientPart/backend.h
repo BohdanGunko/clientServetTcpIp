@@ -56,6 +56,7 @@ signals:
     void _availableSeats(QString wagonsCounr, QStringList trainsList);
     void _ticketPurchaseSuccess();
     void _userTickets(QVariantList unActiveTickets, QVariantList boughtTickets, QVariantList reservedTickets);
+    void _ticketAlreadyTaken();
 };
 
 #endif
