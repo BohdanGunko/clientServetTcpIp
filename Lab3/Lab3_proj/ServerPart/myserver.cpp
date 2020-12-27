@@ -32,7 +32,7 @@ void myServer::startServer()
         }
         else
         {
-            qDebug() << "Database not opened with ERROR: " << db->lastError().text();
+            qDebug() << "Database not opened. ERROR: " << db->lastError().text();
         }
     }
     else
@@ -43,6 +43,8 @@ void myServer::startServer()
 
 void myServer::sendData(QTcpSocket* socket, QString& data)
 {
+    qDebug()<<(data + "DATAEND").toUtf8();
+
     socket->write((data + "DATAEND").toUtf8());
     socket->waitForBytesWritten(2000);
 }
@@ -53,8 +55,7 @@ void myServer::sockDisc()
     socket = new QTcpSocket();
     socket = qobject_cast<QTcpSocket*>(sender());
     socket->deleteLater();
-
-    qDebug() << "Disconected";
+    qDebug() << "Client " << socket->socketDescriptor() << "disconected";
 }
 
 void myServer::incomingConnection(qintptr socketDescriptor)
@@ -70,7 +71,7 @@ void myServer::incomingConnection(qintptr socketDescriptor)
     connect(socket, SIGNAL(readyRead()), this, SLOT(sockReady()));
     connect(socket, SIGNAL(disconnected()), this, SLOT(sockDisc()));
 
-    qDebug() << "Client is connected    " << socketDescriptor;
+    qDebug() << "Client connected    " << socketDescriptor;
 }
 
 void myServer::sockReady()
@@ -83,8 +84,6 @@ void myServer::sockReady()
     if (socket->waitForConnected(1500))
     {
         recievedData = socket->readAll();
-
-        qDebug() << recievedData;
 
         jsnDoc = new QJsonDocument();
 
@@ -441,7 +440,6 @@ void myServer::getUserTickets(QTcpSocket* socket)
                 userTickets += createJsonStringFromQuery(jsonFields, qry);
 
                 userTickets.push_back("}");
-                qDebug() << userTickets;
                 sendData(socket, userTickets);
                 socket->waitForBytesWritten(3000);
             }
@@ -486,7 +484,6 @@ void myServer::buyReservedTicket(QTcpSocket* socket)
 
     if (qry->exec())
     {
-        qDebug() << "reserved ticket bought";
         QString dataToSend = "{\"operation\":\"buyReservedTicket\", \"resp\":\"ok\"}";
         sendData(socket, dataToSend);
         socket->waitForBytesWritten(3000);
@@ -502,7 +499,6 @@ void myServer::buyReservedTicket(QTcpSocket* socket)
 
 void myServer::returnTicket(QTcpSocket* socket)
 {
-    qDebug() << recievedData;
     qry->prepare("delete from takenSeats where trainDate =:trainDate and trainId = :trainId and wagonNumber = :wagonNumber and placeNumber = "
                              ":placeNumber and "
                              "takenFromStation = dbo.getStationNumber(:trainId, :dep) and takenToStation = dbo.getStationNumber(:trainId,:dest )");

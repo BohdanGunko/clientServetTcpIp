@@ -63,7 +63,7 @@ void reserveTicketsMenu::showBoughtTickets(QVariantList boughtTicketsList)
 
         ui->boughtTicketsTable->setModel(boughtTicketsModel);
 
-        reservedTicketsModel->setHeaderData(0, Qt::Horizontal, "Information");
+        boughtTicketsModel->setHeaderData(0, Qt::Horizontal, "Information");
         return;
     }
 
@@ -173,7 +173,7 @@ void reserveTicketsMenu::showUnActiveTickets(QVariantList unActiveTicketsList)
 
         ui->unActiveTicketsTable->setModel(unActiveTicketsModel);
 
-        reservedTicketsModel->setHeaderData(0, Qt::Horizontal, "Information");
+        unActiveTicketsModel->setHeaderData(0, Qt::Horizontal, "Information");
         return;
     }
 
