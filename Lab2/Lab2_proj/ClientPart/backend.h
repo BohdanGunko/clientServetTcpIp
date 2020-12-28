@@ -11,6 +11,7 @@
 #include <QJsonDocument>
 #include <QJsonArray>
 #include <QPushButton>
+#include <QFile>
 
 class BackEnd : public QObject
 {

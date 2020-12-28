@@ -53,6 +53,8 @@ BuyTickets::~BuyTickets()
 
 void BuyTickets::on_SearchButton_clicked()
 {
+    ui->SearchButton->setCheckable(0);
+
     depTxt = ui->DepartureLineEdit->text();
     destTxt = ui->DestinationLineEdit->text();
 
@@ -120,6 +122,8 @@ void BuyTickets::aComplete(QStringList cList)
 
 void BuyTickets::showTrainsList(QVariantList trainsList)
 {
+    ui->SearchButton->setCheckable(1);
+
     if (trainsList.length() == 0)
     {
         ui->TrainsTable->hide();

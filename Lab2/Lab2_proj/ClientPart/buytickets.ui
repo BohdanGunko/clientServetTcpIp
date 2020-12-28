@@ -514,7 +514,7 @@ font-family: &quot;Calibri&quot;;
                  </size>
                 </property>
                 <property name="text">
-                 <string>Київ</string>
+                 <string/>
                 </property>
                 <property name="maxLength">
                  <number>70</number>
@@ -592,7 +592,7 @@ font-family: &quot;Calibri&quot;;
                  </size>
                 </property>
                 <property name="text">
-                 <string>львів</string>
+                 <string/>
                 </property>
                 <property name="maxLength">
                  <number>70</number>
