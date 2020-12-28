@@ -64,9 +64,11 @@ void reserveTicketsMenu::showBoughtTickets(QVariantList boughtTicketsList)
         ui->boughtTicketsTable->setModel(boughtTicketsModel);
 
         boughtTicketsModel->setHeaderData(0, Qt::Horizontal, "Information");
+        ui->boughtTicketsTable->setSelectionMode(QAbstractItemView::NoSelection);
         return;
     }
 
+    ui->boughtTicketsTable->setSelectionMode(QAbstractItemView::SingleSelection);
     QModelIndex modelIndex;
 
     QStringList jsonFields = { "trainId",			"trainDate",	"dep",				"dest",					"wagonNumber",
@@ -119,10 +121,13 @@ void reserveTicketsMenu::showReservedTickets(QVariantList reservedTicketsList)
         reservedTicketsModel->setHeaderData(0, Qt::Horizontal, "Information");
 
         disconnect(ui->reservedTicketsTable, SIGNAL(clicked(QModelIndex)), this, SLOT(reservedTicketTableClicked(QModelIndex)));
+
+        ui->reservedTicketsTable->setSelectionMode(QAbstractItemView::NoSelection);
         return;
     }
 
     connect(ui->reservedTicketsTable, SIGNAL(clicked(QModelIndex)), this, SLOT(reservedTicketTableClicked(QModelIndex)));
+    ui->reservedTicketsTable->setSelectionMode(QAbstractItemView::SingleSelection);
 
     QStringList jsonFields = { "trainId",			"trainDate",	"dep",				"dest",					"wagonNumber",
                                                          "placeNumber", "ownerFname", "ownerLname", "purchaseDate", "purchaseTime" };
@@ -174,9 +179,10 @@ void reserveTicketsMenu::showUnActiveTickets(QVariantList unActiveTicketsList)
         ui->unActiveTicketsTable->setModel(unActiveTicketsModel);
 
         unActiveTicketsModel->setHeaderData(0, Qt::Horizontal, "Information");
+        ui->unActiveTicketsTable->setSelectionMode(QAbstractItemView::NoSelection);
         return;
     }
-
+    ui->unActiveTicketsTable->setSelectionMode(QAbstractItemView::SingleSelection);
     QStringList jsonFields = { "trainId",		 "trainDate",	 "dep",					 "dest",				 "wagonNumber", "placeNumber",
                                                          "ownerFname", "ownerLname", "purchaseDate", "purchaseTime", "buyOrRes" };
 

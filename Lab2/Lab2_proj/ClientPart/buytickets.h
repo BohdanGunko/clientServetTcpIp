@@ -7,6 +7,7 @@
 #include <QCompleter>
 #include <customButton.h>
 #include <QStandardItemModel>
+#include <math.h>
 
 namespace Ui
 {

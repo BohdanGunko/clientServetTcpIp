@@ -33,6 +33,8 @@ PurchasesMenu::PurchasesMenu(BackEnd* bckEnd, QWidget* parent) : QWidget(parent)
     ui->BuyButton->setCheckable(0);
     QPixmap BuyIcon(":/recources/img/TrainIconFocus.png");
     ui->BuyButton->setIcon(BuyIcon);
+
+    setShadowEff();
 }
 
 // destructor
@@ -109,7 +111,7 @@ void PurchasesMenu::on_ReserveButton_clicked()
 
 void PurchasesMenu::on_LogOutButton_clicked()
 {
-    // to do: exit menu
+
     ui->stackedWidget->setCurrentIndex(0);
     ui->BuyButton->setCheckable(1);
     QPixmap BuyIcon(":/recources/img/TrainIcon.png");
@@ -131,5 +133,6 @@ void PurchasesMenu::on_exitButton_clicked()
 
 void PurchasesMenu::on_logOutButton_clicked()
 {
+
     emit _logOut();
 }

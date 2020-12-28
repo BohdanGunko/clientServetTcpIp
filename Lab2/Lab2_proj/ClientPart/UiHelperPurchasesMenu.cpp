@@ -1,7 +1,24 @@
 #include "purchasesmenu.h"
 #include "ui_purchasesmenu.h"
 #include <QPixmap>
+#include <QGraphicsDropShadowEffect>
 
+void PurchasesMenu::setShadowEff()
+{
+    QGraphicsDropShadowEffect* logOut = new QGraphicsDropShadowEffect;
+    logOut->setBlurRadius(20);
+    logOut->setXOffset(0);
+    logOut->setYOffset(0);
+    logOut->setColor(Qt::black);
+    ui->logOutButton->setGraphicsEffect(logOut);
+
+    QGraphicsDropShadowEffect* exitEffect = new QGraphicsDropShadowEffect;
+    exitEffect->setBlurRadius(20);
+    exitEffect->setXOffset(0);
+    exitEffect->setYOffset(0);
+    exitEffect->setColor(Qt::black);
+    ui->exitButton->setGraphicsEffect(exitEffect);
+}
 // set icons on start of ui
 void PurchasesMenu::setIcons()
 {

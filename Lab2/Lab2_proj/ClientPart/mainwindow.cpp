@@ -7,7 +7,6 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent), ui(new Ui::MainWi
 {
     ui->setupUi(this);
 
-
     // create blue background for loading screen
     loadingBckGround = new QLabel(this);
     loadingBckGround->setStyleSheet("QLabel{background-color:rgb(38,50,56);}");
@@ -177,8 +176,26 @@ void MainWindow::retryLoadingYesBtn_clicked()
 
 void MainWindow::on_ExitButton_clicked()
 {
-    // to do: ask if user really want to exit
-    this->close();
+    QMessageBox msgBox(this);
+    msgBox.setObjectName("msgBox");
+    msgBox.setStyleSheet("#msgBox{ background-color:#1e282d;}"
+                                             "QLabel{background:none;color:#e4e4e4;font-family: \"Calibri\";font-size: 14px;border:none;}"
+                                             "QPushButton{width:60px;background-color: rgba(242, 150, 47, 220);border:none;border-radius:10px;color:#1b2327;font-family:  "
+                                             "\"Calibri "
+                                             "Bold\";font-size: 17px;}"
+                                             "QPushButton:hover:!pressed{background-color: #455A64;color:#EEEEEE;}"
+                                             "QPushButton:hover:pressed{background-color: #37474F;color:#DDDDDD;}");
+
+    msgBox.setWindowTitle("Exit confirmation");
+    msgBox.setInformativeText("<p>Do you want to exit the app?<p>");
+    msgBox.setStandardButtons(QMessageBox::No | QMessageBox::Yes);
+    msgBox.setDefaultButton(QMessageBox::No);
+    int userAnswer = msgBox.exec();
+
+    if (userAnswer == QMessageBox::Yes)
+    {
+        this->close();
+    }
 }
 
 void MainWindow::on_RegGoBackButton_clicked()
@@ -352,22 +369,45 @@ void MainWindow::errSlot(QString Info)
 
 void MainWindow::logOutSlot()
 {
-    ui->stackedWidget->removeWidget(OvScreen);
+    QMessageBox msgBox(this);
+    msgBox.setObjectName("msgBox");
+    msgBox.setStyleSheet("#msgBox{ background-color:#1e282d;}"
+                                             "QLabel{background:none;color:#e4e4e4;font-family: \"Calibri\";font-size: 14px;border:none;}"
+                                             "QPushButton{width:60px;background-color: rgba(242, 150, 47, 220);border:none;border-radius:10px;color:#1b2327;font-family:  "
+                                             "\"Calibri "
+                                             "Bold\";font-size: 17px;}"
+                                             "QPushButton:hover:!pressed{background-color: #455A64;color:#EEEEEE;}"
+                                             "QPushButton:hover:pressed{background-color: #37474F;color:#DDDDDD;}");
 
-    disconnect(OvScreen, SIGNAL(_closeApp()), this, SLOT(on_ExitButton_clicked()));
+    msgBox.setWindowTitle("Exit confirmation");
+    msgBox.setInformativeText("<p>Do you want to exit the app?<p>");
+    msgBox.setStandardButtons(QMessageBox::No | QMessageBox::Yes);
+    msgBox.setDefaultButton(QMessageBox::No);
+    int userAnswer = msgBox.exec();
 
-    disconnect(OvScreen, SIGNAL(_logOut()), this, SLOT(logOutSlot()));
+    if (userAnswer == QMessageBox::No)
+    {
+        return;
+    }
+    else
+    {
+        ui->stackedWidget->removeWidget(OvScreen);
 
-    QFile rMeFile(".remMe");
+        disconnect(OvScreen, SIGNAL(_closeApp()), this, SLOT(on_ExitButton_clicked()));
 
-    rMeFile.open(QIODevice::WriteOnly);
-    rMeFile.close();
+        disconnect(OvScreen, SIGNAL(_logOut()), this, SLOT(logOutSlot()));
 
-    ui->LoginLineEdit->clear();
-    ui->PassLineEdit->clear();
+        QFile rMeFile(".remMe");
 
-    resizeLogMenu();
-    ui->stackedWidget->setCurrentIndex(0);
+        rMeFile.open(QIODevice::WriteOnly);
+        rMeFile.close();
 
-    delete OvScreen;
+        ui->LoginLineEdit->clear();
+        ui->PassLineEdit->clear();
+
+        resizeLogMenu();
+        ui->stackedWidget->setCurrentIndex(0);
+
+        delete OvScreen;
+    }
 }

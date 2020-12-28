@@ -32,7 +32,16 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(255, 20, 24);</string>
+   <string notr="true">background-color: rgb(255, 20, 24);
+/*--------------------------------Label--------------------------------*/
+QLabel{
+	background:none ;
+
+	color:#EEEEEE;
+font-family: &quot;Calibri&quot;;
+	font-size: 14px;
+	border: none;
+}</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <property name="leftMargin">

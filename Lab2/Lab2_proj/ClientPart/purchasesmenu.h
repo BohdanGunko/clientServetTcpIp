@@ -25,6 +25,7 @@ private:
     BuyTickets* BuyScreen;
     reserveTicketsMenu* reserveScreen;
     BackEnd* bckEnd;
+    void setShadowEff();
     void setIcons();											// set icons on start of ui
     void setEnterIcon(QObject* watched);	// set new icon when mouse enter button
     void setLeaveIcon(QObject* watched);	// set new icon when mouse leave button
@@ -41,6 +42,7 @@ signals:
     void _dataToSend(QByteArray dataToSend);
     void _closeApp();
     void _logOut();
+
 };
 
 #endif	// PURCHASESMENU_H

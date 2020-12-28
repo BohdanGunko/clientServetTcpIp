@@ -43,10 +43,8 @@ void myServer::startServer()
 
 void myServer::sendData(QTcpSocket* socket, QString& data)
 {
-    qDebug()<<(data + "DATAEND").toUtf8();
-
     socket->write((data + "DATAEND").toUtf8());
-    socket->waitForBytesWritten(2000);
+    socket->waitForBytesWritten(3000);
 }
 
 void myServer::sockDisc()
@@ -97,7 +95,7 @@ void myServer::sockReady()
         else
         {
             sendData(socket, errStrMsg);
-            socket->waitForBytesWritten(3000);
+
             return;
         }
     }
@@ -105,7 +103,6 @@ void myServer::sockReady()
     else
     {
         sendData(socket, errStrMsg);
-        socket->waitForBytesWritten(3000);
 
         qDebug() << "Can not read data from client: Connestion failed";
         return;
@@ -156,7 +153,6 @@ void myServer::decAndExec(QJsonDocument* doc, QTcpSocket* socket)
     else
     {
         sendData(socket, errStrMsg);
-        socket->waitForBytesWritten(3000);
     }
 }
 
@@ -173,14 +169,12 @@ void myServer::logProc(QTcpSocket* socket)
             {
                 QString dataToSend = "{\"operation\":\"login\", \"resp\":\"ok\"}";
                 sendData(socket, dataToSend);
-                socket->waitForBytesWritten(3000);
             }
 
             else
             {
                 QString dataToSend = "{\"operation\":\"login\", \"resp\":\"bad\", \"err\":\"Invalid password\"}";
                 sendData(socket, dataToSend);
-                socket->waitForBytesWritten(3000);
             }
         }
 
@@ -188,13 +182,11 @@ void myServer::logProc(QTcpSocket* socket)
         {
             QString dataToSend = "{\"operation\":\"login\", \"resp\":\"bad\", \"err\":\"Login doesn't exist\"}";
             sendData(socket, dataToSend);
-            socket->waitForBytesWritten(3000);
         }
     }
     else
     {
         sendData(socket, errStrMsg);
-        socket->waitForBytesWritten(3000);
     }
 }
 
@@ -209,7 +201,6 @@ void myServer::regProc(QTcpSocket* socket)
         {
             QString dataToSend = "{\"operation\":\"register\", \"resp\":\"bad\", \"err\":\"User already exist\"}";
             sendData(socket, dataToSend);
-            socket->waitForBytesWritten(3000);
         }
 
         else
@@ -222,19 +213,16 @@ void myServer::regProc(QTcpSocket* socket)
             {
                 QString dataToSend = "{\"operation\":\"register\", \"resp\":\"ok\"}";
                 sendData(socket, dataToSend);
-                socket->waitForBytesWritten(3000);
             }
             else
             {
                 sendData(socket, errStrMsg);
-                socket->waitForBytesWritten(3000);
             }
         }
     }
     else
     {
         sendData(socket, errStrMsg);
-        socket->waitForBytesWritten(3000);
     }
 }
 
@@ -257,12 +245,10 @@ void myServer::getCities(QTcpSocket* socket)
 
         cList.push_back("]}");
         sendData(socket, cList);
-        socket->waitForBytesWritten(3000);
     }
     else
     {
         sendData(socket, errStrMsg);
-        socket->waitForBytesWritten(3000);
     }
 }
 
@@ -286,12 +272,10 @@ void myServer::getTrainsList(QTcpSocket* socket)
         trainsList += "}";
 
         sendData(socket, trainsList);
-        socket->waitForBytesWritten(3000);
     }
     else
     {
         sendData(socket, errStrMsg);
-        socket->waitForBytesWritten(3000);
     }
 }
 
@@ -329,20 +313,17 @@ void myServer::getAvailableSeats(QTcpSocket* socket)
             notAvailiableSeats.push_back("]}");
 
             sendData(socket, notAvailiableSeats);
-            socket->waitForBytesWritten(3000);
         }
         else
         {
             // handle bad query execution
             sendData(socket, errStrMsg);
-            socket->waitForBytesWritten(3000);
         }
     }
     else
     {
         // handle bad query execution
         sendData(socket, errStrMsg);
-        socket->waitForBytesWritten(3000);
     }
 }
 
@@ -367,7 +348,7 @@ void myServer::buyTicket(QTcpSocket* socket)
             {
                 QString txtToSend = "{\"operation\":\"buyTicket\", \"resp\":\"alreadyTaken\"}";
                 sendData(socket, txtToSend);
-                socket->waitForBytesWritten(3000);
+
                 return;
             }
         }
@@ -375,7 +356,6 @@ void myServer::buyTicket(QTcpSocket* socket)
     else
     {
         sendData(socket, errStrMsg);
-        socket->waitForBytesWritten(3000);
     }
 
     // buy ticket if it is available
@@ -397,13 +377,11 @@ void myServer::buyTicket(QTcpSocket* socket)
     {
         QString txtToSend = "{\"operation\":\"buyTicket\", \"resp\":\"ok\"}";
         sendData(socket, txtToSend);
-        socket->waitForBytesWritten(3000);
     }
     else
     {
         // handle bad query execution
         sendData(socket, errStrMsg);
-        socket->waitForBytesWritten(3000);
     }
 }
 
@@ -441,27 +419,23 @@ void myServer::getUserTickets(QTcpSocket* socket)
 
                 userTickets.push_back("}");
                 sendData(socket, userTickets);
-                socket->waitForBytesWritten(3000);
             }
             else
             {
                 // handle bad query execution
                 sendData(socket, errStrMsg);
-                socket->waitForBytesWritten(3000);
             }
         }
         else
         {
             // handle bad query execution
             sendData(socket, errStrMsg);
-            socket->waitForBytesWritten(3000);
         }
     }
     else
     {
         // handle bad query execution
         sendData(socket, errStrMsg);
-        socket->waitForBytesWritten(3000);
     }
 }
 
@@ -486,14 +460,12 @@ void myServer::buyReservedTicket(QTcpSocket* socket)
     {
         QString dataToSend = "{\"operation\":\"buyReservedTicket\", \"resp\":\"ok\"}";
         sendData(socket, dataToSend);
-        socket->waitForBytesWritten(3000);
     }
 
     else
     {
         // handle bad query execution
         sendData(socket, errStrMsg);
-        socket->waitForBytesWritten(3000);
     }
 }
 
@@ -514,13 +486,11 @@ void myServer::returnTicket(QTcpSocket* socket)
     {
         QString dataToSend = "{\"operation\":\"returnTicket\", \"resp\":\"ok\"}";
         sendData(socket, dataToSend);
-        socket->waitForBytesWritten(3000);
     }
     else
     {
         // handle bad query execution
         sendData(socket, errStrMsg);
-        socket->waitForBytesWritten(3000);
     }
 }
 

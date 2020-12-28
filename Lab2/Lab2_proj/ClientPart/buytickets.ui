@@ -20,8 +20,11 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">/*--------------------------------Time Edit--------------------------------*/
+   <string notr="true">
+
+/*--------------------------------Time Edit--------------------------------*/
 QTimeEdit{
+
 icon:none;
 	background-color:#37474F ;
 
@@ -38,6 +41,35 @@ icon:none;
 	padding-right:10px;
 }
 
+QTimeEdit::hover{
+background-color: #263238;
+}
+
+QTimeEdit::down-button {
+height:11px;
+  image: url(:/recources/img/downArrow.png);
+	background-color:#455A64 ;
+border-style: solid;
+	border-width: 2px;
+	border-color: none;
+	border-radius: 7px;
+}
+QTimeEdit::down-button:hover {
+background-color: #D78730;
+}
+
+QTimeEdit::up-button {
+height:11px;
+  image: url(:/recources/img/upArrow.png);
+	background-color:#455A64 ;
+border-style: solid;
+	border-width: 2px;
+	border-color: #455A64;
+	border-radius: 7px;
+}
+QTimeEdit::up-button:hover {
+background-color: #D78730;
+}
 
 /*--------------------------------PopUp calendar--------------------------------*/
 
@@ -62,7 +94,6 @@ QCalendarWidget QAbstractItemView:enabled
     selection-color:#1b2327; 
   }
 
-
 QCalendarWidget QWidget#qt_calendar_navigationbar
 { 
 	background-color: #607D8B;
@@ -71,8 +102,9 @@ QCalendarWidget QWidget#qt_calendar_navigationbar
 QCalendarWidget QMenu {
 	background-color: #607D8B;
 	color: #1b2327;
-	selection-background-color: #1b2327;
-    selection-color: #607D8B;
+	
+	selection-color:#607D8B ;
+	selection-background-color:  #1b2327;
 	font: bold &quot;Calibri&quot;;
 	font-size:14px;
   }
@@ -109,37 +141,43 @@ QDateEdit:hover {
 background-color: #263238;
 }
 
-
-
-
 QDateEdit::drop-down {
-  image: url(:/recources/img/Arrow.png);
-
-
-    
-    
+height:30px;
+  image: url(:/recources/img/downArrow.png);    
     background-color: #455A64;
     border-style: solid;
     border-width: 1px;
-	border-radius:right 7px;
+	border-radius:right 8px;
     border-color:#455A64;
-border-radius:6px;
+border-radius:8px;
  
 }
 
 
 
-
 /*--------------------------------Table view--------------------------------*/
 
-#TrainsTable{
-	background-color:#37474F ;
-	alternate-background-color:rgb(46, 59, 66);
-	color:#ECEFF1;
+QTableView{
+	selection-background-color: rgb(24, 32, 36);
+	background-color:#263238 ;
+	alternate-background-color:rgb(33, 43, 48);
+	color:rgb(200, 200, 200);
+
 	font-family: &quot;Calibri&quot;;
-	font-size: 17px;
+	font-size: 14px;
+	border: none;
 }
 
+QHeaderView::section { 
+background-color:rgb(66, 85, 94);
+color:rgb(195, 195, 195);
+	font: bold &quot;MS Sans Serif&quot;;
+
+	font-size: 13px;
+
+	padding-left:10px;
+	padding-right:10px;
+ }
 
 /*--------------------------------Button--------------------------------*/
 
@@ -217,8 +255,9 @@ QLabel{
 	background:none ;
 
 	color:#EEEEEE;
-	font: italic&quot;Calibri&quot;;
+font-family: &quot;Calibri&quot;;
 	font-size: 14px;
+	border: none;
 }
 </string>
   </property>
@@ -474,6 +513,9 @@ QLabel{
                   <height>33</height>
                  </size>
                 </property>
+                <property name="text">
+                 <string>Київ</string>
+                </property>
                 <property name="maxLength">
                  <number>70</number>
                 </property>
@@ -549,6 +591,9 @@ QLabel{
                   <height>33</height>
                  </size>
                 </property>
+                <property name="text">
+                 <string>львів</string>
+                </property>
                 <property name="maxLength">
                  <number>70</number>
                 </property>
@@ -619,6 +664,12 @@ QLabel{
                   <height>0</height>
                  </size>
                 </property>
+                <property name="frame">
+                 <bool>false</bool>
+                </property>
+                <property name="buttonSymbols">
+                 <enum>QAbstractSpinBox::UpDownArrows</enum>
+                </property>
                 <property name="showGroupSeparator" stdset="0">
                  <bool>false</bool>
                 </property>
@@ -669,13 +720,6 @@ QLabel{
          </layout>
         </widget>
        </item>
-       <item row="1" column="0">
-        <layout class="QGridLayout" name="gridLayout_8">
-         <property name="leftMargin">
-          <number>100</number>
-         </property>
-        </layout>
-       </item>
        <item row="2" column="0">
         <widget class="QTableView" name="TrainsTable">
          <property name="sizePolicy">
@@ -724,6 +768,13 @@ QLabel{
           <bool>true</bool>
          </attribute>
         </widget>
+       </item>
+       <item row="1" column="0">
+        <layout class="QGridLayout" name="gridLayout_8">
+         <property name="leftMargin">
+          <number>100</number>
+         </property>
+        </layout>
        </item>
       </layout>
      </widget>

@@ -111,9 +111,11 @@ void BuyTickets::aComplete(QStringList cList)
     ui->DepartureLineEdit->setCompleter(depCompleter);
     ui->DestinationLineEdit->setCompleter(destCompleter);
 
-    QAbstractItemView* popup = depCompleter->popup();
+    QAbstractItemView* popupDep = depCompleter->popup();
+    setCompleterStyle(popupDep);
 
-    setCompleterStyle(popup);
+    QAbstractItemView* popupDest = destCompleter->popup();
+    setCompleterStyle(popupDest);
 }
 
 void BuyTickets::showTrainsList(QVariantList trainsList)
@@ -156,7 +158,6 @@ void BuyTickets::showTrainsList(QVariantList trainsList)
         modelIndex = trainModel->index(row, 3);
         trainModel->setData(modelIndex, train.value("freeSeats").toString(), Qt::DisplayRole);
         ++row;
-
     }
 
     trainModel->setHeaderData(0, Qt::Horizontal, "Train number");
@@ -205,23 +206,36 @@ void BuyTickets::showAvailableSeats(QString wagonCount, QStringList takenSeats)
     seatsList = new QVector<customButton*>;
     wagonsList = new QVector<customButton*>;
 
-    for (int i = 1; i <= wagonCount.toInt(); ++i)
+    for (int row = 0; row < ceil(((double)wagonCount.toInt() / 3)); ++row)
     {
-        customButton* wagon = new customButton(ui->stackedWidget->currentWidget());
+        for (int col = 1; col <= 3 && (row * 3 + col) <= wagonCount.toInt(); ++col)
+        {
+            customButton* wagon = new customButton(ui->stackedWidget->currentWidget());
 
-        int freeSpaces = countFreeSpaces(QString::number(i));
+            int freeSpaces = countFreeSpaces(QString::number(row * 3 + col));
 
-        wagon->setMinimumSize(50, 50);
-        wagon->setText(QString::number(i) + "(" + QString::number(freeSpaces) + ")");
-        wagon->number = i;
-        wagon->show();
-        wagon->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+            wagon->setMinimumSize(50, 50);
+            wagon->setText("  w:" + QString::number(row * 3 + col) + "  free:" + QString::number(freeSpaces));
+            wagon->number = row * 3 + col;
+            wagon->show();
+            wagon->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 
-        connect(wagon, SIGNAL(cB_clicked(int)), this, SLOT(changeWagon(int)));
+            connect(wagon, SIGNAL(cB_clicked(int)), this, SLOT(changeWagon(int)));
 
-        ui->wagonLayout->addWidget(wagon, 0, i);
-        wagonsList->push_back(wagon);
+            QIcon selectedSeatIcon;
+            selectedSeatIcon.addPixmap(QPixmap(":/recources/img/wagonIcon.png"), QIcon::Normal);
+            selectedSeatIcon.addPixmap(QPixmap(":/recources/img/wagonIcon.png"), QIcon::Disabled);
+
+            wagon->setIcon(selectedSeatIcon);
+            wagon->setIconSize(QSize(150, 30));
+
+            ui->wagonLayout->addWidget(wagon, row, col);
+            wagonsList->push_back(wagon);
+        }
     }
+
+    ui->wagonLayout->setVerticalSpacing(20);
+    ui->wagonLayout->setHorizontalSpacing(20);
 
     for (int i = 0; i < 56; ++i)
     {
@@ -259,10 +273,10 @@ void BuyTickets::changeWagon(int wagonNumber)
 
     for (auto& wagon : *wagonsList)
     {
-        wagon->setStyleSheet("background-color: Gainsboro;");
+        wagon->setStyleSheet("QPushButton:hover:!pressed{background-color: #b2b2b2;color:black;} QPushButton{background-color: #d9d9d9; color: black} ");
         wagon->setEnabled(1);
     }
-    (*wagonsList)[wagonNumber - 1]->setStyleSheet("background-color:  SlateGrey;");
+    (*wagonsList)[wagonNumber - 1]->setStyleSheet("QPushButton{background-color:#79a1b6;}");
     (*wagonsList)[wagonNumber - 1]->setEnabled(0);
 
     showSeatsForWagon(wagonNumber);
@@ -280,8 +294,15 @@ void BuyTickets::showTicketPurchaseMenu(int seatNumber)
 
     ui->seatNumberLabel->setText("Seat number: " + QString::number(seatNumber + 1) + "\nprice 250 uah");
 
+    // to clear previos selected seat
     showSeatsForWagon(currentWagon);
 
+    QIcon selectedSeatIcon;
+    selectedSeatIcon.addPixmap(QPixmap(":/recources/img/selectedSeat.png"), QIcon::Normal);
+    selectedSeatIcon.addPixmap(QPixmap(":/recources/img/selectedSeat.png"), QIcon::Disabled);
+
+    seatsList->at(seatNumber)->setIcon(selectedSeatIcon);
+    seatsList->at(seatNumber)->setIconSize(QSize(25, 25));
     seatsList->at(seatNumber)->setStyleSheet("background-color: #F7F9F9; color: #1b2327;");
 }
 
@@ -303,18 +324,33 @@ void BuyTickets::deleteSeatsAndWagons()
 
 void BuyTickets::showSeatsForWagon(int wagonNumber)
 {
-    for (auto& seat : *seatsList)
+    for (auto& freeSeat : *seatsList)
     {
-        seat->setEnabled(1);
-        seat->setStyleSheet("background-color: green;");
+        QIcon freeSeatIcon;
+        freeSeatIcon.addPixmap(QPixmap(":/recources/img/freeSeat.png"), QIcon::Normal);
+        freeSeatIcon.addPixmap(QPixmap(":/recources/img/freeSeat.png"), QIcon::Disabled);
+
+        freeSeat->setIcon(freeSeatIcon);
+        freeSeat->setIconSize(QSize(25, 25));
+
+        freeSeat->setEnabled(1);
+        freeSeat->setStyleSheet("background-color: green;");
     }
 
     for (int i = 0; i < takenSeatslist->length() / 2; ++i)
     {
         if ((*takenSeatslist)[i * 2].toInt() == wagonNumber)
         {
-            (*seatsList)[(*takenSeatslist)[i * 2 + 1].toInt() - 1]->setEnabled(0);
-            (*seatsList)[(*takenSeatslist)[i * 2 + 1].toInt() - 1]->setStyleSheet("background-color: red;");
+            QIcon takenSeatIcon;
+            customButton* takenSeat = (*seatsList)[(*takenSeatslist)[i * 2 + 1].toInt() - 1];
+
+            takenSeatIcon.addPixmap(QPixmap(":/recources/img/takenSeat.png"), QIcon::Normal);
+            takenSeatIcon.addPixmap(QPixmap(":/recources/img/takenSeat.png"), QIcon::Disabled);
+
+            takenSeat->setIcon(takenSeatIcon);
+            takenSeat->setIconSize(QSize(25, 25));
+            takenSeat->setEnabled(0);
+            takenSeat->setStyleSheet("background-color: red;");
         }
     }
 }
